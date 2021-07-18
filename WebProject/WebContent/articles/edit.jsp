@@ -14,7 +14,6 @@
 		var title = $("#b_title").val(); 
 		var content = $("#b_cont").val(); 
 		
-		
 		if (board_type == "") { 
 		alert("카테고리를 선택해주세요.");  
 		return false ;} 
