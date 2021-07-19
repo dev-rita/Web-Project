@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<table border="1">
+	<!-- table은 표를 만들고,border속성은 테두리를 만든다. -->
+		<tr><!-- tr은 행을 만든다. -->
+			<th>1열</th><!-- th는 열을 만든다.(글자 강조&중앙정렬) -->
+			<th>2열</th>
+			<th>3열</th>
+		</tr>
+		<tr>
+			<td rowspan="2">1행 1열</td>
+			<!-- rowsapn="2"는 2개행을 합친다. -->
+			<td>1행 2열</td><!-- td는 열을 만든다. -->
+			<td>1행 3열</td>
+		</tr>
+		<tr>
+			<td>2행 2열</td>
+			<td>2행 3열</td>
+		</tr>
+		<tr>
+			<td colspan="3">3행 1열</td>
+			<!-- colsapn="3"은 3개열을 합친다. -->
+		</tr>
+	</table>
+</body>
+</html>

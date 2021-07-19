@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<form method="post" action="#">
+<input type="hidden" name="no" value="10" />
+<!-- hidden은 웹브라우저 상에서는 만들어 지지 않는다. 하지만 페이지 소스보기에서는 보이기 때문에 보안상 중요한 자료를 전송할때는 사용하면 안된다. -->
+<fieldset>
+<!-- fieldset은 입력양식들을 그룹화 할 때 사용하고, 그룹의 경계선을 만들어 준다. -->
+<legend>인적사항입력</legend> <!-- legend는 그룹의 제목을 붙인다. -->
+이름: <input type="text" name="name" size="14"/><br/><br/>
+폰번호: <input type="text" name="phone" size="20"/><br/><br/>
+주소: <input type="text" name="address" size="36"/><br/><br/>
+	<input type="submit" value="저장" />
+	<input type="reset" value="취소"/>
+</fieldset>
+</form>
+</body>
+</html>

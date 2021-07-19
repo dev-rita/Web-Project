@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css3 애니메이션 효과</title>
+<style>
+div{
+width:100px; height:100px; background:red;
+position:relative; animation:2s myanim;/*애니메이션 지속시간과 키프레임 이름myanim을 지정*/
+animation-iteration-count:10;
+}/*2초동안 지속되고 10번 반복*/
+
+@keyframes myanim/*myanim 키프레임 이름 정의*/
+{
+0%{background:red; left:0px; top:0px;}
+25%{background:red; left:100px; top:0px;}
+50%{background:yellow; left:200px; top:0px;}
+75%{background:blue; left:100px; top:0px;}
+100%{background:blue; left:0px; top:0px;}
+}
+</style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

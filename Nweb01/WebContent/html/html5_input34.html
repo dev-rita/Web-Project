@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<form method="post" action="#">
+		이메일: <input type="email" required /><br />
+		<!-- required 속성은 유효한 이메일인지 검사한다. -->
+		URL: <input type="url" required /><br /> 
+		tel: <input type="tel" required pattern="[0-9]{4}-{0-9}{4}-{0-9}{4}" title="####-####-####" /><br />
+		<!-- pattern에 지정된 정규식인 [0-9]{4}의 뜻은 0부터 9까지의 정수를 4번 반복 -->
+		신발사이즈 : <input type="number" min="230" max="290" step="10" value="260" /><br />
+		테니스 스킬: <input type="range" min="1" max="10" value="1" /><br /> 
+		날짜: <input	type="date" /><br />
+		
+		<input type="submit" value="제출"/>
+		<input type="reset" value="취소"/>
+	</form>
+</body>
+</html>

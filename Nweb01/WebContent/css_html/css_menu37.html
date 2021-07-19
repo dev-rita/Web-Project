@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+ul{
+list-style:none; /*목록 앞 마커 없앰.*/
+text-align:center;/*수평 중앙 정렬*/
+border-top:1px solid red;/*윗줄 선 두께 1픽셀, 실선, 선색을 빨강으로 처리*/
+border-bottom:1px solid red;/*밑줄 선 두께 1픽셀, 실선, 선색을 빨강으로 처리*/
+padding:10px 0px;/*상하 안여백을 10픽셀, 좌우 안 여백을 0픽셀로 처리*/
+}
+ul li{
+display:inline;/*수직목록을 수평정렬로 변경*/
+text-transform:uppercase;/*영문 대문자로 변경*/
+padding:0px 10px;/*항목간 간격 설정*/
+letter-spacing:10px;/*글자간 간격 설정*/
+}
+ul li a{
+text-decoration:none;/*하이퍼 링크 된 곳 밑줄 선 사라짐*/
+color:black;
+}
+ul li a:hover{
+text-decoration:underline;/*하이퍼링크 된 곳 마우스 오버시 밑줄 선을 나오게 한다.*/
+}
+</style>
+</head>
+<body>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+<li></li>
+</ul>
+</body>
+</html>

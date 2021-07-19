@@ -44,7 +44,7 @@
 <jsp:include page="../include/header2.jsp" />
 <div class="line" id="article">
 	<div style="width: 300px; height: 10px;"></div>
-	<form method="post" action="board8_ok.jsp" onsubmit="return w_check();"><!-- onsubmit="return w_check();" -->
+	<form method="post" action="edit_ok.jsp" onsubmit="return w_check();"><!-- onsubmit="return w_check();" -->
 		<div id="member"><a href="#"><img src="../Images/member.PNG" width="40" height="35" alt="member" /></a> <h6><a href="#">글쓴이</a></h6><div id="number">#31912</div>
 		<img src="../Images/score.PNG" width="10" height="10" alt="score" /><h6>0</h6><br/>
 		<h6>2021-07-18 16:35:23</h6><div id="hit"><img src="../Images/hit.PNG" width="20" height="20" alt="hit" />13</div></div>

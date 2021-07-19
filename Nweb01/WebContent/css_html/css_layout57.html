@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Blog Page</title>
+<style>
+body{
+background:#efe5d0;
+font-family:Arial, "Trebuchet MS", sans-serif;/*글꼴 지정*/
+margin:0px;
+}
+header{
+background-color:#e3afed;
+color:#000000; margin:0px; text-align:center;
+padding:5px;/*상하좌우 안여백을 각각 5픽셀로 설정*/
+}
+h1{
+margin:0px;
+}
+#main{
+display: table-cell;/*테이블의 셀처럼 배치*/
+background:yellow;
+padding:15px;
+}
+nav{
+display:table-cell;
+background:#ffd800;
+padding:15px;
+}
+footer{
+background:#954b4b;
+color:#efe5d0;
+text-align:center;
+padding:10px;
+margin:0px 0px 0px 0px;/*시계방향으로 위, 오른쪽, 아래, 왼쪽 바깥여백을 지정*/
+font-size:90%;
+}
+</style>
+</head>
+<body>
+<header><!-- header는 html5에서 추가된 태그로 상단영역을 지정할 때 사용한다. -->
+<h1>My Blog Page</h1>
+</header>
+
+<nav><!-- nav는 html5에서 추가된 태그로 메뉴구성할 때 사용한다. 메뉴구성은(ul)&(nav)-->
+<h1>Links</h1>
+<ul>
+<li><a href="http://www.w3c.org">W3C</a></li>
+<li><a href="http://www.naver.com">NAVER</a></li>
+<li><a href="http://www.daum.net">DAUM</a></li>
+</ul>
+
+<figure><!-- figure는 html5에 추가된 태그로 그림삽입할 때 사용한다. -->
+<img src="../Images/coffee.jpg" width="85" height="85" alt="커피"/>
+<figcaption>커피</figcaption><!-- figcaption은 html5에서 추가된 태그로 그림에 대한 부연설명을 덧붙인다. -->
+</figure>
+</nav>
+
+<section id="main">
+<article>
+<h1>Semantic Tags</h1>
+<p>
+시맨틱 요소(Semantic elements)는 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.
+</p>
+</article>
+<article>
+<h1>div와 span</h1>
+<p>
+div는 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다. span은 인라인 요소로서 텍스트를 위한 컨테이너로 사용할 수 있다.
+<br>큰 영역은 div로 이용. 작은 내용들은 span을 이용.
+</p>
+</article>
+</section>
+
+<footer><!-- footer는 html5에서 추가된 태그로 하단영역을 구성할 때 사용한다. -->
+Copyright (c) 2021 Lee
+</footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+#one{
+width:200px; height:50px; background:cyan;
+padding:20px;
+}
+#two{
+width:200px; height:80px; background:yellow;
+position:relative; /*정상적인 위치에서 왼쪽에서 오른쪽으로 30픽셀 이동하는 상대 위치 설정*/
+left:30px;
+padding:20px;
+}
+#three{
+width:200px; height:50px; background-color:lightgreen;
+padding:20px;
+}
+</style>
+</head>
+<body>
+	<p id="one">block #1</p>
+	<div id="two">
+		block#2<br />position:relative;<br>left:30px;
+	</div>
+	<p id="three">block #3</p>
+</body>
+</html>

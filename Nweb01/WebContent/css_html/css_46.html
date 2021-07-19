@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+#one{
+width:200px; height:50px;
+background-color:cyan;
+}
+#two{
+position:static;/*정적위치 설정으로 문서의 정상적인 흐름에 따라 배치. 선언하지 않은것과 같은 결과.(기본값)*/
+width:200px; height:50px;
+background:yellow;/*background-color와 동일*/
+}
+#three{
+width:200px; height:50px;
+background-color:lightgreen;/*배경색을 밝은 그린*/
+}
+</style>
+</head>
+<body>
+<div id="one">Block #1</div>
+<div id="two">Block #2<br/> position:static;<br/></div>
+<div id="three">Block #3</div>
+</body>
+</html>
