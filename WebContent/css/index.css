@@ -1,0 +1,139 @@
+@charset "UTF-8";
+/*768px하면 변경되는거로 반응형*/
+
+/*전체 틀 size,font*/
+html{
+	font-size:10px;/*없어도 되지 않을까?*/
+	font-familly:sans-serif;/*없어도 되지 않을까?*/
+}
+body{
+	font-family: Helvetica Neue, Helvetica, Arial, "Apple SD Gothic Neo", "Malgun Gothic", Dotdum;
+	font-size: 14px;
+    /*line-height: 1.42857143; 텍스트 줄 사이의 거리를 설정*/
+    color: #333;
+}
+.layout{
+	padding:0px;
+	margin:0px;
+	max-width:1280px;
+}
+.layout_index{
+	position:relative;
+	width:1027px;
+	margin-left:210px;
+	padding-left:30px;
+	padding-top:20px !important;
+	/*나중에 설정한 값이 적용되지 않게 하려고 속성값 뒤에 !important를 붙인다.*/
+}
+.index_sidebar{
+	position:fixed;
+	top:0px;
+	left:0px;
+	bottom:0px;
+	z-index:1000;/*수치가 적을수록 맨 뒤로 가게되고 높을 수록 맨 앞으로 간다.*/
+	/*display:block; 없어도 자동적으로 div는 display가 block이다.*/
+	overflow:hidden;/*왜 필요한지 모르겠음*/
+	/*요소내의 컨텐츠가 너무 커서 요소내에 모두 보여주기 힘들때 그것을 어떻게 보여줄지를 지정*/
+	/*hidden : 넘치는 부분은 잘려서 보여지지 않음*/
+	width:210px;
+	height:auto;
+	background-color:#FDD835;
+	display:flex;
+	flex-direction:column;
+}
+.index_top_banner_wrapper{/*광고*/
+	width:805px;
+	text-align:center;
+	margin-bottom:30px;
+	background-color:coral;/*나중에 삭제*/
+	height:95px;/*나중에 삭제*/
+}
+.index_content{
+	width:805px;
+	min-height:800px;
+	background-color:skyblue;/*나중에 삭제*/
+}
+.index_right_banner_wrapper{
+	position:fixed;
+	top:20px;
+	width:180px;
+	height:550px;
+	left:1070px;
+	background-color:coral;/*나중에 삭제*/
+}
+.index_footer{
+	position:relative;
+	border-top:2px solid #ddd;
+	width:805px;
+	height:100px;
+	color:#999;
+	font-size:12px;
+	margin-top:50px;
+	padding-top:20px;
+	text-align:left;
+}
+
+/*sidebar 구성*/
+.sidebar_logo{
+	width:190px;
+	height:60px;
+	padding:10px 10px;
+	background-color:#FDD835;
+}
+.sidebar_search{
+	width:210px;
+	height:70px;
+	background-color:tomato;
+}
+.sidebar_info{
+	position:relative;
+	width:210px;
+	height:80px;
+	background-color:teal;
+}
+.sidebar_menu{
+	position:relative;
+	height:auto;
+	top:100px;
+	list-style:none;
+	padding-left:0px;
+}
+
+/*sidebar - search 구성*/
+
+
+/*sidebar - menu 구성*/
+.menu_in_a{
+	text-decoration:none;
+	color:#773209;
+	padding:20px 20px 20px 0px; 
+}
+.menu_icon{
+	width:25px;
+	height:25px;
+	padding:20px 15px 20px 30px; 
+}
+.menu_in span{
+	font-size:15px;
+}
+
+/*footer 구성*/
+.footer_box{
+	display:flex;
+}
+.footer_logo{
+	margin:0px;
+}
+.footer_content{
+	width:750px;
+	height:100px;
+	padding-left:10px;
+}
+.footer_content a{
+	color:#999;
+}
+.content_github{
+	float:right;
+}
+
+/*복붙*/
