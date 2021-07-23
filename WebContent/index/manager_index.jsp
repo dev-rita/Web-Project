@@ -2,11 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YWHY - Better Developer</title>
-<link href="../img/logo.png" rel="shortcut icon"><%-- 화면 위 사이트이름 부분에 아이콘 삽입 --%>
+<link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon"><%-- 화면 위 사이트이름 부분에 아이콘 삽입 --%>
 <link href="../css/index.css" rel="stylesheet">
 <meta name="description" content="계속 발전하는, 지금보다 더 나은 개발자"><%-- 구글에 검색하면 사이트 밑에 설명부분 --%>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 	<div class="layout">
