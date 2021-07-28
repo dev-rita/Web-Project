@@ -8963,8 +8963,8 @@ blockquote {
 .nav-user a,
 .nav-user a:hover,
 .nav-user a:focus,
-.nav-user a:visited {
-    color: #fff;
+.nav-user a:visited {/*수정 - 정희선 닉네임 마우스 오버시 색 바뀌는 것 변경*/
+    color: #773209;
 }
 .nav-user .avatar-photo {
     border-color: #2a6496;
