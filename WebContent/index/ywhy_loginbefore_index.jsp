@@ -18,7 +18,7 @@
 	rel="stylesheet">
 <meta property="og:image"
 	content="https://okky.kr/assets/images/okky_logo_fb.png">
-<link rel="stylesheet" href="../css/application1.css">
+<link rel="stylesheet" href="../css/application2.css">
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script
@@ -122,16 +122,7 @@
 					</div>
 				</h1>
 
-<%--
-				<ul id="search-google-icon" class="nav nav-sidebar nav-sidebar-search-wrapper">
-					<li class="nav-sidebar-search"><a href="javascript://"
-						class="link" id="search-google" data-toggle="popover"
-						data-trigger="click" data-original-title="" title=""><i
-							class="fa fa-search"></i></a></li>
-				</ul>
- --%>
-
-				<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=<%=request.getParameter("q")%>" target="_blank"><%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
+				<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=${q}" target="_blank"><%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
 					<div class="input-group">
 						<input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
 						<span class="input-group-btn">
@@ -1411,7 +1402,7 @@
 						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
 						<strong>문의</strong>: info@ywhy.kr
 						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-						<a href="#">About YWHY</a> | <a href="#">개인 정보 보호</a>
+						<a href="#">About YWHY</a> | <a href="#" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
 						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>

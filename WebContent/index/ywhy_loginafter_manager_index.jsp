@@ -32,7 +32,7 @@
 <%-- bootstrapcdn인데 아이콘을 지원해준다. 그리고 자바스크립트도 지원해주는 것 같다. 일단 보류 --%>
 <meta property="og:image"
 	content="https://okky.kr/assets/images/okky_logo_fb.png">
-<link rel="stylesheet" href="../css/application1.css">
+<link rel="stylesheet" href="../css/application2.css">
 <script
 	src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
 <script
@@ -120,7 +120,7 @@
 	as="script">
 <script type="text/javascript"
 	src="https://adservice.google.com/adsid/integrator.js?domain=okky.kr"></script>
-<script src="../js/jquery.js"></script>
+
 </head>
 <body>
 	<div class="layout-container">
@@ -136,7 +136,7 @@
 					</div>
 				</h1>
 
-				<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=<%=request.getParameter("q")%>" target="_blank"><%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
+				<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=${q}" target="_blank"><%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
 					<div class="input-group">
 						<input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
 						<span class="input-group-btn">
@@ -176,12 +176,14 @@
 						</div>
 					</div>
 					
+
+					
 					<form action="/logout" method="post" style="display: none;">
 						<input type="submit" name="logoutButton" value="logoutButton"
 							id="logoutButton">
 					</form>
 
-<%--
+
 					<script id="setting-template" type="text/template">
                 <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
                     <h3 class="popover-title"></h3>
@@ -198,7 +200,8 @@
                     <div class="popover-content" id="notification-popover"></div>
                 </div>
             </script>
-
+            
+<%-- 
 					<script id="search-google-template" type="text/template">
                 <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
                     <h3 class="popover-title">Google 검색</h3>
@@ -214,7 +217,9 @@
                         </form>
                     </div>
                 </div>
-            </script>  --%>
+            </script>  
+--%>
+
 				</div>
 
 				<ul class="nav nav-sidebar nav-main">
@@ -1475,7 +1480,7 @@
 						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
 						<strong>문의</strong>: info@ywhy.kr
 						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-						<a href="#">About YWHY</a> | <a href="#">개인 정보 보호</a>
+						<a href="#">About YWHY</a> | <a href="#" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
 						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>
