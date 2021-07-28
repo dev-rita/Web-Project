@@ -1833,8 +1833,8 @@ pre code {
     .col-sm-9 {
         width: 75%;
     }
-    .col-sm-8 {
-        width: 66.66666667%;
+    .col-sm-8 {/*수정 - 정희선 (메인화면의 q&a,커뮤니티의 가로 크기를 변경)*/
+        width: 50%;
     }
     .col-sm-7 {
         width: 58.33333333%;
@@ -8363,8 +8363,8 @@ body {
     background-color: #f8f8f8;
     font-family: Helvetica Neue, Helvetica, Arial, "Apple SD Gothic Neo", "Malgun Gothic", Dotdum;
 }
-a {
-    color: #2a6496;
+a {/*수정 - 정희선, 색 변경*/
+    color: #3E2723;
 }
 pre.prettyprint {
     padding: 9.5px !important;
@@ -8587,11 +8587,11 @@ blockquote {
     font-size: 14px;
     color: #56595c;
 }
-.main-header > a > .fa {
+.main-header > a > .fas {/*수정 - 정희선 .fa->.fas, 색변경*/
     vertical-align: middle;
-    color: #888;
+    color: #773209;
 }
-.main-header > .fa {
+.main-header > .fas {/*수정 - 정희선 .fa->.fas*/
     color: #773209;
     font-size: 14px;
     line-height: 20px;
@@ -8796,9 +8796,18 @@ blockquote {
     font-size: 10px;
     font-weight: bold;
 }
+/*수정, 추가 - 정희선, sidebar - 로고부분 설정*/
 .logo {
-    height: 40px;
+	height:40px;
 }
+.logo b{
+	color:#FB8940;
+	font-size:40px;
+}
+.logo a:hover{
+	text-decoration:none;
+}
+/*sidebar - 로고부분 설정 끝*/
 .sidebar-category .logo {
     margin-left: -5px;
     overflow: hidden;
@@ -9034,8 +9043,8 @@ blockquote {
 .sidebar-category .nav-user > ul > li:not(.active) > .link:visited {
     font-size: 14px;
 }
-.nav-user li:nth-child(2) {
-    border-left: 1px solid #00519c;
+.nav-user li:nth-child(2) {/*수정 - 정희선(로그인 전의 두번째 li 회원가입 왼쪽 border 색 변경)*/
+    border-left: 1px solid #eac52e;
 }
 .popover-fixed {
     position: fixed !important;
@@ -9618,8 +9627,8 @@ span.filter-count {
 .list-group-has-note {
     border-left: 3px #773209 solid !important;
 }
-.list-group-success {
-    border-left: 3px #2ca526 solid !important;
+.list-group-success {/*수정 - 정희선 (채택되었을 때 색 변경)*/
+    border-left: 3px #42A5F5 solid !important;
 }
 .list-summary-wrapper {
     margin-bottom: 5px;
@@ -10695,6 +10704,37 @@ span.filter-count {
     border-radius: 3px;
 }
 
+/*footer 구성*/
+.index_footer{
+	position:relative;
+	border-top:2px solid #ddd;
+	width:805px;
+	height:100px;
+	color:#999;
+	font-size:12px;
+	margin-top:50px;
+	padding-top:20px;
+	text-align:left;
+}
+.footer_box{
+	display:flex;
+}
+.footer_logo{
+	margin:0px;
+}
+.footer_content{
+	width:750px;
+	height:100px;
+	padding-left:10px;
+}
+.footer_content a{
+	color:#999;
+}
+.content_github{
+	float:right;
+}
+/*footer 구성 끝*/
+
 @-webkit-keyframes note-alert-animation {
     0% {
         background: #e1eafe;
@@ -11185,7 +11225,7 @@ span.filter-count {
         font-weight: normal;
         font-size: 14px;
     }
-    #footer {
+    .index_footer {/*수정 -정희선 (#footer -> .index_footer)*/
         width: 100%;
     }
     .content-function.fixed,
@@ -11312,33 +11352,4 @@ span.filter-count {
 	color:#773209;
 }
 
-/*footer 구성*/
-.index_footer{
-	position:relative;
-	border-top:2px solid #ddd;
-	width:805px;
-	height:100px;
-	color:#999;
-	font-size:12px;
-	margin-top:50px;
-	padding-top:20px;
-	text-align:left;
-}
-.footer_box{
-	display:flex;
-}
-.footer_logo{
-	margin:0px;
-}
-.footer_content{
-	width:750px;
-	height:100px;
-	padding-left:10px;
-}
-.footer_content a{
-	color:#999;
-}
-.content_github{
-	float:right;
-}
-/*footer 구성 끝*/
+/*수정 - 정희선 (footer부분을 반응형 위로 코드 옯김 -> 반응형 때 footer적용 되었다.)*/
