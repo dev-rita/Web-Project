@@ -10790,8 +10790,8 @@ span.filter-count {
         height: 40px;
         padding: 0;
     }
-    .sidebar.open {
-        height: 200px;
+    .sidebar.open {/*수정 - 정희선 (반응형 때 manager부분 잘림 200px -> 230px)*/
+        height: 230px;
     }
     .nav-main {
         margin: 0;
