@@ -10,15 +10,15 @@
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="5bf6f973-eaae-4eb3-a0b1-166384b12359">
-<link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="../img/logo/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../img/logo/apple-icon-144x144.png">
+<link rel="shortcut icon" href="images/logo/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="images/logo/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/logo/apple-icon-144x144.png">
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <meta property="og:image"
 	content="https://okky.kr/assets/images/okky_logo_fb.png">
-<link rel="stylesheet" href="../css/application2.css">
+<link rel="stylesheet" href="css/application2.css">
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script
@@ -1391,7 +1391,7 @@
 			<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="../img/logo_gray.png" style="width:55px; height:55px;">
+						<img src="images/logo_gray.png" style="width:55px; height:55px;">
 					</div>
 					<div class="footer_content">
 						<strong>상호명</strong>: 김이이정 | 
@@ -1418,8 +1418,8 @@
             var encodedURL = "%2F";
         </script>
 
-	<script src="/js/application.js" type="text/javascript"></script>
-	<script src="/js/apps/search.js" type="text/javascript"></script>
+	<script src="js/application.js" type="text/javascript"></script>
+	<script src="js/apps/search.js" type="text/javascript"></script>
 	<script>
         $(function () {
           $('.timeago').timeago();
