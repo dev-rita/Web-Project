@@ -9627,8 +9627,8 @@ span.filter-count {
 .list-group-has-note {
     border-left: 3px #773209 solid !important;
 }
-.list-group-success {/*수정 - 정희선 (채택되었을 때 색 변경)*/
-    border-left: 3px #42A5F5 solid !important;
+.list-group-success {/*수정 - 정희선 (채택되었을 때 색 변경 -> 원래대로 하기로 결정)*/
+    border-left: 3px #2CA526 solid !important;
 }
 .list-summary-wrapper {
     margin-bottom: 5px;
