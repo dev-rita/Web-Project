@@ -33,7 +33,6 @@
 <meta property="og:image"
 	content="https://okky.kr/assets/images/okky_logo_fb.png">
 <link rel="stylesheet" href="../css/application2.css">
-<%-- <link rel="stylesheet" href="../css/index.css"> --%>
 <script
 	src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
 <script
@@ -1494,9 +1493,9 @@
             var encodedURL = "%2F";
     </script>
 
-	<script src="../js/application.js" type="text/javascript"></script>
-	<script src="../js/apps/search.js" type="text/javascript"></script>
-	<script src="../js/apps/notification.js" type="text/javascript"></script>
+	<script src="/js/application.js" type="text/javascript"></script>
+	<script src="/js/apps/search.js" type="text/javascript"></script>
+	<script src="/js/apps/notification.js" type="text/javascript"></script>
 	<script>
         $(function () {
           $('.timeago').timeago();
