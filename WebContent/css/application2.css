@@ -10435,7 +10435,7 @@ span.filter-count {
     left: 0;
     width: 80px;
     height: 100%;
-    border-right: 1px solid #0059ab;
+    border-right: 1px solid #FDD835;
 }
 .about-hlist-head-y {
     position: absolute;
@@ -10455,7 +10455,7 @@ span.filter-count {
     content: "";
     width: 20px;
     height: 20px;
-    border: 3px solid #0059ab;
+    border: 3px solid #FDD835;
     border-radius: 20px;
     background: white;
 }
@@ -10478,7 +10478,7 @@ span.filter-count {
     content: "";
     width: 6px;
     height: 6px;
-    background-color: #0059ab;
+    background-color: #FDD835;
     border-radius: 6px;
 }
 .about-wrapper .content-header {
