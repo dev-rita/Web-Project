@@ -27,6 +27,9 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
+            	<div class="sidebar-brand-icon">
+                    <img src="images/logo_manager.png" style="width:45px; height:45px;">
+                </div>
                 <div class="sidebar-brand-text mx-3">YWHY</div>
             </a>
 
@@ -164,7 +167,7 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="검색"
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -174,6 +177,7 @@
                         </div>
                     </form>
 
+<%-- 상단의 알림,메시지,프로필 부분 삭제
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -352,6 +356,7 @@
                         </li>
 
                     </ul>
+--%>
 
                 </nav>
                 <!-- End of Topbar -->
@@ -362,8 +367,6 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Content Row -->
@@ -694,7 +697,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>&copy; YWHY 2021</span>
                     </div>
                 </div>
             </footer>
