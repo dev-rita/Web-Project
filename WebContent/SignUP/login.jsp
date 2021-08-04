@@ -11,13 +11,13 @@
 		<meta name="_csrf_parameter" content="_csrf">
 		<meta name="_csrf_header" content="X-CSRF-TOKEN">
 		<meta name="_csrf" content="971ac7e7-b4f5-4c04-bb63-db9cc02eec4e">
-		<link rel="shortcut icon" href="asset/images/logo/favicon.ico" type="image/x-icon">
-		<link rel="apple-touch-icon" href="asset/images/logo/icon_57x57.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="asset/images/logo/icon_114x114.png">
+		<link rel="shortcut icon" href="images/logo/favicon.ico" type="image/x-icon">
+		<link rel="apple-touch-icon" href="images/logo/icon_57x57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/logo/icon_114x114.png">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<meta property="og:image" content="asset/images/logo.png">
+		<meta property="og:image" content="images/logo.png">
 		
-		<link rel="stylesheet" href="asset/css/application2.css">
+		<link rel="stylesheet" href="css/application2.css">
 	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -29,7 +29,7 @@
 			<script src="/assets/libs/html5.js"></script>
 		<![endif]-->
 		
-<link rel="stylesheet" href="asset/css/APW-style.css">
+<link rel="stylesheet" href="css/APW-style.css">
 		
 	<style type="text/css"></style></head>
 	<body>
@@ -40,7 +40,7 @@
         <i class="fa fa-bars sidebar-header-icon"></i>
     </a>
 
-    <h1><div class="logo"><a href="/"><img src="asset/images/logo.png" alt="Ywhy" title="Ywhy"></a></div></h1>
+    <h1><div class="logo"><a href="/"><img src="images/logo.png" alt="Ywhy" title="Ywhy"></a></div></h1>
 
     <ul id="search-google-icon" class="nav nav-sidebar nav-sidebar-search-wrapper">
         <li class="nav-sidebar-search"><a href="javascript://" class="link" id="search-google" data-toggle="popover" data-trigger="click" data-original-title="" title=""><i class="fa fa-search"></i></a></li>
@@ -121,7 +121,7 @@
 <div class="row">
     <div class="col-sm-9">
         	<div style="float: right;margin-right: 10px;height:100px;">
-        	<img src="asset/images/logo_gray.png" alt="footer">
+        	<img src="images/logo_gray.png" alt="footer">
         </div>
         <div>
         	<a href="/intro/about">About Ywhy</a>
@@ -152,10 +152,10 @@
             var encodedURL = "%2Flogin%2Fauth";
         </script>
         
-        <script src="asset/js/application.js" type="text/javascript"></script>
-        <script src="asset/js/apps/search.js" type="text/javascript"></script>
+        <script src="js/application.js" type="text/javascript"></script>
+        <script src="js/apps/search.js" type="text/javascript"></script>
     <input type="hidden" name="redirectUrl" value="%2Fuser%2Fregister">
-<script src="assets/js/libs/jquery.progressTimer.js" type="text/javascript"></script>
+<script src="js/libs/jquery.progressTimer.js" type="text/javascript"></script>
 
         <div id="userPrivacy" class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog">
