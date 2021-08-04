@@ -1355,9 +1355,9 @@ pre code {
 		flex: 0 0 58.33333%;
 		max-width: 58.33333%
 	}
-	.col-xl-8 {
+	.col-xl-8 {/*수정 - 정희선 (폭 크기 변경 66.66667->50)*/
 		flex: 0 0 66.66667%;
-		max-width: 66.66667%
+		max-width: 50%
 	}
 	.col-xl-9 {
 		flex: 0 0 75%;
@@ -7749,6 +7749,10 @@ supports ((position:-webkit-sticky) or (position:sticky)) { .
 	margin-bottom: 1.5rem !important
 }
 
+.container-fluid>.mb-4 {/*추가 - 정희선 (내용 상단 관리자 메뉴화면 위에 margin줌)*/
+	margin-top: 1.5rem !important
+}
+
 .ml-4, .mx-4 {
 	margin-left: 1.5rem !important
 }
@@ -9648,8 +9652,8 @@ opacity
 	overflow: hidden !important
 }
 
-.text-xs {
-	font-size: .7rem
+.text-xs {/*수정 - 정희선 (내용에서 4개 박스 글자크기 수정 0.7->1.2)*/
+	font-size: 1.2rem
 }
 
 .text-lg {
@@ -9986,7 +9990,8 @@ opacity
 }
 
 .sidebar .nav-item {
-	position: relative
+	position: relative;
+	display: inline-block/*추가 - 정희선(sidebar의 관리자 글 가운데 정렬 text-align속성을 쓰려면 이 코드를 작성해야한다.)*/
 }
 
 .sidebar .nav-item:last-child {
@@ -10005,7 +10010,8 @@ opacity
 }
 
 .sidebar .nav-item.active .nav-link {
-	font-weight: 700
+	font-weight: 700;
+	text-align: center/*추가 - 정희선 (sidebar의 관리자 글 가운데 정렬)*/
 }
 
 .sidebar .nav-item .collapse {
