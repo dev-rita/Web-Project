@@ -50,7 +50,7 @@
 				</a>
 				<h1>
 					<div class="logo">
-						<a href="ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
+						<a href="../ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
 					</div>
 				</h1>
 			<%--
@@ -216,10 +216,10 @@
             var contextPath = "";
             var encodedURL = "%2Farticles%2Fquestions%2Fcreate";
     </script>
-	<script src="/assets/js/application.js" type="text/javascript"></script>
-	<script src="/assets/js/apps/search.js" type="text/javascript"></script>
-	<script src="/assets/js/apps/notification.js" type="text/javascript"></script>
-	<script src="/assets/js/libs/typeahead.bundle.js"></script>
+	<script src="../js/application.js" type="text/javascript"></script>
+	<script src="../js/apps/search.js" type="text/javascript"></script>
+	<script src="../js/apps/notification.js" type="text/javascript"></script>
+	<script src="../js/libs/typeahead.bundle.js"></script>
 	<script type="text/javascript">
 		var tagTokenizers = new Bloodhound({
 	    	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('tagName'),
