@@ -150,11 +150,11 @@
 
 				<div class="nav-user nav-sidebar">
 					<div class="avatar clearfix avatar-medium "><%-- 사진,이름,활동점수 부분 --%>
-						<a href="/user/info/123430" class="avatar-photo">
+						<a href="SignUP/myinfo.jsp" class="avatar-photo">
 							<img src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="/user/info/123430" title="사용자"><b>사용자</b></a>
+							<a class="nickname" href="SignUP/myinfo.jsp" title="사용자"><b>사용자</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> 0
 							</div>
@@ -177,7 +177,7 @@
 						</div>
 					</div>
 					
-					<form action="/logout" method="post" style="display: none;">
+					<form action="ywhy_loginbefore_index.jsp" method="post" style="display: none;">
 						<input type="submit" name="logoutButton" value="logoutButton"
 							id="logoutButton">
 					</form>
@@ -189,7 +189,7 @@
 							<h3 class="popover-title"></h3>
 							<div class="popover-footer clearfix" id="user-func-popover">
 								<label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-								<a href="/user/edit" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
+								<a href="SignUP/Editinfo.jsp" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
 							</div>
 						</div>
 					</script>
@@ -205,13 +205,13 @@
 
 				<ul class="nav nav-sidebar nav-main">
 					<li>
-						<a href="#" class="link">
+						<a href="board/questions.jsp" class="link">
 							<i class="nav-icon fas fa-laptop"></i>
 							<span class="nav-sidebar-label">Q&amp;A</span>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="link">
+						<a href="board/community.jsp" class="link">
 							<i class="nav-icon fas fa-coins"></i>
 							<span class="nav-sidebar-label">커뮤니티</span>
 						</a>
@@ -483,7 +483,7 @@
 					<div class="main-block">
 						<h4 class="main-header">
 							<i class="fas fa-laptop"></i> Q&amp;A 
-							<a href="/articles/questions" class="main-more-btn pull-right">
+							<a href="board/questions.jsp" class="main-more-btn pull-right">
 								<i class="fas fa-ellipsis-h"></i>
 							</a>
 						</h4>
@@ -958,7 +958,7 @@
 					<div class="main-block">
 						<h4 class="main-header">
 							<i class="fas fa-coins"></i> 커뮤니티 
-							<a href="/articles/community" class="main-more-btn pull-right">
+							<a href="board/community.jsp" class="main-more-btn pull-right">
 								<i class="fas fa-ellipsis-h"></i>
 							</a>
 						</h4>
@@ -1462,6 +1462,21 @@
 			</footer>
     	</div>
 	</div>
+	
+	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+
+	<div id="userAgreement" class="modal" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	
 	<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 	<%-- fontawsome이란 웹 아이콘 폰트를 모아놓은 라이브러리 사용 --%>
 	
@@ -1479,22 +1494,6 @@
           $('.timeago').timeago();
         });
     </script>
-
-	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
-		aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content"></div>
-		</div>
-	</div>
-
-	<div id="userAgreement" class="modal" tabindex="-1" role="dialog"
-		aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content"></div>
-		</div>
-	</div>
-
-
 
 	<ins class="adsbygoogle adsbygoogle-noablate"
 		data-adsbygoogle-status="done" style="display: none !important;"

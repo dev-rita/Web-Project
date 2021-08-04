@@ -66,13 +66,13 @@
 				<div class="nav-user nav-sidebar">
 					<ul class="nav nav-sidebar">
 						<li>
-							<a href="/login/auth?redirectUrl=%2F" class="link">
+							<a href="../SignUP/login.jsp" class="link">
 								<i class="fas fa-sign-in-alt"></i>
 								<span class="nav-sidebar-label">로그인</span>
 							</a>
 						</li>
 						<li>
-							<a href="/user/register" class="link">
+							<a href="../SignUP/signup.jsp" class="link">
 								<i class="fas fa-users"></i>
 								<span class="nav-sidebar-label">회원가입</span>
 							</a>
@@ -82,13 +82,13 @@
 
 				<ul class="nav nav-sidebar nav-main">
 					<li>
-						<a href="/articles/questions" class="link">
+						<a href="../board/questions.jsp" class="link">
 							<i class="nav-icon fas fa-laptop"></i>
 							<span class="nav-sidebar-label">Q&amp;A</span>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="link">
+						<a href="../board/community.jsp" class="link">
 							<i class="nav-icon fas fa-coins"></i>
 							<span class="nav-sidebar-label">커뮤니티</span>
 						</a>
