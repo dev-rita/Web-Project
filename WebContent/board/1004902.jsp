@@ -377,7 +377,6 @@
         </div>
     	</div>
 
-
 		<div class="main-banner-wrapper"><!-- 중간 구글 광고 배너 -->
 			<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		    <!-- 728-90_Ressponsive -->
