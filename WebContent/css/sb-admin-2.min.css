@@ -11905,3 +11905,8 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
 	width: 100%
 }
+
+/*추가 - 희선*/
+.sidebar-brand>div{
+	font-size:30px;
+}
