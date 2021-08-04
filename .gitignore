@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 /build
 .classpath
 .project
 .settings
 
+=======
+/.gradle/
+>>>>>>> 3e82263cfb787932c10b22573f54312293362e78
