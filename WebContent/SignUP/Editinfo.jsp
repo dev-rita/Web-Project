@@ -71,7 +71,6 @@
 						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
 					</div>
 				</h1>
-
 				<form id="search-google-form" name="searchMain"
 					class="nav-sidebar-form"
 					action="https://www.google.com/search?q=${q}" target="_blank">

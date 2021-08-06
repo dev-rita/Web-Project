@@ -50,7 +50,6 @@
 			<script src="/assets/libs/html5.js"></script>
 		<![endif]-->
 
-
 <style type="text/css"></style>
 </head>
 <body>
