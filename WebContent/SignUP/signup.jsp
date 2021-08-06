@@ -57,12 +57,11 @@
 		<div class="main ">
 			<div class="sidebar">
 				<a href="javascript://" class="sidebar-header">
-					<%-- 반응형 창 좁아질 때 좌측 상단 메뉴 (누르면 펴지고 좁혀지고 함) --%> <i
+					 <i
 					class="fas fa-bars fa-lg" style="color: #773209"></i>
 				</a>
 
 				<h1>
-					<%-- sidebar 상단의 logo --%>
 					<div class="logo">
 						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
 					</div>

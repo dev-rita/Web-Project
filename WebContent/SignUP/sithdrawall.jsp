@@ -25,7 +25,8 @@
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script async=""
-	src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
+	src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55">
+	</script>
 <script>
 	(function(w, d, s, l, i) {
 		w[l] = w[l] || [];
