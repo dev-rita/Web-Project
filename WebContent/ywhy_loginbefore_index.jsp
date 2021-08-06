@@ -136,13 +136,13 @@
 				<div class="nav-user nav-sidebar">
 					<ul class="nav nav-sidebar">
 						<li>
-							<a href="/login/auth?redirectUrl=%2F" class="link">
+							<a href="SignUP/login.jsp" class="link">
 								<i class="fas fa-sign-in-alt"></i>
 								<span class="nav-sidebar-label">로그인</span>
 							</a>
 						</li>
 						<li>
-							<a href="/user/register" class="link">
+							<a href="SignUP/signup.jsp" class="link">
 								<i class="fas fa-users"></i>
 								<span class="nav-sidebar-label">회원가입</span>
 							</a>
@@ -152,13 +152,13 @@
 
 				<ul class="nav nav-sidebar nav-main">
 					<li>
-						<a href="/articles/questions" class="link">
+						<a href="board/questions.jsp" class="link">
 							<i class="nav-icon fas fa-laptop"></i>
 							<span class="nav-sidebar-label">Q&amp;A</span>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="link">
+						<a href="board/community.jsp" class="link">
 							<i class="nav-icon fas fa-coins"></i>
 							<span class="nav-sidebar-label">커뮤니티</span>
 						</a>
@@ -430,7 +430,7 @@
 					<div class="main-block">
 						<h4 class="main-header">
 							<i class="fas fa-laptop"></i> Q&amp;A 
-							<a href="/articles/questions" class="main-more-btn pull-right">
+							<a href="board/questions.jsp" class="main-more-btn pull-right">
 								<i class="fas fa-ellipsis-h"></i>
 							</a>
 						</h4>
@@ -905,7 +905,7 @@
 					<div class="main-block">
 						<h4 class="main-header">
 							<i class="fas fa-coins"></i> 커뮤니티 
-							<a href="/articles/community" class="main-more-btn pull-right">
+							<a href="board/community.jsp" class="main-more-btn pull-right">
 								<i class="fas fa-ellipsis-h"></i>
 							</a>
 						</h4>
@@ -1409,6 +1409,21 @@
 			</footer>
 		</div>
 	</div>
+	
+	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+
+	<div id="userAgreement" class="modal" tabindex="-1" role="dialog"
+		aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	
 	<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 	<%-- fontawsome이란 웹 아이콘 폰트를 모아놓은 라이브러리 사용 --%>
 	
@@ -1425,22 +1440,6 @@
           $('.timeago').timeago();
         });
     </script>
-
-	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
-		aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content"></div>
-		</div>
-	</div>
-
-	<div id="userAgreement" class="modal" tabindex="-1" role="dialog"
-		aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content"></div>
-		</div>
-	</div>
-
-
 
 	<ins class="adsbygoogle adsbygoogle-noablate"
 		data-adsbygoogle-status="done" style="display: none !important;"
