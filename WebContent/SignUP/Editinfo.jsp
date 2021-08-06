@@ -382,7 +382,8 @@
 
 		tagsinputWidgets.forEach(function(widget) {
 			var input = widget.input();
-
+			
+			
 			input.focusout(function() {
 				widget.add(input.val());
 				input.typeahead('val', '');

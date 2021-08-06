@@ -47,7 +47,6 @@
 				<a href="javascript://" class="sidebar-header"> 
 					<i class="fas fa-bars fa-lg" style="color: #773209"></i>
 				</a>
-
 				<h1>
 					<div class="logo">
 						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
