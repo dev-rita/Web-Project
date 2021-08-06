@@ -84,7 +84,6 @@
 						</span>
 					</div>
 				</form>
-
 				<div class="nav-user nav-sidebar">
 					<div class="avatar clearfix avatar-medium ">
 						<a href="/user/info/123430" class="avatar-photo"> <img

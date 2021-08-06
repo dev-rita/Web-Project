@@ -21,7 +21,6 @@
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <meta property="og:image" content="images/logo.png">
-
 <link rel="stylesheet" href="css/application2.css">
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
