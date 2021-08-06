@@ -17,16 +17,16 @@
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="7e245c1e-0e11-4c47-a906-f2853d10e465">
-<link rel="shortcut icon" href="images/logo/favicon.ico"
+<link rel="shortcut icon" href="../images/logo/favicon.ico"
 	type="image/x-icon">
-<link rel="apple-touch-icon" href="images/logo/apple-icon-57x57.png">
+<link rel="apple-touch-icon" href="../images/logo/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="114x114"
-	href="images/logo/apple-icon-114x114.png">
+	href="../images/logo/apple-icon-114x114.png">
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 <meta property="og:image" content="images/logo.png">
-<link rel="stylesheet" href="css/application2.css">
+<link rel="stylesheet" href="../css/application2.css">
 <script
 	src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
 <script
@@ -97,12 +97,12 @@
 	<div class="layout-container">
 		<div class="main ">
 			<div class="sidebar">
-				<a href="javascript://" class="sidebar-header"> <%-- 반응형 창 좁아질 때 좌측 상단 메뉴 (누르면 펴지고 좁혀지고 함) --%>
+				<a href="javascript://" class="sidebar-header"> 
 					<i class="fas fa-bars fa-lg" style="color: #773209"></i>
 				</a>
 
 				<h1>
-					<%-- sidebar 상단의 logo --%>
+					
 					<div class="logo">
 						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
 					</div>
@@ -301,7 +301,7 @@
 			<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="images/logo_gray.png" style="width: 55px; height: 55px;">
+						<img src="../images/logo_gray.png" style="width: 55px; height: 55px;">
 					</div>
 					<div class="footer_content">
 						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
@@ -325,9 +325,9 @@
 		var encodedURL = "%2Fuser%2Finfo%2F123563";
 	</script>
 
-	<script src="js/application.js" type="text/javascript"></script>
-	<script src="js/apps/search.js" type="text/javascript"></script>
-	<script src="js/apps/notification.js" type="text/javascript"></script>
+	<script src="../js/application.js" type="text/javascript"></script>
+	<script src="../js/apps/search.js" type="text/javascript"></script>
+	<script src="../js/apps/notification.js" type="text/javascript"></script>
 
 	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
 		aria-labelledby="myLargeModalLabel" aria-hidden="true">

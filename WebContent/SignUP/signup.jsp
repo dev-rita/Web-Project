@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
 <!--<![endif]-->
-<link rel="stylesheet" type="text/css" href="css/application2.css">
+<link rel="stylesheet" type="text/css" href="../css/application2.css">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,14 +13,14 @@
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="aba532c9-27ac-4f60-8ba9-967815b02a6e">
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="images/logo/apple-icon-57x57.png">
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../images/logo/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="114x114"
-	href="images/logo/apple-icon-114x114.png">
+	href="../images/logo/apple-icon-114x114.png">
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<meta property="og:image" content="images/logo.png">
+<meta property="og:image" content="../images/logo.png">
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script type="text/javascript" async=""
@@ -224,7 +224,7 @@
 			<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="images/logo_gray.png" style="width: 55px; height: 55px;">
+						<img src="../images/logo_gray.png" style="width: 55px; height: 55px;">
 					</div>
 					<div class="footer_content">
 						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
@@ -248,8 +248,8 @@
 		var encodedURL = "%2Fuser%2Fregister";
 	</script>
 
-	<script src="js/application.js" type="text/javascript"></script>
-	<script src="js/apps/search.js" type="text/javascript"></script>
+	<script src="../js/application.js" type="text/javascript"></script>
+	<script src="../js/apps/search.js" type="text/javascript"></script>
 
 	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
 		aria-labelledby="myLargeModalLabel" aria-hidden="true">
