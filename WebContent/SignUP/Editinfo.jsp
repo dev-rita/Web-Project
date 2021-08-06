@@ -12,16 +12,17 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>WebS - 회원정보 수정</title>
+<title>YWHY - 회원정보 수정</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="7e245c1e-0e11-4c47-a906-f2853d10e465">
 <link rel="shortcut icon" href="images/logo/favicon.ico"
 	type="image/x-icon">
-<link rel="apple-touch-icon" href="images/logo/icon_57x57.png">
+<link rel="apple-touch-icon" href="images/logo/apple-icon_57x57.png">
 <link rel="apple-touch-icon" sizes="114x114"
-	href="asset/images/logo/icon_114x114.png">
+	href="images/logo/apple-icon-114x114.png"
+	href="images/logo/apple-icon-144x144.png">
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
@@ -32,11 +33,21 @@
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script async=""
 	src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-M52CW55');</script>
+<script>
+	(function(w, d, s, l, i) {
+		w[l] = w[l] || [];
+		w[l].push({
+			'gtm.start' : new Date().getTime(),
+			event : 'gtm.js'
+		});
+		var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l='
+				+ l
+				: '';
+		j.async = true;
+		j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, 'script', 'dataLayer', 'GTM-M52CW55');
+</script>
 <!--[if lt IE 9]>
 			<script src="/js/libs/html5.js"></script>
 			<script src="/assets/libs/respond.src.js"></script>
@@ -50,24 +61,16 @@
 <body>
 	<div class="layout-container">
 		<div class="main ">
-			<div class="sidebar ">
+			<div class="sidebar">
 				<a href="javascript://" class="sidebar-header"> <i
-					class="fa fa-bars sidebar-header-icon"></i>
+					class="fas fa-bars fa-lg" style="color: #773209"></i>
 				</a>
 
 				<h1>
 					<div class="logo">
-						<a href="/"><img src="images/logo.png" alt="Ywhy" title="Ywhy"></a>
+						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
 					</div>
 				</h1>
-
-				<ul id="search-google-icon"
-					class="nav nav-sidebar nav-sidebar-search-wrapper">
-					<li class="nav-sidebar-search"><a href="javascript://"
-						class="link" id="search-google" data-toggle="popover"
-						data-trigger="click" data-original-title="" title=""><i
-							class="fa fa-search"></i></a></li>
-				</ul>
 
 				<form id="search-google-form" name="searchMain"
 					class="nav-sidebar-form"
@@ -83,92 +86,78 @@
 				</form>
 
 				<div class="nav-user nav-sidebar">
-
-
-
-
 					<div class="avatar clearfix avatar-medium ">
-						<a href="/user/info/123563" class="avatar-photo"><img
-							src="https://lh3.googleusercontent.com/a/AATXAJxiZTIVGEtSRdK0v6bbvSqJ9bLdROm0uFX07oFh=s96-c"></a>
+						<a href="/user/info/123430" class="avatar-photo"> <img
+							src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
+						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="/user/info/123563" title="이의수">이의수</a>
+							<a class="nickname" href="/user/info/123430" title="관리자"><b>관리자</b></a>
 							<div class="activity block">
-								<span class="fa fa-flash"></span> 0
+								<i class="fas fa-bolt"></i> 0
 							</div>
 						</div>
 					</div>
+
 					<div class="nav-user-action">
 						<div class="nav-user-func">
 							<a href="javascript://" id="user-func" data-toggle="popover"
 								data-trigger="click" tabindex="0" data-original-title=""
-								title=""> <i id="user-func-icon" class="fa fa-cog"></i>
+								title=""> <i id="user-func-icon" class="fas fa-cog"
+								style="color: #773209"></i>
 							</a>
 						</div>
 						<div class="nav-user-func">
 							<a href="javascript://" id="user-notification"
 								data-toggle="popover" data-trigger="click" tabindex="0"
 								data-original-title="" title=""> <i
-								id="user-notification-icon" class="fa fa-bell"></i> <span
-								id="user-notification-count" class="badge notification"
-								style="display: none;">1</span>
+								id="user-notification-icon" class="fas fa-bell"
+								style="color: #773209"></i> <span id="user-notification-count"
+								class="badge notification" style="display: none;"> 1 </span>
 							</a>
 						</div>
 					</div>
+
+
+
 					<form action="/logout" method="post" style="display: none;">
 						<input type="submit" name="logoutButton" value="logoutButton"
 							id="logoutButton">
 					</form>
 
+
 					<script id="setting-template" type="text/template">
-                <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
-                    <h3 class="popover-title"></h3>
-                    <div class="popover-footer clearfix" id="user-func-popover">
-                        <label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-                        <a href="/user/edit" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
-                    </div>
-                </div>
-            </script>
+						<div class="popover popover-fixed" role="tooltip">
+							<div class="arrow"></div>
+							<h3 class="popover-title"></h3>
+							<div class="popover-footer clearfix" id="user-func-popover">
+								<label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
+								<a href="/user/edit" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
+							</div>
+						</div>
+					</script>
 
 					<script id="notification-template" type="text/template">
-                <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
-                    <h3 class="popover-title"></h3>
-                    <div class="popover-content" id="notification-popover"></div>
-                </div>
-            </script>
-
-					<script id="search-google-template" type="text/template">
-                <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
-                    <h3 class="popover-title">Google 검색</h3>
-                    <div class="popover-content" id="search-google-popover">
-                        <form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search" onsubmit="searchMain.q.value='site:okky.kr '+searchMain.qt.value;">
-                            <div class="input-group">
-                                <input type="text" name="qt" class="form-control input-sm" placeholder="Google 검색" />
-                                <input type="hidden" name="q" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default btn-sm" type="submit"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </script>
+						<div class="popover popover-fixed" role="tooltip">
+							<div class="arrow"></div>
+							<h3 class="popover-title"></h3>
+							<div class="popover-content" id="notification-popover"></div>
+						</div>
+					</script>
 				</div>
 
 				<ul class="nav nav-sidebar nav-main">
-
-					<li><a href="/articles/questions" class="link"><i
-							class="nav-icon fa fa-database"></i> <span
-							class="nav-sidebar-label nav-sidebar-category-label">Q&amp;A</span></a></li>
-					<li><a href="/articles/community" class="link"><i
-							class="nav-icon fa fa-comments"></i> <span
-							class="nav-sidebar-label nav-sidebar-category-label">커뮤니티</span></a></li>
-				</ul>
-
-				<ul class="nav nav-sidebar nav-bottom">
-					<li><a href="https://github.com/okjsp/okky/issues"
-						class="link" target="_blank"><i class="fa fa-github"></i> <span
-							class="nav-sidebar-label nav-sidebar-category-label">Github
-								Issues</span></a></li>
+					<li><a href="#" class="link"> <i
+							class="nav-icon fas fa-laptop"></i> <span
+							class="nav-sidebar-label">Q&amp;A</span>
+					</a></li>
+					<li><a href="#" class="link"> <i
+							class="nav-icon fas fa-coins"></i> <span
+							class="nav-sidebar-label">커뮤니티</span>
+					</a></li>
+					<li><a href="#" class="link"> <i
+							class="nav-icon fas fa-hat-wizard"></i> <span
+							class="nav-sidebar-label">Manager</span>
+					</a></li>
 				</ul>
 			</div>
 
@@ -209,8 +198,7 @@
 								</div>
 								<button class="btn btn-primary" id="profile-upload-btn"
 									style="font-size: 12px">
-									이미지 업로드<br>
-									<small>권장 사이즈 150px<br>최대 250KB
+									이미지 업로드<br> <small>권장 사이즈 150px<br>최대 250KB
 									</small>
 								</button>
 								<input type="file" name="files"
@@ -256,8 +244,8 @@
 											class="tt-input" autocomplete="off" spellcheck="false"
 											dir="auto"
 											style="position: relative; vertical-align: top; background-color: transparent;">
-										<pre aria-hidden="true"
-												style="position: absolute; visibility: hidden; white-space: pre; font-family: &amp; quot; Helvetica Neue&amp;quot, Helvetica, Arial, &amp;quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , Dotdum; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+											<pre aria-hidden="true"
+												style="position: absolute; visibility: hidden; white-space: pre; font-family: &amp; amp; quot; Helvetica Neue&amp;amp; quot , Helvetica, Arial, &amp;amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , Dotdum; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
 											<div class="tt-menu"
 												style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
 												<div class="tt-dataset tt-dataset-0"></div>
@@ -319,99 +307,99 @@
 				</div>
 			</div>
 			<div class="right-banner-wrapper"></div>
-			<div id="footer" class="footer" role="contentinfo">
-				<div class="row">
-					<div class="col-sm-9">
-						<div>
-							<div style="float: right; margin-right: 10px; height: 100px;">
-								<img src="images/logo_gray.png" alt="footer">
-							</div>
-							<div>
-								<a href="/intro/about">About Ywhy</a> | <a href="/user/privacy"
-									data-toggle="modal" data-target="#userPrivacy">개인정보보호</a> | <a
-									href="/intro/ad">광고문의</a> | <a href="mailto:info@okky.kr">Contact</a>
-								| <a href="https://www.facebook.com/okky.sns" target="_blank">Facebook</a>
-								| <a href="https://github.com/okjsp/okky" target="_blank">Github</a>
-								v1.5.4
-								<hr style="margin: 8px 0;">
-								<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
-								이의수 이승연 정희선 | <strong>사업자번호</strong>: 404-99-12536 <br> <strong>주소</strong>:
-								서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) | <strong>문의</strong>:
-								info@ywhy.kr <br> @ 2021 <a href="http://www.ebrain.kr"
-									target="_blank">eBrain Management</a>
-							</div>
-						</div>
+			<footer class="index_footer">
+				<div class="footer_box">
+					<div class="footer_logo">
+						<img src="images/logo_gray.png" style="width: 55px; height: 55px;">
+					</div>
+					<div class="footer_content">
+						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
+						이의수 이승연 정희선 | <strong>사업자번호</strong>: 404-99-12536 <br> <strong>주소</strong>:
+						서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) | <strong>문의</strong>:
+						info@ywhy.kr
+						<hr
+							style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
+						<a href="intro/loginafter_manager_about.jsp">About YWHY</a> | <a
+							href="user/privacy.jsp" data-toggle="modal"
+							data-target="#userPrivacy">개인 정보 보호</a> <a
+							href="https://github.com/dev-rita/Web-Project.git" target=_blank;
+							class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>
-			</div>
+			</footer>
 		</div>
 	</div>
 	<script>
-            var contextPath = "";
-            var encodedURL = "%2Fuser%2Fedit";
-        </script>
+		var contextPath = "";
+		var encodedURL = "%2Fuser%2Fedit";
+	</script>
 
 	<script src="js/application.js" type="text/javascript"></script>
 	<script src="js/apps/search.js" type="text/javascript"></script>
 	<script src="js/apps/notification.js" type="text/javascript"></script>
 	<script src="js/libs/typeahead.bundle.js"></script>
 	<script type="text/javascript">
-	var tagTokenizers = new Bloodhound({
-	    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('tagName'),
-	    queryTokenizer: Bloodhound.tokenizers.whitespace,
-	    remote: {
-	      url: '/tag?tagName=%QUERY',
-	      wildcard: '%QUERY'
-	    }
-	});
-	
-	var tagsInputConfig = {
-	        typeaheadjs: {
-				displayKey: 'tagName',
-			    valueKey: 'tagName',
-			    source: tagTokenizers.ttAdapter(),
-			    templates: {
-			    	suggestion: function(tag){
-			    	var query = tag._query.replace(/[.*+\-?^\\${}()|[\]\\]/g, '\\$&');
-			        var regexp = new RegExp('^(' + query +')', 'g');
-			        return '<div>' + tag.tagName.replace(regexp, "<strong>$1</strong>") + ' <span>+' + tag.count + '</span></div>';
+		var tagTokenizers = new Bloodhound({
+			datumTokenizer : Bloodhound.tokenizers.obj.whitespace('tagName'),
+			queryTokenizer : Bloodhound.tokenizers.whitespace,
+			remote : {
+				url : '/tag?tagName=%QUERY',
+				wildcard : '%QUERY'
+			}
+		});
+
+		var tagsInputConfig = {
+			typeaheadjs : {
+				displayKey : 'tagName',
+				valueKey : 'tagName',
+				source : tagTokenizers.ttAdapter(),
+				templates : {
+					suggestion : function(tag) {
+						var query = tag._query.replace(
+								/[.*+\-?^\\${}()|[\]\\]/g, '\\$&');
+						var regexp = new RegExp('^(' + query + ')', 'g');
+						return '<div>'
+								+ tag.tagName.replace(regexp,
+										"<strong>$1</strong>") + ' <span>+'
+								+ tag.count + '</span></div>';
+					}
 				}
 			}
-	    }
-	};
-	
-	var tagsInputItemAddedEventCallback = function(event) {
-	    $(this).parent().find(".tt-input").typeahead("val","");
-	};
-	
-</script>
+		};
+
+		var tagsInputItemAddedEventCallback = function(event) {
+			$(this).parent().find(".tt-input").typeahead("val", "");
+		};
+	</script>
 
 	<script type="text/javascript">
-	tagsInputConfig.maxTags = 10;
-	var tagsinputWidgets = $('input[name=tagString]').tagsinput(tagsInputConfig);
-	var tagsInputItemAddedEventCallback = function(event) {
-	    $(this).parent().find(".tt-input").typeahead("val","");
-	};
-	$('input[name=tagString]').on('itemAdded', tagsInputItemAddedEventCallback);
-	
-	tagsinputWidgets.forEach(function(widget) {
-	    var input = widget.input();
+		tagsInputConfig.maxTags = 10;
+		var tagsinputWidgets = $('input[name=tagString]').tagsinput(
+				tagsInputConfig);
+		var tagsInputItemAddedEventCallback = function(event) {
+			$(this).parent().find(".tt-input").typeahead("val", "");
+		};
+		$('input[name=tagString]').on('itemAdded',
+				tagsInputItemAddedEventCallback);
 
-	    input.focusout(function() {
-	        widget.add(input.val());
-	        input.typeahead('val', '');
-	    });
-		
-	    input.keyup(function() {
-	        var value = this.value;
-	        value = value.substring(value.length - 1);
-	        if(value == "," || value == " ") {
-		        widget.add($.trim(input.val()));
-		        input.typeahead('val', '');
-	        }
-	    });
-	});
-</script>
+		tagsinputWidgets.forEach(function(widget) {
+			var input = widget.input();
+
+			input.focusout(function() {
+				widget.add(input.val());
+				input.typeahead('val', '');
+			});
+
+			input.keyup(function() {
+				var value = this.value;
+				value = value.substring(value.length - 1);
+				if (value == "," || value == " ") {
+					widget.add($.trim(input.val()));
+					input.typeahead('val', '');
+				}
+			});
+		});
+	</script>
 
 	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
 		aria-labelledby="myLargeModalLabel" aria-hidden="true">
