@@ -9447,6 +9447,7 @@ a:focus {
 
 #wrapper #content-wrapper #content {
 	flex: 1 0 auto
+	margin-top:35px;
 }
 
 .container, .container-fluid, .container-lg, .container-md,
