@@ -1185,9 +1185,9 @@ pre code {
 		flex: 0 0 50%;
 		max-width: 50%
 	}
-	.col-lg-7 {
-		flex: 0 0 58.33333%;
-		max-width: 58.33333%
+	.col-lg-7 {/*수정 - 정희선 (폭넓이 변경 flex:58.33333->100 / max-width:58.33333->100)*/
+		flex: 0 0 100%;
+		max-width: 100%
 	}
 	.col-lg-8 {
 		flex: 0 0 66.66667%;
@@ -1355,9 +1355,9 @@ pre code {
 		flex: 0 0 58.33333%;
 		max-width: 58.33333%
 	}
-	.col-xl-8 {/*수정 - 정희선 (폭 크기 변경 66.66667->50)*/
-		flex: 0 0 66.66667%;
-		max-width: 50%
+	.col-xl-8 {/*수정 - 정희선 (폭 크기 변경 66.66667->50) (0 0 66.66667%->0 0 100%)*/
+		flex: 0 0 100%;
+		max-width: 100%;
 	}
 	.col-xl-9 {
 		flex: 0 0 75%;
@@ -7749,10 +7749,6 @@ supports ((position:-webkit-sticky) or (position:sticky)) { .
 	margin-bottom: 1.5rem !important
 }
 
-.container-fluid>.mb-4 {/*추가 - 정희선 (내용 상단 관리자 메뉴화면 위에 margin줌)*/
-	margin-top: 1.5rem !important
-}
-
 .ml-4, .mx-4 {
 	margin-left: 1.5rem !important
 }
@@ -9446,7 +9442,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper #content {
-	flex: 1 0 auto
+	flex: 1 0 auto;
 	margin-top:35px;
 }
 
