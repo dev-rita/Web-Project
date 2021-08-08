@@ -16,7 +16,7 @@
 <meta name="_csrf_parameter" content="_csrf" />
 <meta name="_csrf_header" content="X-CSRF-TOKEN" />
 <meta name="_csrf" content="d63a7b3b-13a3-49d5-9a01-a116f355ec55" />
-<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="../images/icon_57x57.png">
 <link rel="apple-touch-icon" sizes="114x114" href="../images/icon_114x114.png">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
