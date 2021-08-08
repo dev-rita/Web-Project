@@ -12,13 +12,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+
 <title>YWHY tag</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="_csrf_parameter" content="_csrf" />
 <meta name="_csrf_header" content="X-CSRF-TOKEN" />
 <meta name="_csrf" content="d63a7b3b-13a3-49d5-9a01-a116f355ec55" />
-<link rel="shortcut icon" href="../../Images/logo.png" type="image/x-icon">
+<link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon">
 <link rel="apple-touch-icon" href="../../images/icon_57x57.png">
 <link rel="apple-touch-icon" sizes="114x114" href="../../images/icon_114x114.png">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -390,23 +391,22 @@
 			<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="../../images/logo_gray.png"
-							style="width: 55px; height: 55px;">
+						<img src="../../images/logo_gray.png" style="width:55px; height:55px;">
 					</div>
 					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
-						이의수 이승연 정희선 | <strong>사업자번호</strong>: 404-99-12536 <br> <strong>주소</strong>:
-						서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) | <strong>문의</strong>:
-						info@ywhy.kr
-						<hr style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="#">About YWHY</a> | <a href="#">개인 정보 보호</a> 
-						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank;
-						class="content_github">
-							<i class="fab fa-github fa-3x"></i>
-						</a>
+						<strong>상호명</strong>: 김이이정 | 
+						<strong>대표명</strong>: 김태완 | 
+						<strong>팀원명</strong>: 이의수 이승연 정희선 | 
+						<strong>사업자번호</strong>: 404-99-12536 
+						<br>
+						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
+						<strong>문의</strong>: info@ywhy.kr
+						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
+						<a href="../../intro/loginbefore_about.jsp">About YWHY</a> | <a href="../../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
+						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>
-			</footer> 
+			</footer>
 		</div>
 	</div>
 
@@ -428,10 +428,10 @@
     	var contextPath = "";
         var encodedURL = "%2Farticles%2Ftagged%2Fredis";
     </script> 
-	<script src="../js/application.js" type="text/javascript"></script>
-	<script src="../js/search.js" type="text/javascript"></script>
-	<script src="../js/notification.js" type="text/javascript"></script>
-	<script src="../js/questions.js" type="text/javascript"></script> 
+	<script src="../../js/application.js" type="text/javascript"></script>
+	<script src="../../js/search.js" type="text/javascript"></script>
+	<script src="../../js/notification.js" type="text/javascript"></script>
+	<script src="../../js/questions.js" type="text/javascript"></script> 
 	<script>
 		$(function() {
 		    $('.category-sort-link').click(function(e) {
