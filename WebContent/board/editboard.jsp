@@ -207,6 +207,7 @@
 					</div>
 				</div>
 			</footer>
+			
 		</div>
 	</div>
 	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

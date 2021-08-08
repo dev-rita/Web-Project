@@ -9,6 +9,7 @@
 <html lang="ko" class="no-js">
 <!--<![endif]-->
 <head>
+
     <meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -694,7 +695,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 		</div>
 	</div>
                 
-    		<footer class="index_footer">
+    	<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
 						<img src="../images/logo_gray.png" style="width:55px; height:55px;">
@@ -712,7 +713,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>
-			</footer>
+		</footer>
          
    </div>
  </div>
