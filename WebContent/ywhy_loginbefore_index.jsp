@@ -136,13 +136,13 @@
 				<div class="nav-user nav-sidebar">
 					<ul class="nav nav-sidebar">
 						<li>
-							<a href="SignUP/login.jsp" class="link">
+							<a href="signup/login.jsp" class="link">
 								<i class="fas fa-sign-in-alt"></i>
 								<span class="nav-sidebar-label">로그인</span>
 							</a>
 						</li>
 						<li>
-							<a href="SignUP/signup.jsp" class="link">
+							<a href="signup/signup.jsp" class="link">
 								<i class="fas fa-users"></i>
 								<span class="nav-sidebar-label">회원가입</span>
 							</a>
