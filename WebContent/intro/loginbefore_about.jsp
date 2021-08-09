@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>OKKY - About us</title>
+<title>YWHY - About us</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
@@ -66,13 +66,13 @@
 				<div class="nav-user nav-sidebar">
 					<ul class="nav nav-sidebar">
 						<li>
-							<a href="../SignUP/login.jsp" class="link">
+							<a href="../signup/login.jsp" class="link">
 								<i class="fas fa-sign-in-alt"></i>
 								<span class="nav-sidebar-label">로그인</span>
 							</a>
 						</li>
 						<li>
-							<a href="../SignUP/signup.jsp" class="link">
+							<a href="../signup/signup.jsp" class="link">
 								<i class="fas fa-users"></i>
 								<span class="nav-sidebar-label">회원가입</span>
 							</a>

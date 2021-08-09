@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>OKKY - About us</title>
+<title>YWHY - About us</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
@@ -65,11 +65,11 @@
 
 				<div class="nav-user nav-sidebar">
 					<div class="avatar clearfix avatar-medium "><%-- 사진,이름,활동점수 부분 --%>
-						<a href="../SignUP/myinfo.jsp" class="avatar-photo">
+						<a href="../signup/myinfo.jsp" class="avatar-photo">
 							<img src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="../SignUP/myinfo.jsp" title="사용자"><b>사용자</b></a>
+							<a class="nickname" href="../signup/myinfo.jsp" title="사용자"><b>사용자</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> 0
 							</div>
@@ -103,7 +103,7 @@
                     <h3 class="popover-title"></h3>
                     <div class="popover-footer clearfix" id="user-func-popover">
                         <label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-                        <a href="../SignUP/Editinfo.jsp" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
+                        <a href="../signup/Editinfo.jsp" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
                     </div>
                 </div>
             </script>

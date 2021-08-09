@@ -9,6 +9,7 @@
 <html lang="ko" class="no-js">
 <!--<![endif]-->
 <head>
+
     <meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -222,13 +223,13 @@
             <div class="nav-user nav-sidebar">
                <ul class="nav nav-sidebar">
                   <li>
-                     <a href="../SignUP/login.jsp" class="link">
+                     <a href="../signup/login.jsp" class="link">
                         <i class="fas fa-sign-in-alt"></i>
                         <span class="nav-sidebar-label">로그인</span>
                      </a>
                   </li>
                   <li>
-                     <a href="../SignUP/signup.jsp" class="link">
+                     <a href="../signup/signup.jsp" class="link">
                         <i class="fas fa-users"></i>
                         <span class="nav-sidebar-label">회원가입</span>
                      </a>
@@ -694,25 +695,25 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 		</div>
 	</div>
                 
-    <footer class="index_footer"><!-- footer 시작 -->
-    	<div class="footer_box">
-        	<div class="footer_logo">
-            	<img src="../images/logo_gray.png" style="width:55px; height:55px;">
-            </div>
-            <div class="footer_content">
-            	<strong>상호명</strong>: 김이이정 | 
-                <strong>대표명</strong>: 김태완 | 
-                <strong>팀원명</strong>: 이의수 이승연 정희선 | 
-                <strong>사업자번호</strong>: 404-99-12536 
-                <br>
-                <strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
-                <strong>문의</strong>: info@ywhy.kr
-                <hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-                <a href="../intro/loginbefore_about.jsp">About YWHY</a> | <a href="../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
-                <a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
-             </div>
-         </div>
-	</footer>
+    	<footer class="index_footer">
+				<div class="footer_box">
+					<div class="footer_logo">
+						<img src="../images/logo_gray.png" style="width:55px; height:55px;">
+					</div>
+					<div class="footer_content">
+						<strong>상호명</strong>: 김이이정 | 
+						<strong>대표명</strong>: 김태완 | 
+						<strong>팀원명</strong>: 이의수 이승연 정희선 | 
+						<strong>사업자번호</strong>: 404-99-12536 
+						<br>
+						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
+						<strong>문의</strong>: info@ywhy.kr
+						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
+						<a href="../intro/loginbefore_about.jsp">About YWHY</a> | <a href="../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
+						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
+					</div>
+				</div>
+		</footer>
          
    </div>
  </div>
