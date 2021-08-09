@@ -190,7 +190,7 @@
 
 
 						<div class="avatar clearfix avatar-big col-sm-3 text-center">
-							<a href="/user/info/123563" class="avatar-photo"><img
+							<a href="../signup/myinfo.jsp" class="avatar-photo"><img
 								src="https://lh3.googleusercontent.com/a/AATXAJxiZTIVGEtSRdK0v6bbvSqJ9bLdROm0uFX07oFh=s96-c"></a>
 						</div>
 						<div class="user-info col-sm-9">
