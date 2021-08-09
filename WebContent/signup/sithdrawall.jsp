@@ -15,7 +15,7 @@
 <link rel="shortcut icon" href="../images/logo/favicon.ico"
 	type="image/x-icon">
 <link rel="apple-touch-icon" href="../images/logo/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114"
+<link rel="apple-touch-icon" sizes="apple-icon-114x114"
 	href="../images/logo/apple-icon-114x114.png">
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -87,7 +87,7 @@
 							src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="/user/info/123430" title="관리자"><b>관리자</b></a>
+							<a class="nickname" href="../signup/myinfo.jsp" title="이의수"><b>이의수</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> 0
 							</div>
@@ -192,8 +192,8 @@
 						info@ywhy.kr
 						<hr
 							style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="intro/loginafter_manager_about.jsp">About YWHY</a> | <a
-							href="user/privacy.jsp" data-toggle="modal"
+						<a href="../intro/loginafter_manager_about.jsp">About YWHY</a> | <a
+							href="../user/privacy.jsp" data-toggle="modal"
 							data-target="#userPrivacy">개인 정보 보호</a> <a
 							href="https://github.com/dev-rita/Web-Project.git" target=_blank;
 							class="content_github"><i class="fab fa-github fa-3x"></i></a>

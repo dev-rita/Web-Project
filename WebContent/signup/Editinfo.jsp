@@ -26,7 +26,7 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<meta property="og:image" content="images/logo.png">
+<meta property="og:image" content="https://okky.kr/assets/images/okky_logo_fb.png">
 
 <link rel="stylesheet" href="../css/application2.css">
 <script type="text/javascript" async=""
@@ -62,100 +62,101 @@
 	<div class="layout-container">
 		<div class="main ">
 			<div class="sidebar">
-				<a href="javascript://" class="sidebar-header"> <i
-					class="fas fa-bars fa-lg" style="color: #773209"></i>
+				<a href="javascript://" class="sidebar-header">
+					<i class="fas fa-bars fa-lg" style="color:#773209"></i>
 				</a>
-
+				
 				<h1>
 					<div class="logo">
-						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
+						<a href="../ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
 					</div>
 				</h1>
-				<form id="search-google-form" name="searchMain"
-					class="nav-sidebar-form"
-					action="https://www.google.com/search?q=${q}" target="_blank">
+
+				<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=${q}" target="_blank"><%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
 					<div class="input-group">
-						<input type="text" name="q" class="form-control input-sm"
-							placeholder="Google 검색"> <span class="input-group-btn">
+						<input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
+						<span class="input-group-btn">
 							<button class="btn btn-default btn-sm" type="submit">
 								<i class="fas fa-search"></i>
 							</button>
 						</span>
 					</div>
 				</form>
+
 				<div class="nav-user nav-sidebar">
-					<div class="avatar clearfix avatar-medium ">
-						<a href="/user/info/123430" class="avatar-photo"> <img
-							src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
+					<div class="avatar clearfix avatar-medium "><%-- 사진,이름,활동점수 부분 --%>
+						<a href="../signup/myinfo.jsp" class="avatar-photo">
+							<img src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="/user/info/123430" title="관리자"><b>관리자</b></a>
+							<a class="nickname" href="../signup/myinfo.jsp" title="이의수"><b>이의수</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> 0
 							</div>
 						</div>
 					</div>
-
+					
 					<div class="nav-user-action">
-						<div class="nav-user-func">
-							<a href="javascript://" id="user-func" data-toggle="popover"
-								data-trigger="click" tabindex="0" data-original-title=""
-								title=""> <i id="user-func-icon" class="fas fa-cog"
-								style="color: #773209"></i>
+						<div class="nav-user-func"><%-- 설정 --%>
+							<a href="javascript://" id="user-func" data-toggle="popover" data-trigger="click" tabindex="0" data-original-title="" title=""> 
+								<i id="user-func-icon" class="fas fa-cog" style="color:#773209"></i>
 							</a>
 						</div>
-						<div class="nav-user-func">
-							<a href="javascript://" id="user-notification"
-								data-toggle="popover" data-trigger="click" tabindex="0"
-								data-original-title="" title=""> <i
-								id="user-notification-icon" class="fas fa-bell"
-								style="color: #773209"></i> <span id="user-notification-count"
-								class="badge notification" style="display: none;"> 1 </span>
+						<div class="nav-user-func"><%-- 알림 --%>
+							<a href="javascript://" id="user-notification" data-toggle="popover" data-trigger="click" tabindex="0" data-original-title="" title=""> 
+								<i id="user-notification-icon" class="fas fa-bell" style="color:#773209"></i> 
+								<span id="user-notification-count" class="badge notification" style="display: none;">
+									1
+								</span>
 							</a>
 						</div>
 					</div>
+					
 
-
-
-					<form action="/logout" method="post" style="display: none;">
+					
+					<form action="../ywhy_loginbefore_index.jsp" method="post" style="display: none;">
 						<input type="submit" name="logoutButton" value="logoutButton"
 							id="logoutButton">
 					</form>
 
 
 					<script id="setting-template" type="text/template">
-						<div class="popover popover-fixed" role="tooltip">
-							<div class="arrow"></div>
-							<h3 class="popover-title"></h3>
-							<div class="popover-footer clearfix" id="user-func-popover">
-								<label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-								<a href="/user/edit" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
-							</div>
-						</div>
-					</script>
+                <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
+                    <h3 class="popover-title"></h3>
+                    <div class="popover-footer clearfix" id="user-func-popover">
+                        <label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
+                        <a href="../signup/Editinfo.jsp" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
+                    </div>
+                </div>
+            </script>
 
 					<script id="notification-template" type="text/template">
-						<div class="popover popover-fixed" role="tooltip">
-							<div class="arrow"></div>
-							<h3 class="popover-title"></h3>
-							<div class="popover-content" id="notification-popover"></div>
-						</div>
-					</script>
+                <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
+                    <h3 class="popover-title"></h3>
+                    <div class="popover-content" id="notification-popover"></div>
+                </div>
+            </script>
 				</div>
 
 				<ul class="nav nav-sidebar nav-main">
-					<li><a href="#" class="link"> <i
-							class="nav-icon fas fa-laptop"></i> <span
-							class="nav-sidebar-label">Q&amp;A</span>
-					</a></li>
-					<li><a href="#" class="link"> <i
-							class="nav-icon fas fa-coins"></i> <span
-							class="nav-sidebar-label">커뮤니티</span>
-					</a></li>
-					<li><a href="#" class="link"> <i
-							class="nav-icon fas fa-hat-wizard"></i> <span
-							class="nav-sidebar-label">Manager</span>
-					</a></li>
+					<li>
+						<a href="../board/questions.jsp" class="link">
+							<i class="nav-icon fas fa-laptop"></i>
+							<span class="nav-sidebar-label">Q&amp;A</span>
+						</a>
+					</li>
+					<li>
+						<a href="../board/community.jsp" class="link">
+							<i class="nav-icon fas fa-coins"></i>
+							<span class="nav-sidebar-label">커뮤니티</span>
+						</a>
+					</li>
+					<li>
+						<a href="../manager_index.jsp" class="link" >
+							<i class="nav-icon fas fa-hat-wizard"></i>
+							<span class="nav-sidebar-label">Manager</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 
@@ -169,10 +170,10 @@
 
 
 							<div class="avatar clearfix avatar-medium ">
-								<a href="/user/info/123563" class="avatar-photo"><img
+								<a href="../signup/myinfo.jsp" class="avatar-photo"><img
 									src="https://lh3.googleusercontent.com/a/AATXAJxiZTIVGEtSRdK0v6bbvSqJ9bLdROm0uFX07oFh=s96-c"></a>
 								<div class="avatar-info">
-									<a class="nickname" href="/user/info/123563" title="이의수">이의수</a>
+									<a class="nickname" href="../signup/myinfo.jsp" title="이의수">이의수</a>
 									<div class="activity block">
 										<span class="fa fa-flash"></span> 0
 									</div>
@@ -205,60 +206,31 @@
 								<button class="btn btn-success picture-confirm-btn">확인</button>
 							</div>
 						</div>
-						<form action="/user/update?id=106195" method="POST"
-							class="form-signup form-user panel-body" id="loginForm"
-							autocomplete="off">
-							<input type="hidden" name="_csrf"
-								value="7e245c1e-0e11-4c47-a906-f2853d10e465"> <input
-								type="hidden" name="_method" value="PUT" id="_method">
-							<fieldset>
-								<div class="form-group">
-									<label class="control-label" for="fullName">이름</label> <input
-										type="text" name="fullName" class="form-control input-sm"
-										placeholder="이름" required="" value="이의수" id="fullName">
-								</div>
-								<div class="form-group">
-									<label class="control-label" for="nickname">닉네임</label> <input
-										type="text" name="nickname" class="form-control input-sm"
-										placeholder="닉네임" required="" value="이의수" id="nickname">
-								</div>
-								<div class="form-group">
-									<label class="control-label" for="nickname">관심있는 기술 태그
-										입력</label>
-									<div class="field-subtitle">사용 중인 기술이나 관심있는 기술 태그를
-										선택해주세요.</div>
-									<input type="text" name="tagString" value="java개발자"
-										placeholder="java, c#, javascript, spring"
-										class="form-control input-sm" id="tagString"
-										style="display: none;">
-									<div class="bootstrap-tagsinput">
-										<span class="tag label label-info">java개발자<span
-											data-role="remove"></span></span> <span class="twitter-typeahead"
-											style="position: relative; display: inline-block;"><input
-											type="text" class="tt-hint" readonly="" autocomplete="off"
-											spellcheck="false" tabindex="-1" dir="ltr"
-											style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0%/auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><input
-											type="text" placeholder="java, c#, javascript, spring"
-											class="tt-input" autocomplete="off" spellcheck="false"
-											dir="auto"
-											style="position: relative; vertical-align: top; background-color: transparent;">
-											<pre aria-hidden="true"
-												style="position: absolute; visibility: hidden; white-space: pre; font-family: &amp; amp; quot; Helvetica Neue&amp;amp; quot , Helvetica, Arial, &amp;amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , Dotdum; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
-											<div class="tt-menu"
-												style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
-												<div class="tt-dataset tt-dataset-0"></div>
-											</div></span>
-									</div>
-								</div>
-								<div class="checkbox">
-									<label> <input type="checkbox" name="dmAllowed"
-										checked="checked" id="person.dmAllowed"> 이메일 수신 동의
-									</label>
-								</div>
-							</fieldset>
-							<button class="btn btn-primary btn-block" type="submit">정보
-								수정</button>
-						</form>
+			 <form action="/user/update?id=106195" method="POST" class="form-signup form-user panel-body" id="loginForm" autocomplete="off">
+					<input type="hidden" name="_csrf" value="7e245c1e-0e11-4c47-a906-f2853d10e465">
+            	<input type="hidden" name="_method" value="PUT" id="_method">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label" for="fullName">이름</label>
+                        <input type="text" name="fullName" class="form-control input-sm" placeholder="이름" required="" value="이의수" id="fullName">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="nickname">닉네임</label>
+                        <input type="text" name="nickname" class="form-control input-sm" placeholder="닉네임" required="" value="이의수" id="nickname">
+                    </div>
+                    <div class="form-group">
+                    	<label class="control-label" for="nickname">관심있는 기술 태그 입력</label>
+	               		<div class="field-subtitle">사용 중인 기술이나 관심있는 기술 태그를 선택해주세요.</div>
+               			<input type="text" name="tagString" value="java개발자" placeholder="java, c#, javascript, spring" class="form-control input-sm" id="tagString" style="display: none;"><div class="bootstrap-tagsinput"><span class="tag label label-info">java개발자<span data-role="remove"></span></span> <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input type="text" class="tt-hint" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><input type="text" placeholder="java, c#, javascript, spring" class="tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Helvetica Neue&quot, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, Dotdum; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-0"></div></div></span></div>
+	               	</div>
+                    <div class="checkbox">
+                        <label>
+                        	<input type="checkbox" name="dmAllowed" checked="checked" id="person.dmAllowed"> 
+이메일 수신 동의                        </label>
+                    </div>
+                </fieldset>
+                <button class="btn btn-primary btn-block" type="submit">정보 수정</button>
+            </form>
 					</div>
 				</div>
 				<div class="col-md-6 main-block-right">
@@ -317,8 +289,8 @@
 						info@ywhy.kr
 						<hr
 							style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="intro/loginafter_manager_about.jsp">About YWHY</a> | <a
-							href="user/privacy.jsp" data-toggle="modal"
+						<a href="../intro/loginafter_manager_about.jsp">About YWHY</a> | <a
+							href="../user/privacy.jsp" data-toggle="modal"
 							data-target="#userPrivacy">개인 정보 보호</a> <a
 							href="https://github.com/dev-rita/Web-Project.git" target=_blank;
 							class="content_github"><i class="fab fa-github fa-3x"></i></a>
@@ -413,5 +385,6 @@
 			<div class="modal-content"></div>
 		</div>
 	</div>
+
 </body>
 </html>

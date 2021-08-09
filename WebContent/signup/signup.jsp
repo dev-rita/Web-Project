@@ -13,7 +13,8 @@
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="aba532c9-27ac-4f60-8ba9-967815b02a6e">
-<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../images/logo/favicon.ico"
+	type="image/x-icon">
 <link rel="apple-touch-icon" href="../images/logo/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="114x114"
 	href="../images/logo/apple-icon-114x114.png">
@@ -56,109 +57,59 @@
 	<div class="layout-container">
 		<div class="main ">
 			<div class="sidebar">
-				<a href="javascript://" class="sidebar-header">
-					 <i
-					class="fas fa-bars fa-lg" style="color: #773209"></i>
-				</a>
+     	<a href="javascript://" class="sidebar-header"><%-- 반응형 창 좁아질 때 좌측 상단 메뉴 (누르면 펴지고 좁혀지고 함) --%>
+			<i class="fas fa-bars fa-lg" style="color:#773209"></i>
+		</a>
 
-			<h1>
-					<div class="logo">
-						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
-					</div>
-				</h1>
-
-				<form id="search-google-form" name="searchMain"
-					class="nav-sidebar-form"
-					action="https://www.google.com/search?q=${q}" target="_blank">
-					<div class="input-group">
-						<input type="text" name="q" class="form-control input-sm"
-							placeholder="Google 검색"> <span class="input-group-btn">
-							<button class="btn btn-default btn-sm" type="submit">
-								<i class="fas fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-
-				<div class="nav-user nav-sidebar">
-					<div class="avatar clearfix avatar-medium ">
-						<%-- 사진,이름,활동점수 부분 --%>
-						<a href="/user/info/123430" class="avatar-photo"> <img
-							src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
-						</a>
-						<div class="avatar-info">
-							<a class="nickname" href="/user/info/123430" title="관리자"><b>관리자</b></a>
-							<div class="activity block">
-								<i class="fas fa-bolt"></i> 0
-							</div>
-						</div>
-					</div>
-
-					<div class="nav-user-action">
-						<div class="nav-user-func">
-							<%-- 설정 --%>
-							<a href="javascript://" id="user-func" data-toggle="popover"
-								data-trigger="click" tabindex="0" data-original-title=""
-								title=""> <i id="user-func-icon" class="fas fa-cog"
-								style="color: #773209"></i>
-							</a>
-						</div>
-						<div class="nav-user-func">
-							<%-- 알림 --%>
-							<a href="javascript://" id="user-notification"
-								data-toggle="popover" data-trigger="click" tabindex="0"
-								data-original-title="" title=""> <i
-								id="user-notification-icon" class="fas fa-bell"
-								style="color: #773209"></i> <span id="user-notification-count"
-								class="badge notification" style="display: none;"> 1 </span>
-							</a>
-						</div>
-					</div>
-
-
-
-					<form action="/logout" method="post" style="display: none;">
-						<input type="submit" name="logoutButton" value="logoutButton"
-							id="logoutButton">
-					</form>
-
-
-					<script id="setting-template" type="text/template">
-						<div class="popover popover-fixed" role="tooltip">
-							<div class="arrow"></div>
-							<h3 class="popover-title"></h3>
-							<div class="popover-footer clearfix" id="user-func-popover">
-								<label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-								<a href="/user/edit" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
-							</div>
-						</div>
-					</script>
-
-					<script id="notification-template" type="text/template">
-						<div class="popover popover-fixed" role="tooltip">
-							<div class="arrow"></div>
-							<h3 class="popover-title"></h3>
-							<div class="popover-content" id="notification-popover"></div>
-						</div>
-					</script>
+		<h1><%-- sidebar 상단의 logo --%>
+			<div class="logo">
+				<a href="../ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
 				</div>
+		</h1>
 
-				<ul class="nav nav-sidebar nav-main">
-					<li><a href="#" class="link"> <i
-							class="nav-icon fas fa-laptop"></i> <span
-							class="nav-sidebar-label">Q&amp;A</span>
-					</a></li>
-					<li><a href="#" class="link"> <i
-							class="nav-icon fas fa-coins"></i> <span
-							class="nav-sidebar-label">커뮤니티</span>
-					</a></li>
-					<li><a href="#" class="link"> <i
-							class="nav-icon fas fa-hat-wizard"></i> <span
-							class="nav-sidebar-label">Manager</span>
-					</a></li>
-				</ul>
+		<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=${q}" target="_blank">
+			<div class="input-group">
+				<input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
+				<span class="input-group-btn">
+					<button class="btn btn-default btn-sm" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
+				</span>
 			</div>
+		</form>
 
+		<div class="nav-user nav-sidebar">
+			<ul class="nav nav-sidebar">
+				<li>
+					<a href="../signup/login.jsp" class="link">
+						<i class="fas fa-sign-in-alt"></i>
+						<span class="nav-sidebar-label">로그인</span>
+					</a>
+				</li>
+				<li>
+					<a href="../signup/signup.jsp" class="link">
+						<i class="fas fa-users"></i>
+						<span class="nav-sidebar-label">회원가입</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<ul class="nav nav-sidebar nav-main">
+			<li>
+				<a href="questions.jsp" class="link">
+					<i class="nav-icon fas fa-laptop"></i>
+					<span class="nav-sidebar-label">Q&amp;A</span>
+				</a>
+			</li>
+			<li>
+				<a href="community.jsp" class="link">
+					<i class="nav-icon fas fa-coins"></i>
+					<span class="nav-sidebar-label">커뮤니티</span>
+				</a>
+			</li>
+		</ul>
+	 </div>
 			<div id="create-user" class="content" role="main">
 				<h3 class="content-header">회원가입</h3>
 				<div class="col-md-6 main-block-left">
@@ -194,9 +145,9 @@
 								약관을 동의하며 계정 생성</button>
 
 							<div class="signup-block">
-								<a href="/user/agreement" data-toggle="modal"
+								<a href="../user/MembershipTermsandConditions.jsp" data-toggle="modal"
 									data-target="#userAgreement">회원가입약관</a> <span
-									class="inline-saperator">/</span> <a href="/user/privacy"
+									class="inline-saperator">/</span> <a href="../user/PrivacyStatement.jsp"
 									data-toggle="modal" data-target="#userPrivacy">개인정보취급방침</a>
 							</div>
 						</form>
@@ -233,8 +184,8 @@
 						info@ywhy.kr
 						<hr
 							style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="intro/loginafter_manager_about.jsp">About YWHY</a> | <a
-							href="user/privacy.jsp" data-toggle="modal"
+						<a href="../intro/loginafter_manager_about.jsp">About YWHY</a> | <a
+							href="../user/privacy.jsp" data-toggle="modal"
 							data-target="#userPrivacy">개인 정보 보호</a> <a
 							href="https://github.com/dev-rita/Web-Project.git" target=_blank;
 							class="content_github"><i class="fab fa-github fa-3x"></i></a>
