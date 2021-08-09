@@ -4512,6 +4512,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	padding: 1.25rem
 }
 
+.bottom-body {/*추가 - 정희선 (height줌)*/
+	min-height: 350px;
+}
+
 .card-title {
 	margin-bottom: .75rem
 }
@@ -11912,4 +11916,12 @@ body.sidebar-toggled footer.sticky-footer {
 /*추가 - 희선*/
 .sidebar-brand>div{
 	font-size:30px;
+}
+
+#todo-form input{
+	border-color:#3F65D4;
+	border-radius: 4px;
+}
+#todo-form input:focus {
+	color:#3F65D4;
 }
