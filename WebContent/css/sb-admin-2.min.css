@@ -4513,7 +4513,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .bottom-body {/*추가 - 정희선 (height줌)*/
-	min-height: 350px;
+	height: 350px;
 }
 
 .card-title {
@@ -11921,7 +11921,28 @@ body.sidebar-toggled footer.sticky-footer {
 #todo-form input{
 	border-color:#3F65D4;
 	border-radius: 4px;
-}
-#todo-form input:focus {
 	color:#3F65D4;
+}
+.bottom-body{
+	overflow:auto;
+}
+#todo-list{
+	list-style: none;
+	padding:0px;
+}
+#todo-list li{
+	margin:5px;
+	padding:5px;
+	border: 1px solid #3F65D4;
+	border-radius:10px;
+	display:block;
+}
+#todo-list button{
+	border:none;
+	border-radius:5px;
+	background-color:#FFFFFF;
+	float:right
+}
+#todo-list button:hover{
+	background-color:#3F65D4
 }

@@ -471,7 +471,7 @@
 									</form>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body bottom-body"><%--to do list 구현 --%>
+                                <div class="card-body bottom-body">
                                     <div>
 										<ul id="todo-list"></ul>
 									</div>
