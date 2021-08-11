@@ -129,7 +129,7 @@
 							<h3 class="popover-title"></h3>
 							<div class="popover-footer clearfix" id="user-func-popover">
 								<label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-								<a href="/user/edit" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
+								<a href="../signup/Editinfo.jsp" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
 							</div>
 						</div>
 					</script>
@@ -152,10 +152,7 @@
 							class="nav-icon fas fa-coins"></i> <span
 							class="nav-sidebar-label">커뮤니티</span>
 					</a></li>
-					<li><a href="#" class="link"> <i
-							class="nav-icon fas fa-hat-wizard"></i> <span
-							class="nav-sidebar-label">Manager</span>
-					</a></li>
+					
 				</ul>
 			</div>
 			<div id="create-user" class="content" role="main">
@@ -200,9 +197,10 @@
 					</div>
 				</div>
 			</footer>
+			<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 		</div>
 	</div>
-	</div>
+	
 	<script>
 		var contextPath = "";
 		var encodedURL = "%2Fuser%2FwithdrawConfirm";

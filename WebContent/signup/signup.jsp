@@ -147,7 +147,7 @@
 							<div class="signup-block">
 								<a href="../user/MembershipTermsandConditions.jsp" data-toggle="modal"
 									data-target="#userAgreement">회원가입약관</a> <span
-									class="inline-saperator">/</span> <a href="../user/PrivacyStatement.jsp"
+									class="inline-saperator">/</span> <a href="../user/privacy.jsp"
 									data-toggle="modal" data-target="#userPrivacy">개인정보취급방침</a>
 							</div>
 						</form>
@@ -192,6 +192,7 @@
 					</div>
 				</div>
 			</footer>
+			<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 		</div>
 	</div>
 	<script>

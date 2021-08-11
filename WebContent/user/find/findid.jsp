@@ -10,12 +10,12 @@
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="dd8c1368-62db-4f14-bb93-9c6f60e926d9">
-<link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="../images/logo/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../images/logo/apple-icon-144x144.png">
+<link rel="shortcut icon" href="../../images/logo/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="../../images/logo/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../images/logo/apple-icon-144x144.png">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <meta property="og:image" content="https://okky.kr/assets/images/okky_logo_fb.png">
-<link rel="stylesheet" href="../css/application2.css">
+<link rel="stylesheet" href="../../css/application2.css">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -41,7 +41,7 @@
 
 		<h1><%-- sidebar 상단의 logo --%>
 			<div class="logo">
-				<a href="../ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
+				<a href="../../ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
 				</div>
 		</h1>
 
@@ -59,13 +59,13 @@
 		<div class="nav-user nav-sidebar">
 			<ul class="nav nav-sidebar">
 				<li>
-					<a href="../signup/login.jsp" class="link">
+					<a href="../../signup/login.jsp" class="link">
 						<i class="<i class="fa fa-sign-in">"></i>
 						<span class="nav-sidebar-label">로그인</span>
 					</a>
 				</li>
 				<li>
-					<a href="../signup/signup.jsp" class="link">
+					<a href="../../signup/signup.jsp" class="link">
 						<i class="fas fa-users"></i>
 						<span class="nav-sidebar-label">회원가입</span>
 					</a>
@@ -75,13 +75,13 @@
 
 		<ul class="nav nav-sidebar nav-main">
 			<li>
-				<a href="questions.jsp" class="link">
+				<a href="../../board/questions.jsp" class="link">
 					<i class="nav-icon fas fa-laptop"></i>
 					<span class="nav-sidebar-label">Q&amp;A</span>
 				</a>
 			</li>
 			<li>
-				<a href="community.jsp" class="link">
+				<a href="../../board/community.jsp" class="link">
 					<i class="nav-icon fas fa-coins"></i>
 					<span class="nav-sidebar-label">커뮤니티</span>
 				</a>
@@ -100,7 +100,7 @@
 		            <div class="form-group">
 		                <input type="email" name="email" class="form-control form-control-inline text-center" placeholder="이메일 주소" value="">
 		            </div>
-		            <button type="submit" class="btn btn-primary">계정 찾기</button> <a href="/" class="btn btn-default">취소</a>
+		            <button type="submit" class="btn btn-primary">계정 찾기</button> <a href="ywhy_loginbefore_index.jsp" class="btn btn-default">취소</a>
 		        </div>
 		    </div>
 		</div>
@@ -111,7 +111,7 @@
                 <footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="../images/logo_gray.png" style="width: 55px; height: 55px;">
+						<img src="../../images/logo_gray.png" style="width: 55px; height: 55px;">
 					</div>
 					<div class="footer_content">
 						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
@@ -120,14 +120,15 @@
 						info@ywhy.kr
 						<hr
 							style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="../intro/loginafter_manager_about.jsp">About YWHY</a> | <a
-							href="../user/privacy.jsp" data-toggle="modal"
+						<a href="../../intro/loginafter_manager_about.jsp">About YWHY</a> | <a
+							href="../../user/privacy.jsp" data-toggle="modal"
 							data-target="#userPrivacy">개인 정보 보호</a> <a
 							href="https://github.com/dev-rita/Web-Project.git" target=_blank;
 							class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>
 			</footer>
+			<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
             </div>
         </div>
         <script>
@@ -135,8 +136,8 @@
             var encodedURL = "%2Ffind%2Fuser%2Findex";
         </script>
         
-        <script src="../js/application.js" type="text/javascript"></script>
-        <script src="../js/apps/search.js" type="text/javascript"></script>
+        <script src="../../js/application.js" type="text/javascript"></script>
+        <script src="../../js/apps/search.js" type="text/javascript"></script>
 
         <div id="userPrivacy" class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog">

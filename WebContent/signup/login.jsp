@@ -117,7 +117,7 @@
                     </label>
                 </div>
                 <div class="signup-block">
-                    <a href="../signup/findid.jsp">계정 찾기</a>
+                    <a href="../user/find/findid.jsp">계정 찾기</a>
                     <span class="inline-saperator">/</span>
                     <a href="../signup/signup.jsp">회원 가입</a>
                 </div>
@@ -160,10 +160,9 @@
 					</div>
 				</div>
 			</footer>
+			<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 </div>
                 </div>
-            </div>
-        </div>
         <script>
             var contextPath = "";
             var encodedURL = "%2Flogin%2Fauth";

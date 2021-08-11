@@ -174,10 +174,7 @@
 							class="nav-icon fas fa-coins"></i> <span
 							class="nav-sidebar-label">커뮤니티</span>
 					</a></li>
-					<li><a href="../manager_index.jsp" class="link"> <i
-							class="nav-icon fas fa-hat-wizard"></i> <span
-							class="nav-sidebar-label">Manager</span>
-					</a></li>
+					
 				</ul>
 			</div>
 
@@ -301,7 +298,9 @@
 					</div>
 				</div>
 			</footer>
+		
 		</div>
+		<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 	</div>
 	<script>
 		var contextPath = "";

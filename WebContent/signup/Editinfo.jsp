@@ -26,7 +26,8 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<meta property="og:image" content="https://okky.kr/assets/images/okky_logo_fb.png">
+<meta property="og:image"
+	content="https://okky.kr/assets/images/okky_logo_fb.png">
 
 <link rel="stylesheet" href="../css/application2.css">
 <script type="text/javascript" async=""
@@ -62,20 +63,24 @@
 	<div class="layout-container">
 		<div class="main ">
 			<div class="sidebar">
-				<a href="javascript://" class="sidebar-header">
-					<i class="fas fa-bars fa-lg" style="color:#773209"></i>
+				<a href="javascript://" class="sidebar-header"> <%-- 반응형 창 좁아질 때 좌측 상단 메뉴 (누르면 펴지고 좁혀지고 함) --%>
+					<i class="fas fa-bars fa-lg" style="color: #773209"></i>
 				</a>
-				
+
 				<h1>
+					<%-- sidebar 상단의 logo --%>
 					<div class="logo">
 						<a href="../ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
 					</div>
 				</h1>
 
-				<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=${q}" target="_blank"><%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
+				<form id="search-google-form" name="searchMain"
+					class="nav-sidebar-form"
+					action="https://www.google.com/search?q=${q}" target="_blank">
+					<%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
 					<div class="input-group">
-						<input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
-						<span class="input-group-btn">
+						<input type="text" name="q" class="form-control input-sm"
+							placeholder="Google 검색"> <span class="input-group-btn">
 							<button class="btn btn-default btn-sm" type="submit">
 								<i class="fas fa-search"></i>
 							</button>
@@ -84,9 +89,10 @@
 				</form>
 
 				<div class="nav-user nav-sidebar">
-					<div class="avatar clearfix avatar-medium "><%-- 사진,이름,활동점수 부분 --%>
-						<a href="../signup/myinfo.jsp" class="avatar-photo">
-							<img src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
+					<div class="avatar clearfix avatar-medium ">
+						<%-- 사진,이름,활동점수 부분 --%>
+						<a href="../signup/myinfo.jsp" class="avatar-photo"> <img
+							src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
 							<a class="nickname" href="../signup/myinfo.jsp" title="이의수"><b>이의수</b></a>
@@ -95,26 +101,32 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="nav-user-action">
-						<div class="nav-user-func"><%-- 설정 --%>
-							<a href="javascript://" id="user-func" data-toggle="popover" data-trigger="click" tabindex="0" data-original-title="" title=""> 
-								<i id="user-func-icon" class="fas fa-cog" style="color:#773209"></i>
+						<div class="nav-user-func">
+							<%-- 설정 --%>
+							<a href="javascript://" id="user-func" data-toggle="popover"
+								data-trigger="click" tabindex="0" data-original-title=""
+								title=""> <i id="user-func-icon" class="fas fa-cog"
+								style="color: #773209"></i>
 							</a>
 						</div>
-						<div class="nav-user-func"><%-- 알림 --%>
-							<a href="javascript://" id="user-notification" data-toggle="popover" data-trigger="click" tabindex="0" data-original-title="" title=""> 
-								<i id="user-notification-icon" class="fas fa-bell" style="color:#773209"></i> 
-								<span id="user-notification-count" class="badge notification" style="display: none;">
-									1
-								</span>
+						<div class="nav-user-func">
+							<%-- 알림 --%>
+							<a href="javascript://" id="user-notification"
+								data-toggle="popover" data-trigger="click" tabindex="0"
+								data-original-title="" title=""> <i
+								id="user-notification-icon" class="fas fa-bell"
+								style="color: #773209"></i> <span id="user-notification-count"
+								class="badge notification" style="display: none;"> 1 </span>
 							</a>
 						</div>
 					</div>
-					
 
-					
-					<form action="../ywhy_loginbefore_index.jsp" method="post" style="display: none;">
+
+
+					<form action="../ywhy_loginbefore_index.jsp" method="post"
+						style="display: none;">
 						<input type="submit" name="logoutButton" value="logoutButton"
 							id="logoutButton">
 					</form>
@@ -139,24 +151,15 @@
 				</div>
 
 				<ul class="nav nav-sidebar nav-main">
-					<li>
-						<a href="../board/questions.jsp" class="link">
-							<i class="nav-icon fas fa-laptop"></i>
-							<span class="nav-sidebar-label">Q&amp;A</span>
-						</a>
-					</li>
-					<li>
-						<a href="../board/community.jsp" class="link">
-							<i class="nav-icon fas fa-coins"></i>
-							<span class="nav-sidebar-label">커뮤니티</span>
-						</a>
-					</li>
-					<li>
-						<a href="../manager_index.jsp" class="link" >
-							<i class="nav-icon fas fa-hat-wizard"></i>
-							<span class="nav-sidebar-label">Manager</span>
-						</a>
-					</li>
+					<li><a href="../board/questions.jsp" class="link"> <i
+							class="nav-icon fas fa-laptop"></i> <span
+							class="nav-sidebar-label">Q&amp;A</span>
+					</a></li>
+					<li><a href="../board/community.jsp" class="link"> <i
+							class="nav-icon fas fa-coins"></i> <span
+							class="nav-sidebar-label">커뮤니티</span>
+					</a></li>
+
 				</ul>
 			</div>
 
@@ -206,31 +209,57 @@
 								<button class="btn btn-success picture-confirm-btn">확인</button>
 							</div>
 						</div>
-			 <form action="/user/update?id=106195" method="POST" class="form-signup form-user panel-body" id="loginForm" autocomplete="off">
-					<input type="hidden" name="_csrf" value="7e245c1e-0e11-4c47-a906-f2853d10e465">
-            	<input type="hidden" name="_method" value="PUT" id="_method">
-                <fieldset>
-                    <div class="form-group">
-                        <label class="control-label" for="fullName">이름</label>
-                        <input type="text" name="fullName" class="form-control input-sm" placeholder="이름" required="" value="이의수" id="fullName">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="nickname">닉네임</label>
-                        <input type="text" name="nickname" class="form-control input-sm" placeholder="닉네임" required="" value="이의수" id="nickname">
-                    </div>
-                    <div class="form-group">
-                    	<label class="control-label" for="nickname">관심있는 기술 태그 입력</label>
-	               		<div class="field-subtitle">사용 중인 기술이나 관심있는 기술 태그를 선택해주세요.</div>
-               			<input type="text" name="tagString" value="java개발자" placeholder="java, c#, javascript, spring" class="form-control input-sm" id="tagString" style="display: none;"><div class="bootstrap-tagsinput"><span class="tag label label-info">java개발자<span data-role="remove"></span></span> <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input type="text" class="tt-hint" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><input type="text" placeholder="java, c#, javascript, spring" class="tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Helvetica Neue&quot, Helvetica, Arial, &quot;Apple SD Gothic Neo&quot;, &quot;Malgun Gothic&quot;, Dotdum; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-0"></div></div></span></div>
-	               	</div>
-                    <div class="checkbox">
-                        <label>
-                        	<input type="checkbox" name="dmAllowed" checked="checked" id="person.dmAllowed"> 
-이메일 수신 동의                        </label>
-                    </div>
-                </fieldset>
-                <button class="btn btn-primary btn-block" type="submit">정보 수정</button>
-            </form>
+						<form action="/user/update?id=106195" method="POST"
+							class="form-signup form-user panel-body" id="loginForm"
+							autocomplete="off">
+							<input type="hidden" name="_csrf"
+								value="7e245c1e-0e11-4c47-a906-f2853d10e465"> <input
+								type="hidden" name="_method" value="PUT" id="_method">
+							<fieldset>
+								<div class="form-group">
+									<label class="control-label" for="fullName">이름</label> <input
+										type="text" name="fullName" class="form-control input-sm"
+										placeholder="이름" required="" value="이의수" id="fullName">
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="nickname">닉네임</label> <input
+										type="text" name="nickname" class="form-control input-sm"
+										placeholder="닉네임" required="" value="이의수" id="nickname">
+								</div>
+								<div class="form-group">
+									<label class="control-label" for="nickname">관심있는 기술 태그
+										입력</label>
+									<div class="field-subtitle">사용 중인 기술이나 관심있는 기술 태그를
+										선택해주세요.</div>
+
+									<div class="bootstrap-tagsinput">
+										<span class="tag label label-info">java개발자<span
+											data-role="remove"></span></span> <span class="twitter-typeahead"
+											style="position: relative; display: inline-block;"><input
+											type="text" class="tt-hint" readonly="" autocomplete="off"
+											spellcheck="false" tabindex="-1" dir="ltr"
+											style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0%/auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><input
+											type="text" placeholder="java, c#, javascript, spring"
+											class="tt-input" autocomplete="off" spellcheck="false"
+											dir="auto"
+											style="position: relative; vertical-align: top; background-color: transparent;">
+										<pre aria-hidden="true"
+												style="position: absolute; visibility: hidden; white-space: pre; font-family: &amp; quot; Helvetica Neue&amp;quot, Helvetica, Arial, &amp;quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , Dotdum; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+											<div class="tt-menu"
+												style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+												<div class="tt-dataset tt-dataset-0"></div>
+											</div></span>
+									</div>
+								</div>
+								<div class="checkbox">
+									<label> <input type="checkbox" name="dmAllowed"
+										checked="checked" id="person.dmAllowed"> 이메일 수신 동의
+									</label>
+								</div>
+							</fieldset>
+							<button class="btn btn-primary btn-block" type="submit">정보
+								수정</button>
+						</form>
 					</div>
 				</div>
 				<div class="col-md-6 main-block-right">
@@ -269,8 +298,9 @@
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-body panel-margin">
-							<a href="/user/passwordChange" class="btn btn-info btn-block">비밀번호
-								변경</a> <a href="/user/withdrawConfirm"
+							<a href="../user/find/passwordchange.jsp"
+								class="btn btn-info btn-block">비밀번호 변경</a> <a
+								href="../signup/sithdrawall.jsp"
 								class="btn btn-default btn-block">회원 탈퇴</a>
 						</div>
 					</div>
@@ -280,7 +310,8 @@
 			<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="../images/logo_gray.png" style="width: 55px; height: 55px;">
+						<img src="../images/logo_gray.png"
+							style="width: 55px; height: 55px;">
 					</div>
 					<div class="footer_content">
 						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
@@ -297,6 +328,8 @@
 					</div>
 				</div>
 			</footer>
+			<script src="https://kit.fontawesome.com/4f7c74d082.js"
+				crossorigin="anonymous"></script>
 		</div>
 	</div>
 	<script>
@@ -354,8 +387,7 @@
 
 		tagsinputWidgets.forEach(function(widget) {
 			var input = widget.input();
-			
-			
+
 			input.focusout(function() {
 				widget.add(input.val());
 				input.typeahead('val', '');
