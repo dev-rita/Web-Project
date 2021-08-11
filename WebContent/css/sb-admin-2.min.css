@@ -4110,7 +4110,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	flex-direction: column;
 	padding-left: 0;
 	margin-bottom: 0;
-	list-style: none
+	list-style: none;
 }
 
 .navbar-nav .nav-link {
@@ -9453,7 +9453,7 @@ a:focus {
 .container, .container-fluid, .container-lg, .container-md,
 	.container-sm, .container-xl {
 	padding-left: 1.5rem;
-	padding-right: 1.5rem
+	padding-right: 1.5rem;
 }
 
 .scroll-to-top {
@@ -11951,9 +11951,32 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .box{
+	background-size: cover;
 	background-color:#3F65D4;
-	opacity: 0.5;
+	opacity: 0.8;
 	height: 350px;
+}
+
+.weather_cloud{
+	background-image: url(../images/weather/cloud.jpg);
+}
+.weather_clear{
+	background-image: url(../images/weather/clear.jpg);
+}
+.weather_atmosphere{
+	background-image: url(../images/weather/atmosphere.jpg);
+}
+.weather_snow{
+	background-image: url(../images/weather/snow.jpg);
+}
+.weather_rain{
+	background-image: url(../images/weather/rain.jpg);
+}
+.weather_drizzle{
+	background-image: url(../images/weather/drizzle.jpg);
+}
+.weather_thunderstorm{
+	background-image: url(../images/weather/thunderstorm.jpg);
 }
 
 #weather p,#weather span{
@@ -11962,12 +11985,11 @@ body.sidebar-toggled footer.sticky-footer {
 }
 #weather p:first-child{
 	font-size: 50px;
-	font-weight: bold;
+	font-weight:bold;
 }
 #weather p:nth-child(3),#weather p:nth-child(4){
 	font-size:40px;
 	text-align: center;
-	margin-top:5px;
 }
 #weather p:nth-child(5){
 	text-align: center;
