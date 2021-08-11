@@ -28,7 +28,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
             	<div class="sidebar-brand-icon">
-                    <img src="images/logo_manager.png" style="width:45px; height:45px;">
+                    <img src="img/logo_manager.png" style="width:45px; height:45px;">
                 </div>
                 <div class="sidebar-brand-text mx-3">YWHY</div>
             </a>

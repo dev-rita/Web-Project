@@ -11958,25 +11958,25 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .weather_cloud{
-	background-image: url(../images/weather/cloud.jpg);
+	background-image: url(../img/weather/cloud.jpg);
 }
 .weather_clear{
-	background-image: url(../images/weather/clear.jpg);
+	background-image: url(../img/weather/clear.jpg);
 }
 .weather_atmosphere{
-	background-image: url(../images/weather/atmosphere.jpg);
+	background-image: url(../img/weather/atmosphere.jpg);
 }
 .weather_snow{
-	background-image: url(../images/weather/snow.jpg);
+	background-image: url(../img/weather/snow.jpg);
 }
 .weather_rain{
-	background-image: url(../images/weather/rain.jpg);
+	background-image: url(../img/weather/rain.jpg);
 }
 .weather_drizzle{
-	background-image: url(../images/weather/drizzle.jpg);
+	background-image: url(../img/weather/drizzle.jpg);
 }
 .weather_thunderstorm{
-	background-image: url(../images/weather/thunderstorm.jpg);
+	background-image: url(../img/weather/thunderstorm.jpg);
 }
 
 #weather p,#weather span{
