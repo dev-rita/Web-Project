@@ -97,13 +97,13 @@
 
 		<ul class="nav nav-sidebar nav-main">
 			<li>
-				<a href="questions.jsp" class="link">
+				<a href="../board/questions.jsp" class="link">
 					<i class="nav-icon fas fa-laptop"></i>
 					<span class="nav-sidebar-label">Q&amp;A</span>
 				</a>
 			</li>
 			<li>
-				<a href="community.jsp" class="link">
+				<a href="../board/community.jsp" class="link">
 					<i class="nav-icon fas fa-coins"></i>
 					<span class="nav-sidebar-label">커뮤니티</span>
 				</a>

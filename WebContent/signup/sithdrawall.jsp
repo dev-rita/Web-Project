@@ -63,7 +63,7 @@
 				<h1>
 					<%-- sidebar 상단의 logo --%>
 					<div class="logo">
-						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
+						<a href="../ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
 					</div>
 				</h1>
 
@@ -83,7 +83,7 @@
 				<div class="nav-user nav-sidebar">
 					<div class="avatar clearfix avatar-medium ">
 						<%-- 사진,이름,활동점수 부분 --%>
-						<a href="/user/info/123430" class="avatar-photo"> <img
+						<a href="../signup/myinfo.jsp" class="avatar-photo"> <img
 							src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
@@ -144,11 +144,11 @@
 				</div>
 
 				<ul class="nav nav-sidebar nav-main">
-					<li><a href="#" class="link"> <i
+					<li><a href="../board/questions.jsp" class="link"> <i
 							class="nav-icon fas fa-laptop"></i> <span
 							class="nav-sidebar-label">Q&amp;A</span>
 					</a></li>
-					<li><a href="#" class="link"> <i
+					<li><a href="../board/community.jsp" class="link"> <i
 							class="nav-icon fas fa-coins"></i> <span
 							class="nav-sidebar-label">커뮤니티</span>
 					</a></li>
