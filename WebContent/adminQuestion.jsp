@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>관리자페이지 - Q&A</title>
+    <title>관리자페이지 - Q&amp;A</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,9 +23,20 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    
+    <!-- 추가한 스타일 -->
+	<style>
+		#modDiv{
+		width:600px; height:800px; background-color:lightgray;
+		position:absolute; top:20%; left:50%;
+		matgin-top:-50px; margin-left:-150px;
+		padding:10px;
+		z-index:1000;
+		}
+	</style>
+	<!-- 추가한 스타일 -->
+	
 </head>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -35,21 +46,22 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
+            	<div class="sidebar-brand-icon">
+                    <img src="img/logo_manager.png" style="width:45px; height:45px;">
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">YWHY</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="manager_index.jsp">
+                    <i class="fas fa-fw fa-hat-wizard"></i>
+                    <span>Manager</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -57,85 +69,29 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                management
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Bulletin Board</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="#">Q&amp;A</a>
+                        <a class="collapse-item" href="#">Community</a>
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
+            
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>User Management</span></a>
             </li>
 
             <!-- Divider -->
@@ -161,7 +117,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800" >Q&A 관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800" >Q&amp;A 관리</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -174,7 +130,8 @@
                             
                             <button class="btn btn-danger" style="float:right; margin-left : 5px;">삭제</button>
                             <button class="btn btn-primary" style="float:right; margin-left : 5px;">Editor Pick</button>                            
-                            <a class="btn btn-info" style="float:right;" href="#"><i class="fa fa-pencil"></i>새 글 쓰기</a>
+                            <button id="create" class="btn btn-info" style="float:right;"><i class="fa fa-pencil"></i>새 글 쓰기</button>
+                            
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -209,8 +166,8 @@
                                             <td>Edinburgh</td>
                                             <td>61</td>
                                             <td>2011/04/25</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>                                            	
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>                                            	
                                             </td>
                                         </tr>
                                         <tr>
@@ -220,8 +177,8 @@
                                             <td>Tokyo</td>
                                             <td>63</td>
                                             <td>2011/07/25</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                             
                                         </tr>
@@ -232,8 +189,8 @@
                                             <td>San Francisco</td>
                                             <td>66</td>
                                             <td>2009/01/12</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -243,8 +200,8 @@
                                             <td>Edinburgh</td>
                                             <td>22</td>
                                             <td>2012/03/29</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -254,8 +211,8 @@
                                             <td>Tokyo</td>
                                             <td>33</td>
                                             <td>2008/11/28</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -265,8 +222,8 @@
                                             <td>New York</td>
                                             <td>61</td>
                                             <td>2012/12/02</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -276,8 +233,8 @@
                                             <td>San Francisco</td>
                                             <td>59</td>
                                             <td>2012/08/06</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -287,8 +244,8 @@
                                             <td>Tokyo</td>
                                             <td>55</td>
                                             <td>2010/10/14</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -298,8 +255,8 @@
                                             <td>San Francisco</td>
                                             <td>39</td>
                                             <td>2009/09/15</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -309,8 +266,8 @@
                                             <td>Edinburgh</td>
                                             <td>23</td>
                                             <td>2008/12/13</td>
-                                            <td>
-                                            	<a class="btn btn-warning" href="#">수정</a></button>
+                                            <td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -361,6 +318,105 @@
             </div>
         </div>
     </div>
+    
+    
+    
+    
+    
+    <div id="modDiv" style="display:none;">
+    <div class="layout-container">
+		<div class="main ">
+			
+			<div id="article-create" class="content" role="main">
+				<div class="content-header">
+					<h3>새 글 쓰기</h3>
+				</div>
+				<div class="panel panel-default clearfix">
+					<div class="panel-heading clearfix">
+					
+					</div>
+					<div class="panel-body">
+						<form action="/articles/questions/save" method="post" 
+						id="article-form" class="article-form" role="form" onsubmit="return postForm()">
+							<fieldset class="form">
+								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
+								<div class="form-group has-feedback">
+									<div>
+										<select id="category" name="categoryCode" class="form-control" required="">
+											<option value="">게시판을 선택해 주세요.</option>
+											<option value="tech-qna" data-external="false"
+												data-anonymity="false">Tech Q&A</option>
+											<option value="blockchain-qna" data-external="false"
+												data-anonymity="false">Blockchain Q&A</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<div>
+										<input type="text" name="title" required="" value=""
+											placeholder="제목을 입력해 주세요." class="form-control" id="title">
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<div>
+										<input type="text" name="tagString" value=""
+											placeholder="Tags," class="form-control" id="tagString">
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<textarea name="text" id="summernote" rows="20"
+										class="form-control input-block-level"></textarea>
+									<input type="hidden" name="textType" value="HTML" id="textType">
+									
+									<div class="nav" role="navigation">
+										<fieldset class="buttons">
+											<button class="btn btn-default btn-sm" 
+											onclick="modDivClose();">취소</button> 
+											<input type="submit" name="create" class="create btn btn-success btn-sm pull-right"
+											action="create" value="등록" id="create">
+										</fieldset>
+									</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="right-banner-wrapper">
+				<div class="google-ad">
+					<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- okjspad_160x500 -->
+					<ins class="adsbygoogle" style="display: inline-block; width: 160px; height: 500px"
+						data-ad-client="ca-pub-8103607814406874" data-ad-slot="6573675943"></ins>
+					<script>
+	                        (adsbygoogle = window.adsbygoogle || []).push({});
+	                </script>
+				</div>
+			</div>
+    		
+			
+		</div>
+	</div>
+	</div>
+    
+
+    <script src="./js/jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+    	$('#create').click(function(){
+    		$('#modDiv').show('slow');	
+    	});
+    });
+    
+    function modDivClose(){
+    	$('#modDiv').hide('slow');
+    }
+    //댓글 수정화면 닫기
+    function modDivClose(){
+       $('#modDiv').hide('slow');
+    }
+    </script>
+    
+    
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
