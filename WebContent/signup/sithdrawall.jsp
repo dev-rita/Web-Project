@@ -84,7 +84,7 @@
 					<div class="avatar clearfix avatar-medium ">
 						<%-- 사진,이름,활동점수 부분 --%>
 						<a href="../signup/myinfo.jsp" class="avatar-photo"> <img
-							src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
+							src="https://lh3.googleusercontent.com/a/AATXAJxiZTIVGEtSRdK0v6bbvSqJ9bLdROm0uFX07oFh=s96-c">
 						</a>
 						<div class="avatar-info">
 							<a class="nickname" href="../signup/myinfo.jsp" title="이의수"><b>이의수</b></a>
