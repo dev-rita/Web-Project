@@ -11,7 +11,8 @@
     <meta name="author" content="">
 
     <title>관리자페이지 - Q&amp;A</title>
-
+	<link href="img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
+	
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -46,7 +47,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
             	<div class="sidebar-brand-icon">
                     <img src="img/logo_manager.png" style="width:45px; height:45px;">
                 </div>
@@ -81,17 +82,18 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Q&amp;A</a>
-                        <a class="collapse-item" href="#">Community</a>
+                        <a class="collapse-item" href="adminQuestion.jsp">Q&amp;A</a>
+                        <a class="collapse-item" href="adminCommunity.jsp">Community</a>
                     </div>
                 </div>
             </li>
             
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="usermanagement.jsp">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>User Management</span></a>
+                    <span>User Management</span>
+                </a>
             </li>
 
             <!-- Divider -->
