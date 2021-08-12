@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>OKKY - About us</title>
+<title>YWHY - About us</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
@@ -65,11 +65,11 @@
 
 				<div class="nav-user nav-sidebar">
 					<div class="avatar clearfix avatar-medium "><%-- 사진,이름,활동점수 부분 --%>
-						<a href="/user/info/123430" class="avatar-photo">
+						<a href="../signup/myinfo.jsp" class="avatar-photo">
 							<img src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="/user/info/123430" title="사용자"><b>사용자</b></a>
+							<a class="nickname" href="../signup/myinfo.jsp" title="사용자"><b>사용자</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> 0
 							</div>
@@ -92,7 +92,7 @@
 						</div>
 					</div>
 					
-					<form action="/logout" method="post" style="display: none;">
+					<form action="../ywhy_loginbefore_index.jsp" method="post" style="display: none;">
 						<input type="submit" name="logoutButton" value="logoutButton"
 							id="logoutButton">
 					</form>
@@ -103,7 +103,7 @@
                     <h3 class="popover-title"></h3>
                     <div class="popover-footer clearfix" id="user-func-popover">
                         <label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-                        <a href="/user/edit" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
+                        <a href="../signup/Editinfo.jsp" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
                     </div>
                 </div>
             </script>
@@ -114,36 +114,17 @@
                     <div class="popover-content" id="notification-popover"></div>
                 </div>
             </script>
-
-<%--
-					<script id="search-google-template" type="text/template">
-                <div class="popover popover-fixed" role="tooltip"><div class="arrow"></div>
-                    <h3 class="popover-title">Google 검색</h3>
-                    <div class="popover-content" id="search-google-popover">
-                        <form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search" onsubmit="searchMain.q.value='site:okky.kr '+searchMain.qt.value;">
-                            <div class="input-group">
-                                <input type="text" name="qt" class="form-control input-sm" placeholder="Google 검색" />
-                                <input type="hidden" name="q" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default btn-sm" type="submit"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </script>  
---%>
 				</div>
 
 				<ul class="nav nav-sidebar nav-main">
 					<li>
-						<a href="#" class="link">
+						<a href="../board/questions.jsp" class="link">
 							<i class="nav-icon fas fa-laptop"></i>
 							<span class="nav-sidebar-label">Q&amp;A</span>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="link">
+						<a href="../board/community.jsp" class="link">
 							<i class="nav-icon fas fa-coins"></i>
 							<span class="nav-sidebar-label">커뮤니티</span>
 						</a>

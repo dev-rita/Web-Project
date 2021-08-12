@@ -1177,17 +1177,17 @@ pre code {
 		flex: 0 0 33.33333%;
 		max-width: 33.33333%
 	}
-	.col-lg-5 {
-		flex: 0 0 41.66667%;
-		max-width: 41.66667%
+	.col-lg-5 {/*수정 - 정희선 (폭넓이 변경 flex:41.66667->33.33333 / max-width:41.66667->33.33333)*/
+		flex: 0 0 33.33333%;
+		max-width: 33.33333%
 	}
-	.col-lg-6 {
-		flex: 0 0 50%;
-		max-width: 50%
+	.col-lg-6 {/*수정 - 정희선 (폭넓이 변경 flex:50->66.66667 / max-width:50->66.66667)*/
+		flex: 0 0 66.66667%;
+		max-width: 66.66667%
 	}
-	.col-lg-7 {
-		flex: 0 0 58.33333%;
-		max-width: 58.33333%
+	.col-lg-7 {/*수정 - 정희선 (폭넓이 변경 flex:58.33333->100 / max-width:58.33333->100)*/
+		flex: 0 0 100%;
+		max-width: 100%
 	}
 	.col-lg-8 {
 		flex: 0 0 66.66667%;
@@ -1355,9 +1355,9 @@ pre code {
 		flex: 0 0 58.33333%;
 		max-width: 58.33333%
 	}
-	.col-xl-8 {
-		flex: 0 0 66.66667%;
-		max-width: 66.66667%
+	.col-xl-8 {/*수정 - 정희선 (폭 크기 변경 66.66667->100) (0 0 66.66667%->0 0 100%)*/
+		flex: 0 0 100%;
+		max-width: 100%;
 	}
 	.col-xl-9 {
 		flex: 0 0 75%;
@@ -4110,7 +4110,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	flex-direction: column;
 	padding-left: 0;
 	margin-bottom: 0;
-	list-style: none
+	list-style: none;
 }
 
 .navbar-nav .nav-link {
@@ -4510,6 +4510,10 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	flex: 1 1 auto;
 	min-height: 1px;
 	padding: 1.25rem
+}
+
+.bottom-body {/*추가 - 정희선 (height줌)*/
+	height: 286px;
 }
 
 .card-title {
@@ -9442,13 +9446,14 @@ a:focus {
 }
 
 #wrapper #content-wrapper #content {
-	flex: 1 0 auto
+	flex: 1 0 auto;
+	margin-top:35px;
 }
 
 .container, .container-fluid, .container-lg, .container-md,
 	.container-sm, .container-xl {
 	padding-left: 1.5rem;
-	padding-right: 1.5rem
+	padding-right: 1.5rem;
 }
 
 .scroll-to-top {
@@ -9648,8 +9653,8 @@ opacity
 	overflow: hidden !important
 }
 
-.text-xs {
-	font-size: .7rem
+.text-xs {/*수정 - 정희선 (내용에서 4개 박스 글자크기 수정 0.7->1.2)*/
+	font-size: 1.2rem
 }
 
 .text-lg {
@@ -9986,7 +9991,8 @@ opacity
 }
 
 .sidebar .nav-item {
-	position: relative
+	position: relative;
+	display: inline-block/*추가 - 정희선(sidebar의 관리자 글 가운데 정렬 text-align속성을 쓰려면 이 코드를 작성해야한다.)*/
 }
 
 .sidebar .nav-item:last-child {
@@ -10005,7 +10011,8 @@ opacity
 }
 
 .sidebar .nav-item.active .nav-link {
-	font-weight: 700
+	font-weight: 700;
+	text-align: center/*추가 - 정희선 (sidebar의 관리자 글 가운데 정렬)*/
 }
 
 .sidebar .nav-item .collapse {
@@ -11909,4 +11916,82 @@ body.sidebar-toggled footer.sticky-footer {
 /*추가 - 희선*/
 .sidebar-brand>div{
 	font-size:30px;
+}
+
+#todo-form input{
+	border-color:#3F65D4;
+	border-radius: 4px;
+	color:#3F65D4;
+}
+.scroll{
+	overflow:auto;
+}
+#todo-list{
+	list-style: none;
+	padding:0px;
+}
+#todo-list li{
+	margin:5px;
+	padding:5px;
+	border: 1px solid #3F65D4;
+	border-radius:10px;
+	display:block;
+}
+#todo-list li:hover{
+	box-shadow: 1px 1px 2px #3F65D4;
+}
+#todo-list button{
+	border:none;
+	border-radius:5px;
+	background-color:#FFFFFF;
+	float:right
+}
+#todo-list button:hover{
+	background-color:#3F65D4
+}
+
+.box{
+	background-size: cover;
+	background-color:#3F65D4;
+	opacity: 0.8;
+	height: 350px;
+}
+
+.weather_cloud{
+	background-image: url(../img/weather/cloud.jpg);
+}
+.weather_clear{
+	background-image: url(../img/weather/clear.jpg);
+}
+.weather_atmosphere{
+	background-image: url(../img/weather/atmosphere.jpg);
+}
+.weather_snow{
+	background-image: url(../img/weather/snow.jpg);
+}
+.weather_rain{
+	background-image: url(../img/weather/rain.jpg);
+}
+.weather_drizzle{
+	background-image: url(../img/weather/drizzle.jpg);
+}
+.weather_thunderstorm{
+	background-image: url(../img/weather/thunderstorm.jpg);
+}
+
+#weather p,#weather span{
+	color: white;
+	margin: 0px;
+}
+#weather p:first-child{
+	font-size: 50px;
+	font-weight:bold;
+}
+#weather p:nth-child(3),#weather p:nth-child(4){
+	font-size:40px;
+	text-align: center;
+}
+#weather p:nth-child(5){
+	text-align: center;
+	margin-top:10px;
 }
