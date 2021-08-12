@@ -8964,10 +8964,10 @@ blockquote {
 .nav-user a:hover,
 .nav-user a:focus,
 .nav-user a:visited {/*수정 - 정희선 닉네임 마우스 오버시 색 바뀌는 것 변경*/
-    color: #773209;
+    color:#fff;
 }
 .nav-user .avatar-photo {
-    border-color: #2a6496;
+    border-color: #fdd835;
     margin-right: 5px;
 }
 .nav-user-action {
