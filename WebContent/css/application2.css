@@ -8583,9 +8583,9 @@ blockquote {
 .main-block {
     margin-bottom: 30px;
 }
-.main-header {
+.main-header {/*수정 - 정희선 (메인화면 게시판 미리보기 제목부분 색 내용부분 색이랑 일치하게 바꿈)*/
     font-size: 14px;
-    color: #56595c;
+    color: #3E2723;
 }
 .main-header > a > .fas {/*수정 - 정희선 .fa->.fas, 색변경*/
     vertical-align: middle;
@@ -8964,7 +8964,7 @@ blockquote {
 .nav-user a:hover,
 .nav-user a:focus,
 .nav-user a:visited {/*수정 - 정희선 닉네임 마우스 오버시 색 바뀌는 것 변경*/
-    color:#fff;
+    color:#773209;
 }
 .nav-user .avatar-photo {
     border-color: #fdd835;
