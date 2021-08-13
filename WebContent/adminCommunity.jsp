@@ -23,16 +23,114 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!--  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
     
     <!-- 추가한 스타일 -->
 	<style>
 		#modDiv{
-		width:600px; height:800px; background-color:lightgray;
-		position:absolute; top:20%; left:50%;
-		matgin-top:-50px; margin-left:-150px;
-		padding:10px;
-		z-index:1000;
+			width:800px; background-color:lightgray;
+			position:absolute; top:12.5%; left:50%;
+			margin-top:-50px; margin-left:-150px;
+			padding:10px;
+			z-index:1000;
+			border-radius:10px;
+		}
+		.modYes{
+			margin-top:10px;
+			float:right;
+		}
+		.modNo{
+			margin-top:10px;
+			margin-left:5px;
+		}
+		#search-field:focus{
+			color:#6e707e;
+			background-color:#fff;
+			border-color:#bac8f3;
+			outline:0;
+			box-shadow:0 0 0 0.2rem rgb(78 115 223 /25%);
+		}
+		#search-field{
+			width:300px;
+			padding:.375rem .75rem;
+			color:#6e707e;
+			border:1px solid #d1d3e2;
+			border-radius:.35rem;
+		}
+		#search-span{
+			float:right;
+			margin-bottom:7px;
+			margin-top:-10px;
+		}
+		
+		.pagination {
+			float:right;
+		    display: inline-block;
+		    padding-left: 0;
+		    margin-top: 20px;
+		    border-radius: 4px;
+		}
+		.pagination > li {
+		    display: inline;
+		}
+		.pagination > li > a,
+		.pagination > li > span {
+		    position: relative;
+		    float: left;
+		    padding: 6px 12px;
+		    margin-left: -1px;
+		    line-height: 1.42857143;
+		    color: #337ab7;
+		    text-decoration: none;
+		    background-color: #fff;
+		    border: 1px solid #ddd;
+		}
+		.pagination > li:first-child > a,
+		.pagination > li:first-child > span {
+		    margin-left: 0;
+		    border-top-left-radius: 4px;
+		    border-bottom-left-radius: 4px;
+		}
+		.pagination > li:last-child > a,
+		.pagination > li:last-child > span {
+		    border-top-right-radius: 4px;
+		    border-bottom-right-radius: 4px;
+		}
+		.pagination > li > a:hover,
+		.pagination > li > span:hover,
+		.pagination > li > a:focus,
+		.pagination > li > span:focus {
+		    color: #23527c;
+		    background-color: #eee;
+		    border-color: #ddd;
+		}
+		.pagination > .active > a,
+		.pagination > .active > span,
+		.pagination > .active > a:hover,
+		.pagination > .active > span:hover,
+		.pagination > .active > a:focus,
+		.pagination > .active > span:focus {
+		    z-index: 2;
+		    color: #fff;
+		    cursor: default;
+		    background-color: #4e73df;
+		    border-color: #4e73df;
+		}
+		.pagination > .disabled > span,
+		.pagination > .disabled > span:hover,
+		.pagination > .disabled > span:focus,
+		.pagination > .disabled > a,
+		.pagination > .disabled > a:hover,
+		.pagination > .disabled > a:focus {
+		    color: #777;
+		    cursor: not-allowed;
+		    background-color: #fff;
+		    border-color: #ddd;
+		}
+		#show{
+			float:left;
+			line-height: 1.42857143;
+			margin-top:20px;
 		}
 	</style>
 	<!-- 추가한 스타일 -->
@@ -136,6 +234,15 @@
                             
                         </div>
                         <div class="card-body">
+                        	<div>
+                        		<form>
+                        			<span id="search-span">
+                        			<input type="search" name="query" id="search-field" placeholder="검색어" value="">
+                           			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        			</span>
+                        			
+                        		</form>
+                        	</div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -275,6 +382,53 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="text-center">
+                            	<span id="show">showing</span>
+            					<ul class="pagination ">
+               						<li class="prev disabled">
+					                	<span>«</span>
+					               	</li>
+					               	<li class="active">
+					                  	<span>1</span>
+					               	</li>
+					               	<li>
+					                	<a href="/articles/life?offset=20&amp;max=20&amp;sort=id&amp;order=desc">2</a>
+					               		</li>
+					               	<li>
+					                	<a href="/articles/life?offset=40&amp;max=20&amp;sort=id&amp;order=desc">3</a>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=60&amp;max=20&amp;sort=id&amp;order=desc">4</a>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=80&amp;max=20&amp;sort=id&amp;order=desc">5</a>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=100&amp;max=20&amp;sort=id&amp;order=desc">6</a>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=120&amp;max=20&amp;sort=id&amp;order=desc">7</a>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=140&amp;max=20&amp;sort=id&amp;order=desc">8</a>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=160&amp;max=20&amp;sort=id&amp;order=desc">9</a>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=180&amp;max=20&amp;sort=id&amp;order=desc">10</a>
+					               	</li>
+					               	<li class="disabled">
+					                  	<span>...</span>
+					               	</li>
+					               	<li>
+					                  	<a href="/articles/life?offset=102540&amp;max=20&amp;sort=id&amp;order=desc">5128</a>   
+					               	</li>
+					               	<li class="next">
+					                  	<a href="/articles/life?offset=20&amp;max=20amp;sort=id&amp;order=desc">»</a>
+					              	</li>
+					            </ul>					            
+					         </div>
                         </div>
                     </div>
 
@@ -327,7 +481,7 @@
     
     <div id="modDiv" style="display:none;">
     <div class="layout-container">
-		<div class="main ">
+		<div class="main">
 			
 			<div id="article-create" class="content" role="main">
 				<div class="content-header">
@@ -347,9 +501,9 @@
 										<select id="category" name="categoryCode" class="form-control" required="">
 											<option value="">게시판을 선택해 주세요.</option>
 											<option value="tech-qna" data-external="false"
-												data-anonymity="false">Tech Q&A</option>
+												data-anonymity="false">Q&amp;A</option>
 											<option value="blockchain-qna" data-external="false"
-												data-anonymity="false">Blockchain Q&A</option>
+												data-anonymity="false">커뮤니티</option>
 										</select>
 									</div>
 								</div>
@@ -366,32 +520,21 @@
 									</div>
 								</div>
 								<div class="form-group has-feedback">
-									<textarea name="text" id="summernote" rows="20"
+									<textarea name="text" id="summernote" rows="15"
 										class="form-control input-block-level"></textarea>
 									<input type="hidden" name="textType" value="HTML" id="textType">
 									
-									<div class="nav" role="navigation">
+									
 										<fieldset class="buttons">
-											<button class="btn btn-default btn-sm" 
+											<button class="modNo btn btn-danger" 
 											onclick="modDivClose();">취소</button> 
-											<input type="submit" name="create" class="create btn btn-success btn-sm pull-right"
+											<input type="submit" name="create" class="modYes btn btn-success"
 											action="create" value="등록" id="create">
 										</fieldset>
-									</div>
+									
 							</fieldset>
 						</form>
 					</div>
-				</div>
-			</div>
-			<div class="right-banner-wrapper">
-				<div class="google-ad">
-					<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- okjspad_160x500 -->
-					<ins class="adsbygoogle" style="display: inline-block; width: 160px; height: 500px"
-						data-ad-client="ca-pub-8103607814406874" data-ad-slot="6573675943"></ins>
-					<script>
-	                        (adsbygoogle = window.adsbygoogle || []).push({});
-	                </script>
 				</div>
 			</div>
     		
@@ -431,8 +574,8 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>--> 
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
