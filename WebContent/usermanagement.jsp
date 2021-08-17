@@ -125,12 +125,13 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>아이디</th>
-											<th>계급</th>
-											<th>게시글 수</th>
-											<th>댓글 수</th>
-											<th>가입일</th>
-											<th>회원탈퇴</th>
+											<th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="아이디: activate to sort column descending" style="width: 180px;">아이디</th>
+											<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="계급: activate to sort column ascending" style="width: 200px;">계급</th>
+											<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="게시글 수: activate to sort column ascending" style="width: 94px;">게시글 수</th>
+											<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="댓글 수: activate to sort column ascending" style="width: 110px;">댓글 수</th>
+											<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="가입일: activate to sort column ascending" style="width: 130px;">가입일</th>
+											<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="등업: activate to sort column ascending" style="width: 85px;">등업</th>
+											<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="회원탈퇴: activate to sort column ascending" style="width: 100px;">회원탈퇴</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -140,6 +141,7 @@
 											<th>게시글 수</th>
 											<th>댓글 수</th>
 											<th>가입일</th>
+											<th>등업</th>
 											<th>회원탈퇴</th>
 										</tr>
 									</tfoot>
@@ -150,6 +152,8 @@
 											<td>41</td>
 											<td>61</td>
 											<td>2011/04/25</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -158,6 +162,8 @@
 											<td>42</td>
 											<td>13</td>
 											<td>2011/08/25</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -166,6 +172,8 @@
 											<td>12</td>
 											<td>3</td>
 											<td>2011/07/26</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -174,6 +182,8 @@
 											<td>32</td>
 											<td>6</td>
 											<td>2011/02/25</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -182,6 +192,8 @@
 											<td>4</td>
 											<td>632</td>
 											<td>2011/02/25</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -190,6 +202,8 @@
 											<td>42</td>
 											<td>61</td>
 											<td>2010/02/25</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -198,6 +212,8 @@
 											<td>42</td>
 											<td>12</td>
 											<td>2011/02/20</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -206,6 +222,8 @@
 											<td>33</td>
 											<td>13</td>
 											<td>2013/07/25</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -214,6 +232,8 @@
 											<td>12</td>
 											<td>66</td>
 											<td>2009/01/12</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -222,6 +242,8 @@
 											<td>42</td>
 											<td>22</td>
 											<td>2012/03/29</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -230,6 +252,8 @@
 											<td>12</td>
 											<td>33</td>
 											<td>2008/11/28</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 										<tr>
@@ -238,6 +262,8 @@
 											<td>22</td>
 											<td>61</td>
 											<td>2012/12/02</td>
+											<td style="text-align:center;">
+                                            	<a class="btn btn-warning btn-sm" href="#">등업</a></button>
 											<td><input type="checkbox" id="chkall"></td>
 										</tr>
 									</tbody>
