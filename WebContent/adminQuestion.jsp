@@ -34,12 +34,10 @@
 			padding:10px; border-radius:10px;
 			z-index:1000;
 		}
-		
 		.modYes{
 			margin-top: 10px;	
 			float:right;	
 		}
-		
 		.modNo{
 			margin-top: 10px;
 			margin-left: 5px;
@@ -451,7 +449,11 @@
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
-             
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>&copy; YWHY 2021</span>
+                    </div>
+                </div>
             </footer>
             <!-- End of Footer -->
 
