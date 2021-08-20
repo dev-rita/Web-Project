@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+<configuration>
+   <typeAliases>
+   	
+   	<typeAlias type="com.naver.vo.BbsVO" alias="bbs"/><!-- BbsVO 빈 클래스 객체명 bbs를 생성 -->
+  
+ 	<typeAlias type="com.naver.vo.AdminVO" alias="admin"/>
+   </typeAliases>
+</configuration>   
