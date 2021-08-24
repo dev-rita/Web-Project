@@ -22,9 +22,9 @@
 <meta name="_csrf_parameter" content="_csrf"><%-- spring에서 사용되는 것 같다. --%>
 <meta name="_csrf_header" content="X-CSRF-TOKEN"><%-- spring에서 사용되는 것 같다. --%>
 <meta name="_csrf" content="d17ffc70-2d78-419c-be47-31c21f47391f"><%-- spring에서 사용되는 것 같다. --%>
-<link rel="shortcut icon" href="images/logo/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="images/logo/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="images/logo/apple-icon-144x144.png">
+<link rel="shortcut icon" href="./resources/images/logo/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="./resources/images/logo/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./resources/images/logo/apple-icon-144x144.png">
 <%-- Favicon.ico 및 아이콘 생성기. 파비콘이란, 브라우저의 주소 표시줄에서 사이트 URL 옆에 표시되는 작은 16X16 아이콘 파일이다.
 	  앱 아이콘은 스마트폰에서 앱을 실행하기 위해 누르는 이미지이다. iPhone 및 Android와 같은 모든 스마트폰과 iPad와 같은 태블릿에서도 마찬가지이다.
 	 25번줄은 파비콘이고, 26,27번줄은 폰이나 패드에 해당하는 이미지인것 같다. 삭제할지 말지는 팀원과 논의 --%>
@@ -32,7 +32,7 @@
 <%-- bootstrapcdn인데 아이콘을 지원해준다. 그리고 자바스크립트도 지원해주는 것 같다. 일단 보류 --%>
 <meta property="og:image"
 	content="https://okky.kr/assets/images/okky_logo_fb.png">
-<link rel="stylesheet" href="css/application2.css">
+<link rel="stylesheet" href="./resources/css/application2.css">
 <script
 	src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
 <script
@@ -133,7 +133,7 @@
 				
 				<h1><%-- sidebar 상단의 logo --%>
 					<div class="logo">
-						<a href="ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
+						<a href="login_user"><b>YWHY</b></a>
 					</div>
 				</h1>
 
@@ -1444,7 +1444,7 @@
 			<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="images/logo_gray.png" style="width:55px; height:55px;">
+						<img src="./resources/images/logo_gray.png" style="width:55px; height:55px;">
 					</div>
 					<div class="footer_content">
 						<strong>상호명</strong>: 김이이정 | 
@@ -1455,7 +1455,7 @@
 						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
 						<strong>문의</strong>: info@ywhy.kr
 						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-						<a href="intro/loginafter_user_about.jsp">About YWHY</a> | <a href="user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
+						<a href="intro_user_about">About YWHY</a> | <a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
 						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>
@@ -1486,9 +1486,9 @@
             var encodedURL = "%2F";
     </script>
 
-	<script src="js/application.js" type="text/javascript"></script>
-	<script src="js/apps/search.js" type="text/javascript"></script>
-	<script src="js/apps/notification.js" type="text/javascript"></script>
+	<script src="./resources/js/application.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/search.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/notification.js" type="text/javascript"></script>
 	<script>
         $(function () {
           $('.timeago').timeago();

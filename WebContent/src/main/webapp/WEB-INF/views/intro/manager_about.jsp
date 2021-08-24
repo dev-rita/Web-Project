@@ -10,12 +10,12 @@
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="dd8c1368-62db-4f14-bb93-9c6f60e926d9">
-<link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="../images/logo/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../images/logo/apple-icon-144x144.png">
+<link rel="shortcut icon" href="./resources/images/logo/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="./resources/images/logo/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./resources/images/logo/apple-icon-144x144.png">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <meta property="og:image" content="https://okky.kr/assets/images/okky_logo_fb.png">
-<link rel="stylesheet" href="../css/application2.css">
+<link rel="stylesheet" href="./resources/css/application2.css">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
 <script>
@@ -48,7 +48,7 @@
 				
 				<h1><%-- sidebar 상단의 logo --%>
 					<div class="logo">
-						<a href="../ywhy_loginafter_manager_index.jsp"><b>YWHY</b></a>
+						<a href="login_manager"><b>YWHY</b></a>
 					</div>
 				</h1>
 
@@ -69,7 +69,7 @@
 							<img src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
 						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="../signup/myinfo.jsp" title="사용자"><b>사용자</b></a>
+							<a class="nickname" href="../signup/myinfo.jsp" title="관리자"><b>관리자</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> 0
 							</div>
@@ -91,6 +91,8 @@
 							</a>
 						</div>
 					</div>
+					
+
 					
 					<form action="../ywhy_loginbefore_index.jsp" method="post" style="display: none;">
 						<input type="submit" name="logoutButton" value="logoutButton"
@@ -127,6 +129,12 @@
 						<a href="../board/community.jsp" class="link">
 							<i class="nav-icon fas fa-coins"></i>
 							<span class="nav-sidebar-label">커뮤니티</span>
+						</a>
+					</li>
+					<li>
+						<a href="../manager_index.jsp" class="link" >
+							<i class="nav-icon fas fa-hat-wizard"></i>
+							<span class="nav-sidebar-label">Manager</span>
 						</a>
 					</li>
 				</ul>
@@ -286,7 +294,7 @@
 			<footer class="index_footer">
 				<div class="footer_box">
 					<div class="footer_logo">
-						<img src="../images/logo_gray.png" style="width:55px; height:55px;">
+						<img src="./resources/images/logo_gray.png" style="width:55px; height:55px;">
 					</div>
 					<div class="footer_content">
 						<strong>상호명</strong>: 김이이정 | 
@@ -297,7 +305,7 @@
 						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
 						<strong>문의</strong>: info@ywhy.kr
 						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-						<a href="loginafter_user_about.jsp">About YWHY</a> | <a href="../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
+						<a href="intro_manager_about">About YWHY</a> | <a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
 						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
 					</div>
 				</div>
@@ -311,9 +319,9 @@
             var encodedURL = "%2Fintro%2Fabout";
         </script>
 
-	<script src="../js/application.js" type="text/javascript"></script>
-	<script src="../js/apps/search.js" type="text/javascript"></script>
-	<script src="../js/apps/notification.js" type="text/javascript"></script>
+	<script src="./resources/js/application.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/search.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/notification.js" type="text/javascript"></script>
 
 	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
 		aria-labelledby="myLargeModalLabel" aria-hidden="true">
