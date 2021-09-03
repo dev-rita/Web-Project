@@ -3872,6 +3872,12 @@ tbody.collapse.in {
     width: 100%;
     margin-bottom: 0;
 }
+
+/*추가*/
+#find_field{
+	width:28%;
+}
+
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
@@ -11353,3 +11359,8 @@ span.filter-count {
 }
 
 /*수정 - 정희선 (footer부분을 반응형 위로 코드 옯김 -> 반응형 때 footer적용 되었다.)*/
+
+#search-field{
+	width:72%;
+}
+/*검색창 크기 수정 */

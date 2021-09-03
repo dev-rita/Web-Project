@@ -8,10 +8,12 @@ public class BoardVO {
 	//되도록이면 테이블 컬럼명과 빈 클래스 변수명을 같게 한다.
 	private int b_no;
 	private String b_name;
+	private String b_cate;
 	private String b_title;
 	private String b_pwd;
 	private String b_cont;
 	private String b_file;
+	private String b_tag;
 	private int b_hit;
 	private int b_ref;//관리자 답글에서 원본글과 답변글을 묶어주는 그룹번호 역할
 	private int b_step;//관리자 답글에서 원본글이면 0, 첫번째 답변글이면 1, 두번째 답변글이면2, 
