@@ -13,40 +13,40 @@ public class MainController {
 	
 	/*시작페이지 로그인 전*/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView main() {
-		return new ModelAndView("index"); //뷰페이지 경로가 /WEB-INF/views/ywhy_loginbefore_index.jsp
+	public String main() {
+		return "index"; //뷰페이지 경로가 /WEB-INF/views/ywhy_loginbefore_index.jsp
 	}
 	
 	/*footer의 About 로그인 전*/
 	@GetMapping("/intro_about")
-	public ModelAndView about() {
-		return new ModelAndView("intro/about"); //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
+	public String about() {
+		return "intro/about"; //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
 	}
 	
 	
 	/*로그인 후 사용자 계정*/
 	@GetMapping("/login_user")
-	public ModelAndView login_user() {
-		return new ModelAndView("login_user"); //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
+	public String login_user() {
+		return "login_user"; //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
 	}
 	
 	/*footer의 About 로그인 후 사용자*/
 	@GetMapping("/intro_user_about")
-	public ModelAndView u_about() {
-		return new ModelAndView("intro/user_about"); //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
+	public String u_about() {
+		return "intro/user_about"; //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
 	}
 	
 	
 	/*로그인 후 관리자 계정*/
 	@GetMapping("/login_manager")
-	public ModelAndView login_manager() {
-		return new ModelAndView("login_manager"); //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
+	public String login_manager() {
+		return "login_manager"; //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
 	}
 	
 	/*footer의 About 로그인 후 관리자*/
 	@GetMapping("/intro_manager_about")
-	public ModelAndView m_about() {
-		return new ModelAndView("intro/manager_about"); //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
+	public String m_about() {
+		return "intro/manager_about"; //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
 	}
 	
 	

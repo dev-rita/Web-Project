@@ -14,44 +14,69 @@
       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- AOP 자동 프록시 설정 -->
-	<aop:aspectj-autoproxy />
+	<aop:aspectj-autoproxy/>
 	
 	<!-- 스프링 JDBC -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-	<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
-	<property name="username" value="night"/>
-	<property name="password" value="night"/>
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="username" value="night"/>
+		<property name="password" value="night"/>
 	</bean>
 	
-	<!-- spring과 mybatis연결 설정과 mybatis환경설정 -->
+	<!-- spring과 mybatis연결 설정과 mybatis 환결설정 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dataSource"/><!-- setter()메소드를 통한 DI(의존성) 주입 -->
-	<property name="configLocation" value="classpath:/mybatis-config.xml" /><!-- 데이터 저장빈 클래스의 객체명 별칭을 관리 -->
-	<property name="mapperLocations" value="classpath:com/ywhy/mappers/*/*.xml"/><!-- 쿼리문을 수행하는 매퍼 xml 파일 위치 설정 -->
-	</bean>
+		<property name="dataSource" ref="dataSource"/><!-- setter()메서드를 통한 DI(의존성) 주입 -->
+		<property name="configLocation" value="classpath:/mybatis-config.xml"/><!-- 데이터 저장빈 클래스의 객체명 별칭을 관리 -->
+		<property name="mapperLocations" value="classpath:com/ywhy/mappers/*/*.xml"/><!-- 쿼리문을 수행하는 매퍼 xml파일 위치 설정 -->
+	</bean> <!-- 빈 단위가 자바 클래스 단위같은 느낌이다. -->
 	
-	<!-- 트랜잭션 매니저 설정 -->
+	<!-- 트랜젝션 매니저 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	<property name="dataSource" ref="dataSource"></property><!-- DI 즉 의존성을 주입하고 빈아이디 객체 dataSource를 호출 -->
+		<property name="dataSource" ref="dataSource"/><!-- DI 즉 의존성을 주입하고 빈아이디 객체 dataSource를 호출 -->
 	</bean>
-	<tx:annotation-driven/><!-- 트랜잭션 설정 애너테이션, 애너테이션을 통한 트랜잭션 관리가 가능. -->
+	<tx:annotation-driven/><!-- 트랜젝션 설정 에너테이션, 에너테이션을 통한 트랜젝션 관리가 가능. -->
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-	<!-- destroy-method="clearCache"는 임시 메모리를 비워서 디비 연결을 해제-->
-	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
-	<!-- 생성자를 통한 의존성 주입 -->
+	<!-- destroy-method="clearCache"는 임시 메모리를 비원서 디비 연결을 해제 -->
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/><!-- 생성자를 통한 의존성 주입 -->
 	</bean>
 	
-	<!-- DAOImpl의 @Repository이 설정된 부분을 스프링에서 오토스캔(자동으로 찾아서)하여 등록하게함. -->
+	<!-- DAOImpl의 @Repository이 설정된 부분을 스프링에서 오토스캔(자동으로 찾아서) 하여 등록하게 함. -->
 	<context:component-scan base-package="com.ywhy.dao"/>
 	
-	<!-- 서비스 추가 이유: 첫째, 컨트롤과 모델dao를 연결하는 중간 매개체 역할을 한다.
-		둘째, 고객의 추가요구 사항을 반영해서  개발로직 코드를 유연하게 작성 가능하게 한다.
-		셋째, 가장 중요한 것은 스프링의 AOP를 통한 트랜잭션 적용이 핵심이다. 
-		그렇게 함으로써 데이터의 일치성과 사이트의 신뢰도를 높여준다. -->
+	<!-- 서비스 추가 이유: 첫째, 컨트롤과 모델 dao를 연결하는 중간 매개체 역할을 한다. 
+					   둘째, 고객의 추가요구 사항을 반영해서 개발 로직 코드를 유연하게 작성 가능하게 한다. 
+					   셋째, 가장 중요한 것은 스프링의 AOP를 통한 트랜젝션 적용이 핵심이다. 
+					   그렇게 함으로써 데이터의 일치성과 사이트의 신뢰도를 높여준다. -->
 	<context:component-scan base-package="com.ywhy.service"/>
 	
+	<!-- AOP 에노테이션 말고, 이 설정은 향후에 XML 방식으로 AOP기능을 설정할 때 사용 -->
 	<aop:config></aop:config>
-	<!-- AOP 기능을 설정. 이 설정은 향후에 AOP 애너테이션 말고, XML방식으로 AOP기능을 설정할 때 사용. -->
+	
+	<!-- email 인증 관련 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<!-- <property name="port" value="587"/> -->
+		<!-- username과 password는 보낸사람으로 지정될 이메일과 이메일의 비밀번호 (gmail로 작성해야함) -->
+		<property name="username" value=""/>
+		<property name="password" value=""/>
+		<property name="javaMailProperties">
+			<props>
+				<!-- 
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.debug">true</prop>
+				 -->
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.required">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+				<prop key="mail.smtp.socketFactory.fallback">false</prop>
+				<prop key="mail.smtp.port">465</prop>
+				<prop key="mail.smtp.socketFactory.port">465</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
 </beans>

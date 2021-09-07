@@ -6,8 +6,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
    <typeAliases>
-   	
-   		<typeAlias type="com.ywhy.vo.BoardVO" alias="b"/><!-- BbsVO 빈 클래스 객체명 bbs를 생성 -->
    
+   <typeAlias type="com.ywhy.vo.MemberVO" alias="m"/>
+   
+   <typeAlias type="com.ywhy.vo.BoardVO" alias="b"/>
+   	
    </typeAliases>
 </configuration>   

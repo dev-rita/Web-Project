@@ -7,6 +7,7 @@
 	<name>Project</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
 	<properties>
 		<java-version>1.8</java-version><!-- jdk 업그레이드 -->
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version><!-- 스프링 라이브러리 업 -->
@@ -15,9 +16,36 @@
 	</properties>
 	
 	<dependencies>
-	<!-- copy begin -->
 	
-	<!-- lombok 라이브러리 추가 -->
+		<!-- SMTP를 이용한 메일 인증
+				SMTP는 Simple Mail Transfer Protocol로서 전자 메일 전송을 위한 표준 프로토콜이다.
+				즉 SMTP는 이메일을 송신하는 서버이다.
+				SMTP Server를 통해서 메일 전송 기능을 구현하기 위해서는 사용하고자 하는 메일의 SMTP 보안 단계를 낮춰야 한다.
+				네이버의 경우 로그인 시 휴대폰 승인을 통한 보안 단계까지 설정되어 있을 경우, 아래의 설정만으로는 부족하다.
+				구글 메일 인증을 이용할 경우, 구글 계정관리로 들어가서 보안>보안 수준이 낮은 앱의 액세스>엑세스 사용 설정>보안수준이 낮은 앱 허용을 사용함으로 변경
+				네이버 메일 인증의 경우, 네이버 메일 페이지 최하단의 환경설정>상단 목록중 "POP3/IMAP설정">"POP3/SMTP 사용"을 사용함>확인
+				다음 메일 인증의 경우, 다음 메일 페이지 왼쪽 목록 맨 아래 환경설정>상단 목록중 "IMAP/POP3">"IMAP/SMTP사용"을 사용함>저장 -->
+				
+		<!-- mail 라이브러리 추가
+			java에서 메일을 보내기 위해 필요로 한 라이브러리이다. -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		
+		<!-- spring-context-support 라이브러리 추가
+			JavaMailSender인터페이스를 사용하기 위해 필요하다.
+			mail라이브러리를 일일히 세팅할 필요 없이 몇 가지의 설정(MailSender Bean설정)만으로 사용될 수 있도록 도와준다. -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+	
+		<!-- copy begin -->
+		
+		<!-- lombok 라이브러리 추가 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -92,9 +120,9 @@
 		</dependency>
 
 		<!-- aop aspectj 문법 <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjrt</artifactId> 
-			<version>${org.aspectj-version}</version> </dependency> 아래에 해당 문법이 있음-->
+			<version>${org.aspectj-version}</version> </dependency> -->
 
-		<!-- 스프링의 AOP문법 -->
+		<!-- 스프링의 AOP 문법 -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
@@ -179,15 +207,16 @@
 			<version>1</version>
 		</dependency>
 				
-		<!-- Servlet -->
-		<!--<dependency>
+		<!-- Servlet
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
-		</dependency>-->
+		</dependency> -->
 		
-		<dependency><!-- 2.5>>3.1로변경 -->
+		<!-- 서블릿 업그레이드 -->
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
@@ -210,7 +239,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version><!-- 4.7>>4.12로변경 -->
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>        
 	</dependencies>
@@ -235,8 +264,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.8</source><!-- 1.6>>1.8로변경 -->
-                    <target>1.8</target><!-- 1.6>>1.8로변경 -->
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
