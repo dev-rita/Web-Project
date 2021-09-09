@@ -1,5 +1,6 @@
 package com.ywhy.vo;
 
+
 import lombok.Data;
 
 @Data
@@ -19,7 +20,9 @@ public class BoardVO {
 	private int b_step;//관리자 답글에서 원본글이면 0, 첫번째 답변글이면 1, 두번째 답변글이면2, 
 	//즉 원본글과 답변글을 구분하는 번호값이면서 몇번째 답변글인가를 알려줌.
 	private int b_level;//관리자 답글에서 답변글 정렬순서
+	private int b_rec;
 	private String b_date;
+	private int b_replycnt;//댓글수
 	
 	//페이징 즉 쪽나누기
 	private int startrow;//시작행번호
@@ -28,4 +31,13 @@ public class BoardVO {
 	//검색 기능 관련
 	private String find_field;//검색필드
 	private String find_name;//검색어
+	
+	//댓글 관련
+	private int r_no;//댓글 번호
+	private String replyer;//댓글 작성자
+	private String replytext;//댓글 내용
+	private String regdate;//등록날짜
+	private String updatedate;//수정날짜
+	private int r_hit;//댓글 추천
+	
 }

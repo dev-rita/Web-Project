@@ -6,13 +6,21 @@ import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -145,27 +153,152 @@ public class BoardController {
 			return "redirect:/b_community";//목록보기로 이동
 		}//b_create_ok
 		
-		@RequestMapping("/b_edit")//get or post로 접근하는 매핑주소를 처리
-		public String b_edit(Model listM, HttpServletRequest request, BoardVO b) {
+		@RequestMapping("/b_edit_ok")//get or post로 접근하는 매핑주소를 처리
+		public String b_edit_ok(@ModelAttribute BoardVO eb,HttpServletResponse response,
+		HttpServletRequest request) throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			//웹브라우저로 출력되는 파일형태와 언어코딩 타입을 설정
+
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));			
+			}
+				this.boardService.editBoard(eb);//게시물 수정
+				return 	"redirect:/b_cont?b_no="+eb.getB_no()+"&page="+page+"&state=cont";//?뒤에 3개의 인자값이 get방식으로
 			
-			return "board/b_edit";
 		}//b_edit
 		
 		@RequestMapping("/b_cont")//get or post로 접근하는 매핑주소를 처리
-		public String b_cont(Model listM, HttpServletRequest request, BoardVO b) {
+		public ModelAndView b_cont(@RequestParam("b_no") int b_no,int page,String state,@ModelAttribute BoardVO b) {
+			//@RequestParam("bno")는 request.getParameter("bno")와 같다.즉 bno피라미터이름에 담겨져서 전달된 번호값을 구함. int page도 get으로 전달된 페이지번호를
+			//구함
+			if(state.equals("cont")) {//게시판 목록 제목에서 클릭한 내용보기일때만 조회수 증가
+			b=this.boardService.getBoardCont(b_no);//번호에 해당하는 레코드값을 가져오고,조회수 증가
+			}else {//게시판 목록 제목에서 클릭한 내용보기가 아닌경우는 조회수 증가 안됨
+			b=this.boardService.getBoardCont2(b_no);	
+			}
 			
-			return "board/b_cont";
+			ModelAndView cm=new ModelAndView();
+			cm.addObject("b",b);//b키이름에 b객체를 저장
+			cm.addObject("page",page);//책갈피 기능을 구현하기 위해서 쪽번호를 저장
+			
+			if(state.equals("cont")) {
+				cm.setViewName("board/b_cont");// /WEB-INF/views/board/b_cont.jsp
+			}else if(state.contentEquals("reply")){//관리자 답변폼
+				cm.setViewName("board/b_reply");
+			}else if(state.contentEquals("edit")){//수정폼
+				cm.setViewName("board/b_edit");
+			}else {
+				cm.setViewName("board/b_cont");
+			}
+			
+			return cm;
 		}//b_cont
 		
-		@RequestMapping("/b_my")//get or post로 접근하는 매핑주소를 처리
-		public String myboard(Model listM, HttpServletRequest request, BoardVO b) {
+		@RequestMapping("/b_del_ok")//get or post로 접근하는 매핑주소를 처리
+		public String b_del_ok(int b_no,HttpServletResponse response,
+		HttpServletRequest request) {
+			response.setContentType("text/html;charset=UTF-8");
+			//웹브라우저로 출력되는 파일형태와 언어코딩 타입을 설정
+
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));			
+			}
+				this.boardService.delBoard(b_no);//게시물 삭제
+				return "redirect:/b_community?page="+page;//?뒤에 3개의 인자값이 get방식으로
 			
-			return "board/b_my";
-		}//b_my
+		}//b_del_ok
+		
+		@RequestMapping("/b_recommend")//게시물 추천 관련
+		public String b_recommend (int b_no, HttpServletRequest request, String state) throws Exception{
+			int page=1;
+			if(request.getParameter("page")!=null) {
+				page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장시킴.
+			}
+
+			if(state.equals("recp")) {//게시글 내 추천
+				this.boardService.b_recommendp(b_no);
+				}else if(state.equals("recm")) {//게시글 내 반대
+				this.boardService.b_recommendm(b_no);	
+				}
+			
+			return 	"redirect:/b_cont?b_no="+b_no+"&page="+page+"&state="+state;
+		}
 		
 		@RequestMapping("/b_tag")//get or post로 접근하는 매핑주소를 처리
-		public String tag(Model listM, HttpServletRequest request, BoardVO b) {
+		public String b_tag(Model listM, HttpServletRequest request, BoardVO b) {
 			
 			return "board/tagged/b_tag";
 		}//b_tag
+		
+		//댓글 
+		
+		//게시물 번호에 해당하는 댓글 목록
+		@RequestMapping(value="all/{b_no}",produces="application/json")
+		public ResponseEntity<List<BoardVO>> list(@PathVariable("b_no") int b_no){
+			//@PathVariable("b_no")는 매핑주소의 게시물 번호값을 추출하는 용도
+			
+			ResponseEntity<List<BoardVO>> entity=null;
+			
+			try {
+				entity=new ResponseEntity<>(this.boardService.listReply(b_no),HttpStatus.OK);
+				//게시물 번호에 해당하는 댓글 목록을 가져옴.
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
+			
+			return entity;
+		}//list()
+		
+		//댓글등록
+		//@PostMapping //post로 접근하는 매핑주소를 처리
+		@RequestMapping(value="replies",method=RequestMethod.POST)//post로 접근하는 매핑주소를 처리
+		public ResponseEntity<String> register(@RequestBody BoardVO vo){
+			//@RequestBody ReplyVO vo는 전송된 JSON 데이터를 ReplyVO 객체 타입으로 변환해준다.
+			//데이터 전송방식은 JSON을 이용한다.
+			ResponseEntity<String> entity=null;
+			
+			try {
+				this.boardService.addReply(vo);//댓글 추가
+				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+				//댓글 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+				//예외 에러가 발생하면 예외 에러 메시지와 나쁜 상태 코드가 반환
+			}
+			return entity;
+		}//register()
+		
+		//댓글 수정
+		@RequestMapping(value="replies/{r_no}", method= {RequestMethod.PUT, RequestMethod.PATCH})
+		//PUT은 전체자료를 수정, PATCH는 일부 자료만 수정
+		public ResponseEntity<String> update(@PathVariable("r_no") int r_no, @RequestBody BoardVO vo){
+			ResponseEntity<String> entity=null;
+			try {
+				vo.setR_no(r_no);//댓글 번호를 저장
+				boardService.updateReply(vo);//댓글 수정, this.이 생략됨
+				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+			}
+			return entity;
+		}//update()
+		
+		//댓글 삭제
+		@RequestMapping(value="replies/{r_no}", method=RequestMethod.DELETE)// "/"생략 가능
+		public ResponseEntity<String> remove(@PathVariable("r_no") int r_no){
+			ResponseEntity<String> entity=null;
+			
+			try {
+				this.boardService.remove(r_no);//댓글삭제
+				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+			}catch(Exception e) {
+				entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+			}
+			return entity;
+		}//remove()
 }

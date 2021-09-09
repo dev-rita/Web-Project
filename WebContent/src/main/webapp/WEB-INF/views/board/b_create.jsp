@@ -171,6 +171,7 @@
 											action="create" value="등록" id="create">
 										</fieldset>
 									</div>
+								</div>
 							</fieldset>
 						</form>
 					</div>
