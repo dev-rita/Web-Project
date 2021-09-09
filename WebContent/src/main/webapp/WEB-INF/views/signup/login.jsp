@@ -8,22 +8,24 @@
 						<div class="panel-heading">
 							<h5 class="panel-header">아이디 로그인</h5>
 						</div>
-						<form action="login_ok" onsubmit="return login_check();" class="form-signin form-user panel-body panel-margin" method="POST" id="loginForm" autocomplete="off">
+						<form class="form-signin form-user panel-body panel-margin" method="POST" id="loginForm" autocomplete="off">
 						<%-- autocomplete="off" 자동 완정 기능 해제하기 --%>
+							<%-- 세션에 저장할 아이디 --%>
 							<%--<input type="hidden" name="redirectUrl" value="%2Fuser%2Fregister"> --%> 
-							<input type="text" name="login_id" id="id" autocorrect="off" autocapitalize="off" class="username form-control input-sm" placeholder="아이디" autofocus=""> 
+							<input type="text" name="login_id" id="login_id" autocorrect="off" autocapitalize="off" class="username form-control input-sm" placeholder="아이디" autofocus=""> 
 							<%-- autocorrect="off" 자동 완성 기능 해제하기 / autocapitalize="off" 대문자로 변환하지 않음 (모든 문자의 기본값 소문자) --%>
-							<span id="idcheck"></span>
-							<input type="password" name="login_pwd" id="pwd" class="password form-control input-sm" placeholder="비밀번호">
-							<span id="pwdcheck"></span>
+							<span id="id_check"></span>
+							<input type="password" name="login_pwd" id="login_pwd" class="password form-control input-sm" placeholder="비밀번호">
+							<span id="pwd_check"></span>
 							<div class="checkbox" style="display:block;">
 								<label> 
 									<input type="checkbox" name="remember_me" id="remember_me"> 로그인 유지
 								</label>
 							</div>
 							<div id="divUserLogin">
-                    			<button class="btn btn-primary btn-block" type="submit" id="btnUserLogin">로그인</button>
+                    			<button class="btn btn-primary btn-block" type="button" id="btnUserLogin" onclick="login_check();">로그인</button>
                 			</div>
+                			
 							<div class="signup-block">
 								<a href="../user/find/findid.jsp">계정 찾기</a> 
 								<span class="inline-saperator">/</span> 

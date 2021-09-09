@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,7 +38,7 @@ public class LoginController {
 	
 	/*로그인 폼 - 관리자,일반 사용자*/
 	@GetMapping("/login")
-	public String login() {
+	public String login(){
 		return "signup/login";
 	}
 
@@ -57,7 +56,8 @@ public class LoginController {
 	
 	/*회원가입 완료 후 메일 확인하라는 안내 페이지*/
 	@GetMapping("/signup_complete")
-	public String signup_complete(@ModelAttribute("m") MemberVO m) {
+	public String signup_complete(Model model,MemberVO m) {
+		model.addAttribute("signup", m);
 		return "signup/complete";
 	}
 	
@@ -107,7 +107,7 @@ public class LoginController {
 		//db에 authKey 업데이트 (회원을 먼저 저장 후 mem_key값이 null인 상태에서 저장해주는 것이기 때문에 update)
 		this.memberService.updateAuthKey(map);
 		
-		model.addAttribute("mem_mail", m.getMem_mail());
+		model.addAttribute("mem_mail",m.getMem_mail());
 		
 		return "redirect:/signup_complete";
 
@@ -127,14 +127,34 @@ public class LoginController {
 		return mav;
 	}
 	
-	/*관리자 생성 + 일반 사용자, 관리자 로그인 인증*/
-	@RequestMapping("/login_ok")
-	public String login_ok(/*AdminVO a,*/String login_id,String login_pwd,HttpSession session,HttpServletResponse response) throws Exception {
+//	@PostMapping("/login_check")
+//	public String login_check(String login_id,String login_pwd,HttpSession session,HttpServletResponse response) throws Exception {
+//		response.setContentType("text/html;charset=utf-8");
+//		PrintWriter out= response.getWriter();
+//		
+//		MemberVO m=this.memberService.loginCheck(login_id);
+//		
+//		int re=-1;//로그인이 성공일 때
+//		if(m == null) {//일치하는 아이디가 없는 경우
+//			re=0;
+//			out.println(re);
+//		}else {
+//			if(!m.getMem_pwd().equals(PwdChange.getPassWordToXEMD5String(login_pwd))) {
+//				re=0;
+//				out.println(re);
+//			}
+//		}
+//		return null;
+//	}
+	
+	/*관리자 생성 + 일반 사용자,관리자 로그인 인증*/
+	@PostMapping("/login_ok")
+	public String login_ok(/*AdminVO a,*/String login_id,String login_pwd,HttpSession session,HttpServletResponse response,HttpServletRequest request) throws Exception {
 		//java.sql.SQLException: 부적합한 열 유형: 1111 - 매개변수와 뷰페이지의 네임 파라미터가 같지 않아서 생긴 에러
-		response.setContentType("test/html;charset=utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out= response.getWriter();
 		
-		MemberVO mem_pwd=this.memberService.loginCheck(login_id);
+		MemberVO m=this.memberService.loginCheck(login_id);
 		//가입회원 1인 경우, 9인 경우 로그인 인증 처리
 		//1은 일반사용자 / 9는 최고관리자가 지정한 관리자
 		
@@ -150,23 +170,27 @@ public class LoginController {
 //		//AdminVO admin_pwd=this.adminService.adminLiginCheck(a.getAdmin_id());//관리자 로그인 체크
 
 		//일반 사용자 로그인
-		if(mem_pwd == null) {//가입이 안된 회원이거나 비밀번호가 틀리면 아래의 코드 내용이 파일로 저장이 된다?
-			out.println("<script>");
-			out.println("alert('가입 안된 회원입니다.');");
-			out.println("history.back();");
-			out.println("</script>");
+		int re=-1;//로그인이 성공일 때
+		if(m == null) {//일치하는 아이디가 없는 경우
+			re=0;		
 		}else {
-			if(!mem_pwd.getMem_pwd().equals(PwdChange.getPassWordToXEMD5String(login_pwd))) {
-				out.println("<script>");
-				out.println("alert('비밀번호가 다릅니다.');");
-				out.println("history.go(-1);");
-				out.println("</script>");
+			if(!m.getMem_pwd().equals(PwdChange.getPassWordToXEMD5String(login_pwd))) {
+				re=0;	
 			}else {
-				session.setAttribute("id", login_id);
-				return "redirect:/";
+				//session.setAttribute("id", login_id);
+				session.setAttribute("m",m);
+				if(request.getParameter("remember_me") != null) {
+					Cookie loginCookie=new Cookie("loginCookie",session.getId());
+					loginCookie.setPath(".");
+					loginCookie.setMaxAge(60*60*24*7);
+					response.addCookie(loginCookie);
+				}
+				Object destination=session.getAttribute("destination");
+				response.sendRedirect(destination!=null ? (String)destination : ".");
 			}
 		}
-//		
+		out.print(re);
+		
 //		//관리자 로그인
 //		if(admin_pwd == null) {
 //			out.println("<script>");
@@ -187,5 +211,13 @@ public class LoginController {
 //			}
 //		}
 		return null;
+	}
+	
+	/*로그아웃*/
+	@PostMapping("/logout")
+	public String logout(HttpSession session) throws Exception{
+
+		session.invalidate();//세션 만료 즉 로그아웃 처리
+		return "redirect:/";
 	}
 }

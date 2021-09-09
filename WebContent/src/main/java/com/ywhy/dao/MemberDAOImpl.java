@@ -37,7 +37,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO loginCheck(String login_id) {
 		return this.sqlSession.selectOne("login_check", login_id);
-	}
+	}//로그인 인증
 
 
 

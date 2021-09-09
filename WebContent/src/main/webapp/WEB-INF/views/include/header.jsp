@@ -20,17 +20,14 @@
 <meta property="og:image"
 	content="https://okky.kr/assets/images/okky_logo_fb.png">
 <link rel="stylesheet" href="./resources/css/application2.css">
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script
-	src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
-<script
-	src="https://partner.googleadservices.com/gampad/cookie.js?domain=okky.kr&amp;callback=_gfp_s_&amp;client=ca-pub-8103607814406874&amp;cookie=ID%3Dc065772af97af219-2235fec14fc90065%3AT%3D1623304828%3ART%3D1623304828%3AS%3DALNI_MbD2wvdOePYY-_jnLm2XGMihyO95g"></script>
+
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
+<script src="https://partner.googleadservices.com/gampad/cookie.js?domain=okky.kr&amp;callback=_gfp_s_&amp;client=ca-pub-8103607814406874&amp;cookie=ID%3Dc065772af97af219-2235fec14fc90065%3AT%3D1623304828%3ART%3D1623304828%3AS%3DALNI_MbD2wvdOePYY-_jnLm2XGMihyO95g"></script>
 <script
 	src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202107220101/show_ads_impl_fy2019.js?bust=31061979"
 	id="google_shimpl"></script>
-<script async=""
-	src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
+<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
 <script>
 	(function(w, d, s, l, i) {
 		w[l] = w[l] || [];
@@ -46,11 +43,14 @@
 		f.parentNode.insertBefore(j, f);
 	})(window, document, 'script', 'dataLayer', 'GTM-M52CW55');
 </script>
+
+<script src="./resources/js/jquery.js"></script>
 <!--[if lt IE 9]>
 			<script src="/js/libs/html5.js"></script>
 			<script src="/assets/libs/respond.src.js"></script>
 			<script src="/assets/libs/html5.js"></script>
 		<![endif]-->
+
 <meta name="google-site-verification"
 	content="DkGncyJVqYFVekHithdbYnKgklkyKVwruPZ18WUDjr0">
 <meta http-equiv="origin-trial"
@@ -135,7 +135,7 @@
 					</div>
 				</form>
 
-				<c:if test="${empty id}">
+				<c:if test="${empty m}">
 				<!-- 로그인 전 화면 -->
 				<div class="nav-user nav-sidebar">
 					<ul class="nav nav-sidebar">
@@ -154,15 +154,16 @@
 					</ul>
 				</div>
 				</c:if>
-				<c:if test="${!empty id}">
+				<c:if test="${!empty m}">
 				<!-- 로그인 후 화면 -->
 				<div class="nav-user nav-sidebar">
 					<div class="avatar clearfix avatar-medium "><%-- 사진,이름,활동점수 부분 --%>
 						<a href="signup/myinfo.jsp" class="avatar-photo">
 							<img src="https://phinf.pstatic.net/contact/20210201_106/16121404739276YNfY_JPEG/images.jpg">
+							${m.mem_img}
 						</a>
 						<div class="avatar-info">
-							<a class="nickname" href="signup/myinfo.jsp" title="사용자"><b>${id}</b></a>
+							<a class="nickname" href="signup/myinfo.jsp"><b>${m.mem_nick}</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> 0
 							</div>
@@ -185,9 +186,8 @@
 						</div>
 					</div>
 					
-					<form action="ywhy_loginbefore_index.jsp" method="post" style="display: none;">
-						<input type="submit" name="logoutButton" value="logoutButton"
-							id="logoutButton">
+					<form action="logout" method="post" style="display: none;">
+						<input type="submit" name="logoutButton" value="logoutButton" id="logoutButton">
 					</form>
 
 

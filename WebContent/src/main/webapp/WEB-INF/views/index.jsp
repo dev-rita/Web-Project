@@ -1269,6 +1269,7 @@
         </script>
 
 	<script src="./resources/js/application.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/notification.js" type="text/javascript"></script>
 	<%--<script src="./resources/js/apps/search.js" type="text/javascript"></script> --%>
 	<script>
         $(function () {

@@ -10,8 +10,7 @@
 						</div>
 						<form action="signup_ok" method="post" onsubmit="return signup_check();"  class="form-signup form-user panel-body" id="loginForm" autocomplete="off">
 						<%-- autocomplete=off는 자동완성 기능을 해제하는 기능이다. --%>
-							<input type="hidden" name="user_id" value="${user_id}">
-							<%-- 세션에 저장한 아이디를 가져옴 --%>
+							<%--<input type="hidden" name="user_id" value="${user_id}"> --%>
 							<fieldset>
 								<input type="text" id="id" name="mem_id" class="form-control input-sm" placeholder="아이디" value="">
 								<button type="button" id="idchk" class="form-control input-sm" onclick="id_check();" value="N">아이디 중복 확인</button>
