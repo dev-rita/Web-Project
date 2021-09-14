@@ -8,7 +8,7 @@
  	
  	<!-- 커뮤니티 목록보기 -->
  	<select id="board_list" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
- 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
+ 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_cate,b_tag
  		from (select * from board  
  		<where>
  			<if test="find_field == ''"></if><!-- 검색전 -->
@@ -20,6 +20,74 @@
  			</if>
  		</where>
  		order by b_no desc)) 
+ 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+ 	</select>
+ 	
+ 	<!-- 커뮤니티 추천순 목록 -->
+ 	<select id="board_list_vote" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+ 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
+ 		from (select * from board  
+ 		<where>
+ 			<if test="find_field == ''"></if><!-- 검색전 -->
+ 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
+ 			b_title like #{find_name}<!-- like는 검색 연산자 -->
+ 			</if>
+ 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
+ 			b_cont like #{find_name}
+ 			</if>
+ 		</where>
+ 		order by b_rec desc)) 
+ 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+ 	</select>
+ 	
+ 	<!-- 커뮤니티 댓글순 목록 -->
+ 	<select id="board_list_note" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+ 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
+ 		from (select * from board  
+ 		<where>
+ 			<if test="find_field == ''"></if><!-- 검색전 -->
+ 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
+ 			b_title like #{find_name}<!-- like는 검색 연산자 -->
+ 			</if>
+ 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
+ 			b_cont like #{find_name}
+ 			</if>
+ 		</where>
+ 		order by b_replycnt desc)) 
+ 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+ 	</select>
+ 	
+ 	<!-- 커뮤니티 스크랩순 목록 추가되면 수정필요 -->
+ 	<select id="board_list_scrap" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+ 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
+ 		from (select * from board  
+ 		<where>
+ 			<if test="find_field == ''"></if><!-- 검색전 -->
+ 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
+ 			b_title like #{find_name}<!-- like는 검색 연산자 -->
+ 			</if>
+ 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
+ 			b_cont like #{find_name}
+ 			</if>
+ 		</where>
+ 		order by b_rec desc)) 
+ 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+ 	</select>
+ 	
+ 	<!-- 커뮤니티 조회순 목록 -->
+ 	<select id="board_list_view" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+ 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
+ 		from (select * from board  
+ 		<where>
+ 			<if test="find_field == ''"></if><!-- 검색전 -->
+ 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
+ 			b_title like #{find_name}<!-- like는 검색 연산자 -->
+ 			</if>
+ 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
+ 			b_cont like #{find_name}
+ 			</if>
+ 		</where>
+ 		order by b_hit desc)) 
  		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
  	</select>
  	
@@ -40,8 +108,8 @@
  	<!-- 게시글 저장  -->
  	<insert id="b_in" parameterType="com.ywhy.vo.BoardVO">
  	<!-- parameterType은 전달인자 자료형  -->
- 	insert into board (b_no,b_name,b_title,b_cont,b_date)
- 	values(b_no_seq.nextval,#{b_name},#{b_title},#{b_cont},sysdate)
+ 	insert into board (b_no,b_name,b_title,b_cont,b_cate,b_date)
+ 	values(b_no_seq.nextval,#{b_name},#{b_title},#{b_cont},#{b_cate},sysdate)
  	</insert>
  	
  	<!-- 조회수 증가 -->

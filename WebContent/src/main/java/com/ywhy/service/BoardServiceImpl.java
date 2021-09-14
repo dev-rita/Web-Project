@@ -25,7 +25,26 @@ public class BoardServiceImpl implements BoardService {
 		return this.boardDao.getBoardList(b);
 	}
 
+	@Override
+	public List<BoardVO> getBoardListVote(BoardVO b) {
+		return this.boardDao.getBoardListVote(b);
+	}
+	
+	@Override
+	public List<BoardVO> getBoardListNote(BoardVO b) {
+		return this.boardDao.getBoardListNote(b);
+	}
 
+	@Override
+	public List<BoardVO> getBoardListScrap(BoardVO b) {
+		return this.boardDao.getBoardListScrap(b);
+	}
+	
+	@Override
+	public List<BoardVO> getBoardListView(BoardVO b) {
+		return this.boardDao.getBoardListView(b);
+	}
+	
 	@Override
 	public void insertBoard(BoardVO b) {
 		this.boardDao.insertBoard(b);

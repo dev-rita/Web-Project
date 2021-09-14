@@ -306,7 +306,7 @@
 					
 					<div class="note-evaluate-wrapper">
 						<!-- 추천 -->
-						<a href="b_recommend?b_no=${b.b_no}&page=${page}&state=recp" role="button" data-type="dissent" data-eval="true">
+						<a href="javascript://" role="button" data-type="dissent" data-eval="true" id="rec">
 						<i class="fa fa-angle-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
 						</a>
 						<!-- 추천수 -->
@@ -745,7 +745,31 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
  <script src="./resources/js/apps/vote.js" type="text/javascript"></script>
  <script src="./resources/js/apps/scrap.js" type="text/javascript"></script>
  <script src="./resources/js/apps/article.js" type="text/javascript"></script>
- <script src="./resources/js/reply.js" type="text/javascript"></script>
+ <script src="./resources/js/board/reply.js" type="text/javascript"></script>
+ 
+ <script>
+ 	//게시글 추천
+	$('#rec').on("click",function(){
+
+		var b_no=$('#b_no').text();
+
+        $.ajax({
+           type:'post',
+           url:'/controller/recommend/'+b_no,
+           headers:{
+              "Content-Type" : "application/json",
+              "X-HTTP-Method-Override" : "POST"
+           },
+           dataType:'text',
+           success:function(result){//받아오는 것이 성공시 호출됨
+              if(result == 'SUCCESS'){
+                 alert('추천 되었습니다!');
+                 location.reload();//새로 고침->단축키는 f5               
+              }
+           }
+        });
+      });
+ </script>
 
  <script>
     (function(d, s, id) {

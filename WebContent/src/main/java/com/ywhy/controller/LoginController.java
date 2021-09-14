@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ywhy.service.AdminService;
+//import com.ywhy.service.AdminService;
 import com.ywhy.service.MailSendService;
 import com.ywhy.service.MemberService;
 import com.ywhy.vo.MemberVO;
@@ -27,8 +27,8 @@ import pwdconv.PwdChange;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private AdminService adminService;
+//	@Autowired	
+//	private AdminService adminService;
 	
 	@Autowired
 	private MemberService memberService;

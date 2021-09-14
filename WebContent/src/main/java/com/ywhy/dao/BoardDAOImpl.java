@@ -24,7 +24,27 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public List<BoardVO> getBoardList(BoardVO b) {
 		return this.sqlSession.selectList("board_list", b);
-	}//게시판 목록
+	}//게시판 목록 (최신순)
+	
+	@Override
+	public List<BoardVO> getBoardListVote(BoardVO b) {
+		return this.sqlSession.selectList("board_list_vote", b);
+	}//게시판 목록 추천순
+	
+	@Override
+	public List<BoardVO> getBoardListNote(BoardVO b) {
+		return this.sqlSession.selectList("board_list_note", b);
+	}//게시판 목록 댓글순
+	
+	@Override
+	public List<BoardVO> getBoardListScrap(BoardVO b) {
+		return this.sqlSession.selectList("board_list_scrap", b);
+	}//게시판 목록 추천순
+	
+	@Override
+	public List<BoardVO> getBoardListView(BoardVO b) {
+		return this.sqlSession.selectList("board_list_view", b);
+	}//게시판 목록 댓글순
 
 	@Override
 	public void insertBoard(BoardVO b) {

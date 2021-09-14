@@ -35,7 +35,7 @@ public class BoardController {
 	
 	//자료실 목록
 		@RequestMapping("/b_community")//get or post로 접근하는 매핑주소를 처리
-		public String community(Model listM, HttpServletRequest request, BoardVO b) {
+		public String b_community(Model listM, HttpServletRequest request, BoardVO b ,String sort) {
 			
 			/* 페이징 관련 소스 추가 */
 			int page=1;//현재 페이지 번호
@@ -59,7 +59,6 @@ public class BoardController {
 			
 			int totalCount=this.boardService.getListCount(b);//총 레코드 개수
 			
-			List<BoardVO> blist=this.boardService.getBoardList(b);//목록 보기
 			
 			//총페이지
 			int maxpage=(int)((double)totalCount/limit+0.95);
@@ -68,6 +67,21 @@ public class BoardController {
 			//현재 페이지에 보여질 마지막 페이지
 			int endpage=maxpage;
 			if(endpage>startpage+10-1) endpage=startpage+10-1;
+			
+			List<BoardVO> blist=null;
+			
+			if((sort==null)||(sort.equals("id"))) {
+				blist=this.boardService.getBoardList(b);//목록보기
+				sort="id";
+			}else if(sort.equals("voteCount")) {
+				blist=this.boardService.getBoardListVote(b);//추천순으로 정렬
+			}else if(sort.equals("noteCount")) {
+				blist=this.boardService.getBoardListNote(b);//댓글순으로 정렬
+			}else if(sort.equals("scrapCount")) {
+				blist=this.boardService.getBoardListScrap(b);//스크랩순으로 정렬
+			}else if(sort.equals("viewCount")) {
+				blist=this.boardService.getBoardListView(b);//조회순으로 정렬
+			}
 			
 			listM.addAttribute("blist", blist);//blist속성 키이름에 목록을 저장
 			listM.addAttribute("totalCount",totalCount);
@@ -78,12 +92,15 @@ public class BoardController {
 			listM.addAttribute("find_field", find_field);//검색필드
 			listM.addAttribute("find_name",find_name);//검색어
 			listM.addAttribute("blank_find_name",blank_find_name);//공백 포함 검색어
+			listM.addAttribute("sort",sort);//정렬
+			
+			
 			return "board/b_community";
 		}//b_community
 		
 		
 		@RequestMapping("/b_questions")//get or post로 접근하는 매핑주소를 처리
-		public String questions(Model listM, HttpServletRequest request, BoardVO b) {
+		public String b_questions(Model listM, HttpServletRequest request, BoardVO b) {
 			
 			return "board/b_questions";
 		}//b_questions
@@ -104,7 +121,7 @@ public class BoardController {
 		
 		//자료실 저장
 		@PostMapping("/b_create_ok")//post로 접근하는 매핑주소 처리
-		public String bbs_write_ok(BoardVO b,HttpServletRequest request)throws Exception{
+		public String b_create_ok(BoardVO b,HttpServletRequest request)throws Exception{
 			String saveFolder=request.getRealPath("resources/upload");//톰캣에 인식하는 실제 이진 파일 업로드 서버 경로
 			int fileSize=5*1024*1024;//이진파일 최대크기
 			MultipartRequest multi=null;//이진파일을 받을 변수 선언
@@ -116,6 +133,8 @@ public class BoardController {
 			String b_title=multi.getParameter("b_title");
 			String b_pwd=multi.getParameter("b_pwd");
 			String b_cont=multi.getParameter("b_cont");
+			String b_cate=multi.getParameter("b_cate");
+			String b_tag=multi.getParameter("b_tags");
 			
 			File upFile=multi.getFile("b_file");//첨부한 이진파일을 가져옴.
 			
@@ -147,7 +166,7 @@ public class BoardController {
 				b.setB_file(fileDBName);
 			}
 			
-			b.setB_name(b_name); b.setB_title(b_title); b.setB_pwd(b_pwd); b.setB_cont(b_cont);
+			b.setB_name(b_name); b.setB_title(b_title); b.setB_pwd(b_pwd); b.setB_cont(b_cont);b.setB_cate(b_cate);b.setB_tag(b_tag);
 			
 			this.boardService.insertBoard(b);//자료실 저장
 			return "redirect:/b_community";//목록보기로 이동
@@ -188,8 +207,6 @@ public class BoardController {
 				cm.setViewName("board/b_reply");
 			}else if(state.contentEquals("edit")){//수정폼
 				cm.setViewName("board/b_edit");
-			}else {
-				cm.setViewName("board/b_cont");
 			}
 			
 			return cm;
@@ -210,20 +227,23 @@ public class BoardController {
 			
 		}//b_del_ok
 		
-		@RequestMapping("/b_recommend")//게시물 추천 관련
-		public String b_recommend (int b_no, HttpServletRequest request, String state) throws Exception{
-			int page=1;
-			if(request.getParameter("page")!=null) {
-				page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장시킴.
-			}
-
-			if(state.equals("recp")) {//게시글 내 추천
+		@RequestMapping(value="/recommend/{b_no}",method=RequestMethod.POST)//게시물 추천 관련
+		public ResponseEntity<String> recommend (@PathVariable("b_no") int b_no) {
+		
+			ResponseEntity<String> entity=null;
+			try {
+				
 				this.boardService.b_recommendp(b_no);
-				}else if(state.equals("recm")) {//게시글 내 반대
-				this.boardService.b_recommendm(b_no);	
-				}
+				
+				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+				//댓글 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+				//예외 에러가 발생하면 예외 에러 메시지와 나쁜 상태 코드가 반환
+			}
 			
-			return 	"redirect:/b_cont?b_no="+b_no+"&page="+page+"&state="+state;
+			return entity;
 		}
 		
 		@RequestMapping("/b_tag")//get or post로 접근하는 매핑주소를 처리

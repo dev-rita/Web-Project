@@ -8,6 +8,10 @@ public interface BoardDAO {
 
 	int getListCount(BoardVO b);
 	List<BoardVO> getBoardList(BoardVO b);
+	List<BoardVO> getBoardListVote(BoardVO b);
+	List<BoardVO> getBoardListNote(BoardVO b);
+	List<BoardVO> getBoardListScrap(BoardVO b);
+	List<BoardVO> getBoardListView(BoardVO b);
 	void insertBoard(BoardVO b);
 	void updateHit(int b_no);
 	BoardVO getBoardCont(int b_no);
