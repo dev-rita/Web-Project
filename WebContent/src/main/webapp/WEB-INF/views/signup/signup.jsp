@@ -1,5 +1,9 @@
-<jsp:include page="../include/header.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>YWHY - 회원가입</title>
+<jsp:include page="../include/header.jsp"/>
 
 			<div id="create-user" class="content" role="main">
 				<h3 class="content-header">회원가입</h3>
@@ -17,7 +21,8 @@
 								<span id="idcheck"></span>
 								<input type="password" id="pwd" name="mem_pwd" class="form-control input-sm" placeholder="비밀번호" value="">
 								<span id="pwdcheck"></span>
-								<input type="text" id="email" name="mem_mail" style="width: 100%" class="form-control input-sm" placeholder="이메일" value=""> 
+								<input type="text" id="email" name="mem_mail" style="width: 100%" class="form-control input-sm" placeholder="이메일" value="">
+								<button type="button" id="emailchk" class="form-control input-sm" onclick="email_check();" value="N">이메일 중복 확인</button> 
 								<span id="emailcheck"></span>
 								<input type="text" id="name" name="mem_name" class="form-control input-sm" placeholder="이름" value=""> 
 								<span id="namecheck"></span>
@@ -60,36 +65,7 @@
 			
 			<div class="right-banner-wrapper"></div>
 			
-			<footer class="index_footer">
-				<div class="footer_box">
-					<div class="footer_logo">
-						<img src="./resources/images/logo_gray.png" style="width: 55px; height: 55px;">
-					</div>
-					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
-						이의수 이승연 정희선 | <strong>사업자번호</strong>: 404-99-12536 <br> <strong>주소</strong>:
-						서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) | <strong>문의</strong>:
-						info@ywhy.kr
-						<hr style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="intro_about">About YWHY</a> | 
-						<a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a> 
-						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github">
-							<i class="fab fa-github fa-3x"></i>
-						</a>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
-	<script>
-		var contextPath = "";
-		var encodedURL = "%2Fuser%2Fregister";
-	</script>
-	<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
-	<script src="./resources/js/application.js" type="text/javascript"></script>
-	<script src="./resources/js/apps/member.js" type="text/javascript"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<%--<script src="./resources/js/apps/search.js" type="text/javascript"></script> --%>
+<jsp:include page="../include/footer.jsp"/>
 
 	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -103,6 +79,15 @@
 		</div>
 	</div>
 
+	<script>
+		var contextPath = "";
+		var encodedURL = "%2Fuser%2Fregister";
+	</script>
+	
+	<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
+	<script src="./resources/js/application.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/member.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 	<div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;">
@@ -117,5 +102,6 @@
 				style="width: 100%; height: 100%;"></iframe>
 		</div>
 	</div>
+
 </body>
 </html>

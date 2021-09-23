@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
+import pwdconv.PwdChange;
+
 @Service("mailSendService")
 public class MailSendServiceImpl implements MailSendService {
 	
@@ -65,6 +67,37 @@ public class MailSendServiceImpl implements MailSendService {
 			e.printStackTrace();
 		}
 		return authKey;
+	}
+
+	@Override
+	public void sendFindId(String mem_mail, String mem_id, HttpServletRequest request) {
+		MimeMessage mail=this.mailSender.createMimeMessage();
+		String mailContent="<h1>아이디 찾기</h1><br>"
+				+ "<font color='black' size='4'>회원님의 아이디는 <b>" + mem_id + "</b> 입니다.</font><br><br>";
+		try {
+			mail.setSubject("YWHY - 문의하신 계정 정보", "utf-8");
+			mail.setText(mailContent, "utf-8", "html");
+			mail.addRecipient(Message.RecipientType.TO, new InternetAddress(mem_mail));
+			this.mailSender.send(mail);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void sendFindPwd(String mem_mail, String ran_pwd, HttpServletRequest request) {
+		MimeMessage mail=this.mailSender.createMimeMessage();
+		String mailContent="<h1>임시 비밀번호</h1><br>"
+				+ "<font color='black' size='4'>회원님의 임시 비밀번호는 <b>" + ran_pwd + "</b> 입니다.</font><br><br>"
+				+ "<font color='black' size='4'>**타인에게 노출을 권장하지 않습니다.**</font>";
+		try {
+			mail.setSubject("YWHY - 문의하신 계정 정보", "utf-8");
+			mail.setText(mailContent, "utf-8", "html");
+			mail.addRecipient(Message.RecipientType.TO, new InternetAddress(mem_mail));
+			this.mailSender.send(mail);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

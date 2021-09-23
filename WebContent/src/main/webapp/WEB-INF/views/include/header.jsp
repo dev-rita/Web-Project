@@ -1,24 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<title>YWHY - Better Developer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="_csrf_parameter" content="_csrf">
 <meta name="_csrf_header" content="X-CSRF-TOKEN">
 <meta name="_csrf" content="5bf6f973-eaae-4eb3-a0b1-166384b12359">
+
 <link rel="shortcut icon" href="./resources/images/logo/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="./resources/images/logo/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="114x114" href="./resources/images/logo/apple-icon-144x144.png">
-<link
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
-<meta property="og:image"
-	content="https://okky.kr/assets/images/okky_logo_fb.png">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="./resources/css/application2.css">
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
@@ -165,7 +157,7 @@
 						<div class="avatar-info">
 							<a class="nickname" href="signup/myinfo.jsp"><b>${m.mem_nick}</b></a>
 							<div class="activity block">
-								<i class="fas fa-bolt"></i> 0
+								<i class="fas fa-bolt"></i> ${m.mem_point}
 							</div>
 						</div>
 					</div>
@@ -197,7 +189,7 @@
 							<h3 class="popover-title"></h3>
 							<div class="popover-footer clearfix" id="user-func-popover">
 								<label href="" for="logoutButton" class="popover-btn"><i class="fa fa-sign-out"></i> 로그아웃</label>
-								<a href="signup/Editinfo.jsp" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
+								<a href="editinfo" class="popover-btn"><i class="fa fa-user"></i> 정보수정</a>
 							</div>
 						</div>
 					</script>
@@ -225,5 +217,14 @@
 							<span class="nav-sidebar-label">커뮤니티</span>
 						</a>
 					</li>
+					<c:if test="${m.mem_class == 9}">
+					<li>
+						<a href="admin" class="link" >
+							<i class="nav-icon fas fa-hat-wizard"></i>
+							<span class="nav-sidebar-label">Manager</span>
+						</a>
+					</li>
+					</c:if>
 				</ul>
+				
 			</div>

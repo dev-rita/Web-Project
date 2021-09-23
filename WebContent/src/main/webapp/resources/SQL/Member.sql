@@ -18,7 +18,8 @@ create table ywhyMember(
 --ywhyMember테이블 검색
 select * from YWHYMEMBER;
 
-
+--ywhyMember테이블 중 회원 하나 관리자 권한 주기
+update YWHYMEMBER set mem_class=9 where mem_id='jungsun8261';
 
 
 

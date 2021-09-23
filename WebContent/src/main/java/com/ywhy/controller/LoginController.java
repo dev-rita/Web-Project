@@ -1,8 +1,10 @@
 package com.ywhy.controller;
 
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ywhy.dto.LoginDTO;
 import com.ywhy.service.AdminService;
 import com.ywhy.service.MailSendService;
 import com.ywhy.service.MemberService;
@@ -35,12 +38,6 @@ public class LoginController {
 	
 	@Autowired
 	private MailSendService mailSendService;
-	
-	/*로그인 폼 - 관리자,일반 사용자*/
-	@GetMapping("/login")
-	public String login(){
-		return "signup/login";
-	}
 
 	/*회원가입 폼*/
 	@GetMapping("/signup")
@@ -54,13 +51,6 @@ public class LoginController {
 		return "/user/MembershipTermsandConditions";
 	}
 	
-	/*회원가입 완료 후 메일 확인하라는 안내 페이지*/
-	@GetMapping("/signup_complete")
-	public String signup_complete(Model model,MemberVO m) {
-		model.addAttribute("signup", m);
-		return "signup/complete";
-	}
-	
 	/*아이디 중복 체크*/
 	@PostMapping("/mem_idcheck")
 	public String member_idcheck(String id,HttpServletResponse response) throws Exception{
@@ -72,6 +62,25 @@ public class LoginController {
 		int re=-1;//중복 아이디가 없을 때 반환된 값
 		
 		if(db_id != null) {//중복 아이디가 있는 경우
+			re=1;
+		}
+		
+		out.println(re);//값 반환
+		
+		return null;
+	}
+	
+	/*회원가입 이메일 유효성 검증*/
+	@PostMapping("/mem_mailcheck")
+	public String mem_mailcheck(String email,HttpServletResponse response)throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		
+		MemberVO db_id=this.memberService.emailCheck(email);//db로부터 이메일 중복 검색
+		
+		int re=-1;//중복 이메일이 없을 때 반환된 값
+		
+		if(db_id != null) {//중복 이메일이 있는 경우
 			re=1;
 		}
 		
@@ -113,6 +122,13 @@ public class LoginController {
 
 	}
 	
+	/*회원가입 완료 후 메일 확인하라는 안내 페이지*/
+	@GetMapping("/signup_complete")
+	public String signup_complete(Model model,MemberVO m) {
+		model.addAttribute("signup", m);
+		return "signup/complete";
+	}
+	
 	/*회원 이메일 인증 후 회원가입 최종 성공*/
 	@GetMapping("/signup_confirm")
 	public ModelAndView signup_confirm(@RequestParam Map<String,String> map,ModelAndView mav) {
@@ -121,35 +137,109 @@ public class LoginController {
 		//email,key가 일치할 경우 mem_key 업데이트
 		this.memberService.updatefinalKey(map);
 		
-		//mav.addObject("display","view/signup/confirm.jsp");
 		mav.setViewName("signup/confirm");
 		
 		return mav;
 	}
 	
-//	@PostMapping("/login_check")
-//	public String login_check(String login_id,String login_pwd,HttpSession session,HttpServletResponse response) throws Exception {
-//		response.setContentType("text/html;charset=utf-8");
-//		PrintWriter out= response.getWriter();
-//		
-//		MemberVO m=this.memberService.loginCheck(login_id);
-//		
-//		int re=-1;//로그인이 성공일 때
-//		if(m == null) {//일치하는 아이디가 없는 경우
-//			re=0;
-//			out.println(re);
-//		}else {
-//			if(!m.getMem_pwd().equals(PwdChange.getPassWordToXEMD5String(login_pwd))) {
-//				re=0;
-//				out.println(re);
-//			}
-//		}
-//		return null;
+	/*아이디 찾기*/
+	@GetMapping("/findId")
+	public String findId() {
+		return "user/find/findid";
+	}
+	
+	/*아이디,비번 찾기 메일 작성 후 메일 확인하라는 안내 페이지*/
+	@GetMapping("/find_lookmail")
+	public String find_lookmail() {
+		return "user/find/lookmail";
+	}
+	
+	/*아이디 찾기 이메일 입력 후 메일보내기*/
+	@PostMapping("/findId_ok")
+	public String findId_ok(String find_email,HttpServletRequest request,HttpServletResponse response)throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		
+		MemberVO m=this.memberService.idFind(find_email); //메일 검색
+		
+		int re=1;
+		if(m == null) {
+			re=0;
+		}else {
+			this.mailSendService.sendFindId(m.getMem_mail(),m.getMem_id(),request);
+		}
+		out.println(re);
+		
+		return null;
+	}
+	
+	/*비번 찾기*/
+	@GetMapping("/findPwd")
+	public String findPwd() {
+		return "user/find/findpwd";
+	}
+	
+	/*비번 찾기 아이디,이메일 입력 후 메일 보내기*/
+	@PostMapping("/findPwd_ok")
+	public String findPwd_ok(String find_id2,String find_email2,MemberVO m,HttpServletRequest request,HttpServletResponse response)throws Exception{
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+	
+		m.setMem_id(find_id2); m.setMem_mail(find_email2);//아이디와 이메일을 입력받음
+		MemberVO pwd=this.memberService.pwdFind(m);//입력받은 회원 아이디와 이름을 기준으로 오라클로부터 회원정보 검색
+		
+		int re=1;
+		if(pwd == null) {
+			re=0;
+		}else {
+			Random r=new Random();
+			int pwd_random=r.nextInt(100000);//임의의 정수 숫자 난수를 발생시킴
+			String ran_pwd=Integer.toString(pwd_random);//임시 정수 비번을 문자열로 변경
+			m.setMem_pwd(PwdChange.getPassWordToXEMD5String(ran_pwd));//임시 비번을 암호화
+			
+			this.memberService.updatePwd(m);//임시 비밀번호를 수정
+			
+			this.mailSendService.sendFindPwd(m.getMem_mail(),ran_pwd,request);//임시 비밀번호 메일로 발송
+		}
+		out.println(re);
+		
+		return null;
+	}
+	
+//	/*비밀번호 변경 폼*/
+//	@GetMapping("/passwordChange")
+//	public String passwordChange() {
+//		return "user/find/passwordChange";
 //	}
+//	
+//	/*비밀번호 변경 완료 폼*/
+//	@PostMapping("/passwordChange_ok")
+//	public String passwordChange_ok(MemberVO m,HttpServletResponse response)throws Exception {
+//		response.setContentType("text/html;charset=utf-8");
+//		PrintWriter out=response.getWriter();
+//		
+//		System.out.println("비밀번호 암호화 전: "+m.getMem_pwd());
+//		m.setMem_pwd(PwdChange.getPassWordToXEMD5String(m.getMem_pwd()));//비밀번호 암호화
+//		System.out.println("비밀번호 암호화 후: "+m.getMem_pwd());
+//		
+//		this.memberService.updatePwd(m);
+//		
+//		out.println("<script>");
+//		out.println("alert('비밀번호 변경이 완료되었습니다.)';");
+//		out.println("</script>");
+//
+//		return "redirect:/login";
+//	}
+	
+	/*로그인 폼 - 관리자,일반 사용자*/
+	@GetMapping("/login")
+	public String login(){
+		return "signup/login";
+	}
 	
 	/*관리자 생성 + 일반 사용자,관리자 로그인 인증*/
 	@PostMapping("/login_ok")
-	public String login_ok(/*AdminVO a,*/String login_id,String login_pwd,HttpSession session,HttpServletResponse response,HttpServletRequest request) throws Exception {
+	public String login_ok(/*AdminVO a,*/String login_id,String login_pwd,HttpSession session,HttpServletResponse response,Model model) throws Exception {
 		//java.sql.SQLException: 부적합한 열 유형: 1111 - 매개변수와 뷰페이지의 네임 파라미터가 같지 않아서 생긴 에러
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out= response.getWriter();
@@ -170,23 +260,32 @@ public class LoginController {
 //		//AdminVO admin_pwd=this.adminService.adminLiginCheck(a.getAdmin_id());//관리자 로그인 체크
 
 		//일반 사용자 로그인
-		int re=-1;//로그인이 성공일 때
+		int re=1;//로그인이 성공일 때
 		if(m == null) {//일치하는 아이디가 없는 경우
 			re=0;		
 		}else {
 			if(!m.getMem_pwd().equals(PwdChange.getPassWordToXEMD5String(login_pwd))) {
 				re=0;	
 			}else {
-				//session.setAttribute("id", login_id);
+				//model.addAttribute("m",m);
 				session.setAttribute("m",m);
-				if(request.getParameter("remember_me") != null) {
-					Cookie loginCookie=new Cookie("loginCookie",session.getId());
-					loginCookie.setPath(".");
-					loginCookie.setMaxAge(60*60*24*7);
-					response.addCookie(loginCookie);
-				}
-				Object destination=session.getAttribute("destination");
-				response.sendRedirect(destination!=null ? (String)destination : ".");
+//				if(request.getParameter("useCookie") != null) {
+//					//쿠키 생성
+//					//7일 기간 사이에 접속한 적이 있다는 것을 확인한 뒤 과거의 로그인 시점에 기록된 정보를 이용해 다시 HttpSession에 m이라는 이름으로 MemberVO객체를 보관한다.
+//					Cookie loginCookie=new Cookie("loginCookie",session.getId());
+//					loginCookie.setPath(".");
+//					loginCookie.setMaxAge(60*60*24*7);
+//					//쿠키 전송
+//					response.addCookie(loginCookie);
+//				}
+//				
+//				if(l.isUseCookie()) {
+//					int amount=60*60*24*7;//7일
+//					Date sessionLimit=new Date(System.currentTimeMillis()+(1000*amount));//로그인 유지기간 설정
+//					this.memberService.keepLogin(m,session.getId(),sessionLimit)
+//				}
+//				Object destination=session.getAttribute("destination");
+//				response.sendRedirect(destination!=null ? (String)destination : ".");
 			}
 		}
 		out.print(re);

@@ -19,6 +19,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO idCheck(String id) {
 		return this.memberDao.idCheck(id);
 	}
+	
+	@Override
+	public MemberVO emailCheck(String email) {
+		return this.memberDao.emailCheck(email);
+	}
 
 	@Override
 	public void insertMember(MemberVO m) {
@@ -34,11 +39,38 @@ public class MemberServiceImpl implements MemberService {
 	public void updatefinalKey(Map<String, String> map) {
 		this.memberDao.updatefinalKey(map);
 	}
+	
+	@Override
+	public MemberVO idFind(String find_email) {
+		return this.memberDao.idFind(find_email);
+	}
+	
+	@Override
+	public MemberVO pwdFind(MemberVO m) {
+		return this.memberDao.pwdFind(m);
+	}
+	
+	@Override
+	public void updatePwd(MemberVO m) {
+		this.memberDao.updatePwd(m);
+	}
 
 	@Override
 	public MemberVO loginCheck(String login_id) {
 		return this.memberDao.loginCheck(login_id);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

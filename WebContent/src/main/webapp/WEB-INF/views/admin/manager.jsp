@@ -10,12 +10,12 @@
     <title>YWHY manager</title>
     
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="./resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="img/logo_manager.png" rel="shortcut icon">
+    <link href="./resources/admin/img/logo_manager.png" rel="shortcut icon">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="./resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
 
@@ -26,9 +26,9 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="."><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
             	<div class="sidebar-brand-icon">
-                    <img src="img/logo_manager.png" style="width:45px; height:45px;">
+                    <img src="./resources/admin/img/logo_manager.png" style="width:45px; height:45px;">
                 </div>
                 <div class="sidebar-brand-text mx-3">YWHY</div>
             </a>
@@ -38,7 +38,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="manager_index.jsp">
+                <a class="nav-link" href="admin">
                     <i class="fas fa-fw fa-hat-wizard"></i>
                     <span>Manager</span>
                 </a>
@@ -268,25 +268,25 @@
     </a>
 
 	<!-- 희선 js파일 추가 -->
-	<script src="js/todo.js"></script>
-	<script src="js/weather.js"></script>
+	<script src="./resources/admin/js/todo.js" type="text/javascript"></script>
+	<script src="./resources/admin/js/weather.js" type="text/javascript"></script>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./resources/admin/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="./resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./resources/admin/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="./resources/admin/js/sb-admin-2.min.js" type="text/javascript"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="./resources/admin/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="./resources/admin/js/demo/chart-area-demo.js" type="text/javascript"></script>
+    <script src="./resources/admin/js/demo/chart-pie-demo.js" type="text/javascript"></script>
 
 </body>
 

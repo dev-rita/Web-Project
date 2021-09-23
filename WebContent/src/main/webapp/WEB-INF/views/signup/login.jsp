@@ -1,5 +1,9 @@
-<jsp:include page="../include/header.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>YWHY - 로그인</title>
+<jsp:include page="../include/header.jsp"/>
 
 			<div id="edit-user" class="content" role="main">
 				<h3 class="content-header">로그인</h3>
@@ -23,11 +27,12 @@
 								</label>
 							</div>
 							<div id="divUserLogin">
-                    			<button class="btn btn-primary btn-block" type="button" id="btnUserLogin" onclick="login_check();">로그인</button>
+                    			<button class="btn btn-primary btn-block" style="color:#773209" type="button" id="btnUserLogin" onclick="login_check();">로그인</button>
                 			</div>
                 			
 							<div class="signup-block">
-								<a href="../user/find/findid.jsp">계정 찾기</a> 
+								<a href="findId">아이디</a> 
+								<a href="findPwd"> 비밀번호 찾기</a> 
 								<span class="inline-saperator">/</span> 
 								<a href="signup">회원 가입</a>
 							</div>
@@ -53,28 +58,8 @@
 			
 			<div class="right-banner-wrapper"></div>
 
-			<footer class="index_footer">
-				<div class="footer_box">
-					<div class="footer_logo">
-						<img src="./resources/images/logo_gray.png" style="width: 55px; height: 55px;">
-					</div>
-					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
-						이의수 이승연 정희선 | <strong>사업자번호</strong>: 404-99-12536 <br> <strong>주소</strong>:
-						서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) | <strong>문의</strong>:
-						info@ywhy.kr
-						<hr
-							style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="../intro/loginafter_manager_about.jsp">About YWHY</a> | 
-						<a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a> 
-						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github">
-							<i class="fab fa-github fa-3x"></i>
-						</a>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
+<jsp:include page="../include/footer.jsp"/>
+
 	<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 	<script>
             var contextPath = "";

@@ -11,6 +11,11 @@
  		select * from ywhyMember where mem_id=#{id}
  	</select>
  	
+ 	<!-- 이메일 중복 확인 -->
+ 	<select id="m_check2" resultType="m">
+ 		select * from ywhyMember where mem_mail=#{email}
+ 	</select>
+ 	
  	<!-- 회원 저장 -->
  	<insert id="mem_insert">
  		insert into ywhyMember (mem_id,mem_pwd,mem_name,mem_nick,mem_mail,mem_signupdate)
@@ -25,6 +30,21 @@
  	<!-- 회원가임 이메일 인증 완료 -->
  	<update id="up_mem_key">
  		update ywhyMember set mem_key='Y' where mem_key=#{key} and mem_mail=#{email}
+ 	</update>
+ 	
+ 	<!-- 아이디 찾을 때 이메일 확인-->
+ 	<select id="mail_check" resultType="m">
+ 		select * from ywhyMember where mem_mail=#{find_email}
+ 	</select>
+
+	<!-- 비번 찾을 때 아이디,이메일 확인 -->
+	<select id="idmail_check" resultType="m">
+		select * from ywhyMember where mem_id=#{mem_id} and mem_mail=#{mem_mail}
+	</select>
+ 	
+ 	<!-- 비밀번호 임시수정 -->
+ 	<update id="edit_pwd">
+ 		update ywhyMember set mem_pwd=#{mem_pwd} where mem_id=#{mem_id}
  	</update>
  
 	<!-- 사용자 로그인 인증 -->
