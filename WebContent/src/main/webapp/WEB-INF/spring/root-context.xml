@@ -59,8 +59,8 @@
 		<property name="host" value="smtp.gmail.com"/>
 		<!-- <property name="port" value="587"/> -->
 		<!-- username과 password는 보낸사람으로 지정될 이메일과 이메일의 비밀번호 (gmail로 작성해야함) -->
-		<property name="username" value=""/>
-		<property name="password" value=""/>
+		<property name="username" value="ywhy.signup@gmail.com"/>
+		<property name="password" value="ywhy!@#123"/>
 		<property name="javaMailProperties">
 			<props>
 				<!-- 

@@ -19,8 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 import com.ywhy.dto.LoginDTO;
 import com.ywhy.service.AdminService;
+=======
+//import com.ywhy.service.AdminService;
+>>>>>>> 804d9803f4bdcd1e4f86ff1eee39206a6a178703
 import com.ywhy.service.MailSendService;
 import com.ywhy.service.MemberService;
 import com.ywhy.vo.MemberVO;
@@ -30,8 +34,8 @@ import pwdconv.PwdChange;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private AdminService adminService;
+//	@Autowired	
+//	private AdminService adminService;
 	
 	@Autowired
 	private MemberService memberService;

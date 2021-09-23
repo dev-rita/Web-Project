@@ -15,6 +15,7 @@ create table board(
 	,b_date date --등록날짜
 );
 
+select * from board;
 
 insert into board values(b_no_seq.nextval,'김태완',0,'HTML5+CSS3','123','예브게',null,'tag',0,0,0,0,sysdate);
 insert into board values(b_no_seq.nextval,'이의수',0,'JAVASCRIPT','123','동적',null,'tag',0,0,0,0,sysdate);
@@ -49,3 +50,44 @@ where table_name='BOARD';
 alter table board modify b_name constraint board_bname_nn not null;
 
 alter table board drop constraint SYS_C0010412;
+
+--댓글 테이블 생성
+create table board_reply(
+	r_no number(38) primary key --댓글번호
+	,b_no number(38) default 0 --tbl_board테이블의 게시판 번호값만 저장됨. 외래키 제약조건으로 추가 설정.
+	--default 0제약조건은 굳이 해당 컬럼에 레코드를 저장하지 않아도 기본값 0이 저장된다.
+	,replyer varchar2(100) not null --댓글작성자
+	,replytext varchar2(4000) not null --댓글내용
+	,regdate date--댓글등록날짜
+	,updatedate date--댓글수정날짜
+);
+
+select * from board_reply order by r_no desc;
+
+insert into BOARD_reply (r_no,b_no,replyer,replytext,regdate) values(r_no_seq.nextval,41,'kim22','22taewan얼시구절시구askdfkasdlfasdlfas',sysdate);
+
+--외래키 설정
+alter table board_reply add constraint board_reply_b_no_fk --외래키 제약조건명
+foreign key(b_no) references board(b_no) on delete cascade;
+--foreign key(외래키)
+
+--외래키 삭제
+alter table board_reply drop constraint board_reply_b_no_fk;
+
+--댓글 시퀀스 생성
+create sequence r_no_seq
+start with 1
+increment by 1
+nocache;
+
+--rno_seq 시퀀스 다음 번호값 확인
+select rno_seq.nextval from dual;
+
+--컬럼명 추가
+alter table board add b_rec number(38) default 0;
+
+--댓글 수 카운트해 저장하는 컬럼 추가
+alter table board add (b_replycnt number(38) default 0);
+
+--tbl_reply 테이블의 게시물 번호에 해당하는 댓글수를 카운터해서 tbl_board테이블의 replycnt컬럼 댓글수 값을 변경시킴.
+update board set b_replycnt=(select count(r_no) from board_reply where b_no=board.b_no) where b_no>0;

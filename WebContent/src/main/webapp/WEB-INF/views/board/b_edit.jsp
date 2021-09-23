@@ -108,28 +108,28 @@
 							<a href="/user/info/124651" class='avatar-photo'>
 								<img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40"/></a>
 							<div class="avatar-info">
-								<a class="nickname" href="/user/info/124651" title="rita_dev">rita_dev</a>
+								<a class="nickname" href="/user/info/124651" title="${b.b_name}">${b.b_name}</a>
 								<div class="activity">
 									<span class="fa fa-flash"></span> 10
 								</div>
 								<div class="date-created">
-									<span class="timeago" title="2021-07-25T16:04:42">2021-07-25 16:04:42</span>
+									<span class="timeago" title="${b.b_date}">${b.b_date}</span>
 								</div>
 							</div>
 						</div>
             			<div class="content-identity pull-right">
-                			<div class="article-id">#1007659</div>
-                			<div><i class="fa fa-eye"></i> 15</div>
+            			<input type="hidden" name="b_no" value="${b.b_no}" />
+                			<div><i class="fa fa-eye"></i> ${b.b_hit}</div>
             			</div>
         			</div>
         			<div class="panel-body">
-        				<form action="/article/update/1007659" method="post" id="article-form" 
+        				<form action="b_edit_ok?b_no=${b.b_no}&page=${page}" method="post" id="article-form" 
         				class="article-form" role="form" onsubmit="return postForm()">
         					<input type="hidden" name="_method" value="PUT" id="_method">
                 			<fieldset class="form">
 								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
         						<div class="form-group has-feedback">
-           							<div>
+           							<div><!-- 카테고리 -->
                 						<select id="category" name="categoryCode" class="form-control" required="">
                     						<option value="">게시판을 선택해 주세요.</option>
                         					<option value="life" selected="selected" data-external="false"
@@ -145,7 +145,7 @@
         						</div>
 								<div class="form-group has-feedback">
     								<div>
-    									<input type="text" name="title" required="" value="안녕하세요"
+    									<input type="text" name="b_title" required="" value="${b.b_title}"
     									 placeholder="제목을 입력해 주세요." class="form-control" id="title">
     								</div>
 								</div>
@@ -157,21 +157,16 @@
 								</div>
 
 								<div class="form-group has-feedback">
-    								<textarea name="text" id="summernote" rows="20" 
-    								class="form-control input-block-level">&lt;p style=&quot;
-    								color:rgb( 51 , 51 , 51 )&quot;&gt;안녕하세요.&lt;/p&gt;&lt;p style=&quot;
-    								color:rgb( 51 , 51 , 51 )&quot;&gt;처음 글을 써보네요..반갑습니다!&lt;/p&gt;&lt;
-    								p style=&quot;color:rgb( 51 , 51 , 51 )&quot;&gt;요새 너무 날씨가 덥네요..&lt;/p&gt;&lt;
-    								p style=&quot;color:rgb( 51 , 51 , 51 )&quot;&gt;컴퓨터 앞에서 있으니 더 더운것 같아요...&lt;/p&gt;&lt;
-    								p style=&quot;color:rgb( 51 , 51 , 51 )&quot;&gt;다들 더위 조심하세요~&lt;/p&gt;&lt;
-    								p style=&quot;color:rgb( 51 , 51 , 51 )&quot;&gt;&lt;br /&gt;&lt;/p&gt;</textarea>
+    								<textarea name="b_cont" id="summernote" rows="20" 
+    								class="form-control input-block-level">
+    								${b.b_cont}</textarea>
 								</div>
 								<input type="hidden" name="textType" value="HTML" id="textType">
 
                     			<div class="nav" role="navigation">
                         			<fieldset class="buttons">
-	                           			<a href="/article/1007659" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a>
-	                            		<input type="submit" name="update" class="create btn btn-success btn-wide pull-right" action="update" value="저장" id="update">
+	                           			<a href="javascript:window.history.back();" class="btn btn-default btn-wide" onclick="return confirm('정말로 취소하시겠습니까?')">취소</a>
+	                            		<input type="submit" name="update" class="create btn btn-success btn-wide pull-right" value="수정" id="update">
                         			</fieldset>
                     			</div>
 				          	</fieldset>

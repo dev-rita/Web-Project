@@ -261,7 +261,7 @@
 	
 
    		 <div class="nav" role="navigation">
-       	    <a class="create btn btn-success btn-wide pull-right" href="create.jsp"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
+       	    <a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
         	<h4>Tech Q&amp;A</h4>
     	 </div>
 
@@ -272,109 +272,80 @@
 				<div class="avatar clearfix avatar-medium pull-left">
 					<a href="/user/info/124433" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 						<div class="avatar-info"><!-- 작성자 이름, 활동점수, 등록일 -->
-							<a class="nickname" href="/user/info/124433" title="쿠루루루루">쿠루루루루</a>
+							<a class="nickname" href="/user/info/124433" title="${b.b_name}">${b.b_name}</a>
 							<div class="activity"><span class="fa fa-flash"></span> 12</div>
-							<div class="date-created"><span class="timeago" title="2021-07-21T15:54:17">2021-07-21 15:54:17</span></div>
+							<div class="date-created"><span class="timeago" title="${b.b_date}">${b.b_date}</span></div>
 						</div>
 				</div>
 
            	    <div class="content-identity pull-right"><!-- 답글, 조회수 -->
-           			<div class="content-identity-count"><i class="fa fa-comment"></i> 4</div>
-             	    <div class="content-identity-count"><i class="fa fa-eye"></i> 163</div>
+           			<div class="content-identity-count"><i class="fa fa-comment"></i> ${b.b_replycnt}</div>
+             	    <div class="content-identity-count"><i class="fa fa-eye"></i> ${b.b_hit}</div>
            	    </div>
         	</div>
         	<div class="content-container clearfix">
             	<div id="content-body" class="panel-body content-body pull-left">
                 	<div class="content-tags">
-                    	<span class="list-group-item-text article-id">#1004902</span> <!-- 글번호 -->
+                    	<span class="list-group-item-text article-id">&num;</span><span class="list-group-item-text article-id" id="b_no">${b.b_no}</span> <!-- 글번호 -->
                     	<!-- 태그 시작-->
 						<a href="/articles/tech-qna" class="list-group-item-text item-tag label label-info"><i class="fa fa-database"></i> Tech Q&amp;A</a>
 						<a href="/articles/tagged/java" class="list-group-item-text item-tag label label-gray ">java</a>
 						<a href="/articles/tagged/%EC%B6%94%EA%B0%80%EC%A7%88%EB%AC%B8" class="list-group-item-text item-tag label label-gray ">추가질문</a>
 						<!-- 태그 끝-->
               	    </div>
-                	<h2 class="panel-title"> JAVA 입문 초보질문이요</h2> <!-- 제목 -->
+                	<h2 class="panel-title"> ${b.b_title}</h2> <!-- 제목 -->
                		<hr>
                		<article class="content-text" itemprop="articleBody"><!-- 글 내용 시작 -->
-                    	<p>제가 요즘 JAVA를 배우고 있는데.. 주변에서 로또 소스 한번 만들어보라고 숙제 아닌 숙제를 주셨는데요.</p>
-                    	<p>제가 지금까지 배운것들을 이용해서 최선을 다해 만들었는데 곰곰히 보니깐 중복되는 소스들이 많더라고요.</p>
-                    	<p>그래서 반복문을 이용해서 더 간결하고 이쁘게 만들고 싶은데 지금에 제 수준으론 한계가 있어 조언을 구하고자 Q&amp;A적어 봅니다.</p>
-                    	<p>{<!-- --></p>
-                    	<p><span style="white-space:pre">		</span>int Num[] = new int[45];&nbsp; &nbsp; //로또 번호들 묶음</p>
-                    	<p><span style="white-space:pre">		</span>int Lotto[] = new int[6];&nbsp; &nbsp; &nbsp;//마지막으로 출력할 로또 번호들</p>
-                    	<p><span style="white-space:pre">			</span></p>
-                    	<p><span style="white-space:pre">			</span></p>
-                    	<p><span style="white-space:pre">			</span>for(int i=0;i&lt;45;i++){<!-- --></p>
-                    	<p><span style="white-space:pre">				</span>Num[i]=i+1;}&nbsp; &nbsp; &nbsp; // 로또번호 생성</p>
-                    	<p><span style="white-space:pre">		</span></p>
-                    	<p><span style="white-space:pre">		</span>int arr = (int)Math.floor(math.random()*45)&nbsp; // arr은 중복을 제외하기 위한 변수</p>
-                    	<p><span style="white-space:pre">		</span>Lotto[0] = Num[arr]<span style="white-space:pre">	</span></p>
-                    	<p><span style="white-space:pre">		</span></p>
-                    	<p><span style="white-space:pre">		</span>do{<!-- --></p>
-                    	<p><span style="white-space:pre">			</span>int arr = (int)Math.floor(math.random()*45)</p>
-                    	<p><span style="white-space:pre">		</span>}</p>
-                    	<p><span style="white-space:pre">			</span>while(Lotto[0] == Num[arr]);</p>
-                    	<p><span style="white-space:pre">		</span>Lotto[1] = Num[arr]</p>
-                    	<p><span style="white-space:pre">		</span></p>                    	                  
-                    	<p><span style="white-space:pre">		</span>do{<!-- --></p>
-                    	<p><span style="white-space:pre">			</span>int arr = (int)Math.floor(math.random()*45)</p>
-                    	<p><span style="white-space:pre">		</span>}</p>
-                    	<p><span style="white-space:pre">			</span>while(Lotto[0] == Num[arr] || while(Lotto[1] == Num[arr]);</p>
-                    	<p><span style="white-space:pre">		</span>Lotto[2] = Num[arr]</p>
-                    	<p><span style="white-space:pre">		</span></p>
-                    	<p><span style="white-space:pre">		</span>do{<!-- --></p>
-                    	<p><span style="white-space:pre">			</span>int arr = (int)Math.floor(math.random()*45)</p>
-                    	<p><span style="white-space:pre">		</span>}</p>
-                    	<p><span style="white-space:pre">			</span>while(Lotto[0] == Num[arr] || while(Lotto[1] == Num[arr] || while(Lotto[2] == Num[arr] );</p>
-                    	<p><span style="white-space:pre">		</span>Lotto[3] = Num[arr]</p>
-                    	<p><span style="white-space:pre">		</span></p>
-                    	<p><span style="white-space:pre">		</span>do{<!-- --></p>
-                    	<p><span style="white-space:pre">			</span>int arr = (int)Math.floor(math.random()*45)</p>
-                    	<p><span style="white-space:pre">		</span>}</p>
-                    	<p><span style="white-space:pre">			</span>while(Lotto[0] == Num[arr] || while(Lotto[1] == Num[arr] || while(Lotto[2] == Num[arr] || while(Lotto[3] == Num[arr] );</p>
-                    	<p><span style="white-space:pre">		</span>Lotto[4] = Num[arr]</p>
-                    	<p><span style="white-space:pre">		</span></p>
-                    	<p><span style="white-space:pre">		</span>do{<!-- --></p>
-                    	<p><span style="white-space:pre">			</span>int arr = (int)Math.floor(math.random()*45)</p>
-                    	<p><span style="white-space:pre">		</span>}</p>
-                    	<p><span style="white-space:pre">			</span>while(Lotto[0] == Num[arr] || while(Lotto[1] == Num[arr] || while(Lotto[2] == Num[arr] || while(Lotto[3] == Num[arr] || while(Lotto[4] == Num[arr] );</p>
-                    	<p><span style="white-space:pre">		</span>Lotto[5] = Num[arr]</p>
-                    	<p><span style="white-space:pre">		</span></p>
-                    	<p><span style="white-space:pre">		</span>for(int z = 0;z&lt;6;z++){<!-- --></p>
-                    	<p><span style="white-space:pre">			</span>System.out.println(Lotto[z]+"번,|t");}</p>
-                    	<p>}</p>
+                    	${b.b_cont}
               		</article><!-- 글 내용 끝 -->
 
             	</div>
 
             <div id="content-function" class="content-function pull-right text-center">
                 <div class="content-function-group">
-	
+					
 					<div class="note-evaluate-wrapper">
 						<!-- 추천 -->
-						<a href="javascript://" class="note-vote-btn" role="button" data-type="assent" data-eval="true" data-id="2440348">
-						<i id="note-evaluate-assent-2440348" class="fa fa-angle-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
+						<a href="javascript://" role="button" data-type="dissent" data-eval="true" id="rec">
+						<i class="fa fa-angle-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
 						</a>
-						
 						<!-- 추천수 -->
-						<div id="content-vote-count-2440348" class="content-eval-count">2</div>
+						<div id="content-vote-count-2440348" class="content-eval-count">${b.b_rec}</div>
 						
 						<!-- 반대 -->
-						<a href="javascript://" class="note-vote-btn" role="button" data-type="dissent" data-eval="true" data-id="2440348">
-						<i id="note-evaluate-dissent-2440348" class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i>
+						<a href="b_recommend?b_no=${b.b_no}&page=${page}&state=recm" role="button" data-type="dissent" data-eval="true" data-id="2440348">
+						<i class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i>
 						</a>
+					
 					</div>
+					
                 </div>
                 <div class="content-function-group article-scrap-wrapper"><!-- 스크랩 -->
                     <a href="javascript://" id="article-scrap-btn" data-type="scrap"><i class="fa fa-bookmark " data-toggle="tooltip" data-placement="left" title="" data-original-title="스크랩"></i></a>
                     <div id="article-scrap-count" class="content-count">0</div>
                 </div>
             </div>
-            <div class="content-function-cog share-btn-wrapper"><!-- 페이스북 공유 -->
+        
+            <div class="content-function-cog share-btn-wrapper">
+                <div class="dropdown"><!-- 페이스북 공유 -->
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fokky.kr%2Farticle%2F1007659" class="btn-facebook-share"><i class="fa fa-facebook-square fa-fw" data-toggle="tooltip" data-placement="left" title="" data-original-title="페이스북 공유"></i></a>
+                </div>
+
                 <div class="dropdown">
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fokky.kr%2Farticle%2F1004902" class="btn-facebook-share"><i class="fa fa-facebook-square fa-fw" data-toggle="tooltip" data-placement="left" title="" data-original-title="페이스북 공유"></i></a>
+                	<form action="b_del_ok?b_no=${b.b_no}&page=${page}" method="post" name="article-delete-form" id="article-delete-form">
+							<input type="hidden" name="_csrf" value="f95d23e8-1c25-47c1-bc9d-1cf6568f3229">
+               			<input type="hidden" name="_method" value="DELETE" id="_method">
+                        <div class="dropdown">
+                            <a href="javascript://" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="b_cont?b_no=${b.b_no}&page=${page}&state=edit" class=edit><i class="fa fa-edit fa-fw"></i> 수정 </a></li>
+                                    <li><a href="javascript://" id="article-delete-btn"><i class="fa fa-trash-o fa-fw"></i> 삭제 </a></li>   
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
+           
         </div>
     	</div>
 
@@ -416,8 +387,8 @@
 		<div class="panel panel-default clearfix"> <!-- 답변 그룹 -->
        
         <!-- List group -->
-         <ul class="list-group">
-            <li id="note-title" class="list-group-item note-title">
+          <ul class="list-group">
+            <%-- <li id="note-title" class="list-group-item note-title">
                 <h3 class="panel-title">답변 <span id="note-count">4</span></h3>
             </li>
             
@@ -620,7 +591,48 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 						<input type="hidden" name="_method" value="DELETE" id="_method">
                     </form>
                 </li><!-- 답변4 끝 -->
+               --%>
             	
+            	<li id="note-title" class="list-group-item note-title">
+            	<h3 class="panel-title">답변 <span id="note-count">${b.b_replycnt}</span></h3>
+            	</li>
+            	<!-- 답변 목록 시작-->
+            	<li id="replies" style="list-style-type: none;"><div id="replies"></div></li>
+            	
+            	               <!-- 답변 등록 시작-->
+                 <li class="list-group-item note-form clearfix">
+                     
+                        <input type="hidden" name="_csrf" value="2a6e37c5-aeda-4ae0-9dab-2a7651232fc1">
+                           <input type="hidden" name="lastNoteId" value="2502162 " id="lastNoteId">   
+                           <div class="content-body panel-body pull-left">
+                                  <div style="margin-left: 5px;">
+                                     <div class="avatar clearfix avatar-medium ">
+                                 <a href="/user/info/123566" class="avatar-photo">
+                                    <img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
+                                 <div class="avatar-info">
+                                    <a class="nickname" href="/user/info/123566" title="${b.b_name}" id="nickname">${b.b_name}</a>
+                                   <input type="hidden" name="replyer" id="replyWriter" value="{b.b_name}"/>                                  
+                                    <div class="activity block"><span class="fa fa-flash"></span> 0</div>
+                                 </div>
+                              </div>
+                                  </div>
+                                  <fieldset class="form">
+                                      <input type="hidden" name="textType" value="HTML" id="note.textType">
+                                      <textarea name="note.text" id="note-create" name="replytext" placeholder="댓글 쓰기" class="form-control" style="display: block;"></textarea>
+                                  </fieldset>
+                              </div>
+                              <div class="content-function-cog note-submit-buttons clearfix">
+                               <p><a href="javascript://" id="note-create-cancel-btn" class="btn btn-default btn-wide" style="display: none;">취소</a></p>
+                               <input type="submit" name="create" id="btn-create-btn" class="btn btn-success btn-wide" value="등록" disabled="">
+                              </div>
+                       
+               </li>
+               
+               
+            <!-- 답변 등록 끝 -->
+            
+            	
+            	<%-- 이메일 등록해야 답변 가능
            		<li class="list-group-item note-form clearfix">
                 	<div class="panel-body">
                     	<div style="margin-left: 5px;">
@@ -640,11 +652,11 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 	                   		<a href="/user/edit" class="link">이메일 인증</a>을 완료하여야 답변을 등록할 수 있습니다.
 	                    </h5>
 	                 </div>
-           		 </li>
+           		 </li> --%> 
          </ul>
     	</div>
 	</div>
-
+	
 	<form action="/article/dissent/1004902" method="post" name="note-dissent-form" id="note-dissent-form">
 		<input type="hidden" name="_method" value="PUT" id="_method">
 	</form>
@@ -711,6 +723,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
 						<a href="../intro/loginbefore_about.jsp">About YWHY</a> | <a href="../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
 						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
+						
 					</div>
 				</div>
 		</footer>
@@ -732,7 +745,32 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
  <script src="./resources/js/apps/vote.js" type="text/javascript"></script>
  <script src="./resources/js/apps/scrap.js" type="text/javascript"></script>
  <script src="./resources/js/apps/article.js" type="text/javascript"></script>
+ <script src="./resources/js/board/reply.js" type="text/javascript"></script>
  
+ <script>
+ 	//게시글 추천
+	$('#rec').on("click",function(){
+
+		var b_no=$('#b_no').text();
+
+        $.ajax({
+           type:'post',
+           url:'/controller/recommend/'+b_no,
+           headers:{
+              "Content-Type" : "application/json",
+              "X-HTTP-Method-Override" : "POST"
+           },
+           dataType:'text',
+           success:function(result){//받아오는 것이 성공시 호출됨
+              if(result == 'SUCCESS'){
+                 alert('추천 되었습니다!');
+                 location.reload();//새로 고침->단축키는 f5               
+              }
+           }
+        });
+      });
+ </script>
+
  <script>
     (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];

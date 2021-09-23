@@ -145,16 +145,15 @@
                      </div>
                   </div>
                   <ul class="list-sort pull-left">
-                     <li><a href="/articles/life?query=&amp;sort=id&amp;order=desc" data-sort="id" data-order="desc" class="category-sort-link active">최신순</a></li>
-                     <li><a href="/articles/life?query=&amp;sort=voteCount&amp;order=desc" data-sort="voteCount" data-order="desc" class="category-sort-link">추천순</a></li>
-                     <li><a href="/articles/life?query=&amp;sort=noteCount&amp;order=desc" data-sort="noteCount" data-order="desc" class="category-sort-link">댓글순</a></li>
-                     <li><a href="/articles/life?query=&amp;sort=scrapCount&amp;order=desc" data-sort="scrapCount" data-order="desc" class="category-sort-link">스크랩순</a></li>
-                     <li><a href="/articles/life?query=&amp;sort=viewCount&amp;order=desc" data-sort="viewCount" data-order="desc" class="category-sort-link">조회순</a></li>                     
+                     <li><a href="/b_community?query=&amp;sort=id&amp;order=desc" data-sort="id" data-order="desc" class="category-sort-link <c:if test="${(sort==null) || sort.equals('id')}">active</c:if>">최신순</a></li>
+                     <li><a href="/b_community?query=&amp;sort=voteCount&amp;order=desc" data-sort="voteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('voteCount')}">active</c:if>">추천순</a></li>
+                     <li><a href="/b_community?query=&amp;sort=noteCount&amp;order=desc" data-sort="noteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('noteCount')}">active</c:if>">댓글순</a></li>
+                     <li><a href="/b_community?query=&amp;sort=scrapCount&amp;order=desc" data-sort="scrapCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('scrapCount')}">active</c:if>">스크랩순</a></li>
+                     <li><a href="/b_community?query=&amp;sort=viewCount&amp;order=desc" data-sort="viewCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('viewCount')}">active</c:if>">조회순</a></li>                     
                   </ul>
                   
-               <!-- <input type="hidden" name="sort" id="category-sort-input" value="id">
-                <input type="hidden" name="order" id="category-order-input" value="desc"> -->
-                 
+               <input type="hidden" name="sort" id="category-sort-input" value="id">
+                <input type="hidden" name="order" id="category-order-input" value="desc">
                   
                </div>
             </form>
@@ -215,18 +214,19 @@
                         <div class="list-title-wrapper clearrfix">
                            <div class="list-tag clearfix">
                                  <span class="list-group-item-text article-id">&num;${b.b_no}</span><!-- 번호 -->
-                               <a href="/articles/life" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 사는얘기</a><!-- 태그 -->
+                               <a href="/articles/life" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> ${b.b_cate}</a><!-- 태그 -->
                            </div>
                            <h5 class="list-group-item-heading list-group-item-evaluate">
-                                 <a href="/article/1006995">${b.b_title}</a><!-- 제목 -->
+                                 <a href="b_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a><!-- 제목 -->
                             </h5>
                         </div>
                          <div class="list-summary-wrapper clearfix">
                            <div class="list-group-item-summary clearfix">
                                  <ul>
-                                    <li class="item-icon-disabled"><i class="item-icon fa fa-comment"></i>0</li><!-- 댓글 수 -->
-                                    <li class="item-icon-disabled"><i class="item-icon fa fa-thumbs-up"></i>0</li><!-- 추천 수  -->
-                                    <li class=""><i class="item-icon fa fa-eye"></i>${b.b_hit}</li><!-- 조회 수  -->
+                                    <li class="<c:if test="${b.b_replycnt == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-comment"></i>${b.b_replycnt}</li><!-- 댓글 수 -->
+                                    <li class="<c:if test="${b.b_rec == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-thumbs-up"></i>${b.b_rec}</li><!-- 추천 수  -->                               
+                                    <li class="<c:if test="${b.b_hit == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-eye"></i>${b.b_hit}</li><!-- 조회 수  -->
+                                                                   
                                </ul>
                            </div>
                         </div>
@@ -272,7 +272,7 @@
                  </c:if>
                  <c:if test="${page > 1 }">
                  <li class="prev">
-				<a href="b_community?page=${page-1}"> <span>«</span></a>&nbsp;
+				<a href="b_community?page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
 				</li>
 				</c:if>
             
@@ -282,7 +282,7 @@
 						<li class="active"><span>${a}</span></li>
 					</c:if>
 					<c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
-						<li><a href="b_community?page=${a}"><span>${a}</span></a>&nbsp;</li>
+						<li><a href="b_community?page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
 					</c:if>
 				</c:forEach>
                
@@ -291,7 +291,7 @@
                   <span>...</span>
                </li>
                <li>
-                  <a href="b_community?page=${maxpage}">${maxpage}</a>   
+                  <a href="b_community?page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
                </li>
               
                	<c:if test="${page >= maxpage }">
@@ -301,7 +301,7 @@
                	</c:if>
 				<c:if test="${page < maxpage }">
 				 <li class="next">
-					<a href="b_community?page=${page+1}"><span>»</span></a>&nbsp;
+					<a href="b_community?page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
 				 </li>
 				</c:if>
               
@@ -322,7 +322,7 @@
                  </c:if>
                  <c:if test="${page > 1 }">
                  <li class="prev">
-				<a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${page-1}"> <span>«</span></a>&nbsp;
+				<a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
 				</li>
 				</c:if>
 
@@ -332,7 +332,7 @@
 						<li class="active"><span>${a}</span></li>
 					</c:if>
 					<c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
-						<li><a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${a}"><span>${a}</span></a>&nbsp;</li>
+						<li><a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
 					</c:if>
 				</c:forEach>
                
@@ -341,7 +341,7 @@
                   <span>...</span>
                </li>
                <li>
-                  <a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${maxpage}">${maxpage}</a>   
+                  <a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
                </li>
                
                	<c:if test="${page >= maxpage }">
@@ -351,7 +351,7 @@
                	</c:if>
 				<c:if test="${page < maxpage }">
 				 <li class="next">
-					<a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${page+1}"><span>»</span></a>&nbsp;
+					<a href="b_community?find_field=${find_field}&find_name=${blank_find_name}&page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
 				 </li>
 				</c:if>
               

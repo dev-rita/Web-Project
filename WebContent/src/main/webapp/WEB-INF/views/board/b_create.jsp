@@ -133,13 +133,29 @@
 								<div class="form-group has-feedback">
 									<div>
 										
-										<select id="category" name="b_cate" class="form-control" required="">
+										<%--<select id="category" name="b_cate" class="form-control" required="">
 											<option value="">게시판을 선택해 주세요.</option>
 											<option value="q&a" data-external="false"
 												data-anonymity="false">Q&amp;A</option>
 											<option value="community" data-external="false"
 												data-anonymity="false">커뮤니티</option>
+										</select>--%>
+										
+										<select onchange="select(this)" class="form-control" required="">
+											<option value="">게시판을 선택해 주세요.</option>
+											<option value="Q&A" data-external="false"
+												data-anonymity="false">Q&amp;A</option>
+											<option value="community" data-external="false"
+												data-anonymity="false">커뮤니티</option>											
 										</select>
+										<input type="hidden" name="b_cate" id="b_cate" value="">
+										
+										<script>//카테고리 스크립트
+										function select(obj){
+											var selectVal=$(obj).val();
+											document.getElementById('b_cate').value=selectVal;
+										}
+										</script>
 										
 									</div>
 								</div>
@@ -171,6 +187,7 @@
 											action="create" value="등록" id="create">
 										</fieldset>
 									</div>
+								</div>
 							</fieldset>
 						</form>
 					</div>
