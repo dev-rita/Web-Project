@@ -15,7 +15,8 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-
+	
+	//커뮤니티
 	@Override
 	public int getListCount(BoardVO b) {
 		return this.sqlSession.selectOne("b_count",b);
@@ -46,6 +47,34 @@ public class BoardDAOImpl implements BoardDAO {
 		return this.sqlSession.selectList("board_list_view", b);
 	}//게시판 목록 댓글순
 
+	
+	//Q&A
+	   @Override
+	   public int getQnaListCount(BoardVO b) {
+	      return this.sqlSession.selectOne("bq_count",b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQList(BoardVO b) {
+	      return this.sqlSession.selectList("boardQ_list",b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListVote(BoardVO b) {
+	      return this.sqlSession.selectList("boardQ_list_vote", b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListNote(BoardVO b) {
+	      return this.sqlSession.selectList("boardQ_list_note", b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListScrap(BoardVO b) {
+	      return this.sqlSession.selectList("boardQ_list_scrap", b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListView(BoardVO b) {
+	      return this.sqlSession.selectList("boardQ_list_view", b);
+	   }	
+	
+	//조회, 추가, 수정, 삭제
 	@Override
 	public void insertBoard(BoardVO b) {
 		this.sqlSession.insert("b_in",b);
@@ -65,12 +94,23 @@ public class BoardDAOImpl implements BoardDAO {
 	public void editBbs(BoardVO eb) {
 		this.sqlSession.update("b_edit", eb);	
 	}//게시물 수정
+	
+	@Override
+	public void updateLevel(BoardVO rb) {
+		this.sqlSession.update("reply_up",rb);		
+	}//답변 레벨 증가
 
+	@Override
+	public void replyBoard(BoardVO rb) {
+		this.sqlSession.insert("reply_in",rb);		
+	}//답변 저장
+	
 	@Override
 	public void delBoard(int b_no) {
 		this.sqlSession.delete("b_del",b_no);
 	}//게시물 삭제
-
+	
+	//추천반대
 	@Override
 	public void b_recommendp(int b_no) {
 		this.sqlSession.update("b_rec_p",b_no);
@@ -81,6 +121,33 @@ public class BoardDAOImpl implements BoardDAO {
 		this.sqlSession.update("b_rec_m",b_no);
 	}//게시물 반대
 	
+	//태그
+	   @Override
+	   public int getTagListCount(BoardVO b) {
+	      return this.sqlSession.selectOne("tag_count",b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagList(BoardVO b) {
+	      return this.sqlSession.selectList("tag_list",b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListVote(BoardVO b) {
+	      return this.sqlSession.selectList("tag_list_vote",b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListNote(BoardVO b) {
+	      return this.sqlSession.selectList("tag_list_note",b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListScrap(BoardVO b) {
+	      return this.sqlSession.selectList("tag_list_scrap",b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListView(BoardVO b) {
+	      return this.sqlSession.selectList("tag_list_view",b);
+	   }
+	
+	//댓글
 	@Override
 	public List<BoardVO> listReply(int b_no) {
 		return this.sqlSession.selectList("r_list",b_no);

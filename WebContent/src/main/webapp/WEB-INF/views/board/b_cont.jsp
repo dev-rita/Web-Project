@@ -1,258 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="ko" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="ko" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="ko" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="ko" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-
-<html lang="ko" class="no-js">
-<!--<![endif]-->
+<html>
 <head>
+<title>YWHY - ${b.b_title}</title>
 
-    <meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		
-	<title>YWHY - JAVA 입문 초보질문이요</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="_csrf_parameter" content="_csrf">
-	<meta name="_csrf_header" content="X-CSRF-TOKEN">
-	<meta name="_csrf" content="5483808e-cec5-4b25-978e-5953710310a7">
-	<link rel="shortcut icon" href="./resources/images/logo/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" href="/assets/images/icon_57x57.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/images/icon_114x114.png">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<meta property="og:image" content="https://okky.kr/assets/images/okky_logo_fb.png">
-	<link rel="stylesheet" href="./resources/css/application2.css">
-	<script src="https://connect.facebook.net/ko_KR/sdk.js?hash=3311e52b353d8131dec5a2c9f3e6759f" async="" crossorigin="anonymous"></script>
-	<script id="facebook-jssdk" src="//connect.facebook.net/ko_KR/sdk.js#xfbml=1&amp;appId=1539685662974940&amp;version=v2.0"></script>
-	<script src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
-	<script src="https://partner.googleadservices.com/gampad/cookie.js?domain=okky.kr&amp;callback=_gfp_s_&amp;client=ca-pub-8103607814406874&amp;cookie=ID%3D211a8af1bf1f530b-2234a71a69ca00c2%3AT%3D1626532296%3ART%3D1626532296%3AS%3DALNI_Ma3AoN67nu6cpRvWDd1rPPop8KXEg"></script>
-	<script src="https://pagead2.googlesyndication.com/pagead/js/r20210720/r20190131/show_ads_impl_fy2019.js" id="google_shimpl"></script>
-	<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-	<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-M52CW55');</script>
-		<!--[if lt IE 9]>
-			<script src="/js/libs/html5.js"></script>
-			<script src="/assets/libs/respond.src.js"></script>
-			<script src="/assets/libs/html5.js"></script>
-		<![endif]-->
-	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="OKKY">
-	<meta property="og:url" content="https://okky.kr/article/1004902">
-	<meta property="og:description" content=" 제가 요즘 JAVA를 배우고 있는데.. 주변에서 로또 소스 한번 만들어보라고 숙제 아닌 숙제를 주셨는데요.  제가 지금까지 배운것들을 이용해서 최선을 다해 만들었는데 곰곰히 보니깐 중복되는 소스들이 많더라고요.  그래서 반복문을 이용해서 더 간결하고 이쁘게 만들고 싶은데 지금에 제 수준으론 한계가 있어 조언을 구하고자 Q A적어 봅니다.  {    		 ">
-	<meta property="og:title" content="OKKY | JAVA 입문 초보질문이요">
-	<meta property="dable:item_id" content="1004902">
-	<meta property="dable:author" content="쿠루루루루">
-	<meta property="article:section" content="tech-qna">
-	<meta property="article:published_time" content="2021-07-21T15:54:17Z">
-		
-	<meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-	<meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
-	<meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-	<meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-	<meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-	<meta http-equiv="origin-trial" content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<link rel="preload" href="https://adservice.google.co.kr/adsid/integrator.js?domain=okky.kr" as="script">
-	<script type="text/javascript" src="https://adservice.google.co.kr/adsid/integrator.js?domain=okky.kr"></script>
-	<link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=okky.kr" as="script">
-	<script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=okky.kr"></script>
-	<meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-	<meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
-	<meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-	<meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-	<meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-	<meta http-equiv="origin-trial" content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<meta http-equiv="origin-trial" content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-	<style type="text/css"></style>
-	<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">
-	.fb_hidden{position:absolute;top:-10000px;z-index:10001}
-	.fb_reposition{overflow:hidden;position:relative}
-	.fb_invisible{display:none}
-	.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;
-			  font-family:"lucida grande", tahoma, verdana, arial, sans-serif;
-		   	  font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;
-			  letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;
-			  text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;
-			  visibility:visible;white-space:normal;word-spacing:normal}
-	.fb_reset>div{overflow:hidden}
-	@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
-	.fb_animate{animation:fb_transform .3s forwards}
-	.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
-	.fb_dialog_advanced{border-radius:8px;padding:10px}
-	.fb_dialog_content{background:#fff;color:#373737}
-	.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;
-						  cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}
-	.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}
-	.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
-	.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}
-	.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}
-	.fb_dialog_iframe{line-height:0}
-	.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}
-	.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
-										  float:left;padding:5px 0 7px 26px}
-	body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}
-	.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;
-										min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
-	.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}
-	.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}
-	.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}
-	.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}
-	#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;
-									 position:absolute;right:0;top:0;width:100%;z-index:10000}
-	#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
-	.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
-	.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}
-	.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));
-									  border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;
-									  font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;
-									  vertical-align:middle;white-space:nowrap}
-	.fb_dialog_content .dialog_header table{height:43px;width:100%}
-	.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}
-	.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}
-	.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;
-										 border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;
-										 margin-top:3px;max-width:85px;padding:4px 12px;position:relative}
-	.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;
-																margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
-	.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
-	.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
-										border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}
-	.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}
-	#fb_dialog_loader_close{float:left}
-	.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
-	#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;
-							  background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;
-							  background-repeat:no-repeat;height:24px;width:24px}
-	@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-	.fb_iframe_widget{display:inline-block;position:relative}
-	.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
-	.fb_iframe_widget iframe{position:absolute}
-	.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}
-	.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}
-	.fb_iframe_widget_lift{z-index:1}
-	.fb_iframe_widget_fluid{display:inline}
-	.fb_iframe_widget_fluid span{width:100%}
-	.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}
-	.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;
-													animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}
-	.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}
-	.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}
-	.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}
-	.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}
-	.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}
-	.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}
-	.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}
-	.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}
-	.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}
-	.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}
-	.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}
-	.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}
-	.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}
-	.fb_new_ui_mobile_overlay_active{overflow:hidden}
-	@keyframes fb_mpn_landing_page_slide_in{0%{border-radius:50%;margin:0 24px;width:60px}40%{border-radius:18px}100%{margin:0 12px;width:100% - 24px}}
-	@keyframes fb_mpn_landing_page_slide_in_from_left{0%{border-radius:50%;left:12px;margin:0 24px;width:60px}40%{border-radius:18px}100%{left:12px;margin:0 12px;width:100% - 24px}}
-	@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}
-	@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}
-	@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}
-	@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}
-	@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}
-	@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}
-	@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}
-	@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}
-	@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}
-	@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}
-	@keyframes fb_bounce_out_v2_mobile_chat_started{0%{opacity:1;top:0}100%{opacity:0;top:20px}}
-	@keyframes fb_customer_chat_bubble_bounce_in_animation{0%{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70%{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100%{transform:scale(1, 1)}}
-	@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}
-	@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}
-	</style>
-</head>
-<body>
- <div class="layout-container">
-   <div class="main ">
+<jsp:include page="../include/header.jsp"/>
 
 	<div id="article" class="content" role="main">
-
-			<div class="sidebar"><!-- 메뉴시작 -->
-           	 <a href="javascript://" class="sidebar-header"><%-- 반응형 창 좁아질 때 좌측 상단 메뉴 (누르면 펴지고 좁혀지고 함) --%>
-               <i class="fas fa-bars fa-lg" style="color:#773209"></i>
-             </a>
-
-            <h1>
-               <div class="logo">
-                  <a href="../ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
-               </div>
-            </h1>
-
-			<%--
-            <ul id="search-google-icon" class="nav nav-sidebar nav-sidebar-search-wrapper">
-               <li class="nav-sidebar-search"><a href="javascript://"
-                  class="link" id="search-google" data-toggle="popover"
-                  data-trigger="click" data-original-title="" title=""><i
-                     class="fa fa-search"></i></a></li>
-            </ul>
- 			--%>
-
-            <form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=<%=request.getParameter("q")%>" target="_blank">
-            <%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
-               <div class="input-group">
-                  <input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
-                  <span class="input-group-btn">
-                     <button class="btn btn-default btn-sm" type="submit">
-                        <i class="fas fa-search"></i>
-                     </button>
-                  </span>
-               </div>
-            </form>
-
-            <div class="nav-user nav-sidebar">
-               <ul class="nav nav-sidebar">
-                  <li>
-                     <a href="../signup/login.jsp" class="link">
-                        <i class="fas fa-sign-in-alt"></i>
-                        <span class="nav-sidebar-label">로그인</span>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="../signup/signup.jsp" class="link">
-                        <i class="fas fa-users"></i>
-                        <span class="nav-sidebar-label">회원가입</span>
-                     </a>
-                  </li>
-               </ul>
-            </div>
-
-            <ul class="nav nav-sidebar nav-main">
-               <li>
-                  <a href="questions.jsp" class="link">
-                     <i class="nav-icon fas fa-laptop"></i>
-                     <span class="nav-sidebar-label">Q&amp;A</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="community.jsp" class="link">
-                     <i class="nav-icon fas fa-coins"></i>
-                     <span class="nav-sidebar-label">커뮤니티</span>
-                  </a>
-               </li>
-            </ul>
-         </div><!-- 메뉴끝 -->
-
 		 <div class="main-banner-wrapper">
          	<div class="main-banner">
             	<a href="/banner/stats/387" target="_j"><img src="//file.okky.kr/banner/1626398549990.jpg"></a>
@@ -261,8 +16,11 @@
 	
 
    		 <div class="nav" role="navigation">
+   		  <c:if test="${!empty m}">
+   		  <a class="create btn btn-info btn-wide pull-right" style="margin-left:5px;"onclick="location='b_cont?b_no=${b.b_no}&page=${page}&state=reply';"><i class="fa fa-pencil"></i> 답변 글 쓰기</a>
        	    <a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
-        	<h4>Tech Q&amp;A</h4>
+          </c:if>	
+        	<h4>${b.b_cate == '커뮤니티' ? '커뮤니티' : 'Q&amp;A'}</h4>
     	 </div>
 
 	
@@ -288,9 +46,10 @@
                 	<div class="content-tags">
                     	<span class="list-group-item-text article-id">&num;</span><span class="list-group-item-text article-id" id="b_no">${b.b_no}</span> <!-- 글번호 -->
                     	<!-- 태그 시작-->
-						<a href="/articles/tech-qna" class="list-group-item-text item-tag label label-info"><i class="fa fa-database"></i> Tech Q&amp;A</a>
-						<a href="/articles/tagged/java" class="list-group-item-text item-tag label label-gray ">java</a>
-						<a href="/articles/tagged/%EC%B6%94%EA%B0%80%EC%A7%88%EB%AC%B8" class="list-group-item-text item-tag label label-gray ">추가질문</a>
+						<a href="${b.b_cate == '커뮤니티' ? 'b_community' : 'b_questions'}" class="list-group-item-text item-tag label label-info"><i class="fa fa-database"></i> ${b.b_cate}</a>
+						<c:forTokens var="tag" items="${b.b_tag}" delims=",">
+							<a href="b_tag?tag=${tag}" class="list-group-item-text item-tag label label-gray ">${tag}</a>
+						</c:forTokens>
 						<!-- 태그 끝-->
               	    </div>
                 	<h2 class="panel-title"> ${b.b_title}</h2> <!-- 제목 -->
@@ -335,6 +94,7 @@
                 	<form action="b_del_ok?b_no=${b.b_no}&page=${page}" method="post" name="article-delete-form" id="article-delete-form">
 							<input type="hidden" name="_csrf" value="f95d23e8-1c25-47c1-bc9d-1cf6568f3229">
                			<input type="hidden" name="_method" value="DELETE" id="_method">
+                        <c:if test="${m.mem_id.equals(b.mem_id)}">
                         <div class="dropdown">
                             <a href="javascript://" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
                             <ul class="dropdown-menu" role="menu">
@@ -342,6 +102,7 @@
                                     <li><a href="javascript://" id="article-delete-btn"><i class="fa fa-trash-o fa-fw"></i> 삭제 </a></li>   
                             </ul>
                         </div>
+                        </c:if>
                     </form>
                 </div>
             </div>
@@ -600,6 +361,16 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
             	<li id="replies" style="list-style-type: none;"><div id="replies"></div></li>
             	
             	               <!-- 답변 등록 시작-->
+            	 <c:if test="${empty m}">
+                 <li class="list-group-item note-form clearfix">
+                    <div class="panel-body">
+                       <h5 class="text-center" style="background-color:#FFEB3B;padding:0.5em;font-weight: bold;"><a href="login" class="link">로그인</a>을 하시면 댓글을 등록할 수 있습니다.</h5>
+                    </div>
+
+               	</li>
+               </c:if>
+                             
+            	 <c:if test="${!empty m}">
                  <li class="list-group-item note-form clearfix">
                      
                         <input type="hidden" name="_csrf" value="2a6e37c5-aeda-4ae0-9dab-2a7651232fc1">
@@ -627,7 +398,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
                               </div>
                        
                </li>
-               
+               </c:if>
                
             <!-- 답변 등록 끝 -->
             
@@ -780,7 +551,50 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
  </script>
-
+<script>
+getAllList();//댓글목록함수
+function getAllList(){
+	var b_no=$('#b_no').text();//게시판 번호, 자바스크립트에서 jsp 문법인 jstl or el을 사용 가능하다. var b_no=${b.b_no}; js파일에서 에러
+	$.getJSON("/controller/all/"+b_no,function(data){
+		//비동기식으로 받아오는 것이 성공시 받아온 데이터는 data매개변수에 저장
+		var str="";
+		$(data).each(function(){//each()함수로 반복
+			str+= "<li class='list-group-item note-item clearfix' id='r_no"+this.r_no+"'>"
+			+"<div class='content-body panel-body pull-left'>"
+		    +"<div class='note-select-indicator note-deselected'>"
+		    +"<i class='fa fa-comment'></i></div>"
+		    +"<div class='avatar clearfix avatar-medium '>"
+		    +"<a href='/user/info/97440' class='avatar-photo'>"
+		    +"<img src='//www.gravatar.com/avatar/11cea1d9b7f8916b454e3325e9ac3ad9?d=identicon&amp;s=40'></a>"
+		    +"<div class='avatar-info'>"
+		    +"<a class='nickname' href='/user/info/97440' title='"+this.replyer+"'>"+this.replyer+"</a>"
+		    +"<div class='activity'><span class='fa fa-flash'></span> 352</div>"+"<div class='replyLi' data-r_no='"+this.r_no+"' style='display:none;'>"+this.r_no+"</div>"
+		    +"<div class='date-created'><span class='timeago' title='"+this.regdate+"'>"+this.regdate+"</span></div></div>"
+		    +"</div><fieldset class='form'><article id='note-text-"+this.r_no+"' class='list-group-item-text note-text'>"
+			+this.replytext+"</article></fieldset></div>"
+			+"<div class='content-function pull-right text-center'><div class='content-function-group'><div class='note-evaluate-wrapper'>"
+			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='assent' data-eval='true' data-id='"+this.r_no+"'>"
+			+"<i id='note-evaluate-assent-"+this.r_no+"' class='fa fa-angle-up note-evaluate-assent-assent' data-placement='left' data-toggle='tooltip' title='' data-original-title='추천'></i></a>"					
+			
+			+"<div id='content-vote-count-"+this.r_no+"' class='content-eval-count'>"+this.r_hit+"</div>"
+			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='dissent' data-eval='true' data-id='"+this.r_no+"'>"
+			+"<i id='note-evaluate-dissent-"+this.r_no+"' class='fa fa-angle-down note-evaluate-dissent-dissent' data-placement='left' data-toggle='tooltip' title='' data-original-title='반대'></i>"
+			+"</a>"
+			
+			+"<c:if test='${!empty m}'>"
+			+"<div class='dropdown'><a href='javascript://' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-cog' data-toggle='tooltip' data-placement='left' title='' data-original-title='게시물 설정'></i></a>"
+			+"<ul class='dropdown-menu' role='menu'>"
+            +"<li><a href='javascript://' class='note-edit-btn' onclick='replyupdateview("+this.r_no+")'><i class='fa fa-edit fa-fw'></i> 수정 </a></li>"
+            +"<li><a href='javascript://' class='note-delete-btn' onclick='replydelete("+this.r_no+")' ><i class='fa fa-trash-o fa-fw'></i> 삭제 </a></li>   </ul></div>"
+			+"</c:if>"
+			
+			+"</div></div></div></li>"
+			
+		});
+		$('#replies').html(str);//해당영역에 태그와 문자를 함께 변경 적용
+	});//댓글목록
+}//getAllList()
+</script>
  <div id="userPrivacy" class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
  	<div class="modal-dialog">
     	<div class="modal-content"></div>

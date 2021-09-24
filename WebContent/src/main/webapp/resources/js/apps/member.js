@@ -43,16 +43,6 @@
 		$("#email").val("").focus();
 		return false;
 	}
- 
- 	$emailChk=$("#emailchk").val();
-	if($emailChk == "N"){
-		$errortext='<font color="#773209" size="2"><b>중복 확인 버튼을 눌러주세요.</b></font>';
- 		$("#emailcheck").text("");
- 		$("#emailcheck").show();
- 		$("#emailcheck").append($errortext);
- 		$("#email").focus();
- 		return false;
-	}
 	
 	$("#namecheck").hide();
 	if($.trim($("#name").val())==""){
@@ -74,6 +64,7 @@
 		return false;
 	}
 
+
  }
  
  /*중복 아이디 검색*/
@@ -88,7 +79,6 @@
 		$("#idcheck").show(); //idcheck 아이디 영역을 보이게 함.
 		$("#idcheck").append($newtext); //idcheck영역에 문자열을 추가
 		$("#id").val('').focus();
-		return false;
  	};
  	
  	//입력 조합 확인
@@ -98,7 +88,6 @@
  		$("#idcheck").show();
  		$("#idcheck").append($newtext);
  		$("#id").val("").focus();
- 		return false;
  	};
  	
  	//아이디 중복 확인 - $는 jQuery라는 뜻, $.ajax 뜻은 jQuery 내의 아작스 실행
@@ -128,46 +117,25 @@
  	});
  }
  
- /*이메일 중복 확인*/
- function email_check(){
-	$emailcheck = $("#emailcheck");
- 	$mem_mail=$.trim($("#email").val());
+ /*이메일 유효성 확인*/
+ function mail_check() {
+ 	var $emailcheck = $("#emailcheck");
+ 	var $mem_mail = $("#email").val();
  	$emailcheck.hide();
  	
- 	if(!(validate_email($mem_mail))){
+ 	if(validate_email($mem_mail)){
+ 		$emailcheck.text("");
+ 		$emailcheck.show();
+ 		$emailcheck.append("");
+ 	}else{
  		$errortext='<font color="#773209" size="2"><b>이메일 형식에 맞지 않습니다.</b></font>';
  		$emailcheck.text("");
  		$emailcheck.show();
  		$emailcheck.append($errortext);
- 		$("#email").val("").focus();
- 		return false;
- 	} 
- 
- 	$.ajax({
- 		type:"POST",				//데이터를 서버로 보내는 방법
- 		url:"mem_mailcheck", 			//서버 매핑주소
- 		data: {"email":$mem_mail},
- 		datatype: "int", 			//서버의 실행된 결과 값을 사용자로 받아오는 자료형 타입
- 		success: function (data) {	//success는 아작스로 받아오는 것이 성공했을 경우, 서버 데이터를 data변수에 저장
- 			if(data == 1){			//중복 이메일이 있다면
- 				$newtext='<font color="#773209" size="2"><b>중복 이메일 입니다.</b></font>';
- 				$("#emailcheck").text("");
- 				$("#emailcheck").show();
- 				$("#emailcheck").append($newtext);
- 				$("#email").val("").focus();
- 			}else{					//중복 이메일이 아니면
- 				$("#emailchk").val("Y");
- 				$newtext='<font color="#773209" size="2"><b>사용 가능한 이메일입니다.</b></font>';
- 				$("#emailcheck").text("");
- 				$("#emailcheck").show();
- 				$("#emailcheck").append($newtext);
- 			}
- 		},
- 		error: function(){			//비동기식 아작스로 서버 db데이터를 못 가져와서 에러가 발생했을 때 호출되는 함수
- 			alert("data error");
- 		}
- 	});
+ 	}
+ 	return false;
  }
+ $("#email").on("input", mail_check);
  
  /*아이디 정규 표현식*/
  function validate_userid($mem_id){
@@ -181,114 +149,6 @@
   return re.test($mem_mail);
  }
  
- /*아이디 찾기 이메일 검증 */
- function find_check() {
-	$email_check = $("#find_emailcheck");
-	$mem_mail=$.trim($("#find_email").val());
- 	$email_check.hide();
- 	
- 	if(validate_email($mem_mail)){
- 		$email_check.text("");
- 		$email_check.show();
- 		$email_check.append("");
- 	}else{
- 		$errortext='<font color="#773209" size="2"><b>이메일 형식에 맞지 않습니다.</b></font>';
- 		$email_check.text("");
- 		$email_check.show();
- 		$email_check.append($errortext);
- 		return false;
- 	}
- }
- $("#find_email").on("input", find_check);
-
- 
- /*아이디 찾기 이메일 보내기*/
- function find() {
-	$email_check = $("#find_emailcheck");
-	$mem_mail=$.trim($("#find_email").val());
- 	$email_check.hide();
-	
- 	$.ajax({
- 		type:"POST",				//데이터를 서버로 보내는 방법
- 		url:"findId_ok", 				//서버 매핑주소
- 		data: {"find_email":$mem_mail},	//find_email부분은 뷰페이지의 id와 같아야 한다.
- 		datatype: "int", 			//서버의 실행된 결과 값을 사용자로 받아오는 자료형 타입
- 		success: function (data) {	//success는 아작스로 받아오는 것이 성공했을 경우, 서버 데이터를 data변수에 저장
- 			if(data == 0){			//메일이 일치하는 것이 없으면
- 				$errortext='<font color="#773209" size="2"><b>이메일이 올바르지 않습니다.</b></font>';
- 				$("#find_emailcheck").text("");
- 				$("#find_emailcheck").show();
- 				$("#find_emailcheck").append($errortext);
- 				$("#find_email").val("").focus();			
- 			}else{
- 				location="find_lookmail";	
- 			}
- 		},
- 		error: function(){			//비동기식 아작스로 서버 db데이터를 못 가져와서 에러가 발생했을 때 호출되는 함수
- 			$errortext='<font color="#773209" size="2"><b>이메일이 올바르지 않습니다.</b></font>';
- 			$("#find_emailcheck").text("");
- 			$("#find_emailcheck").show();
- 			$("#find_emailcheck").append($errortext);
- 			$("#find_email").val("").focus();
- 		}
- 	});
- }
- 
- /*비밀번호 찾기 아이디,이메일 보내기*/
- function find2() {
-	$email_check2 = $("#find_emailcheck2");
-	$mem_mail2=$.trim($("#find_email2").val());
-	$mem_id2=$.trim($("#find_id2").val());
- 	$email_check2.hide();
-	
- 	$.ajax({
- 		type:"POST",				//데이터를 서버로 보내는 방법
- 		url:"findPwd_ok", 				//서버 매핑주소
- 		data: {"find_email2":$mem_mail2, "find_id2":$mem_id2},	//find_email부분은 뷰페이지의 id와 같아야 한다.
- 		datatype: "int", 			//서버의 실행된 결과 값을 사용자로 받아오는 자료형 타입
- 		success: function (data) {	//success는 아작스로 받아오는 것이 성공했을 경우, 서버 데이터를 data변수에 저장
- 			if(data == 0){			//메일,아이디가 일치하는 것이 없으면
- 				$errortext='<font color="#773209" size="2"><b>아이디 또는 이메일이 올바르지 않습니다.</b></font>';
- 				$("#find_emailcheck2").text("");
- 				$("#find_emailcheck2").show();
- 				$("#find_emailcheck2").append($errortext);			
- 			}else{
- 				location="find_lookmail";	
- 			}
- 		},
- 		error: function(){			//비동기식 아작스로 서버 db데이터를 못 가져와서 에러가 발생했을 때 호출되는 함수
- 			$errortext='<font color="#773209" size="2"><b>아이디 또는이메일이 올바르지 않습니다.</b></font>';
- 			$("#find_emailcheck2").text("");
- 			$("#find_emailcheck2").show();
- 			$("#find_emailcheck2").append($errortext);
- 		}
- 	});
- }
-
- 
- /*비밀번호 변경
- function passwordChange(){
- 	$("#newPassword_check").hide();
- 	$("#newPasswordConfirm_check").hide();
- 	
-	if($.trim($("#newPassword").val())==""){
-		$errortext='<font color="#773209" size="2"><b>새 비밀번호를 입력하세요.</b></font>';
-		$("#newPassword_check").text("");
-		$("#newPassword_check").show();
-		$("#newPassword_check").append($errortext);
-		$("#newPassword").val("").focus();
-		return false;
-	}else if($.trim($("#newPassword").val()) != $.trim($("#newPasswordConfirm").val())) {
-		$errortext='<font color="#773209" size="2"><b>비밀번호 입력이 다릅니다.</b></font>';
-		$("#newPasswordConfirm_check").text("");
-		$("#newPasswordConfirm_check").show();
-		$("#newPasswordConfirm_check").append($errortext);
-		$("#newPasswordConfirm").val("").focus();
-		return false;
-	}
- }
- */
- 
  
  /*로그인*/
  function login_check(){
@@ -299,7 +159,6 @@
 		$("#id_check").show();
 		$("#id_check").append($errortext);
 		$("#login_id").val("").focus();
-		return false;
 	}
 	
 	$("#pwd_check").hide();
@@ -309,7 +168,6 @@
 		$("#pwd_check").show();
 		$("#pwd_check").append($errortext);
 		$("#login_pwd").val("").focus();
-		return false;
 	}	
 	
 	$mem_id=$.trim($("#login_id").val());

@@ -1,106 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html >
-<!--[if lt IE 7 ]> <html lang="ko" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="ko" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="ko" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="ko" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="ko" class="no-js"><!--<![endif]-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		
-<title>YWHY - Article 수정</title>
-		
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="_csrf_parameter" content="_csrf" />
-<meta name="_csrf_header" content="X-CSRF-TOKEN" />
-<meta name="_csrf" content="d63a7b3b-13a3-49d5-9a01-a116f355ec55" />
-<link rel="shortcut icon" href="./resources/images/logo/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="../images/icon_57x57.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../images/icon_114x114.png">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<meta property="og:image" content="https://okky.kr/assets/images/okky_logo_fb.png">
-<link rel="stylesheet" href="./resources/css/application2.css">	
-<script>
-	(function(w,d,s,l,i){
-		w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-		var f=d.getElementsByTagName(s)[0],	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-		j.async=true;
-		j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-		f.parentNode.insertBefore(j,f);
-	})
-	(window,document,'script','dataLayer','GTM-M52CW55');
-</script>
-		<!--[if lt IE 9]>
-			<script src="/js/libs/html5.js"></script>
-			<script src="/assets/libs/respond.src.js"></script>
-			<script src="/assets/libs/html5.js"></script>
-		<![endif]-->
-		
-</head>
-<body>
-	<div class="layout-container">
-		<div class="main ">
-			<div class="sidebar"><!-- 메뉴시작 -->
-            	<a href="javascript://" class="sidebar-header"><%-- 반응형 창 좁아질 때 좌측 상단 메뉴 (누르면 펴지고 좁혀지고 함) --%>
-               		<i class="fas fa-bars fa-lg" style="color:#773209"></i>
-            	</a>
-            	<h1>
-                	<div class="logo">
-                  		<a href="../ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
-               		</div>
-            	</h1>
+<title>YWHY - 글 수정 </title>
 
-			<%--
-            <ul id="search-google-icon" class="nav nav-sidebar nav-sidebar-search-wrapper">
-               <li class="nav-sidebar-search"><a href="javascript://"
-                  class="link" id="search-google" data-toggle="popover"
-                  data-trigger="click" data-original-title="" title=""><i
-                     class="fa fa-search"></i></a></li>
-            </ul>
- 			--%>
-            	<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=<%=request.getParameter("q")%>" target="_blank"><%-- 내가 만들었던 창은 검색이 되는데 여기는 안된다..왜지 css에서 -webkit뭐시기 삭제했더니 검색이 됐다..?!--%>
-               		<div class="input-group">
-                  		<input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
-                  		<span class="input-group-btn">
-                     		<button class="btn btn-default btn-sm" type="submit">
-                        		<i class="fas fa-search"></i>
-                     		</button>
-                  		</span>
-               		</div>
-            	</form>
-            	<div class="nav-user nav-sidebar">
-               		<ul class="nav nav-sidebar">
-                  		<li>
-                     		<a href="../signup/login.jsp" class="link">
-                        		<i class="fas fa-sign-in-alt"></i>
-                        		<span class="nav-sidebar-label">로그인</span>
-                     		</a>
-		                </li>
-		                <li>
-                     		<a href="../signup/signup.jsp" class="link">
-                        		<i class="fas fa-users"></i>
-                        		<span class="nav-sidebar-label">회원가입</span>
-                     		</a>
-		                </li>
-		           	</ul>
-		        </div>
-          		<ul class="nav nav-sidebar nav-main">
-               		<li>
-                  		<a href="questions.jsp" class="link">
-                     		<i class="nav-icon fas fa-laptop"></i>
-                     		<span class="nav-sidebar-label">Q&amp;A</span>
-                  		</a>
-               		</li>
-               		<li>
-                  		<a href="community.jsp" class="link">
-                     		<i class="nav-icon fas fa-coins"></i>
-                     		<span class="nav-sidebar-label">커뮤니티</span>
-                  		</a>
-               		</li>
-            	</ul>
-         	</div><!-- 메뉴끝 -->
+<jsp:include page="../include/header.jsp"/>
 			<div id="article-edit" class="content" role="main">
 	    		<div class="panel panel-default clearfix">
         			<div class="panel-heading clearfix">
@@ -108,7 +13,7 @@
 							<a href="/user/info/124651" class='avatar-photo'>
 								<img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40"/></a>
 							<div class="avatar-info">
-								<a class="nickname" href="/user/info/124651" title="${b.b_name}">${b.b_name}</a>
+								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}">${m.mem_nick}</a>
 								<div class="activity">
 									<span class="fa fa-flash"></span> 10
 								</div>
@@ -130,16 +35,12 @@
 								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
         						<div class="form-group has-feedback">
            							<div><!-- 카테고리 -->
-                						<select id="category" name="categoryCode" class="form-control" required="">
+                						<select id="category" name="b_cate" class="form-control" required="">
                     						<option value="">게시판을 선택해 주세요.</option>
-                        					<option value="life" selected="selected" data-external="false"
-                        					 data-anonymity="false">사는얘기</option>
-                        					<option value="forum" data-external="false" data-anonymity="false">포럼</option>
-                        					<option value="event" data-external="false" data-anonymity="false">IT 행사</option>
-                        					<option value="techbook-review" data-external="false" 
-                        					data-anonymity="false">기술 서적 리뷰</option>
-                        					<option value="gathering" data-external="false" data-anonymity="false">정기모임/스터디</option>
-                        					<option value="promote" data-external="false" data-anonymity="false">학원/홍보</option>
+											<option value="Q&A" data-external="false"
+												data-anonymity="false"<c:if test="${b.b_cate=='Q&A'}">${'selected'}</c:if>>Q&amp;A</option>
+											<option value="커뮤니티" data-external="false"
+												data-anonymity="false"<c:if test="${b.b_cate=='커뮤니티'}">${'selected'}</c:if>>커뮤니티</option>
                 						</select>
             						</div>
         						</div>
@@ -151,7 +52,7 @@
 								</div>
 								<div class="form-group has-feedback">
     								<div>
-    									<input type="text" name="tagString" value="" 
+    									<input type="text" name="b_tag" value="${b.b_tag}" 
     									placeholder="Tags," class="form-control" id="tagString">
     								</div>
 								</div>
@@ -258,8 +159,8 @@
 		
 	</script>
 	<script type="text/javascript">
-		$('input[name=tagString]').tagsinput(tagsInputConfig);
-		$('input[name=tagString]').on('itemAdded', tagsInputItemAddedEventCallback);
+		$('input[name=b_tag]').tagsinput(tagsInputConfig);
+		$('input[name=b_tag]').on('itemAdded', tagsInputItemAddedEventCallback);
 		
 		$('#summernote').summernote({minHeight: 300, lang: 'ko-KR',
 		  onInit: function() {

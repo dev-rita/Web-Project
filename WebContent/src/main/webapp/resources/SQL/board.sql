@@ -17,7 +17,11 @@ create table board(
 
 select * from board;
 
-insert into board values(b_no_seq.nextval,'김태완',0,'HTML5+CSS3','123','예브게',null,'tag',0,0,0,0,sysdate);
+ insert into board (b_no,mem_id,b_cate,b_name,b_title,
+     b_cont,b_ref,b_step,b_level,b_tag,b_date) values(b_no_seq.nextval,'ddddd',
+     '커뮤니티','닉네임4', 'RE:답','ㅜㅜ',65,
+     1,1,'ㅎㅎ',sysdate);
+insert into board values(b_no_seq.nextval,'ddddd','커뮤니티','닉네임4','RE:답','HTML5+CSS3','123','예브게',null,'tag',0,0,0,0,sysdate);
 insert into board values(b_no_seq.nextval,'이의수',0,'JAVASCRIPT','123','동적',null,'tag',0,0,0,0,sysdate);
 insert into board values(b_no_seq.nextval,'이승연',0,'SPRING','123','프레임워크',null,'tag',0,0,0,0,sysdate);
 insert into board values(b_no_seq.nextval,'정희선',0,'JSP2.3','123','안녕하살법',null,'tag',0,0,0,0,sysdate);
@@ -28,7 +32,7 @@ insert into board values (b_no_seq.nextval,'정우영',0,'리눅스  구축관�
 insert into board values (b_no_seq.nextval,'장윤기',0,'자바 유틸리티','123','내용',null,'tag',0,0,0,0,sysdate);
 insert into board values (b_no_seq.nextval,'김운아',0,'반응형 웹페이지 만들기','123','내용',null,'tag',0,0,0,0,sysdate);
 
-
+select * from board where b_cate like '커뮤니티';
 select * from board order by b_no desc;
 
 --b_no_seq 시퀀스 생성
@@ -85,9 +89,24 @@ select rno_seq.nextval from dual;
 
 --컬럼명 추가
 alter table board add b_rec number(38) default 0;
-
+alter table board add mem_id varchar2(100) constraint board_mem_id_fk references ywhyMember(mem_id) on delete cascade;
 --댓글 수 카운트해 저장하는 컬럼 추가
 alter table board add (b_replycnt number(38) default 0);
 
 --tbl_reply 테이블의 게시물 번호에 해당하는 댓글수를 카운터해서 tbl_board테이블의 replycnt컬럼 댓글수 값을 변경시킴.
 update board set b_replycnt=(select count(r_no) from board_reply where b_no=board.b_no) where b_no>0;
+
+
+ select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+    from (select * from board where b_title like '33' IN(select * from board where b_tag like '33')
+     order by b_ref desc, b_level asc)) where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+     
+     
+  select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board 
+       where b_title like '33'             
+       order by b_rec desc))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+       
+       
+ 

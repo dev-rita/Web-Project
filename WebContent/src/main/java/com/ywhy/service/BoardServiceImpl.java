@@ -45,6 +45,34 @@ public class BoardServiceImpl implements BoardService {
 		return this.boardDao.getBoardListView(b);
 	}
 	
+	//Q&A
+	
+	   @Override
+	   public int getQnaListCount(BoardVO b) {
+	      return this.boardDao.getQnaListCount(b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQList(BoardVO b) {      
+	      return this.boardDao.getBoardQList(b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListVote(BoardVO b) {
+	      return this.boardDao.getBoardQListVote(b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListNote(BoardVO b) {
+	      return this.boardDao.getBoardQListNote(b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListScrap(BoardVO b) {
+	      return this.boardDao.getBoardQListScrap(b);
+	   }
+	   @Override
+	   public List<BoardVO> getBoardQListView(BoardVO b) {
+	      return this.boardDao.getBoardQListView(b);
+	   }
+	
+	//조회, 추가, 수정, 삭제   
 	@Override
 	public void insertBoard(BoardVO b) {
 		this.boardDao.insertBoard(b);
@@ -66,12 +94,21 @@ public class BoardServiceImpl implements BoardService {
 	public void editBoard(BoardVO eb) {
 		this.boardDao.editBbs(eb);//조회수 증가
 	}
-
+	
+	@Transactional
+	@Override
+	public void replyBoard(BoardVO rb) {
+		this.boardDao.updateLevel(rb);//답변 레벨 증가
+		this.boardDao.replyBoard(rb);//답변 저장
+	}
+	
 	@Override
 	public void delBoard(int b_no) {
 		this.boardDao.delBoard(b_no);
 	}//게시물 삭제
 
+	//추천반대
+	
 	@Override
 	public void b_recommendp(int b_no) {
 		this.boardDao.b_recommendp(b_no);
@@ -82,6 +119,34 @@ public class BoardServiceImpl implements BoardService {
 		this.boardDao.b_recommendm(b_no);
 	}//게시물 반대
 	
+	
+	//태그
+	   @Override
+	   public int getTagListCount(BoardVO b) {
+	      return this.boardDao.getTagListCount(b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagList(BoardVO b) {
+	      return this.boardDao.getTagList(b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListVote(BoardVO b) {
+	      return this.boardDao.getTagListVote(b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListNote(BoardVO b) {
+	      return this.boardDao.getTagListNote(b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListScrap(BoardVO b) {
+	      return this.boardDao.getTagListScrap(b);
+	   }
+	   @Override
+	   public List<BoardVO> getTagListView(BoardVO b) {
+	      return this.boardDao.getTagListView(b);
+	   }
+	
+	//댓글
 	@Override
 	public List<BoardVO> listReply(int b_no) {
 		return this.boardDao.listReply(b_no);
@@ -108,6 +173,7 @@ public class BoardServiceImpl implements BoardService {
 		this.boardDao.delReply(r_no);
 		this.boardDao.updateReplyCnt(b_no,-1);//댓글을 삭제하면 댓글 개수 1감소
 	}//댓글삭제
+
 
 	
 }

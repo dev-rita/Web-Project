@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YWHY - 새 글 쓰기</title>
+<title>YWHY - 답변 글 쓰기</title>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <jsp:include page="../include/header.jsp"/>
 
 			<div id="article-create" class="content" role="main">
 				<div class="content-header">
-					<h3>새 글 쓰기</h3>
+					<h3>답변 글 쓰기</h3>
 				</div>
 				<div class="panel panel-default clearfix">
 					<div class="panel-heading clearfix">
@@ -25,14 +25,17 @@
 						</div>
 					</div>
 					<div class="panel-body">
-						<form action="b_create_ok" method="post" enctype="multipart/form-data"
+						<form action="b_reply_ok?b_no=${b.b_no}&page=${page}" method="post" 
 						id="article-form" class="article-form" role="form" onsubmit="return postForm()">
 							<fieldset class="form">
 								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
+								<input type="hidden" name="b_ref" value="${b.b_ref}" /><%--원본글과 답변글을 묶어주는 그룹 번호값 --%>
+								<input type="hidden" name="b_step" value="${b.b_step}" />
+								<%-- 원본글이면 0,첫번째 답변글이면1,즉 원본글과 답변글을 구분하는 번호값이면서 몇번째 답변글인가를 알려줌. --%>
+								<input type="hidden" name="b_level" value="${b.b_level}" /><%--답변글 정렬순서 --%>
 								<input type="hidden" name="b_name" id="b_name" value="">
 								<script>
-								document.getElementById('b_name').value=document.getElementById('nickname').textContent;
-								
+								document.getElementById('b_name').value=document.getElementById('nickname').textContent;								
 								</script>
 								<div class="form-group has-feedback">
 									<div>
@@ -40,16 +43,16 @@
 										<select id="category" name="b_cate" class="form-control" required="">
 											<option value="">게시판을 선택해 주세요.</option>
 											<option value="Q&A" data-external="false"
-												data-anonymity="false">Q&amp;A</option>
+												data-anonymity="false"<c:if test="${b.b_cate=='Q&A'}">${'selected'}</c:if>>Q&amp;A</option>
 											<option value="커뮤니티" data-external="false"
-												data-anonymity="false">커뮤니티</option>
+												data-anonymity="false"<c:if test="${b.b_cate=='커뮤니티'}">${'selected'}</c:if>>커뮤니티</option>
 										</select>
 										
 									</div>
 								</div>
 								<div class="form-group has-feedback">
 									<div>
-										<input type="text" name="b_title" required="" value=""
+										<input type="text" name="b_title" required="" value="Re:${b.b_title}"
 											placeholder="제목을 입력해 주세요." class="form-control" id="title">
 									</div>
 								</div>
@@ -230,7 +233,7 @@
 				$.get("/keepAlive");
 			}, 1500 * 1000);
 		</script>
-		
+			
 </body>
 </html>
 

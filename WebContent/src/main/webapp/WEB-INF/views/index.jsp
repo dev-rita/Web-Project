@@ -1,4 +1,5 @@
 <jsp:include page="include/header.jsp"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 			<div class="main-banner-wrapper">

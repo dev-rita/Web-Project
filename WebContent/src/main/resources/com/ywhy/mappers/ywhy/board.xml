@@ -5,132 +5,126 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="Board"><!-- 매퍼 네임 스페이스 명을 Board로 설정 -->
- 	
- 	<!-- 커뮤니티 목록보기 -->
- 	<select id="board_list" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
- 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_cate,b_tag
- 		from (select * from board  
- 		<where>
- 			<if test="find_field == ''"></if><!-- 검색전 -->
- 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
- 			b_title like #{find_name}<!-- like는 검색 연산자 -->
- 			</if>
- 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
- 			b_cont like #{find_name}
- 			</if>
- 		</where>
- 		order by b_no desc)) 
- 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
- 	</select>
- 	
- 	<!-- 커뮤니티 추천순 목록 -->
- 	<select id="board_list_vote" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
- 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
- 		from (select * from board  
- 		<where>
- 			<if test="find_field == ''"></if><!-- 검색전 -->
- 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
- 			b_title like #{find_name}<!-- like는 검색 연산자 -->
- 			</if>
- 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
- 			b_cont like #{find_name}
- 			</if>
- 		</where>
- 		order by b_rec desc)) 
- 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
- 	</select>
- 	
- 	<!-- 커뮤니티 댓글순 목록 -->
- 	<select id="board_list_note" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
- 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
- 		from (select * from board  
- 		<where>
- 			<if test="find_field == ''"></if><!-- 검색전 -->
- 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
- 			b_title like #{find_name}<!-- like는 검색 연산자 -->
- 			</if>
- 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
- 			b_cont like #{find_name}
- 			</if>
- 		</where>
- 		order by b_replycnt desc)) 
- 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
- 	</select>
- 	
- 	<!-- 커뮤니티 스크랩순 목록 추가되면 수정필요 -->
- 	<select id="board_list_scrap" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
- 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
- 		from (select * from board  
- 		<where>
- 			<if test="find_field == ''"></if><!-- 검색전 -->
- 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
- 			b_title like #{find_name}<!-- like는 검색 연산자 -->
- 			</if>
- 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
- 			b_cont like #{find_name}
- 			</if>
- 		</where>
- 		order by b_rec desc)) 
- 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
- 	</select>
- 	
- 	<!-- 커뮤니티 조회순 목록 -->
- 	<select id="board_list_view" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
- 	select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec
- 		from (select * from board  
- 		<where>
- 			<if test="find_field == ''"></if><!-- 검색전 -->
- 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
- 			b_title like #{find_name}<!-- like는 검색 연산자 -->
- 			</if>
- 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
- 			b_cont like #{find_name}
- 			</if>
- 		</where>
- 		order by b_hit desc)) 
- 		where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
- 	</select>
- 	
- 	<!-- 커뮤니티 총 게시물 수 -->
- 	<select id="b_count" resultType="int">
- 		select count(*) from board
- 		<where>
- 			<if test="find_field == ''"></if><!-- 검색전 -->
- 			<if test="find_field == 'b_title'"> <!-- 제목 검색 -->
- 			b_title like #{find_name}<!-- like는 검색 연산자 -->
- 			</if>
- 			<if test="find_field == 'b_cont'"><!-- 내용검색 -->
- 			b_cont like #{find_name}
- 			</if>
- 		</where>
- 	</select>
- 	
- 	<!-- 게시글 저장  -->
- 	<insert id="b_in" parameterType="com.ywhy.vo.BoardVO">
- 	<!-- parameterType은 전달인자 자료형  -->
- 	insert into board (b_no,b_name,b_title,b_cont,b_cate,b_date)
- 	values(b_no_seq.nextval,#{b_name},#{b_title},#{b_cont},#{b_cate},sysdate)
- 	</insert>
- 	
- 	<!-- 조회수 증가 -->
- 	<update id="b_hit" parameterType="int">
- 	update board set b_hit=b_hit+1 where b_no=#{b_no}
- 	</update>
- 	
- 	<!-- 내용보기 -->
- 	<select id="b_cont" resultType="b">
- 	select * from board where b_no=#{b_no}
- 	</select>
- 	
- 	<!-- 게시글 수정 -->
- 	<update id="b_edit">
+    
+    <!-- 커뮤니티 목록보기 -->
+    <select id="board_list" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board  
+       <where>
+           b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+      order by b_ref desc, b_level asc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 커뮤니티 추천순 목록 -->
+    <select id="board_list_vote" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board  
+       <where>
+          b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+       order by b_rec desc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 커뮤니티 댓글순 목록 -->
+    <select id="board_list_note" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board  
+       <where>
+           b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+       order by b_replycnt desc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 커뮤니티 스크랩순 목록 추가되면 수정필요 -->
+    <select id="board_list_scrap" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board  
+       <where>
+            b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+       order by b_rec desc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 커뮤니티 조회순 목록 -->
+    <select id="board_list_view" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board  
+       <where>
+          b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+       order by b_hit desc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 커뮤니티 총 게시물 수 -->
+    <select id="b_count" resultType="int">
+       select count(*) from board
+       <where>          
+          b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+      
+    </select>
+  
+    
+    <!-- 게시글 저장  -->
+    <insert id="b_in" parameterType="com.ywhy.vo.BoardVO">
+    <!-- parameterType은 전달인자 자료형  -->
+    insert into board (b_no,mem_id,b_cate,b_name,b_title,b_cont,b_ref,b_step,b_level,b_tag,b_date)
+    values(b_no_seq.nextval,#{mem_id},#{b_cate},#{b_name},#{b_title},#{b_cont},b_no_seq.nextval,
+    0,0,#{b_tag},sysdate)
+    </insert>
+    
+    <!-- 조회수 증가 -->
+    <update id="b_hit" parameterType="int">
+    update board set b_hit=b_hit+1 where b_no=#{b_no}
+    </update>
+    
+    <!-- 내용보기 -->
+    <select id="b_cont" resultType="b">
+    select * from board where b_no=#{b_no}
+    </select>
+    
+    <!-- 게시글 수정 -->
+    <update id="b_edit">
      update board set
-     b_title=#{b_title},b_cont=#{b_cont}
+     b_cate=#{b_cate},b_tag=#{b_tag},b_title=#{b_title},b_cont=#{b_cont}
      where b_no=#{b_no}
     </update>
     
+     <!-- 답변 레벨 증가 -->
+    <update id="reply_up">
+     update board set b_level=b_level+1
+     where b_ref=#{b_ref} 
+     and b_level>#{b_level}
+    </update>
+    
+    <!-- 답변 저장 -->
+    <insert id="reply_in">
+     insert into board (b_no,mem_id,b_cate,b_name,b_title,
+     b_cont,b_ref,b_step,b_level,b_tag,b_date) values(b_no_seq.nextval,#{mem_id},
+     #{b_cate},#{b_name}, #{b_title},#{b_cont},#{b_ref},
+     #{b_step}+1,#{b_level}+1,#{b_tag},sysdate)
+    </insert>
+
     <!-- 게시글 삭제 -->
- 	<update id="b_del">
+    <update id="b_del">
      delete from board where b_no=#{b_no}
     </update>
     
@@ -146,34 +140,239 @@
     
     <!-- 댓글 목록 -->
     <select id="r_list" parameterType="int" resultType="com.ywhy.vo.BoardVO">
-	<!--parameterType은 전달인자 타입으로 생략 가능. resultType은 반환타입 속성이다.
-	 com.naver.vo.BoardVO대신 별칭 b을 넣어도 된다. -->
-	select * from board_reply where b_no=#{b_no} order by r_no desc
-	</select>
-	
-	<!-- 댓글 작성 -->
-	<insert id="r_add">
-	insert into board_reply (r_no,b_no,replyer,replytext,regdate) values(r_no_seq.nextval, #{b_no}, #{replyer}, #{replytext}, sysdate)
-	</insert>
-	
-	<!-- 댓글이 추가되면 댓글 수 +1, 댓글이 삭제되면 댓글 수 -1 -->
-	 <update id="updateReplyCnt" parameterType="java.util.HashMap">
-	 update board set b_replycnt=b_replycnt+#{count} where b_no=#{b_no}
-	 </update>
-	
-	<!-- 댓글 수정 -->
-	<update id="r_edit">
-	update board_reply set replytext=#{replytext}, updatedate=sysdate where r_no=#{r_no}
-	</update>
-	
-	<!-- 댓글로 부터 게시물 번호  알아내기 -->
- 	<select id="r_b_no" parameterType="int" resultType="int">
- 	select b_no from board_reply where r_no=#{r_no}
- 	</select>
-	
-	<!-- 댓글 삭제 -->
-	<delete id="r_del">
-	delete from board_reply where r_no=#{r_no}
-	</delete>
-	
+   <!--parameterType은 전달인자 타입으로 생략 가능. resultType은 반환타입 속성이다.
+    com.naver.vo.BoardVO대신 별칭 b을 넣어도 된다. -->
+   select * from board_reply where b_no=#{b_no} order by r_no desc
+   </select>
+   
+   <!-- 댓글 작성 -->
+   <insert id="r_add">
+   insert into board_reply (r_no,b_no,replyer,replytext,regdate) values(r_no_seq.nextval, #{b_no}, #{replyer}, #{replytext}, sysdate)
+   </insert>
+   
+   <!-- 댓글이 추가되면 댓글 수 +1, 댓글이 삭제되면 댓글 수 -1 -->
+    <update id="updateReplyCnt" parameterType="java.util.HashMap">
+    update board set b_replycnt=b_replycnt+#{count} where b_no=#{b_no}
+    </update>
+   
+   <!-- 댓글 수정 -->
+   <update id="r_edit">
+   update board_reply set replytext=#{replytext}, updatedate=sysdate where r_no=#{r_no}
+   </update>
+   
+   <!-- 댓글로 부터 게시물 번호  알아내기 -->
+    <select id="r_b_no" parameterType="int" resultType="int">
+    select b_no from board_reply where r_no=#{r_no}
+    </select>
+   
+   <!-- 댓글 삭제 -->
+   <delete id="r_del">
+   delete from board_reply where r_no=#{r_no}
+   </delete>
+   
+   <!-- Q&A 총 게시물 수 -->
+    <select id="bq_count" resultType="int">
+       select count(*) from board
+       <where>          
+          <if test="find_field=='' || find_field==null">b_cate like 'Q%'</if>
+          <if test="find_field=='b_title'">b_cate like 'Q%' and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">b_cate like 'Q%' and b_cont like #{find_name}</if>
+       </where>
+      </select>
+      
+      <!-- Q&A 목록보기 -->
+    <select id="boardQ_list" resultType="com.ywhy.vo.BoardVO"> 
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board 
+       <where>
+          b_cate like 'Q%'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
+       </where>
+       order by b_ref desc, b_level asc))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- Q&A 추천순 목록 -->
+    <select id="boardQ_list_vote" resultType="com.ywhy.vo.BoardVO">
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board 
+       <where>
+          b_cate like 'Q%'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
+       </where>
+       order by b_rec desc))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- Q&A 댓글순 목록 -->
+    <select id="boardQ_list_note" resultType="com.ywhy.vo.BoardVO"> 
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board 
+       <where>
+          b_cate like 'Q%'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
+       </where>
+       order by b_replycnt desc))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- Q&A 스크랩순 목록 추가되면 수정필요 -->
+    <select id="boardQ_list_scrap" resultType="com.ywhy.vo.BoardVO"> 
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board 
+       <where>
+         b_cate like 'Q%'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
+       </where>
+       order by b_no desc))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- Q&A 조회순 목록 -->
+    <select id="boardQ_list_view" resultType="com.ywhy.vo.BoardVO">  
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board 
+       <where>
+          b_cate like 'Q%'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
+       </where>
+       order by b_hit desc))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- tag 카운트 -->
+    <select id="tag_count" resultType="int">
+    select count(*) from board 
+    	<where>    
+	       <if test="find_field=='' || find_field==null"></if>
+	       <if test="find_field=='b_title'">b_title like #{find_name}</if>
+	       <if test="find_field=='b_cont'">b_cont like #{find_name}</if>
+	        
+	        <if test="find_tag ==null"></if><!-- 태그 검색전 -->
+	        <if test="find_tag !=null">
+	       	  AND b_tag like '%,'||#{find_tag}||',%' OR b_tag like #{find_tag} 
+	          OR b_tag like #{find_tag}||',%'OR b_tag like '%,'|| #{find_tag}             
+	        </if>          
+       </where>   
+    </select>
+    
+    <!-- tag 목록보기 최신순-->
+    <select id="tag_list" resultType="b"> 
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from (select * from board 
+       <where>	         
+	       	 <if test="find_tag ==null"></if><!-- 태그 검색전 -->
+	        <if test="find_tag !=null">
+	       	  b_tag like '%,'||#{find_tag}||',%' OR b_tag like #{find_tag} 
+	          OR b_tag like #{find_tag}||',%'OR b_tag like '%,'|| #{find_tag}             
+	        </if>    
+	      
+       </where>
+      )
+       <where>
+       	<if test="find_field=='' || find_field==null"></if>
+	       <if test="find_field=='b_title'">b_title like #{find_name}</if>
+	       <if test="find_field=='b_cont'">b_cont like #{find_name}</if>
+       </where>
+        order by b_no desc
+       ))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- tag 추천순 목록 -->
+    <select id="tag_list_vote" resultType="com.ywhy.vo.BoardVO">    
+     select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from (select * from board 
+       <where>	         
+	       	 <if test="find_tag ==null"></if><!-- 태그 검색전 -->
+	        <if test="find_tag !=null">
+	       	  b_tag like '%,'||#{find_tag}||',%' OR b_tag like #{find_tag} 
+	          OR b_tag like #{find_tag}||',%'OR b_tag like '%,'|| #{find_tag}             
+	        </if>    
+	      
+       </where>
+      )
+       <where>
+       	<if test="find_field=='' || find_field==null"></if>
+	       <if test="find_field=='b_title'">b_title like #{find_name}</if>
+	       <if test="find_field=='b_cont'">b_cont like #{find_name}</if>
+       </where>
+        order by b_rec desc
+       ))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- tag 댓글순 목록 -->
+    <select id="tag_list_note" resultType="com.ywhy.vo.BoardVO"> 
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from (select * from board 
+       <where>	         
+	       	 <if test="find_tag ==null"></if><!-- 태그 검색전 -->
+	        <if test="find_tag !=null">
+	       	  b_tag like '%,'||#{find_tag}||',%' OR b_tag like #{find_tag} 
+	          OR b_tag like #{find_tag}||',%'OR b_tag like '%,'|| #{find_tag}             
+	        </if>    
+	      
+       </where>
+      )
+       <where>
+       	<if test="find_field=='' || find_field==null"></if>
+	       <if test="find_field=='b_title'">b_title like #{find_name}</if>
+	       <if test="find_field=='b_cont'">b_cont like #{find_name}</if>
+       </where>
+        order by b_replycnt desc
+       ))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- tag 스크랩순 목록 추가되면 수정필요 -->
+    <select id="tag_list_scrap" resultType="com.ywhy.vo.BoardVO"> 
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from (select * from board 
+       <where>	         
+	       	 <if test="find_tag ==null"></if><!-- 태그 검색전 -->
+	        <if test="find_tag !=null">
+	       	  b_tag like '%,'||#{find_tag}||',%' OR b_tag like #{find_tag} 
+	          OR b_tag like #{find_tag}||',%'OR b_tag like '%,'|| #{find_tag}             
+	        </if>    
+	      
+       </where>
+      )
+       <where>
+       	<if test="find_field=='' || find_field==null"></if>
+	       <if test="find_field=='b_title'">b_title like #{find_name}</if>
+	       <if test="find_field=='b_cont'">b_cont like #{find_name}</if>
+       </where>
+        order by b_replycnt desc
+       ))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- tag 조회순 목록 -->
+    <select id="tag_list_view" resultType="com.ywhy.vo.BoardVO">  
+     select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from (select * from board 
+       <where>	         
+	       	 <if test="find_tag ==null"></if><!-- 태그 검색전 -->
+	        <if test="find_tag !=null">
+	       	  b_tag like '%,'||#{find_tag}||',%' OR b_tag like #{find_tag} 
+	          OR b_tag like #{find_tag}||',%'OR b_tag like '%,'|| #{find_tag}             
+	        </if>    
+	      
+       </where>
+      )
+       <where>
+       	<if test="find_field=='' || find_field==null"></if>
+	       <if test="find_field=='b_title'">b_title like #{find_name}</if>
+	       <if test="find_field=='b_cont'">b_cont like #{find_name}</if>
+       </where>
+        order by b_hit desc
+       ))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
  </mapper>

@@ -1,134 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+<title>YWHY - community</title>
 
-      <meta charset="utf-8">
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      
-      <title>YWHY - Tech</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="_csrf_parameter" content="_csrf">
-      <meta name="_csrf_header" content="X-CSRF-TOKEN">
-      <meta name="_csrf" content="5fbb83aa-5724-4446-befd-340d8585ddd0">
-      <link rel="shortcut icon" href="./resources/images/logo/favicon.ico" type="image/x-icon">
-      <link rel="apple-touch-icon" href="../images/icon_57x57.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="../images/icon_114x114.png">
-      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-      <meta property="og:image" content="https://okky.kr/assets/images/okky_logo_fb.png">
-      
-      <link rel="stylesheet" href="./resources/css/application2.css">
-      
-   	  <script src="https://www.googletagservices.com/activeview/js/current/osd.js"></script>
-   	  <script src="https://partner.googleadservices.com/gampad/cookie.js?domain=okky.kr&amp;callback=_gfp_s_&amp;
-   	  client=ca-pub-8103607814406874&amp;cookie=ID%3D3cf781d34f9bf70a-223fe9dafdc9004a%3AT%3D1625226002%3ART%3D1625226002%3AS%3DALNI_MYjOEKNYN7JbiPrclsyxUknsOtoSQ"></script>
-   	  <script src="https://pagead2.googlesyndication.com/pagead/js/r20210720/r20190131/show_ads_impl.js" id="google_shimpl"></script>
-   	  <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-   	  <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-M52CW55"></script>
-   	  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-   		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-   		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-   		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-   		})(window,document,'script','dataLayer','GTM-M52CW55');</script>
-      	<!--[if lt IE 9]>
-         <script src="/js/libs/html5.js"></script>
-         <script src="/assets/libs/respond.src.js"></script>
-         <script src="/assets/libs/html5.js"></script>
-    	  <![endif]-->
-      
-   	  <meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-   	  <meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
-   	  <meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-   	  <meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-   	  <meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-   	  <meta http-equiv="origin-trial" content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <link rel="preload" href="https://adservice.google.co.kr/adsid/integrator.js?domain=okky.kr" as="script">
-   	  <script type="text/javascript" src="https://adservice.google.co.kr/adsid/integrator.js?domain=okky.kr"></script>
-   	  <link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=okky.kr" as="script">
-   	  <script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=okky.kr"></script>
-   	  <meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
-   	  <meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
-   	  <meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-   	  <meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-   	  <meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9">
-   	  <meta http-equiv="origin-trial" content="AwfG8hAcHnPa/kJ1Co0EvG/K0F9l1s2JZGiDLt2mhC3QI5Fh4qmsmSwrWObZFbRC9ieDaSLU6lHRxhGUF/i9sgoAAACBeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="AwQ7dCmHkvR6FuOFxAuNnktYSQrGbL4dF+eBkrwNLALc69Wr//PnO1yzns3pjUoCaYbKHtVcnng2hU+8OUm0PAYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <meta http-equiv="origin-trial" content="AysVDPGQTLD/Scn78x4mLwB1tMfje5jwUpAAzGRpWsr1NzoN7MTFhT3ClmImi2svDZA7V6nWGIV8YTPsSRTe0wYAAACHeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiSW50ZXJlc3RDb2hvcnRBUEkiLCJleHBpcnkiOjE2MjYyMjA3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-   	  <style type="text/css"></style>
-</head>
-<body>
-<div class="layout-container">
-	<div class="main">
-   
-  	 <div class="sidebar">
-     	<a href="javascript://" class="sidebar-header"><%-- 반응형 창 좁아질 때 좌측 상단 메뉴 (누르면 펴지고 좁혀지고 함) --%>
-			<i class="fas fa-bars fa-lg" style="color:#773209"></i>
-		</a>
+<jsp:include page="../include/header.jsp"/>
 
-		<h1><%-- sidebar 상단의 logo --%>
-			<div class="logo">
-				<a href="../ywhy_loginbefore_index.jsp"><b>YWHY</b></a>
-				</div>
-		</h1>
-
-		<form id="search-google-form" name="searchMain" class="nav-sidebar-form" action="https://www.google.com/search?q=${q}" target="_blank">
-			<div class="input-group">
-				<input type="text" name="q" class="form-control input-sm" placeholder="Google 검색"> 
-				<span class="input-group-btn">
-					<button class="btn btn-default btn-sm" type="submit">
-						<i class="fas fa-search"></i>
-					</button>
-				</span>
-			</div>
-		</form>
-
-		<div class="nav-user nav-sidebar">
-			<ul class="nav nav-sidebar">
-				<li>
-					<a href="../signup/login.jsp" class="link">
-						<i class="fas fa-sign-in-alt"></i>
-						<span class="nav-sidebar-label">로그인</span>
-					</a>
-				</li>
-				<li>
-					<a href="../signup/signup.jsp" class="link">
-						<i class="fas fa-users"></i>
-						<span class="nav-sidebar-label">회원가입</span>
-					</a>
-				</li>
-			</ul>
-		</div>
-
-		<ul class="nav nav-sidebar nav-main">
-			<li>
-				<a href="b_questions" class="link">
-					<i class="nav-icon fas fa-laptop"></i>
-					<span class="nav-sidebar-label">Q&amp;A</span>
-				</a>
-			</li>
-			<li>
-				<a href="b_community" class="link">
-					<i class="nav-icon fas fa-coins"></i>
-					<span class="nav-sidebar-label">커뮤니티</span>
-				</a>
-			</li>
-		</ul>
-	 </div>
      <div id="list-article" class="content scaffold-list life-list" role="main">
      	<div class="nav" role="navigation">
+     		 <c:if test="${!empty m}">
         	<a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
-            
-            <h4>사는얘기</h4>
+            </c:if>
+            <h4>커뮤니티</h4>
             <form id="category-filter-form" name="category-filter-form" method="get" action="b_community">
                <div class="category-filter-wrapper">
                   <div class="category-filter-query pull-right">
@@ -145,11 +29,11 @@
                      </div>
                   </div>
                   <ul class="list-sort pull-left">
-                     <li><a href="/b_community?query=&amp;sort=id&amp;order=desc" data-sort="id" data-order="desc" class="category-sort-link <c:if test="${(sort==null) || sort.equals('id')}">active</c:if>">최신순</a></li>
-                     <li><a href="/b_community?query=&amp;sort=voteCount&amp;order=desc" data-sort="voteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('voteCount')}">active</c:if>">추천순</a></li>
-                     <li><a href="/b_community?query=&amp;sort=noteCount&amp;order=desc" data-sort="noteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('noteCount')}">active</c:if>">댓글순</a></li>
-                     <li><a href="/b_community?query=&amp;sort=scrapCount&amp;order=desc" data-sort="scrapCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('scrapCount')}">active</c:if>">스크랩순</a></li>
-                     <li><a href="/b_community?query=&amp;sort=viewCount&amp;order=desc" data-sort="viewCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('viewCount')}">active</c:if>">조회순</a></li>                     
+                     <li><a href="#" data-sort="id" data-order="desc" class="category-sort-link <c:if test="${(sort==null) || sort.equals('id')}">active</c:if>">최신순</a></li>
+                     <li><a href="#" data-sort="voteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('voteCount')}">active</c:if>">추천순</a></li>
+                     <li><a href="#" data-sort="noteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('noteCount')}">active</c:if>">댓글순</a></li>
+                     <li><a href="#" data-sort="scrapCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('scrapCount')}">active</c:if>">스크랩순</a></li>
+                     <li><a href="#" data-sort="viewCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('viewCount')}">active</c:if>">조회순</a></li>                     
                   </ul>
                   
                <input type="hidden" name="sort" id="category-sort-input" value="id">
@@ -210,13 +94,23 @@
                <ul class="list-group">
                	 <c:if test="${!empty blist}">
          			<c:forEach var="b" items="${blist}">
-                     <li class="list-group-item list-group-item-question list-group-has-note clearfix">
+                     <li class="list-group-item list-group-item-question <c:if test="${b.b_replycnt==0}">list-group-no-note</c:if><c:if test="${b.b_replycnt!=0}">list-group-has-note</c:if> clearfix">
                         <div class="list-title-wrapper clearrfix">
                            <div class="list-tag clearfix">
-                                 <span class="list-group-item-text article-id">&num;${b.b_no}</span><!-- 번호 -->
-                               <a href="/articles/life" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> ${b.b_cate}</a><!-- 태그 -->
+                                 <span class="list-group-item-text article-id">&num;${b.b_ref}<c:if test="${b.b_step != 0}">답변글</c:if></span><!-- 번호 -->
+                               <a href="b_community" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i>${b.b_cate}</a><!-- 태그 -->
+                               <c:forTokens var="tag" items="${b.b_tag}" delims=","> <!-- 태그 -->              
+									<a href="b_tag?tag=${tag}" class="list-group-item-text item-tag label label-gray ">${tag}</a>
+								</c:forTokens>
                            </div>
                            <h5 class="list-group-item-heading list-group-item-evaluate">
+                           		<c:if test="${b.b_step != 0}"><%--답변글일때만 실행--%>
+								<c:forEach begin="1" end="${b.b_step}" step="1">
+   								&nbsp;<%--답변글 들여쓰기 --%>
+								</c:forEach>
+								<img src="./resources/images/AnswerLine.gif" alt="화살표" />
+								<%--답변글 이미지 출력부분 --%>
+								</c:if> 
                                  <a href="b_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a><!-- 제목 -->
                             </h5>
                         </div>
@@ -395,6 +289,7 @@
 <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 <script src="./resources/js/application.js" type="text/javascript"></script>
 <script src="./resources/js/apps/search.js" type="text/javascript"></script>
+<script src="./resources/js/apps/notification.js" type="text/javascript"></script>
  
  <div id="userPrivacy" class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
  	<div class="modal-dialog">

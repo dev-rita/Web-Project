@@ -1,5 +1,6 @@
 package com.ywhy.service;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 public interface MailSendService {
