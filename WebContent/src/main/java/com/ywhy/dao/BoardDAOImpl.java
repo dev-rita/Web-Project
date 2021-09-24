@@ -183,5 +183,14 @@ public class BoardDAOImpl implements BoardDAO {
 		this.sqlSession.delete("r_del",r_no);
 	}//댓글 삭제
 
+	@Override
+	public void r_recommendp(int r_no) {
+		this.sqlSession.update("r_rec_p",r_no);
+	}//댓글 추천
+	
+	@Override
+	public void r_recommendm(int r_no) {
+		this.sqlSession.update("r_rec_m",r_no);
+	}//댓글 반대
 
 }

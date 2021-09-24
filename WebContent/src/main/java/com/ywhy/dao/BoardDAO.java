@@ -50,7 +50,8 @@ public interface BoardDAO {
 	void updateReply(BoardVO vo);
 	int getB_no(int r_no);
 	void delReply(int r_no);
-	
+	void r_recommendp(int r_no);
+	void r_recommendm(int r_no);
 	
 	
 

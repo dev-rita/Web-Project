@@ -34,22 +34,11 @@
 								<%-- 원본글이면 0,첫번째 답변글이면1,즉 원본글과 답변글을 구분하는 번호값이면서 몇번째 답변글인가를 알려줌. --%>
 								<input type="hidden" name="b_level" value="${b.b_level}" /><%--답변글 정렬순서 --%>
 								<input type="hidden" name="b_name" id="b_name" value="">
+								<input type="hidden" name="b_cate" id="category" value="${b.b_cate == '커뮤니티' ? '커뮤니티' : 'Q&A'}">
 								<script>
 								document.getElementById('b_name').value=document.getElementById('nickname').textContent;								
 								</script>
-								<div class="form-group has-feedback">
-									<div>
-										
-										<select id="category" name="b_cate" class="form-control" required="">
-											<option value="">게시판을 선택해 주세요.</option>
-											<option value="Q&A" data-external="false"
-												data-anonymity="false"<c:if test="${b.b_cate=='Q&A'}">${'selected'}</c:if>>Q&amp;A</option>
-											<option value="커뮤니티" data-external="false"
-												data-anonymity="false"<c:if test="${b.b_cate=='커뮤니티'}">${'selected'}</c:if>>커뮤니티</option>
-										</select>
-										
-									</div>
-								</div>
+								
 								<div class="form-group has-feedback">
 									<div>
 										<input type="text" name="b_title" required="" value="Re:${b.b_title}"

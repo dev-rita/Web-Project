@@ -147,7 +147,7 @@
    
    <!-- 댓글 작성 -->
    <insert id="r_add">
-   insert into board_reply (r_no,b_no,replyer,replytext,regdate) values(r_no_seq.nextval, #{b_no}, #{replyer}, #{replytext}, sysdate)
+   insert into board_reply (r_no,b_no,mem_id,replyer,replytext,regdate) values(r_no_seq.nextval, #{b_no}, #{mem_id}, #{replyer}, #{replytext}, sysdate)
    </insert>
    
    <!-- 댓글이 추가되면 댓글 수 +1, 댓글이 삭제되면 댓글 수 -1 -->
@@ -169,6 +169,16 @@
    <delete id="r_del">
    delete from board_reply where r_no=#{r_no}
    </delete>
+   
+    <!-- 댓글 추천 -->
+    <update id="r_rec_p">
+    update board_reply set r_hit = r_hit+1 where r_no=#{r_no}
+    </update>
+    
+    <!-- 댓글 반대 -->
+    <update id="r_rec_m">
+    update board_reply set r_hit = r_hit-1 where r_no=#{r_no}
+    </update>
    
    <!-- Q&A 총 게시물 수 -->
     <select id="bq_count" resultType="int">

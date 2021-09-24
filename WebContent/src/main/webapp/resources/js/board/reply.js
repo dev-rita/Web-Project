@@ -5,7 +5,8 @@
 		var b_no=$('#b_no').text();
         var replyer = $('#replyWriter').val();//댓글 작성자
         var replytext = $('#note-create').val();//댓글 내용
-       
+       	var mem_id = $('#mem_id').val();
+       	
         $.ajax({
            type:'post',
            url:'/controller/replies',
@@ -17,7 +18,8 @@
            data:JSON.stringify({
               b_no:b_no,
               replyer:replyer,
-              replytext:replytext
+              replytext:replytext,
+              mem_id:mem_id
            }),
            success:function(result){//받아오는 것이 성공시 호출됨
               if(result == 'SUCCESS'){

@@ -174,6 +174,16 @@ public class BoardServiceImpl implements BoardService {
 		this.boardDao.updateReplyCnt(b_no,-1);//댓글을 삭제하면 댓글 개수 1감소
 	}//댓글삭제
 
+	@Override
+	public void r_recommendp(int r_no) {
+		this.boardDao.r_recommendp(r_no);
+	}//댓글추천
+
+	@Override
+	public void r_recommendm(int r_no) {
+		this.boardDao.r_recommendm(r_no);
+	}//댓글반대
+
 
 	
 }

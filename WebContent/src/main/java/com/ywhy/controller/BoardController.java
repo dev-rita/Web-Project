@@ -187,7 +187,6 @@ public class BoardController {
 			
 			MemberVO m=(MemberVO)session.getAttribute("m");
 			
-			
 			String saveFolder=request.getRealPath("resources/upload");//톰캣에 인식하는 실제 이진 파일 업로드 서버 경로
 			int fileSize=5*1024*1024;//이진파일 최대크기
 			MultipartRequest multi=null;//이진파일을 받을 변수 선언
@@ -334,9 +333,7 @@ public class BoardController {
 			}else {
 				String mem_id=m.getMem_id();
 				rb.setMem_id(mem_id);
-				System.out.println("저장전"+rb.getB_cate());
-				this.boardService.replyBoard(rb);//답변저장+레벨증가
-				System.out.println("저장후"+rb.getB_cate());
+				this.boardService.replyBoard(rb);//답변저장+레벨증가				
 				 if(rb.getB_cate().equals("커뮤니티")) {
 			         return "redirect:/b_community";
 			     }else {
@@ -439,13 +436,33 @@ public class BoardController {
            return "board/b_tag";
         }//b_tag
 		
-		@RequestMapping(value="/recommend/{b_no}",method=RequestMethod.POST)//게시물 추천 관련
-		public ResponseEntity<String> recommend (@PathVariable("b_no") int b_no) {
-		
+		@RequestMapping(value="/recommend_plus/{b_no}",method=RequestMethod.POST)//게시물 추천 
+		public ResponseEntity<String> recommend_plus (@PathVariable("b_no") int b_no) {
+
 			ResponseEntity<String> entity=null;
 			try {
 				
 				this.boardService.b_recommendp(b_no);
+				
+				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+				// 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+				//예외 에러가 발생하면 예외 에러 메시지와 나쁜 상태 코드가 반환
+			}
+			
+			return entity;
+		}
+		
+		@RequestMapping(value="/recommend_minus/{b_no}",method=RequestMethod.POST)//게시물 반대
+		public ResponseEntity<String> recommend_minus (@PathVariable("b_no") int b_no) {
+		
+			ResponseEntity<String> entity=null;
+			try {
+				
+				this.boardService.b_recommendm(b_no);
 				
 				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
 				// 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
@@ -527,4 +544,43 @@ public class BoardController {
 			}
 			return entity;
 		}//remove()
+		
+		@RequestMapping(value="/recommend_plus_r/{r_no}",method=RequestMethod.POST)//댓글 추천 
+		public ResponseEntity<String> recommend_plus_r (@PathVariable("r_no") int r_no) {
+
+			ResponseEntity<String> entity=null;
+			try {
+				
+				this.boardService.r_recommendp(r_no);
+				
+				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+				// 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+				//예외 에러가 발생하면 예외 에러 메시지와 나쁜 상태 코드가 반환
+			}
+			
+			return entity;
+		}
+		
+		@RequestMapping(value="/recommend_minus_r/{r_no}",method=RequestMethod.POST)//댓글 반대
+		public ResponseEntity<String> recommend_minus_r (@PathVariable("r_no") int r_no) {
+		
+			ResponseEntity<String> entity=null;
+			try {
+				
+				this.boardService.r_recommendm(r_no);
+				
+				entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+				// 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
+			}catch(Exception e) {
+				e.printStackTrace();
+				entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+				//예외 에러가 발생하면 예외 에러 메시지와 나쁜 상태 코드가 반환
+			}
+			
+			return entity;
+		}
 }

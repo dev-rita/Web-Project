@@ -17,6 +17,8 @@ create table board(
 
 select * from board;
 
+truncate table board cascade delete;
+
  insert into board (b_no,mem_id,b_cate,b_name,b_title,
      b_cont,b_ref,b_step,b_level,b_tag,b_date) values(b_no_seq.nextval,'ddddd',
      '커뮤니티','닉네임4', 'RE:답','ㅜㅜ',65,
@@ -90,23 +92,14 @@ select rno_seq.nextval from dual;
 --컬럼명 추가
 alter table board add b_rec number(38) default 0;
 alter table board add mem_id varchar2(100) constraint board_mem_id_fk references ywhyMember(mem_id) on delete cascade;
+alter table board_reply add mem_id varchar2(100) constraint board_reply_mem_id_fk references ywhyMember(mem_id) on delete cascade;
 --댓글 수 카운트해 저장하는 컬럼 추가
 alter table board add (b_replycnt number(38) default 0);
+alter table board_reply add r_rec number(38) default 0;
 
 --tbl_reply 테이블의 게시물 번호에 해당하는 댓글수를 카운터해서 tbl_board테이블의 replycnt컬럼 댓글수 값을 변경시킴.
 update board set b_replycnt=(select count(r_no) from board_reply where b_no=board.b_no) where b_no>0;
 
-
- select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
-    from (select * from board where b_title like '33' IN(select * from board where b_tag like '33')
-     order by b_ref desc, b_level asc)) where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
-     
-     
-  select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
-       from (select * from board 
-       where b_title like '33'             
-       order by b_rec desc))
-       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
-       
-       
+--컬럼 삭제
+alter table board_reply drop column r_rec;
  

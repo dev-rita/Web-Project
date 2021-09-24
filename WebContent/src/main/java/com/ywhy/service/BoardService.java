@@ -47,8 +47,7 @@ public interface BoardService {
 	void addReply(BoardVO vo);
 	void updateReply(BoardVO vo);
 	void remove(int r_no);
-	
-	
-	
-	
+	void r_recommendp(int r_no);
+	void r_recommendm(int r_no);
+
 }

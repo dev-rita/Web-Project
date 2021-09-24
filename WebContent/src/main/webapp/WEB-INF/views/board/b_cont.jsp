@@ -65,14 +65,14 @@
 					
 					<div class="note-evaluate-wrapper">
 						<!-- 추천 -->
-						<a href="javascript://" role="button" data-type="dissent" data-eval="true" id="rec">
+						<a href="javascript://" role="button" data-type="dissent" data-eval="true" id="recp">
 						<i class="fa fa-angle-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
 						</a>
 						<!-- 추천수 -->
 						<div id="content-vote-count-2440348" class="content-eval-count">${b.b_rec}</div>
 						
 						<!-- 반대 -->
-						<a href="b_recommend?b_no=${b.b_no}&page=${page}&state=recm" role="button" data-type="dissent" data-eval="true" data-id="2440348">
+						<a href="javascript://" role="button" data-type="dissent" data-eval="true" id="recm">
 						<i class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i>
 						</a>
 					
@@ -381,8 +381,9 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
                                  <a href="/user/info/123566" class="avatar-photo">
                                     <img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
                                  <div class="avatar-info">
-                                    <a class="nickname" href="/user/info/123566" title="${b.b_name}" id="nickname">${b.b_name}</a>
-                                   <input type="hidden" name="replyer" id="replyWriter" value="{b.b_name}"/>                                  
+                                    <a class="nickname" href="/user/info/123566" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
+                                   <input type="hidden" name="replyer" id="replyWriter" value="${m.mem_nick}"/>  
+                                   <input type="hidden" name="mem_id" id="mem_id" value="${m.mem_id}"/>
                                     <div class="activity block"><span class="fa fa-flash"></span> 0</div>
                                  </div>
                               </div>
@@ -520,13 +521,18 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
  
  <script>
  	//게시글 추천
-	$('#rec').on("click",function(){
+	$('#recp').on("click",function(){
 
 		var b_no=$('#b_no').text();
-
+		var id = '<%=session.getAttribute("m")%>';
+		
+		if(id=="null"){
+			alert("로그인이 필요합니다.");
+			location.replace("login");
+		}else{
         $.ajax({
            type:'post',
-           url:'/controller/recommend/'+b_no,
+           url:'/controller/recommend_plus/'+b_no,
            headers:{
               "Content-Type" : "application/json",
               "X-HTTP-Method-Override" : "POST"
@@ -539,7 +545,91 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
               }
            }
         });
+       }
       });
+ 	
+ 	//게시물 반대
+	$('#recm').on("click",function(){
+
+		var b_no=$('#b_no').text();
+		var id = '<%=session.getAttribute("m")%>';
+		
+		if(id=="null"){
+			alert("로그인이 필요합니다.");
+			location.replace("login");
+		}else{
+        $.ajax({
+           type:'post',
+           url:'/controller/recommend_minus/'+b_no,
+           headers:{
+              "Content-Type" : "application/json",
+              "X-HTTP-Method-Override" : "POST"
+           },
+           dataType:'text',
+           success:function(result){//받아오는 것이 성공시 호출됨
+              if(result == 'SUCCESS'){
+                 alert('반대 되었습니다!');
+                 location.reload();//새로 고침->단축키는 f5               
+              }
+           }
+        });
+		}
+      });
+ 	
+	//댓글 추천
+	
+	 function replyrecp(r_no){   	
+		 var id = '<%=session.getAttribute("m")%>';
+
+			if(id=="null"){
+				
+				alert("로그인이 필요합니다.");
+				location.replace("login");
+				
+			}else{
+		 $.ajax({
+	           type:'post',
+	           url:'/controller/recommend_plus_r/'+r_no,
+	           headers:{
+	              "Content-Type" : "application/json",
+	              "X-HTTP-Method-Override" : "POST"
+	           },
+	           dataType:'text',
+	           success:function(result){//받아오는 것이 성공시 호출됨
+	              if(result == 'SUCCESS'){
+	                 alert('추천 되었습니다!');
+	                 location.reload();//새로 고침->단축키는 f5               
+	              }
+	           }
+	      });
+		 }
+     }
+ 	
+ 	//댓글 반대
+	function replyrecm(r_no){   	
+		var id = '<%=session.getAttribute("m")%>';
+		
+		if(id=="null"){
+			alert("로그인이 필요합니다.");
+			location.replace("login");
+		}else{
+		 $.ajax({
+	           type:'post',
+	           url:'/controller/recommend_minus_r/'+r_no,
+	           headers:{
+	              "Content-Type" : "application/json",
+	              "X-HTTP-Method-Override" : "POST"
+	           },
+	           dataType:'text',
+	           success:function(result){//받아오는 것이 성공시 호출됨
+	              if(result == 'SUCCESS'){
+	                 alert('반대 되었습니다!');
+	                 location.reload();//새로 고침->단축키는 f5               
+	              }
+	           }
+	      });
+		 }
+     }
  </script>
 
  <script>
@@ -559,7 +649,7 @@ function getAllList(){
 		//비동기식으로 받아오는 것이 성공시 받아온 데이터는 data매개변수에 저장
 		var str="";
 		$(data).each(function(){//each()함수로 반복
-			str+= "<li class='list-group-item note-item clearfix' id='r_no"+this.r_no+"'>"
+			str+= "<li class='list-group-item note-item clearfix' id='"+this.r_no+"'>"
 			+"<div class='content-body panel-body pull-left'>"
 		    +"<div class='note-select-indicator note-deselected'>"
 		    +"<i class='fa fa-comment'></i></div>"
@@ -573,11 +663,11 @@ function getAllList(){
 		    +"</div><fieldset class='form'><article id='note-text-"+this.r_no+"' class='list-group-item-text note-text'>"
 			+this.replytext+"</article></fieldset></div>"
 			+"<div class='content-function pull-right text-center'><div class='content-function-group'><div class='note-evaluate-wrapper'>"
-			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='assent' data-eval='true' data-id='"+this.r_no+"'>"
+			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='assent' data-eval='true' data-id='"+this.r_no+"' onclick='replyrecp("+this.r_no+")'>"
 			+"<i id='note-evaluate-assent-"+this.r_no+"' class='fa fa-angle-up note-evaluate-assent-assent' data-placement='left' data-toggle='tooltip' title='' data-original-title='추천'></i></a>"					
 			
 			+"<div id='content-vote-count-"+this.r_no+"' class='content-eval-count'>"+this.r_hit+"</div>"
-			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='dissent' data-eval='true' data-id='"+this.r_no+"'>"
+			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='dissent' data-eval='true' data-id='"+this.r_no+"' onclick='replyrecm("+this.r_no+")'>"
 			+"<i id='note-evaluate-dissent-"+this.r_no+"' class='fa fa-angle-down note-evaluate-dissent-dissent' data-placement='left' data-toggle='tooltip' title='' data-original-title='반대'></i>"
 			+"</a>"
 			

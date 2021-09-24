@@ -109,7 +109,7 @@
                      <li class="list-group-item list-group-item-question <c:if test="${b.b_replycnt==0}">list-group-no-note</c:if><c:if test="${b.b_replycnt!=0}">list-group-has-note</c:if> clearfix">
                         <div class="list-title-wrapper clearrfix">
                            <div class="list-tag clearfix">
-                                 <span class="list-group-item-text article-id">&num;${b.b_no}</span><!-- 번호 -->
+                                 <span class="list-group-item-text article-id">&num;${b.b_ref}<c:if test="${b.b_step != 0}">답변글</c:if></span><!-- 번호 -->
                                <a href="<c:if test="${b.b_cate==\"community\"}">b_community</c:if><c:if test="${b.b_cate==\"Q&A\"}">b_questions</c:if>" 
                                class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> ${b.b_cate}</a><!-- 태그 -->
                                <c:forTokens var="tag" items="${b.b_tag}" delims=",">
@@ -117,6 +117,13 @@
                         </c:forTokens>
                            </div>
                            <h5 class="list-group-item-heading list-group-item-evaluate">
+                                <c:if test="${b.b_step != 0}"><%--답변글일때만 실행--%>
+								<c:forEach begin="1" end="${b.b_step}" step="1">
+   								&nbsp;<%--답변글 들여쓰기 --%>
+								</c:forEach>
+								<img src="./resources/images/AnswerLine.gif" alt="화살표" />
+								<%--답변글 이미지 출력부분 --%>
+								</c:if> 
                                  <a href="b_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a><!-- 제목 -->
                             </h5>
                         </div>

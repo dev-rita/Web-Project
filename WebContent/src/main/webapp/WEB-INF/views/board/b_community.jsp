@@ -118,7 +118,8 @@
                            <div class="list-group-item-summary clearfix">
                                  <ul>
                                     <li class="<c:if test="${b.b_replycnt == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-comment"></i>${b.b_replycnt}</li><!-- 댓글 수 -->
-                                    <li class="<c:if test="${b.b_rec == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-thumbs-up"></i>${b.b_rec}</li><!-- 추천 수  -->                               
+                                    <li class="<c:if test="${b.b_rec == 0}">item-icon-disabled</c:if>"><i class="<c:if test="${b.b_rec>=0}">item-icon fa fa-thumbs-up</c:if>
+                                    <c:if test="${b.b_rec<0}">item-icon fa fa-thumbs-down</c:if>"></i>${b.b_rec}</li><!-- 추천 수  -->                               
                                     <li class="<c:if test="${b.b_hit == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-eye"></i>${b.b_hit}</li><!-- 조회 수  -->
                                                                    
                                </ul>
