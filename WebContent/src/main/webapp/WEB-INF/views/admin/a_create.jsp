@@ -223,167 +223,78 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800" >Q&amp;A 관리</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
+                    <h1 class="h3 mb-2 text-gray-800" >새 글 쓰기</h1>
+                    
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                            
-                            <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
-                            <!-- <button class="btn btn-danger" style="float:right; margin-left : 5px;" onclick="location='a_del';">삭제</button> -->
-                            <button class="btn btn-primary" style="float:right; margin-left : 5px;">Editor Pick</button>                            
-                            <button class="btn btn-info" style="float:right;" onclick="location='a_create?page=${page}';"><i class="fa fa-pencil"></i>새 글 쓰기</button>
-                            
-                        </div>
-                        <div class="card-body">
-                           <div>
-                              <form>
-                                 <span id="search-span">
-                                 <input type="search" name="query" id="search-field" placeholder="검색어" value="">
-                                 
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                 </span>
-                              </form>
-                           </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                           <th><input type="checkbox" name="allCheck" id="allCheck"></th>                                       
-                                            <th>No</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>등록일</th>
-                                            <th>조회</th>
-                                            <th>게시물 관리</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:if test="${!empty blist}">
-                                    <c:forEach var="b" items="${blist}">
-                                        <tr>
-                                           <td><input type="checkbox" name="RowCheck" value="${b.b_no}"></td>
-                                            <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
-                                            <td><a href="b_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
-                                            <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
-                                            <td>${b.b_date}</td>
-                                            <td>${b.b_hit}</td>
-                                            <td style="text-align:center;">
-                                               <a class="btn btn-warning btn-sm" href="#">수정</a>                                              
-                                            </td>
-                                        </tr>
-                                        </c:forEach>
-                                        </c:if>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="text-center">
-                       <span id="show">  showing ~~~ </span>
-                        <%--검색 전 페이징 --%>
-                            <c:if test="${(empty find_field)&&(empty find_name)}">
-                             <div class="text-center">
-                           <ul class="pagination pagination-sm">
-              
-                              <c:if test="${page <= 1}"><!-- 1페이지면 이동X -->
-                   <li class="prev disabled">
-                  <span>«&nbsp;</span>
-                  </li>
-                 </c:if>
-                 <c:if test="${page > 1 }">
-                 <li class="prev">
-            <a href="a_questions?page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
-            </li>
-            </c:if>
-            
-               
-                <c:forEach var="a" begin="${startpage}" end="${endpage}" step="1">
-               <c:if test="${a == page}"><%--현재 쪽 번호가 선택되었다면 --%>
-                  <li class="active"><span>${a}</span></li>
-               </c:if>
-               <c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
-                  <li><a href="a_questions?page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
-               </c:if>
-            </c:forEach>
-               
- 
-               <li class="disabled">
-                  <span>...</span>
-               </li>
-               <li>
-                  <a href="a_questions?page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
-               </li>
-              
-                  <c:if test="${page >= maxpage }">
-                  <li class="next disabled">
-                     <span>»&nbsp;</span>
-                  </li>
-                  </c:if>
-            <c:if test="${page < maxpage }">
-             <li class="next">
-               <a href="a_questions?page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
-             </li>
-            </c:if>
-              
-               </ul>
-               </div>
-             </c:if>      
-             <%--검색 후 페이징 --%>
-            
-             <c:if test="${(!empty find_field)&&(!empty blist)}">
-              <div class="text-center">
-             <ul class="pagination pagination-sm">
-
-              
-                  <c:if test="${page <= 1}"><!-- 1페이지면 이동X -->
-                  <li class="prev disabled">
-                  <span>«&nbsp;</span>
-                </li>
-                 </c:if>
-                 <c:if test="${page > 1 }">
-                 <li class="prev">
-            <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
-            </li>
-            </c:if>
-
-               
-                <c:forEach var="a" begin="${startpage}" end="${endpage}" step="1">
-               <c:if test="${a == page}"><%--현재 쪽 번호가 선택되었다면 --%>
-                  <li class="active"><span>${a}</span></li>
-               </c:if>
-               <c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
-                  <li><a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
-               </c:if>
-            </c:forEach>
-               
- 
-               <li class="disabled">
-                  <span>...</span>
-               </li>
-               <li>
-                  <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
-               </li>
-               
-                  <c:if test="${page >= maxpage }">
-                   <li class="next disabled">
-                     <span>»&nbsp;</span>
-                   </li>
-                  </c:if>
-            <c:if test="${page < maxpage }">
-             <li class="next">
-               <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
-             </li>
-            </c:if>
-              
-                </ul>
-                </div>
-             </c:if>                  
-                         </div>
-                        </div>
-                    </div>
+                    <div id="article-create" class="content" role="main">
+				<div class="content-header">
+				</div>
+				<div class="panel panel-default clearfix">
+					<div class="panel-heading clearfix">
+						<div class="avatar clearfix avatar-medium pull-left">
+							<a href="/user/info/124651" class='avatar-photo'>
+								<img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40" /></a>
+							<div class="avatar-info">
+								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
+								<div class="activity block">
+									<span class="fa fa-flash"></span> 0
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<form action="a_create_ok" method="post" enctype="multipart/form-data"
+						id="article-form" class="article-form" role="form" onsubmit="return postForm()">
+							<fieldset class="form">
+								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
+								<input type="hidden" name="b_name" id="b_name" value="">
+								<script>
+								document.getElementById('b_name').value=document.getElementById('nickname').textContent;
+								
+								</script>
+								<div class="form-group has-feedback">
+									<div>
+										
+										<select id="category" name="b_cate" class="form-control" required="">
+											<option value="">게시판을 선택해 주세요.</option>
+											<option value="Q&A" data-external="false"
+												data-anonymity="false">Q&amp;A</option>
+											<option value="커뮤니티" data-external="false"
+												data-anonymity="false">커뮤니티</option>
+										</select>
+										
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<div>
+										<input type="text" name="b_title" required="" value=""
+											placeholder="제목을 입력해 주세요." class="form-control" id="title">
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<div>
+										<input type="text" name="b_tag" value=""
+											placeholder="Tags," class="form-control" id="tagString">
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<textarea name="b_cont" id="summernote" rows="20"
+										class="form-control input-block-level"></textarea>
+									<input type="hidden" name="textType" value="HTML" id="textType">									
+									<div class="nav" role="navigation">
+										<fieldset class="buttons">
+											<a href="javascript:window.history.back();" class="btn btn-default btn-wide" 
+											onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 
+											<input type="submit" name="create" class="create btn btn-success btn-wide pull-right"
+											action="create" value="등록" id="create">
+										</fieldset>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -449,7 +360,7 @@
                
                </div>
                <div class="panel-body">
-                  <form action="/articles/questions/save" method="post" 
+                  <form action="b_create_ok" method="post" 
                   id="article-form" class="article-form" role="form" onsubmit="return postForm()">
                      <fieldset class="form">
                         <input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
@@ -499,6 +410,7 @@
     
 
     <script src="./resources/admin/js/jquery.js"></script>
+   
 
     <!-- Bootstrap core JavaScript-->
     <script src="./resouces/admin/vendor/jquery/jquery.min.js"></script>
@@ -518,59 +430,7 @@
     <script src="./resouces/admin/js/demo/datatables-demo.js"></script>
 
 <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
-<script>
-	$(function(){
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt=chkObj.length;
-		
-		$("input[name='allCheck']").click(function(){
-			var chk_listArr=$("input[name='RowCheck']");
-			for (var i=0;i<chk_listArr.length; i++){
-				chk_listArr[i].checked=this.checked;
-			}
-		});
-		$("input[name='RowCheck']").click(function(){
-			if($("input[name='RowCheck']:checked").length == rowCnt){
-				$("input[name='allCheck']")[0].checked=true;
-			}else{
-				$("input[name='allCheck']")[0].checked=false;
-			}
-		});
-	});
-	function deleteValue(){
-		var url="delete";
-		var valueArr =new Array();
-		var list=$("input[name='RowCheck']");
-		for(var i=0;i<list.length;i++){
-			if(list[i].checked){
-				valueArr.push(list[i].value);
-			}
-			
-		}	
-		if(valueArr.length==0){
-			alert('선택된 글이 없습니다.');
-		}else{
-			var chk=confirm("정말 삭제하시겠습니까?");
-			$.ajax({
-				url:url,
-				type:'POST',
-				traditional:true,
-				data:{
-					valueArr:valueArr
-				},
-				success:function(jdata){
-					if(jdata=1){
-						alert('삭제 성공');
-						location.reload();
-					}else{
-						alert("삭제 실패");
-					}
-				}
-			
-			});
-		}
-	}
-</script>
+
 </body>
 
 </html>

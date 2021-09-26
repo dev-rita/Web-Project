@@ -12,7 +12,7 @@ import com.ywhy.service.MemberService;
 import com.ywhy.vo.MemberVO;
 
 @Controller
-public class adminController {
+public class AdminController {
 
 	@Autowired
 	private MemberService memberService;

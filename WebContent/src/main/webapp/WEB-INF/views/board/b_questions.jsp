@@ -162,7 +162,7 @@
                       </c:forEach>
                 </c:if>
                 
-                <c:if test="${(empty blist)&&(!empty find_field)&&(!empty find_name)}">  
+                <c:if test="${(empty blist)}">  
                      <li class="list-group-item clearfix">
                         <div class="panel-body-item clearfix">
                              <div class="panel-body text-center">
@@ -179,7 +179,7 @@
         
         
           <%--검색 전 페이징 --%>
-             <c:if test="${(empty find_field)&&(empty find_name)}">
+             <c:if test="${(!empty blist)&&(empty find_field)&&(empty find_name)}">
               <div class="text-center">
             <ul class="pagination pagination-sm">
               

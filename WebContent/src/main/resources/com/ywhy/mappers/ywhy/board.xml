@@ -172,12 +172,12 @@
    
     <!-- 댓글 추천 -->
     <update id="r_rec_p">
-    update board_reply set r_hit = r_hit+1 where r_no=#{r_no}
+    update board_reply set r_rec = r_rec+1 where r_no=#{r_no}
     </update>
     
     <!-- 댓글 반대 -->
     <update id="r_rec_m">
-    update board_reply set r_hit = r_hit-1 where r_no=#{r_no}
+    update board_reply set r_rec = r_rec-1 where r_no=#{r_no}
     </update>
    
    <!-- Q&A 총 게시물 수 -->
