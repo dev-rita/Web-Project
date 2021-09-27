@@ -1,6 +1,7 @@
 package com.ywhy.vo;
 
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,11 +19,11 @@ public class MemberVO {
 	private String mem_signupdate; //가입날짜
 	private String mem_logindate; //로그인 날짜
 	private int mem_point; //회원활동 포인트
-	private int mem_class;
+	private String mem_class;
 	
 	//관리자 회원목록 페이징 관련 변수
-	private int pageStart;
-	private int pageEnd;
+	private int startrow;
+	private int endrow;
 	
 	//관리자 회원목록 검색필드와 관련 변수
 	private String find_name;//검색어

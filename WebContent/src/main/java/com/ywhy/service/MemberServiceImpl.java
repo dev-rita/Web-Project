@@ -60,6 +60,11 @@ public class MemberServiceImpl implements MemberService {
 		return this.memberDao.loginCheck(login_id);
 	}
 
+	@Override
+	public void delMem(MemberVO login) {
+		this.memberDao.delMem(login);
+	}
+
 
 
 

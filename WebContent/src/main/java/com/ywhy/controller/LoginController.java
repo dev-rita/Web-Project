@@ -1,12 +1,12 @@
 package com.ywhy.controller;
 
 import java.io.PrintWriter;
-
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ywhy.dto.LoginDTO;
+import com.ywhy.service.AdminMemberService;
 import com.ywhy.service.MailSendService;
 import com.ywhy.service.MemberService;
 import com.ywhy.vo.MemberVO;
@@ -28,8 +30,8 @@ import pwdconv.PwdChange;
 @Controller
 public class LoginController {
 
-//	@Autowired	
-//	private AdminService adminService;
+	@Autowired
+	private AdminMemberService adminService;
 	
 	@Autowired
 	private MemberService memberService;
@@ -316,5 +318,50 @@ public class LoginController {
 
 		session.invalidate();//세션 만료 즉 로그아웃 처리
 		return "redirect:/";
+	}
+	
+	/*회원 탈퇴 폼*/
+	@GetMapping("/withdrawal")
+	public String withdrawal(HttpServletResponse response,HttpSession session) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		
+		MemberVO login=(MemberVO)session.getAttribute("m");
+		
+		if(login == null) {
+			out.println("<script>");
+			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("location='login';");
+			out.println("</script>");
+		}else {
+			return "signup/withdrawal";
+		}
+		return null;
+	}
+	
+	/*회원 탈퇴 완료*/
+	@PostMapping("/withdrawal_ok")
+	public String withdrawal_ok(HttpServletResponse response,HttpSession session) throws Exception{
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		
+		MemberVO login=(MemberVO)session.getAttribute("m");
+		
+		if(login == null) {
+			out.println("<script>");
+			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("location='login';");
+			out.println("</script>");
+		}else {
+			this.memberService.delMem(login); //회원 삭제
+			
+			session.invalidate();
+			
+			out.println("<script>");
+			out.println("alert('회원 탈퇴 했습니다. 이용해 주셔서 감사합니다.');");
+			out.println("location='.';");
+			out.println("</script>");
+		}
+		return null;
 	}
 }

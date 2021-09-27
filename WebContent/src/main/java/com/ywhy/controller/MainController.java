@@ -17,7 +17,7 @@ public class MainController {
 		return "index"; //뷰페이지 경로가 /WEB-INF/views/ywhy_loginbefore_index.jsp
 	}
 	
-	/*footer의 About 로그인 전*/
+	/*footer의 About*/
 	@GetMapping("/intro_about")
 	public String about() {
 		return "intro/about"; //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp

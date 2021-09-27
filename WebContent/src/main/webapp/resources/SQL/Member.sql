@@ -12,16 +12,26 @@ create table ywhyMember(
 	mem_signupdate date, --가입날짜
 	mem_logindate date, --로그인 날짜
 	mem_point int default 0, --회원활동 포인트
-	mem_class int default 1 --사용자 권한이면 1 관리자 권한이면 9
+	mem_class varchar2(20) default '일반' --사용자 권한이면 1 관리자 권한이면 9
 );
 
 --ywhyMember테이블 검색
 select * from YWHYMEMBER;
 
 --ywhyMember테이블 중 회원 하나 관리자 권한 주기
-update YWHYMEMBER set mem_class=9 where mem_id='jungsun8261';
+update YWHYMEMBER set mem_class='관리자' where mem_id='aaaaa';
+update YWHYMEMBER set mem_class='관리자' where mem_id='sssss';
 
-update ywhyMember set mem_nick='닉네임5' where mem_id='fffff'
+
+
+
+
+
+
+
+
+
+
 
 drop table ywhyMember;
 

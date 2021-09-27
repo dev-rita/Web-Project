@@ -24,6 +24,8 @@ public interface MemberService {
 	
 	MemberVO loginCheck(String login_id);
 
+	void delMem(MemberVO login);
+
 
 
 
