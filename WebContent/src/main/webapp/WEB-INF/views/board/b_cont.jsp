@@ -44,7 +44,7 @@
         	<div class="content-container clearfix">
             	<div id="content-body" class="panel-body content-body pull-left">
                 	<div class="content-tags">
-                    	<span class="list-group-item-text article-id">&num;</span><span class="list-group-item-text article-id" id="b_no">${b.b_no}</span> <!-- 글번호 -->
+                    	<span class="list-group-item-text article-id">&num;</span><span class="list-group-item-text article-id" id="b_no">${b.b_ref}<c:if test="${b.b_step != 0}">답변글</c:if></span> <!-- 글번호 -->
                     	<!-- 태그 시작-->
 						<a href="${b.b_cate == '커뮤니티' ? 'b_community' : 'b_questions'}" class="list-group-item-text item-tag label label-info"><i class="fa fa-database"></i> ${b.b_cate}</a>
 						<c:forTokens var="tag" items="${b.b_tag}" delims=",">
@@ -645,6 +645,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 getAllList();//댓글목록함수
 function getAllList(){
 	var b_no=$('#b_no').text();//게시판 번호, 자바스크립트에서 jsp 문법인 jstl or el을 사용 가능하다. var b_no=${b.b_no}; js파일에서 에러
+	
 	$.getJSON("/controller/all/"+b_no,function(data){
 		//비동기식으로 받아오는 것이 성공시 받아온 데이터는 data매개변수에 저장
 		var str="";
@@ -666,7 +667,7 @@ function getAllList(){
 			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='assent' data-eval='true' data-id='"+this.r_no+"' onclick='replyrecp("+this.r_no+")'>"
 			+"<i id='note-evaluate-assent-"+this.r_no+"' class='fa fa-angle-up note-evaluate-assent-assent' data-placement='left' data-toggle='tooltip' title='' data-original-title='추천'></i></a>"					
 			
-			+"<div id='content-vote-count-"+this.r_no+"' class='content-eval-count'>"+this.r_hit+"</div>"
+			+"<div id='content-vote-count-"+this.r_no+"' class='content-eval-count'>"+this.r_rec+"${!empty m}</div>"
 			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='dissent' data-eval='true' data-id='"+this.r_no+"' onclick='replyrecm("+this.r_no+")'>"
 			+"<i id='note-evaluate-dissent-"+this.r_no+"' class='fa fa-angle-down note-evaluate-dissent-dissent' data-placement='left' data-toggle='tooltip' title='' data-original-title='반대'></i>"
 			+"</a>"

@@ -21,16 +21,7 @@ select * from YWHYMEMBER;
 --ywhyMember테이블 중 회원 하나 관리자 권한 주기
 update YWHYMEMBER set mem_class=9 where mem_id='jungsun8261';
 
-
-
-
-
-
-
-
-
-
-
+update ywhyMember set mem_nick='닉네임5' where mem_id='fffff'
 
 drop table ywhyMember;
 

@@ -42,6 +42,6 @@ public class BoardVO {
 	private String replytext;//댓글 내용
 	private String regdate;//등록날짜
 	private String updatedate;//수정날짜
-	private int r_hit;//댓글 추천
+	private int r_rec;//댓글 추천
 	
 }

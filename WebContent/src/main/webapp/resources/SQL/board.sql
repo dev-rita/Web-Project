@@ -9,12 +9,15 @@ create table board(
 	,b_tag varchar2(200) --태그명
 	,b_hit number(38) default 0 --조회수
 	,b_rec number(38) default 0 --추천수
-	,b_replycnt number(38) default 0--댓글수
+	,b_replycnt number(38) default 0 --댓글수
 	,b_ref number(38) --원본글과 답변글을 묶어주는 글 그룹번호
 	,b_step number(38) --원본글이면 0, 첫번째 답변글이면 1, 두번째 답변글이면 2... =>원본글과 답변글을 구분하는 값이면서 며번째 답변글인가 알려준다.
 	,b_level int --답변글 정렬순서
 	,b_date date --등록날짜
 );
+
+drop table board cascade constraint;
+drop table board_reply cascade constraint;
 
 select * from board;
 
@@ -47,13 +50,11 @@ nocache; --임시 메모리 사용 안함
 --시퀀스 다음 번호값 확인
 select b_no_seq.nextval from dual;
 
-drop sequence b_no_seq; --게시판 시퀀스 삭제
+drop sequence b_no_seq;
 
-drop sequence r_no_seq; --댓글 시퀀스 삭제
+drop sequence r_no_seq;
 
-drop table board cascade constraint;
-
-drop table board_reply; --댓글 테이블 삭제
+drop table board;
 
 select constraint_name, constraint_type, table_name, r_constraint_name from user_constraints
 where table_name='BOARD';
@@ -66,6 +67,7 @@ alter table board drop constraint SYS_C0010412;
 create table board_reply(
 	r_no number(38) primary key --댓글번호
 	,b_no number(38) constraint board_reply_b_no_fk references board(b_no) on delete cascade
+	--tbl_board테이블의 게시판 번호값만 저장됨. 외래키 제약조건으로 추가 설정.
 	,mem_id varchar2(100) constraint board_reply_mem_id_fk references ywhyMember(mem_id) on delete cascade
 	,replyer varchar2(100) not null --댓글작성자
 	,replytext varchar2(4000) not null --댓글내용
@@ -92,7 +94,6 @@ start with 1
 increment by 1
 nocache;
 
-
 --rno_seq 시퀀스 다음 번호값 확인
 select rno_seq.nextval from dual;
 
@@ -101,7 +102,7 @@ alter table board add b_rec number(38) default 0;
 alter table board add mem_id varchar2(100) constraint board_mem_id_fk references ywhyMember(mem_id) on delete cascade;
 alter table board_reply add mem_id varchar2(100) constraint board_reply_mem_id_fk references ywhyMember(mem_id) on delete cascade;
 --댓글 수 카운트해 저장하는 컬럼 추가
-alter table board add b_replycnt number(38) default 0;
+alter table board add (b_replycnt number(38) default 0);
 alter table board_reply add r_rec number(38) default 0;
 
 --tbl_reply 테이블의 게시물 번호에 해당하는 댓글수를 카운터해서 tbl_board테이블의 replycnt컬럼 댓글수 값을 변경시킴.

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 
 <head>
 
@@ -227,74 +227,74 @@
                     
                     <!-- DataTales Example -->
                     <div id="article-create" class="content" role="main">
-				<div class="content-header">
-				</div>
-				<div class="panel panel-default clearfix">
-					<div class="panel-heading clearfix">
-						<div class="avatar clearfix avatar-medium pull-left">
-							<a href="/user/info/124651" class='avatar-photo'>
-								<img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40" /></a>
-							<div class="avatar-info">
-								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
-								<div class="activity block">
-									<span class="fa fa-flash"></span> 0
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="panel-body">
-						<form action="a_create_ok" method="post" enctype="multipart/form-data"
-						id="article-form" class="article-form" role="form" onsubmit="return postForm()">
-							<fieldset class="form">
-								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
-								<input type="hidden" name="b_name" id="b_name" value="">
-								<script>
-								document.getElementById('b_name').value=document.getElementById('nickname').textContent;
-								
-								</script>
-								<div class="form-group has-feedback">
-									<div>
-										
-										<select id="category" name="b_cate" class="form-control" required="">
-											<option value="">게시판을 선택해 주세요.</option>
-											<option value="Q&A" data-external="false"
-												data-anonymity="false">Q&amp;A</option>
-											<option value="커뮤니티" data-external="false"
-												data-anonymity="false">커뮤니티</option>
-										</select>
-										
-									</div>
-								</div>
-								<div class="form-group has-feedback">
-									<div>
-										<input type="text" name="b_title" required="" value=""
-											placeholder="제목을 입력해 주세요." class="form-control" id="title">
-									</div>
-								</div>
-								<div class="form-group has-feedback">
-									<div>
-										<input type="text" name="b_tag" value=""
-											placeholder="Tags," class="form-control" id="tagString">
-									</div>
-								</div>
-								<div class="form-group has-feedback">
-									<textarea name="b_cont" id="summernote" rows="20"
-										class="form-control input-block-level"></textarea>
-									<input type="hidden" name="textType" value="HTML" id="textType">									
-									<div class="nav" role="navigation">
-										<fieldset class="buttons">
-											<a href="javascript:window.history.back();" class="btn btn-default btn-wide" 
-											onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 
-											<input type="submit" name="create" class="create btn btn-success btn-wide pull-right"
-											action="create" value="등록" id="create">
-										</fieldset>
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			</div>
+            <div class="content-header">
+            </div>
+            <div class="panel panel-default clearfix">
+               <div class="panel-heading clearfix">
+                  <div class="avatar clearfix avatar-medium pull-left">
+                     <a href="/user/info/124651" class='avatar-photo'>
+                        <img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40" /></a>
+                     <div class="avatar-info">
+                        <a class="nickname" href="/user/info/124651" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
+                        <div class="activity block">
+                           <span class="fa fa-flash"></span> 0
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="panel-body">
+                  <form action="a_create_ok" method="post" enctype="multipart/form-data"
+                  id="article-form" class="article-form" role="form" onsubmit="return postForm()">
+                     <fieldset class="form">
+                        <input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
+                        <input type="hidden" name="b_name" id="b_name" value="">
+                        <script>
+                        document.getElementById('b_name').value=document.getElementById('nickname').textContent;
+                        
+                        </script>
+                        <div class="form-group has-feedback">
+                           <div>
+                              
+                              <select id="category" name="b_cate" class="form-control" required="">
+                                 <option value="">게시판을 선택해 주세요.</option>
+                                 <option value="Q&A" data-external="false"
+                                    data-anonymity="false">Q&amp;A</option>
+                                 <option value="커뮤니티" data-external="false"
+                                    data-anonymity="false">커뮤니티</option>
+                              </select>
+                              
+                           </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                           <div>
+                              <input type="text" name="b_title" required="" value=""
+                                 placeholder="제목을 입력해 주세요." class="form-control" id="title">
+                           </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                           <div>
+                              <input type="text" name="b_tag" value=""
+                                 placeholder="Tags," class="form-control" id="tagString">
+                           </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                           <textarea name="b_cont" id="summernote" rows="20"
+                              class="form-control input-block-level"></textarea>
+                           <input type="hidden" name="textType" value="HTML" id="textType">                           
+                           <div class="nav" role="navigation">
+                              <fieldset class="buttons">
+                                 <a href="javascript:window.history.back();" class="btn btn-default btn-wide" 
+                                 onclick="return confirm('정말로 취소하시겠습니까?')">취소</a> 
+                                 <input type="submit" name="create" class="create btn btn-success btn-wide pull-right"
+                                 action="create" value="등록" id="create">
+                              </fieldset>
+                           </div>
+                        </div>
+                     </fieldset>
+                  </form>
+               </div>
+            </div>
+         </div>
 
                 </div>
                 <!-- /.container-fluid -->

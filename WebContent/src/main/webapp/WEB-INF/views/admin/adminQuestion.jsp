@@ -29,7 +29,7 @@
     
     <!-- 추가한 스타일 -->
    <style>
-      #modDiv{
+      <%--#modDiv{
          width:800px; background-color:lightgray;
          position:absolute; top:20%; left:50%;
          margin-top:-50px; margin-left:-150px;
@@ -44,7 +44,7 @@
          margin-top: 10px;
          margin-left: 5px;
       }
-      
+      --%>
       #search-field:focus{
          color:#6e707e;
          backgound-color:#fff;
@@ -233,10 +233,10 @@
                         <div class="card-header py-3">
                             <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                             
+                            
                             <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
-                            <!-- <button class="btn btn-danger" style="float:right; margin-left : 5px;" onclick="location='a_del';">삭제</button> -->
                             <button class="btn btn-primary" style="float:right; margin-left : 5px;">Editor Pick</button>                            
-                            <button class="btn btn-info" style="float:right;" onclick="location='a_create?page=${page}';"><i class="fa fa-pencil"></i>새 글 쓰기</button>
+                            <a class="btn btn-info" style="float:right;" onclick="location='a_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
                             
                         </div>
                         <div class="card-body">
@@ -262,18 +262,19 @@
                                             <th>게시물 관리</th>
                                         </tr>
                                     </thead>
+                                 
                                     <tbody>
                                     <c:if test="${!empty blist}">
                                     <c:forEach var="b" items="${blist}">
                                         <tr>
                                            <td><input type="checkbox" name="RowCheck" value="${b.b_no}"></td>
                                             <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
-                                            <td><a href="b_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
+                                            <td><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
                                             <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
                                             <td>${b.b_date}</td>
                                             <td>${b.b_hit}</td>
                                             <td style="text-align:center;">
-                                               <a class="btn btn-warning btn-sm" href="#">수정</a>                                              
+                                               <a class="btn btn-warning btn-sm" href="a_cont?b_no=${b.b_no}&page=${page}&state=edit">수정</a>                                           
                                             </td>
                                         </tr>
                                         </c:forEach>
@@ -282,7 +283,7 @@
                                 </table>
                             </div>
                             <div class="text-center">
-                       <span id="show">  showing ~~~ </span>
+                       <span id="show">  showing ${page} of ${maxpage} </span>
                         <%--검색 전 페이징 --%>
                             <c:if test="${(empty find_field)&&(empty find_name)}">
                              <div class="text-center">
@@ -432,73 +433,9 @@
         </div>
     </div>
     
-    
-    
-    
-    
-    <div id="modDiv" style="display:none;">
-    <div class="layout-container">
-      <div class="main ">
-         
-         <div id="article-create" class="content" role="main">
-            <div class="content-header">
-               <h3>새 글 쓰기</h3>
-            </div>
-            <div class="panel panel-default clearfix">
-               <div class="panel-heading clearfix">
-               
-               </div>
-               <div class="panel-body">
-                  <form action="/articles/questions/save" method="post" 
-                  id="article-form" class="article-form" role="form" onsubmit="return postForm()">
-                     <fieldset class="form">
-                        <input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
-                        <div class="form-group has-feedback">
-                           <div>
-                              <select id="category" name="categoryCode" class="form-control" required="">
-                                 <option value="">게시판을 선택해 주세요.</option>
-                                 <option value="tech-qna" data-external="false"
-                                    data-anonymity="false">Q&amp;A</option>
-                                 <option value="blockchain-qna" data-external="false"
-                                    data-anonymity="false">커뮤니티</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                           <div>
-                              <input type="text" name="title" required="" value=""
-                                 placeholder="제목을 입력해 주세요." class="form-control" id="title">
-                           </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                           <div>
-                              <input type="text" name="tagString" value=""
-                                 placeholder="Tags," class="form-control" id="tagString">
-                           </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                           <textarea name="text" id="summernote" rows="15"
-                              class="form-control input-block-level"></textarea>
-                           <input type="hidden" name="textType" value="HTML" id="textType">                           
-                           
-                              <fieldset class="buttons">
-                                          <button class="modNo btn btn-danger" 
-                                          onclick="modDivClose();">취소</button> 
-                                          <input type="submit" name="create" class="modYes btn btn-success"
-                                          action="create" value="등록" id="create">
-                                       </fieldset>
-                        
-                     </fieldset>
-                  </form>
-               </div>
-            </div>
-         </div>      
-      </div>
-   </div>
-   </div>
-    
 
     <script src="./resources/admin/js/jquery.js"></script>
+    
 
     <!-- Bootstrap core JavaScript-->
     <script src="./resouces/admin/vendor/jquery/jquery.min.js"></script>

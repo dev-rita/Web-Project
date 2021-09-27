@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,130 +13,134 @@
     <meta name="author" content="">
 
     <title>관리자페이지 - 커뮤니티</title>
-	<link href="img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
-	
+   <link href="img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
+   
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="./resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="./resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <!--  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
+    <!-- Custom styles for this page 
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
     
     <!-- 추가한 스타일 -->
-	<style>
-		#modDiv{
-			width:800px; background-color:lightgray;
-			position:absolute; top:12.5%; left:50%;
-			margin-top:-50px; margin-left:-150px;
-			padding:10px;
-			z-index:1000;
-			border-radius:10px;
-		}
-		.modYes{
-			margin-top:10px;
-			float:right;
-		}
-		.modNo{
-			margin-top:10px;
-			margin-left:5px;
-		}
-		#search-field:focus{
-			color:#6e707e;
-			background-color:#fff;
-			border-color:#bac8f3;
-			outline:0;
-			box-shadow:0 0 0 0.2rem rgb(78 115 223 /25%);
-		}
-		#search-field{
-			width:300px;
-			padding:.375rem .75rem;
-			color:#6e707e;
-			border:1px solid #d1d3e2;
-			border-radius:.35rem;
-		}
-		#search-span{
-			float:right;
-			margin-bottom:7px;
-			margin-top:-10px;
-		}
-		
-		.pagination {
-			float:right;
-		    display: inline-block;
-		    padding-left: 0;
-		    margin-top: 20px;
-		    border-radius: 4px;
-		}
-		.pagination > li {
-		    display: inline;
-		}
-		.pagination > li > a,
-		.pagination > li > span {
-		    position: relative;
-		    float: left;
-		    padding: 6px 12px;
-		    margin-left: -1px;
-		    line-height: 1.42857143;
-		    color: #337ab7;
-		    text-decoration: none;
-		    background-color: #fff;
-		    border: 1px solid #ddd;
-		}
-		.pagination > li:first-child > a,
-		.pagination > li:first-child > span {
-		    margin-left: 0;
-		    border-top-left-radius: 4px;
-		    border-bottom-left-radius: 4px;
-		}
-		.pagination > li:last-child > a,
-		.pagination > li:last-child > span {
-		    border-top-right-radius: 4px;
-		    border-bottom-right-radius: 4px;
-		}
-		.pagination > li > a:hover,
-		.pagination > li > span:hover,
-		.pagination > li > a:focus,
-		.pagination > li > span:focus {
-		    color: #23527c;
-		    background-color: #eee;
-		    border-color: #ddd;
-		}
-		.pagination > .active > a,
-		.pagination > .active > span,
-		.pagination > .active > a:hover,
-		.pagination > .active > span:hover,
-		.pagination > .active > a:focus,
-		.pagination > .active > span:focus {
-		    z-index: 2;
-		    color: #fff;
-		    cursor: default;
-		    background-color: #4e73df;
-		    border-color: #4e73df;
-		}
-		.pagination > .disabled > span,
-		.pagination > .disabled > span:hover,
-		.pagination > .disabled > span:focus,
-		.pagination > .disabled > a,
-		.pagination > .disabled > a:hover,
-		.pagination > .disabled > a:focus {
-		    color: #777;
-		    cursor: not-allowed;
-		    background-color: #fff;
-		    border-color: #ddd;
-		}
-		#show{
-			float:left;
-			line-height: 1.42857143;
-			margin-top:20px;
-		}
-	</style>
-	<!-- 추가한 스타일 -->
-	
+	 <style>
+     <%-- #modDiv{
+         width:800px; background-color:lightgray;
+         position:absolute; top:20%; left:50%;
+         margin-top:-50px; margin-left:-150px;
+         padding:10px; border-radius:10px;
+         z-index:1000;
+      }
+      .modYes{
+         margin-top: 10px;   
+         float:right;   
+      }
+      .modNo{
+         margin-top: 10px;
+         margin-left: 5px;
+      }--%>
+      
+      #search-field:focus{
+         color:#6e707e;
+         backgound-color:#fff;
+         border-color:#bac8f3;
+         outline:0;
+         box-shadow: 0 0 0 0.2rem rgb(78 115 223 / 25%)
+      }
+      
+      #search-field{
+         width:300px;
+         padding:.375rem .75rem;
+         color:#6e707e;
+         border:1px solid #d1d3e2;
+         border-radius:.35rem;
+      }
+      
+      #search-span{
+         float:right;
+         margin-top:-10px;
+         margin-bottom:7px;
+      }
+      
+      .pagination {
+         float:right;
+          display: inline-block;
+          padding-left: 0;
+          margin-top: 20px;
+          border-radius: 4px;
+      }
+      .pagination > li {
+          display: inline;
+      }
+      .pagination > li > a,
+      .pagination > li > span {
+          position: relative;
+          float: left;
+          padding: 6px 12px;
+          margin-left: -1px;
+          line-height: 1.42857143;
+          color: #337ab7;
+          text-decoration: none;
+          background-color: #fff;
+          border: 1px solid #ddd;
+      }
+      .pagination > li:first-child > a,
+      .pagination > li:first-child > span {
+          margin-left: 0;
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+      }
+      .pagination > li:last-child > a,
+      .pagination > li:last-child > span {
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+      }
+      .pagination > li > a:hover,
+      .pagination > li > span:hover,
+      .pagination > li > a:focus,
+      .pagination > li > span:focus {
+          color: #23527c;
+          background-color: #eee;
+          border-color: #ddd;
+      }
+      .pagination > .active > a,
+      .pagination > .active > span,
+      .pagination > .active > a:hover,
+      .pagination > .active > span:hover,
+      .pagination > .active > a:focus,
+      .pagination > .active > span:focus {
+          z-index: 2;
+          color: #fff;
+          cursor: default;
+          background-color: #4e73ef;
+          border-color: #4e73ef;
+      }
+      .pagination > .disabled > span,
+      .pagination > .disabled > span:hover,
+      .pagination > .disabled > span:focus,
+      .pagination > .disabled > a,
+      .pagination > .disabled > a:hover,
+      .pagination > .disabled > a:focus {
+          color: #777;
+          cursor: not-allowed;
+          background-color: #fff;
+          border-color: #ddd;
+      }
+      
+      #show{
+         float:left;
+         margin-top:20px;
+         line-height: 1.42857143;
+         
+      }
+   </style>
+   <!-- 추가한 스타일 -->
+   
 </head>
 <body id="page-top">
 
@@ -145,8 +151,8 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
-            	<div class="sidebar-brand-icon">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
+               <div class="sidebar-brand-icon">
                     <img src="img/logo_manager.png" style="width:45px; height:45px;">
                 </div>
                 <div class="sidebar-brand-text mx-3">YWHY</div>
@@ -228,26 +234,26 @@
                             <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                             
                             
-                            <button class="btn btn-danger" style="float:right; margin-left : 5px;">삭제</button>
+                            <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
                             <button class="btn btn-primary" style="float:right; margin-left : 5px;">Editor Pick</button>                            
-                            <button id="create" class="btn btn-info" style="float:right;"><i class="fa fa-pencil"></i>새 글 쓰기</button>
+                             <a class="btn btn-info" style="float:right;" onclick="location='a_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
                             
                         </div>
                         <div class="card-body">
-                        	<div>
-                        		<form>
-                        			<span id="search-span">
-                        			<input type="search" name="query" id="search-field" placeholder="검색어" value="">
-                           			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                        			</span>
-                        			
-                        		</form>
-                        	</div>
+                           <div>
+                              <form>
+                                 <span id="search-span">
+                                 <input type="search" name="query" id="search-field" placeholder="검색어" value="">
+                                 
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                 </span>
+                              </form>
+                           </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        	<th><input type="checkbox"></th>                                       
+                                         	<th><input type="checkbox" name="allCheck" id="allCheck"></th>                                       
                                             <th>No</th>
                                             <th>제목</th>
                                             <th>작성자</th>
@@ -256,179 +262,127 @@
                                             <th>게시물 관리</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                        	<th><input type="checkbox"></th>
-                                            <th>No</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>등록일</th>
-                                            <th>조회</th>
-                                            <th>게시물 관리</th>
-                                        </tr>
-                                    </tfoot>
+                                    
                                     <tbody>
+                                    <c:if test="${!empty blist}">
+                                    <c:forEach var="b" items="${blist}">
                                         <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>1</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
+                                           <td><input type="checkbox" name="RowCheck" value="${b.b_no}"></td>
+                                            <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
+                                            <td><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
+                                            <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
+                                            <td>${b.b_date}</td>
+                                            <td>${b.b_hit}</td>
                                             <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>                                            	
+                                               <a class="btn btn-warning btn-sm" href="a_cont?b_no=${b.b_no}&page=${page}&state=edit">수정</a>                                              
                                             </td>
                                         </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>2</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>3</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>4</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>5</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>6</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>7</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>8</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>9</td>
-                                            <td>Javascript Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>39</td>
-                                            <td>2009/09/15</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        	<td><input type="checkbox"></td>
-                                            <td>10</td>
-                                            <td>Software Engineer</td>
-                                            <td>Edinburgh</td>
-                                            <td>23</td>
-                                            <td>2008/12/13</td>
-                                            <td style="text-align:center;">
-                                            	<a class="btn btn-warning btn-sm" href="#">수정</a></button>
-                                            </td>
-                                        </tr>
+                                        </c:forEach>
+                                        </c:if>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="text-center">
-                            	<span id="show">showing</span>
-            					<ul class="pagination ">
-               						<li class="prev disabled">
-					                	<span>«</span>
-					               	</li>
-					               	<li class="active">
-					                  	<span>1</span>
-					               	</li>
-					               	<li>
-					                	<a href="/articles/life?offset=20&amp;max=20&amp;sort=id&amp;order=desc">2</a>
-					               		</li>
-					               	<li>
-					                	<a href="/articles/life?offset=40&amp;max=20&amp;sort=id&amp;order=desc">3</a>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=60&amp;max=20&amp;sort=id&amp;order=desc">4</a>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=80&amp;max=20&amp;sort=id&amp;order=desc">5</a>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=100&amp;max=20&amp;sort=id&amp;order=desc">6</a>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=120&amp;max=20&amp;sort=id&amp;order=desc">7</a>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=140&amp;max=20&amp;sort=id&amp;order=desc">8</a>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=160&amp;max=20&amp;sort=id&amp;order=desc">9</a>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=180&amp;max=20&amp;sort=id&amp;order=desc">10</a>
-					               	</li>
-					               	<li class="disabled">
-					                  	<span>...</span>
-					               	</li>
-					               	<li>
-					                  	<a href="/articles/life?offset=102540&amp;max=20&amp;sort=id&amp;order=desc">5128</a>   
-					               	</li>
-					               	<li class="next">
-					                  	<a href="/articles/life?offset=20&amp;max=20amp;sort=id&amp;order=desc">»</a>
-					              	</li>
-					            </ul>					            
-					         </div>
+                       <span id="show"> showing ${page} of ${maxpage} </span>
+                        <%--검색 전 페이징 --%>
+                            <c:if test="${(empty find_field)&&(empty find_name)}">
+                             <div class="text-center">
+                           <ul class="pagination pagination-sm">
+              
+                              <c:if test="${page <= 1}"><!-- 1페이지면 이동X -->
+                   <li class="prev disabled">
+                  <span>«&nbsp;</span>
+                  </li>
+                 </c:if>
+                 <c:if test="${page > 1 }">
+                 <li class="prev">
+            <a href="a_questions?page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
+            </li>
+            </c:if>
+            
+               
+                <c:forEach var="a" begin="${startpage}" end="${endpage}" step="1">
+               <c:if test="${a == page}"><%--현재 쪽 번호가 선택되었다면 --%>
+                  <li class="active"><span>${a}</span></li>
+               </c:if>
+               <c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
+                  <li><a href="a_questions?page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
+               </c:if>
+            </c:forEach>
+               
+ 
+               <li class="disabled">
+                  <span>...</span>
+               </li>
+               <li>
+                  <a href="a_questions?page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
+               </li>
+              
+                  <c:if test="${page >= maxpage }">
+                  <li class="next disabled">
+                     <span>»&nbsp;</span>
+                  </li>
+                  </c:if>
+            <c:if test="${page < maxpage }">
+             <li class="next">
+               <a href="a_questions?page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
+             </li>
+            </c:if>
+              
+               </ul>
+               </div>
+             </c:if>      
+             <%--검색 후 페이징 --%>
+            
+             <c:if test="${(!empty find_field)&&(!empty blist)}">
+              <div class="text-center">
+             <ul class="pagination pagination-sm">
+
+              
+                  <c:if test="${page <= 1}"><!-- 1페이지면 이동X -->
+                  <li class="prev disabled">
+                  <span>«&nbsp;</span>
+                </li>
+                 </c:if>
+                 <c:if test="${page > 1 }">
+                 <li class="prev">
+            <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
+            </li>
+            </c:if>
+
+               
+                <c:forEach var="a" begin="${startpage}" end="${endpage}" step="1">
+               <c:if test="${a == page}"><%--현재 쪽 번호가 선택되었다면 --%>
+                  <li class="active"><span>${a}</span></li>
+               </c:if>
+               <c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
+                  <li><a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
+               </c:if>
+            </c:forEach>
+               
+ 
+               <li class="disabled">
+                  <span>...</span>
+               </li>
+               <li>
+                  <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
+               </li>
+               
+                  <c:if test="${page >= maxpage }">
+                   <li class="next disabled">
+                     <span>»&nbsp;</span>
+                   </li>
+                  </c:if>
+            <c:if test="${page < maxpage }">
+             <li class="next">
+               <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
+             </li>
+            </c:if>
+              
+                </ul>
+                </div>
+             </c:if>                  
+                         </div>
                         </div>
                     </div>
 
@@ -485,107 +439,156 @@
     
     <div id="modDiv" style="display:none;">
     <div class="layout-container">
-		<div class="main">
-			
-			<div id="article-create" class="content" role="main">
-				<div class="content-header">
-					<h3>새 글 쓰기</h3>
-				</div>
-				<div class="panel panel-default clearfix">
-					<div class="panel-heading clearfix">
-					
-					</div>
-					<div class="panel-body">
-						<form action="/articles/questions/save" method="post" 
-						id="article-form" class="article-form" role="form" onsubmit="return postForm()">
-							<fieldset class="form">
-								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
-								<div class="form-group has-feedback">
-									<div>
-										<select id="category" name="categoryCode" class="form-control" required="">
-											<option value="">게시판을 선택해 주세요.</option>
-											<option value="tech-qna" data-external="false"
-												data-anonymity="false">Q&amp;A</option>
-											<option value="blockchain-qna" data-external="false"
-												data-anonymity="false">커뮤니티</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group has-feedback">
-									<div>
-										<input type="text" name="title" required="" value=""
-											placeholder="제목을 입력해 주세요." class="form-control" id="title">
-									</div>
-								</div>
-								<div class="form-group has-feedback">
-									<div>
-										<input type="text" name="tagString" value=""
-											placeholder="Tags," class="form-control" id="tagString">
-									</div>
-								</div>
-								<div class="form-group has-feedback">
-									<textarea name="text" id="summernote" rows="15"
-										class="form-control input-block-level"></textarea>
-									<input type="hidden" name="textType" value="HTML" id="textType">
-									
-									
-										<fieldset class="buttons">
-											<button class="modNo btn btn-danger" 
-											onclick="modDivClose();">취소</button> 
-											<input type="submit" name="create" class="modYes btn btn-success"
-											action="create" value="등록" id="create">
-										</fieldset>
-									
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			</div>
-    		
-			
-		</div>
-	</div>
-	</div>
+      <div class="main ">
+         
+         <div id="article-create" class="content" role="main">
+            <div class="content-header">
+               <h3>새 글 쓰기</h3>
+            </div>
+            <div class="panel panel-default clearfix">
+               <div class="panel-heading clearfix">
+               
+               </div>
+               <div class="panel-body">
+                  <form action="/articles/questions/save" method="post" 
+                  id="article-form" class="article-form" role="form" onsubmit="return postForm()">
+                     <fieldset class="form">
+                        <input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
+                        <div class="form-group has-feedback">
+                           <div>
+                              <select id="category" name="categoryCode" class="form-control" required="">
+                                 <option value="">게시판을 선택해 주세요.</option>
+                                 <option value="tech-qna" data-external="false"
+                                    data-anonymity="false">Q&amp;A</option>
+                                 <option value="blockchain-qna" data-external="false"
+                                    data-anonymity="false">커뮤니티</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                           <div>
+                              <input type="text" name="title" required="" value=""
+                                 placeholder="제목을 입력해 주세요." class="form-control" id="title">
+                           </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                           <div>
+                              <input type="text" name="tagString" value=""
+                                 placeholder="Tags," class="form-control" id="tagString">
+                           </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                           <textarea name="text" id="summernote" rows="15"
+                              class="form-control input-block-level"></textarea>
+                           <input type="hidden" name="textType" value="HTML" id="textType">                           
+                           
+                              <fieldset class="buttons">
+                                          <button class="modNo btn btn-danger" 
+                                          onclick="modDivClose();">취소</button> 
+                                          <input type="submit" name="create" class="modYes btn btn-success"
+                                          action="create" value="등록" id="create">
+                                       </fieldset>
+                        
+                     </fieldset>
+                  </form>
+               </div>
+            </div>
+         </div>      
+      </div>
+   </div>
+   </div>
     
 
-    <script src="./js/jquery.js"></script>
-    <script>
+    <script src="./resources/admin/js/jquery.js"></script>
+   
+   <%-- <script>
     $(document).ready(function(){
-    	$('#create').click(function(){
-    		$('#modDiv').show('slow');	
-    	});
+       $('#create').click(function(){
+          $('#modDiv').show('slow');   
+       });
     });
     
     function modDivClose(){
-    	$('#modDiv').hide('slow');
+       $('#modDiv').hide('slow');
     }
     //댓글 수정화면 닫기
     function modDivClose(){
        $('#modDiv').hide('slow');
     }
-    </script>
+    </script>--%>
     
     
-
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./resouces/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="./resouces/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./resouces/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="./resouces/admin/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <!-- <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>--> 
+    <!-- Page level plugins
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="./resouces/admin/js/demo/datatables-demo.js"></script>
 
 <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
-
+<script>
+	$(function(){
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt=chkObj.length;
+		
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr=$("input[name='RowCheck']");
+			for (var i=0;i<chk_listArr.length; i++){
+				chk_listArr[i].checked=this.checked;
+			}
+		});
+		$("input[name='RowCheck']").click(function(){
+			if($("input[name='RowCheck']:checked").length == rowCnt){
+				$("input[name='allCheck']")[0].checked=true;
+			}else{
+				$("input[name='allCheck']")[0].checked=false;
+			}
+		});
+	});
+	function deleteValue(){
+		var url="delete";
+		var valueArr =new Array();
+		var list=$("input[name='RowCheck']");
+		for(var i=0;i<list.length;i++){
+			if(list[i].checked){
+				valueArr.push(list[i].value);
+			}
+			
+		}	
+		if(valueArr.length==0){
+			alert('선택된 글이 없습니다.');
+		}else{
+			var chk=confirm("정말 삭제하시겠습니까?");
+			$.ajax({
+				url:url,
+				type:'POST',
+				traditional:true,
+				data:{
+					valueArr:valueArr
+				},
+				success:function(jdata){
+					if(jdata=1){
+						alert('삭제 성공');
+						location.reload();
+					}else{
+						alert("삭제 실패");
+					}
+				}
+			
+			});
+		}
+	}
+</script>
 </body>
 
 </html>

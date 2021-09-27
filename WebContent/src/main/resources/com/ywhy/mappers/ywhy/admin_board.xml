@@ -4,33 +4,75 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-  <mapper namespace="AdminBoard">
-  
-  <!-- Q&A 총 게시물 수 -->
-   <select id="aq_count" resultType="int">
-      select count(*) from board
-      <where>          
-         <if test="find_field=='' || find_field==null">b_cate like 'Q%'</if>
-         <if test="find_field=='b_title'">b_cate like 'Q%' and b_title like #{find_name}</if>
-         <if test="find_field=='b_cont'">b_cate like 'Q%' and b_cont like #{find_name}</if>
-      </where>
-     </select>
-     
-   <!-- Q&A 목록보기 -->
-   <select id="aq_list" resultType="com.ywhy.vo.BoardVO"> 
-   select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
-      from (select * from board 
-      <where>
-         b_cate like 'Q%'
-         <if test="find_field=='b_title'">and b_title like #{find_name}</if>
-         <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
-      </where>
-      order by b_ref desc, b_level asc))
-      where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
-   </select>
+ <mapper namespace="AdminBoard">
+ 	<select id="aq_count" resultType="int">
+       select count(*) from board
+       <where>          
+          <if test="find_field=='' || find_field==null">b_cate like 'Q%'</if>
+          <if test="find_field=='b_title'">b_cate like 'Q%' and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">b_cate like 'Q%' and b_cont like #{find_name}</if>
+       </where>
+      </select>
+      
+      <!-- Q&A 목록보기 -->
+    <select id="aq_list" resultType="com.ywhy.vo.BoardVO"> 
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board 
+       <where>
+          b_cate like 'Q%'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
+       </where>
+       order by b_ref desc, b_level asc))
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 커뮤니티 총 게시물 수 -->
+    <select id="ac_count" resultType="int">
+       select count(*) from board
+       <where>          
+          b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+    </select>
+    
+      <!-- 커뮤니티 목록보기 -->
+    <select id="ac_list" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+       from (select * from board  
+       <where>
+           b_cate = '커뮤니티'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'"> and b_cont like #{find_name}</if>
+       </where>
+      order by b_ref desc, b_level asc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+      <!-- 게시글 저장  -->
+    <insert id="ab_in">
+    <!-- parameterType은 전달인자 자료형  -->
+    insert into board (b_no,mem_id,b_cate,b_name,b_title,b_cont,b_ref,b_step,b_level,b_tag,b_date)
+    values(b_no_seq.nextval,#{mem_id},#{b_cate},#{b_name},#{b_title},#{b_cont},b_no_seq.nextval,
+    0,0,#{b_tag},sysdate)
+    </insert>
+    
+    <!-- 내용보기 -->
+    <select id="ab_cont" resultType="b">
+    select * from board where b_no=#{b_no}
+    </select>
+    
+    <!-- 게시글 수정 -->
+    <update id="ab_edit">
+     update board set
+     b_cate=#{b_cate},b_tag=#{b_tag},b_title=#{b_title},b_cont=#{b_cont}
+     where b_no=#{b_no}
+    </update>
+    
+    <!-- 게시글 삭제 -->
+    <delete id="ab_del">
+   	 delete from board where b_no=#{b_no} 
+    </delete>
    
-   <delete id="aq_del">
-   	delete from board where b_no=#{b_no}
-   </delete>
-  
-  </mapper>
+ </mapper>
