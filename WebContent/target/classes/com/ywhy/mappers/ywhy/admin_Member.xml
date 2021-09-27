@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="adminMember">
+ 
+ <!-- 관리자 처음 화면 사용자 수 -->
+ <select id="m_count" resultType="int">
+ 	select count(mem_id) from ywhyMember where mem_class='일반'
+ 	<!-- 관리자 회원을 제외한 일반 회원만 해당 -->
+ </select>
+ 
+ <!-- 검색 전후 회원 수 -->
+ <select id="m_allcount" resultType="int">
+ 	select count(mem_id) from ywhyMember
+ 	<where>
+ 		<if test="find_field == ''"></if><!-- 전체 회원 수 -->
+ 		<if test="find_field == 'mem_id'"><!-- 검색 조건이 아이디 일때 -->
+ 			mem_id like #{find_name}
+ 		</if>
+ 		<if test="find_field == 'mem_name'"><!-- 검색 조건이 회원이름일 때 -->
+ 			mem_name like #{find_name}
+ 		</if>
+ 		<if test="find_field == 'mem_nick'"><!-- 검색 조건이 닉네임일 때 -->
+ 			mem_nick like #{find_name}
+ 		</if>
+ 		<if test="find_field == 'mem_class'"><!-- 검색 조건이 권한일 때 -->
+ 			mem_class like #{find_name}
+ 		</if>
+ 	</where>
+ </select>
+ 
+ <!-- 검색 전후 회원 목록 -->
+ <select id="m_allList" resultType="m">
+ 	select * from (select rowNum rNum,mem_id,mem_name,mem_nick,mem_signupdate,mem_key,mem_class from
+ 	(select * from ywhyMember 
+ 	<where>
+ 		<if test="find_field == ''"></if><!-- 전체 회원 수 -->
+ 		<if test="find_field == 'mem_id'"><!-- 검색 조건이 아이디 일때 -->
+ 			mem_id like #{find_name}
+ 		</if>
+ 		<if test="find_field == 'mem_name'"><!-- 검색 조건이 회원이름일 때 -->
+ 			mem_name like #{find_name}
+ 		</if>
+ 		<if test="find_field == 'mem_nick'"><!-- 검색 조건이 닉네임일 때 -->
+ 			mem_nick like #{find_name}
+ 		</if>
+ 		<if test="find_field == 'mem_class'"><!-- 검색 조건이 권한일 때 -->
+ 			mem_class like #{find_name}
+ 		</if>
+ 	</where>
+ 	order by mem_signupdate desc))
+ 	where rNum &gt;=#{startrow} and rNum &lt;=#{endrow}
+ </select>
+ 
+ <!-- 관리자가 회원 탈퇴 -->
+ <delete id="m_del">
+ 	delete from ywhyMember where mem_id=#{mem_id}
+ </delete>
+ 
+ </mapper>

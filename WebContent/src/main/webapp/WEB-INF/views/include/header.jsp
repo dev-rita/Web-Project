@@ -217,7 +217,7 @@
 							<span class="nav-sidebar-label">커뮤니티</span>
 						</a>
 					</li>
-					<c:if test="${m.mem_class == 9}">
+					<c:if test="${m.mem_class == '관리자'}">
 					<li>
 						<a href="admin" class="link" >
 							<i class="nav-icon fas fa-hat-wizard"></i>

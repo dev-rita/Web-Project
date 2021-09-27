@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +16,7 @@
     <meta name="author" content="">
 
     <title>관리자페이지 - Q&amp;A</title>
-   <link href="img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
+   	<link href="./resources/admin/img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
    
     <!-- Custom fonts for this template -->
     <link href="./resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -148,67 +151,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../ywhy_loginafter_manager_index.jsp"><%-- 로고 누르면 관리자 메인화면으로 넘어간다. --%>
-               <div class="sidebar-brand-icon">
-                    <img src="img/logo_manager.png" style="width:45px; height:45px;">
-                </div>
-                <div class="sidebar-brand-text mx-3">YWHY</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="manager_index.jsp">
-                    <i class="fas fa-fw fa-hat-wizard"></i>
-                    <span>Manager</span>
-                </a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                management
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Bulletin Board</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="adminQuestion.jsp">Q&amp;A</a>
-                        <a class="collapse-item" href="adminCommunity.jsp">Community</a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="usermanagement.jsp">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>User Management</span>
-                </a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
+        <jsp:include page="a_sidebar.jsp"/>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -243,9 +186,14 @@
                            <div>
                               <form>
                                  <span id="search-span">
-                                 <input type="search" name="query" id="search-field" placeholder="검색어" value="">
+                                 <select name="find_field" class="form-control" id="find_field" >
+									<option value="b_title" <c:if test="${find_field == 'b_title'}" > ${'selected'} </c:if>> 제목 </option>
+									<option value="b_cont" <c:if test="${find_field == 'b_cont'}" > ${'selected'} </c:if>> 내용 </option>
+									<option value="b_cont" <c:if test="${find_field == 'b_name'}" > ${'selected'} </c:if>> 닉네임 </option>
+								</select>
+                                 <input type="search" name="query" id="search-field" placeholder="검색어" value="">                                 
+                                 <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                                  
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                                  </span>
                               </form>
                            </div>
@@ -271,7 +219,7 @@
                                             <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
                                             <td><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
                                             <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
-                                            <td>${b.b_date}</td>
+                                            <td>${fn:substring(b.b_date,0,10)}</td>
                                             <td>${b.b_hit}</td>
                                             <td style="text-align:center;">
                                                <a class="btn btn-warning btn-sm" href="a_cont?b_no=${b.b_no}&page=${page}&state=edit">수정</a>                                           
@@ -438,21 +386,21 @@
     
 
     <!-- Bootstrap core JavaScript-->
-    <script src="./resouces/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="./resouces/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./resources/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="./resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="./resouces/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./resources/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="./resouces/admin/js/sb-admin-2.min.js"></script>
+    <script src="./resources/admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
 
     <!-- Page level custom scripts -->
-    <script src="./resouces/admin/js/demo/datatables-demo.js"></script>
+    <script src="./resources/admin/js/demo/datatables-demo.js"></script>
 
 <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 <script>

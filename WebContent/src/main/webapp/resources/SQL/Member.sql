@@ -15,6 +15,8 @@ create table ywhyMember(
 	mem_class varchar2(20) default '일반' --사용자 권한이면 1 관리자 권한이면 9
 );
 
+drop table ywhyMember cascade constraint;
+
 --ywhyMember테이블 검색
 select * from YWHYMEMBER;
 

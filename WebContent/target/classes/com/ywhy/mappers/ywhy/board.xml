@@ -142,7 +142,7 @@
     <select id="r_list" parameterType="int" resultType="com.ywhy.vo.BoardVO">
    <!--parameterType은 전달인자 타입으로 생략 가능. resultType은 반환타입 속성이다.
     com.naver.vo.BoardVO대신 별칭 b을 넣어도 된다. -->
-   select * from board_reply where b_no=#{b_no} order by r_no desc
+   select * from board_reply where b_no=#{b_no} order by r_no asc
    </select>
    
    <!-- 댓글 작성 -->
