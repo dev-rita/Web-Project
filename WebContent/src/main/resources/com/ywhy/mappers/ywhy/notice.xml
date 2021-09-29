@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="Board"><!-- 매퍼 네임 스페이스 명을 Board로 설정 -->
+    
+    <!-- 공지사항 목록보기 -->
+    <select id="notice_list" resultType="com.ywhy.vo.NoticeVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
+       from (select * from notice
+      <where>
+          n_cate = '공지사항'
+          <if test="find_field=='n_title'">and n_title like #{find_name}</if>
+          <if test="find_field=='n_cont'"> and n_cont like #{find_name}</if>
+       </where>
+      order by n_no desc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 공지사항 추천순 목록 -->
+    <select id="notice_list_vote" resultType="com.ywhy.vo.NoticeVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
+       from (select * from notice 
+       <where>
+          n_cate = '공지사항'
+          <if test="find_field=='n_title'">and n_title like #{find_name}</if>
+          <if test="find_field=='n_cont'"> and n_cont like #{find_name}</if>
+       </where>
+       order by n_rec desc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 공지사항 조회순 목록 -->
+    <select id="notice_list_view" resultType="com.ywhy.vo.NoticeVO"> <!-- parameterType속성은 생략가능 -->
+    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
+       from (select * from notice  
+       <where>
+          n_cate = '공지사항'
+          <if test="find_field=='n_title'">and n_title like #{find_name}</if>
+          <if test="find_field=='n_cont'"> and n_cont like #{find_name}</if>
+       </where>
+       order by n_hit desc)) 
+       where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
+    </select>
+    
+    <!-- 커뮤니티 총 게시물 수 -->
+    <select id="n_count" resultType="int">
+       select count(*) from notice
+       <where>          
+          n_cate = '공지사항'
+          <if test="find_field=='n_title'">and n_title like #{find_name}</if>
+          <if test="find_field=='n_cont'"> and n_cont like #{find_name}</if>
+       </where>
+      
+    </select>
+     
+    <!-- 조회수 증가 -->
+    <update id="n_hit" parameterType="int">
+    update notice set n_hit=n_hit+1 where n_no=#{n_no}
+    </update>
+    
+    <!-- 내용보기 -->
+    <select id="n_cont" resultType="n">
+    select * from notice where n_no=#{n_no}
+    </select>
+    
+    <!-- 게시글 추천 -->
+    <update id="n_rec_p">
+    update notice set n_rec = n_rec+1 where n_no=#{n_no}
+    </update>
+    
+    <!-- 게시글 반대 -->
+    <update id="n_rec_m">
+    update notice set n_rec = n_rec-1 where n_no=#{n_no}
+    </update>
+ </mapper>

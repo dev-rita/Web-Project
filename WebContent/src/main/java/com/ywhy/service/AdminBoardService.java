@@ -22,5 +22,7 @@ public interface AdminBoardService {
 
 	void deleteAdminBoard(String no);
 
+	void pickAdminBoard(String string);
+
 
 }

@@ -54,5 +54,8 @@ public class AdminBoardDAOImpl implements AdminBoardDAO {
 		this.sqlSession.delete("ab_del",no);
 	}
 
-	
+	@Override
+	public void pickAdminBoard(String no) {
+		this.sqlSession.update("ab_pick",no);
+	}
 }

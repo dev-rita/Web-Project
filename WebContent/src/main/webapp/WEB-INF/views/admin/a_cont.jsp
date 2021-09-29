@@ -187,8 +187,8 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <jsp:include page="a_sidebar.jsp"/>        
+         <!-- Sidebar -->
+        <jsp:include page="a_sidebar.jsp"/>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->

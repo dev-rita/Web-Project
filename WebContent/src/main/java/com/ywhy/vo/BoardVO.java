@@ -24,7 +24,7 @@ public class BoardVO {
 	private String b_date;
 	private int b_replycnt;//댓글수
 	private String mem_id;
-	
+	private int b_pick;
 	//페이징 즉 쪽나누기
 	private int startrow;//시작행번호
 	private int endrow;//끝행번호

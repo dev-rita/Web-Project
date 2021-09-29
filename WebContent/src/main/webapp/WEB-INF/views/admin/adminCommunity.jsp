@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +13,7 @@
     <meta name="author" content="">
 
     <title>관리자페이지 - 커뮤니티</title>
-   <link href="img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
+   <link href="./resources/admin/img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
    
     <!-- Custom fonts for this template -->
     <link href="./resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -148,7 +147,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
+         <!-- Sidebar -->
         <jsp:include page="a_sidebar.jsp"/>
         <!-- End of Sidebar -->
 
@@ -176,25 +175,44 @@
                             
                             
                             <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
-                            <button class="btn btn-primary" style="float:right; margin-left : 5px;">Editor Pick</button>                            
+                            <button class="btn btn-primary" onclick="pick();" style="float:right; margin-left : 5px;"><i class="fas fa-check-circle"></i>&nbsp;Editor Pick</button>                         
                              <a class="btn btn-info" style="float:right;" onclick="location='a_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
                             
                         </div>
                         <div class="card-body">
                            <div>
+                           
                               <form>
-                                 <span id="search-span">
-                                 <input type="search" name="query" id="search-field" placeholder="검색어" value="">
-                                 
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                 </span>
+                                 <span><b>게시물 수 : ${totalCount} 개</b></span>
+                                 	<c:if test="${!empty find_name}" ><a href="a_community" class="btn-sm btn-warning" style="float:right; margin-left :5px;"><i class="fa fa-times-circle"></i>clear</a></c:if>
+									<button type="submit" class="btn" style="float:right; margin-left: 5px; margin-bottom: 5px; border: solid 1px gray; height:30px; line-height: 0px;" value="검색" >검색</button>
+									<input type="text" name="find_name" id="find_name" style="float:right; margin-left: 5px; margin-bottom: 5px;" size="14" value="${find_name}" />
+									<select name="find_field" style="float:right; margin-left: 5px; margin-bottom: 5px; height:30px;">
+										<option value="b_title"
+											<c:if test="${find_field=='b_title'}">
+   												${'selected'}
+   											</c:if>
+   										>제목</option>
+										<option value="b_cont"
+											<c:if test="${find_field=='b_cont'}">
+   												${'selected'}
+   											</c:if>
+   										>내용</option>
+   										<option value="b_name"
+											<c:if test="${find_field=='b_name'}">
+   												${'selected'}
+   											</c:if>
+   										>작성자</option>
+   										
+									</select> 
                               </form>
+                              
                            </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                         	<th><input type="checkbox" name="allCheck" id="allCheck"></th>                                       
+                                         	<th><input type="checkbox" name="allCheck" id="allCheck">전체선택   </th>                             
                                             <th>No</th>
                                             <th>제목</th>
                                             <th>작성자</th>
@@ -210,9 +228,9 @@
                                         <tr>
                                            <td><input type="checkbox" name="RowCheck" value="${b.b_no}"></td>
                                             <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
-                                            <td><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
+                                            <td><c:if test="${b.b_pick==1}"><i class="fas fa-check-circle"></i>&nbsp;</c:if><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
                                             <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
-                                            <td>${fn:substring(b.b_date,0,10)}</td>
+                                            <td>${b.b_date}</td>
                                             <td>${b.b_hit}</td>
                                             <td style="text-align:center;">
                                                <a class="btn btn-warning btn-sm" href="a_cont?b_no=${b.b_no}&page=${page}&state=edit">수정</a>                                              
@@ -220,6 +238,12 @@
                                         </tr>
                                         </c:forEach>
                                         </c:if>
+                                        
+                                      <c:if test="${empty blist}">
+										<tr>
+											<th colspan="7" style="text-align: center;">게시글 목록이 없습니다.</th>
+										<tr>
+									</c:if>  
                                     </tbody>
                                 </table>
                             </div>
@@ -375,70 +399,6 @@
     </div>
     
     
-    
-    
-    
-    <div id="modDiv" style="display:none;">
-    <div class="layout-container">
-      <div class="main ">
-         
-         <div id="article-create" class="content" role="main">
-            <div class="content-header">
-               <h3>새 글 쓰기</h3>
-            </div>
-            <div class="panel panel-default clearfix">
-               <div class="panel-heading clearfix">
-               
-               </div>
-               <div class="panel-body">
-                  <form action="/articles/questions/save" method="post" 
-                  id="article-form" class="article-form" role="form" onsubmit="return postForm()">
-                     <fieldset class="form">
-                        <input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">
-                        <div class="form-group has-feedback">
-                           <div>
-                              <select id="category" name="categoryCode" class="form-control" required="">
-                                 <option value="">게시판을 선택해 주세요.</option>
-                                 <option value="tech-qna" data-external="false"
-                                    data-anonymity="false">Q&amp;A</option>
-                                 <option value="blockchain-qna" data-external="false"
-                                    data-anonymity="false">커뮤니티</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                           <div>
-                              <input type="text" name="title" required="" value=""
-                                 placeholder="제목을 입력해 주세요." class="form-control" id="title">
-                           </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                           <div>
-                              <input type="text" name="tagString" value=""
-                                 placeholder="Tags," class="form-control" id="tagString">
-                           </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                           <textarea name="text" id="summernote" rows="15"
-                              class="form-control input-block-level"></textarea>
-                           <input type="hidden" name="textType" value="HTML" id="textType">                           
-                           
-                              <fieldset class="buttons">
-                                          <button class="modNo btn btn-danger" 
-                                          onclick="modDivClose();">취소</button> 
-                                          <input type="submit" name="create" class="modYes btn btn-success"
-                                          action="create" value="등록" id="create">
-                                       </fieldset>
-                        
-                     </fieldset>
-                  </form>
-               </div>
-            </div>
-         </div>      
-      </div>
-   </div>
-   </div>
-    
 
     <script src="./resources/admin/js/jquery.js"></script>
    
@@ -460,21 +420,21 @@
     
     
     <!-- Bootstrap core JavaScript-->
-    <script src="./resouces/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="./resouces/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./resources/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="./resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="./resouces/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./resources/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="./resouces/admin/js/sb-admin-2.min.js"></script>
+    <script src="./resources/admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
 
     <!-- Page level custom scripts -->
-    <script src="./resouces/admin/js/demo/datatables-demo.js"></script>
+    <script src="./resources/admin/js/demo/datatables-demo.js"></script>
 
 <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 <script>
@@ -529,6 +489,40 @@
 			});
 		}
 	}
+	
+	  function pick(){
+	      var url="pick";
+	      var valueArr =new Array();
+	      var list=$("input[name='RowCheck']");
+	      for(var i=0;i<list.length;i++){
+	         if(list[i].checked){
+	            valueArr.push(list[i].value);
+	         }
+	         
+	      }   
+	      if(valueArr.length==0){
+	         alert('선택된 글이 없습니다.');
+	      }else{
+	         var chk=confirm("정말 추천하시겠습니까?");
+	         $.ajax({
+	            url:url,
+	            type:'POST',
+	            traditional:true,
+	            data:{
+	               valueArr:valueArr
+	            },
+	            success:function(jdata){
+	               if(jdata=1){
+	                  alert('추천 성공');
+	                  location.reload();
+	               }else{
+	                  alert("추천 실패");
+	               }
+	            }
+	         
+	         });
+	      }
+	   }
 </script>
 </body>
 

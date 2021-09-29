@@ -25,16 +25,6 @@ update YWHYMEMBER set mem_class='관리자' where mem_id='aaaaa';
 update YWHYMEMBER set mem_class='관리자' where mem_id='sssss';
 
 
-
-
-
-
-
-
-
-
-
-
 drop table ywhyMember;
 
 delete from ywhyMember;
