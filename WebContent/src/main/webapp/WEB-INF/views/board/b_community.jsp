@@ -9,7 +9,7 @@
 
      <div id="list-article" class="content scaffold-list life-list" role="main">
      	<div class="nav" role="navigation">
-     		 <c:if test="${!empty m}">
+     		 <c:if test="${!empty id}">
         	<a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
             </c:if>
             <h4>커뮤니티</h4>

@@ -42,6 +42,11 @@ public interface BoardService {
 	List<BoardVO> getTagListScrap(BoardVO b);
 	List<BoardVO> getTagListView(BoardVO b);
 	
+	//마이페이지
+	int getMyBCount(BoardVO b);
+	int getMyRCount(BoardVO b);
+	List<BoardVO> getMyList(BoardVO b);
+	
 	//댓글
 	List<BoardVO> listReply(int b_no);
 	void addReply(BoardVO vo);
@@ -49,5 +54,6 @@ public interface BoardService {
 	void remove(int r_no);
 	void r_recommendp(int r_no);
 	void r_recommendm(int r_no);
+	
 
 }

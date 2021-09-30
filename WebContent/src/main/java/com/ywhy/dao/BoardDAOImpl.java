@@ -147,6 +147,20 @@ public class BoardDAOImpl implements BoardDAO {
 	      return this.sqlSession.selectList("tag_list_view",b);
 	   }
 	
+	//마이페이지
+	   @Override
+	   public int getMyBCount(BoardVO b) {
+	      return this.sqlSession.selectOne("my_bcount",b);
+	   }
+	   @Override
+	   public int getMyRCount(BoardVO b) {
+	      return this.sqlSession.selectOne("my_rcount",b);
+	   }
+
+	   @Override
+	   public List<BoardVO> getMyList(BoardVO b) {
+	      return this.sqlSession.selectList("my_list",b);
+	   } 
 	//댓글
 	@Override
 	public List<BoardVO> listReply(int b_no) {

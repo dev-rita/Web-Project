@@ -385,4 +385,16 @@
        ))
        where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
     </select>
+    
+     <!-- 마이페이지 -->
+    <select id="my_bcount" resultType="int">
+       select count(*) from board where mem_id=#{mem_id}
+    </select>
+    <select id="my_rcount" resultType="int">
+       select count(*) from board_reply where mem_id=#{mem_id}
+    </select>
+    
+    <select id="my_list" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
+		
+    </select>
  </mapper>

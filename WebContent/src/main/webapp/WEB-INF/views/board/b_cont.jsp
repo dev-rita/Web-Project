@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YWHY - ${n.n_title}</title>
+<title>YWHY - ${b.b_title}</title>
 
 <jsp:include page="../include/header.jsp"/>
 
@@ -629,6 +629,8 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 	      });
 		 }
      }
+ 	
+	
  </script>
 
  <script>

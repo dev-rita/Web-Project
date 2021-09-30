@@ -211,6 +211,13 @@
 				</c:if>
 
 				<ul class="nav nav-sidebar nav-main">
+				
+					<li>
+						<a href="b_notice" class="link">
+							<i class="nav-icon fas fa-exclamation"></i>
+							<span class="nav-sidebar-label">공지사항</span>
+						</a>
+					</li>
 					<li>
 						<a href="b_questions" class="link">
 							<i class="nav-icon fas fa-laptop"></i>

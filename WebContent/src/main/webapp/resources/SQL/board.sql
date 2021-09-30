@@ -60,7 +60,7 @@ drop sequence r_no_seq;
 drop table board;
 
 select constraint_name, constraint_type, table_name, r_constraint_name from user_constraints
-where table_name='BOARD';
+where table_name='BOARD_REPLY';
 
 alter table board modify b_name constraint board_bname_nn not null;
 
@@ -79,6 +79,8 @@ create table board_reply(
 	,updatedate date--댓글수정날짜
 );
 
+delete from board_reply;
+
 select * from board_reply order by r_no desc;
 
 insert into BOARD_reply (r_no,b_no,replyer,replytext,regdate) values(r_no_seq.nextval,41,'kim22','22taewan얼시구절시구askdfkasdlfasdlfas',sysdate);
@@ -87,6 +89,9 @@ insert into BOARD_reply (r_no,b_no,replyer,replytext,regdate) values(r_no_seq.ne
 alter table board_reply add constraint board_reply_b_no_fk --외래키 제약조건명
 foreign key(b_no) references board(b_no) on delete cascade;
 --foreign key(외래키)
+
+alter table board_reply add constraint board_reply_mem_id_fk --외래키 제약조건명
+foreign key(mem_id) references ywhyMember(mem_id) on delete cascade;
 
 --외래키 삭제
 alter table board_reply drop constraint board_reply_b_no_fk;

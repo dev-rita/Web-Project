@@ -43,6 +43,11 @@ public interface BoardDAO {
 	List<BoardVO> getTagListScrap(BoardVO b);
 	List<BoardVO> getTagListView(BoardVO b);
 	
+	//마이페이지
+	 int getMyBCount(BoardVO b);
+	 int getMyRCount(BoardVO b);
+	 List<BoardVO> getMyList(BoardVO b);
+	
 	//댓글
 	List<BoardVO> listReply(int b_no);
 	void addReply(BoardVO vo);

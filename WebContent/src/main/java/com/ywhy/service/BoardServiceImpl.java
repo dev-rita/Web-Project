@@ -145,6 +145,22 @@ public class BoardServiceImpl implements BoardService {
 	      return this.boardDao.getTagListView(b);
 	   }
 	
+	//마이페이지
+	   @Override
+	   public int getMyBCount(BoardVO b) {
+	      return this.boardDao.getMyBCount(b);
+	   }
+	   @Override
+	   public int getMyRCount(BoardVO b) {
+	      return this.boardDao.getMyRCount(b);
+	   }
+
+	   @Override
+	   public List<BoardVO> getMyList(BoardVO b) {
+	      return this.boardDao.getMyList(b);
+	   }
+	   
+	   
 	//댓글
 	@Override
 	public List<BoardVO> listReply(int b_no) {

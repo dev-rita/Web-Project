@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ywhy.dto.LoginDTO;
+
 import com.ywhy.service.AdminMemberService;
 import com.ywhy.service.MailSendService;
 import com.ywhy.service.MemberService;

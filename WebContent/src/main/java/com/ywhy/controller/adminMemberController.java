@@ -14,34 +14,54 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ywhy.service.AdminBoardService;
 import com.ywhy.service.AdminMemberService;
+import com.ywhy.service.AdminNoticeService;
+import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.MemberVO;
+import com.ywhy.vo.NoticeVO;
 
 @Controller
 public class adminMemberController {
 
 	@Autowired
 	private AdminMemberService adminMemberService;
+	@Autowired
+	private AdminBoardService adminBoardService;
+	@Autowired
+	private AdminNoticeService adminNoticeService;
 	
 	/*관리자 페이지 폼*/
 	@GetMapping("/admin")
-	public ModelAndView admin(HttpServletResponse response,HttpSession session,@ModelAttribute MemberVO m)throws Exception {
+	public ModelAndView admin(HttpServletResponse response,HttpSession session,@ModelAttribute MemberVO m,
+			@ModelAttribute BoardVO b, @ModelAttribute NoticeVO n)throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		
 		String login=(String)session.getAttribute("id");
 		
-		if(login == null) {
+		//String member="일반";
+		//||(login.getMem_class().equals(member))
+		if(login==null) {
+	
 			out.println("<script>");
 			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
-			int listcount=this.adminMemberService.getListCount(m);
+			int qnaListCount = this.adminBoardService.getQnaListCount(b);//qna리스트 수
+			int boardListCount = this.adminBoardService.getAdminBoardListCount(b);//커뮤니티 리스트 수
+			int noticeListCount = this.adminNoticeService.getNoticeListCount(n);//공지사항 리스트 수
+			int memberListCount=this.adminMemberService.getListCount(m);
 			//관리자 회원을 제외한 전체 회원 수
 			
+			
 			ModelAndView listM=new ModelAndView();
-			listM.addObject("listcount",listcount);
+			listM.addObject("qnaListCount",qnaListCount);
+			listM.addObject("boardListCount",boardListCount);
+			listM.addObject("noticeListCount",noticeListCount);
+			listM.addObject("memberListCount",memberListCount);
+			
 			
 			listM.setViewName("admin/manager");
 			

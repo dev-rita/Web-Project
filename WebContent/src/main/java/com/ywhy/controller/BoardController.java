@@ -436,6 +436,50 @@ public class BoardController {
            return "board/b_tag";
         }//b_tag
 		
+	      @RequestMapping("/b_my")//get or post로 접근하는 매핑주소를 처리
+	      public String b_my(Model listM, HttpServletRequest request, BoardVO b , String id,MemberVO m) {
+	         
+	         
+	         /* 페이징 관련 소스 추가 */
+	         int page=1;//현재 페이지 번호
+	         int limit=10;//한페이지에 보여지는 목록 개수
+	         
+	         if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우 실행
+	            page=Integer.parseInt(request.getParameter("page"));//페이지 번호(쪽번호)를 정수 숫자로 변경해서 저장
+	         }
+	         b.setMem_id(id);
+	         
+	         b.setStartrow((page-1)*10+1);//시작행 번호 1, 11 ,21 
+	         b.setEndrow(b.getStartrow()+limit-1);//끝행 번호
+	         
+	         int totalBCount=this.boardService.getMyBCount(b);//총 레코드 개수
+	         int totalRCount=this.boardService.getMyRCount(b);//총 레코드 개수
+	         int totalCount=totalBCount+totalRCount;
+	         
+	         //총페이지
+	         int maxpage=(int)((double)totalCount/limit+0.95);
+	         //현재 페이지에 보여질 시작페이지
+	         int startpage=(((int)((double)page/10+0.9))-1)*10+1;
+	         //현재 페이지에 보여질 마지막 페이지
+	         int endpage=maxpage;
+	         if(endpage>startpage+10-1) endpage=startpage+10-1;
+	         
+	         List<BoardVO> blist=null;
+	         
+	         blist=this.boardService.getMyList(b);//목록보기
+	         
+	         
+	         listM.addAttribute("blist", blist);//blist속성 키이름에 목록을 저장
+	         listM.addAttribute("totalCount",totalCount);
+	         listM.addAttribute("startpage",startpage);
+	         listM.addAttribute("endpage",endpage);
+	         listM.addAttribute("maxpage",maxpage);
+	         listM.addAttribute("page",page);
+	         
+	         
+	         return null;
+	      }
+		
 		@RequestMapping(value="/recommend_plus/{b_no}",method=RequestMethod.POST)//게시물 추천 
 		public ResponseEntity<String> recommend_plus (@PathVariable("b_no") int b_no) {
 

@@ -1,6 +1,5 @@
 package com.ywhy.controller;
 
-
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -23,7 +22,7 @@ import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
 @Controller
-public class AdminMemberController {
+public class adminMemberController {
 
 	@Autowired
 	private AdminMemberService adminMemberService;
@@ -35,13 +34,16 @@ public class AdminMemberController {
 	/*관리자 페이지 폼*/
 	@GetMapping("/admin")
 	public ModelAndView admin(HttpServletResponse response,HttpSession session,@ModelAttribute MemberVO m,
-			@ModelAttribute BoardVO b,@ModelAttribute NoticeVO n)throws Exception {
+			@ModelAttribute BoardVO b, @ModelAttribute NoticeVO n)throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		
-		MemberVO login=(MemberVO)session.getAttribute("m");
+		String login=(String)session.getAttribute("id");
 		
-		if(login == null) {
+		//String member="일반";
+		//||(login.getMem_class().equals(member))
+		if(login==null) {
+	
 			out.println("<script>");
 			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
 			out.println("location='login';");
@@ -73,13 +75,11 @@ public class AdminMemberController {
 	public ModelAndView admin_usermanagement(HttpServletResponse response,HttpServletRequest request,HttpSession session,@ModelAttribute MemberVO m) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		MemberVO login=(MemberVO)session.getAttribute("m");
-		String member="일반";
+		String login=(String)session.getAttribute("id");
 		
-		if((login==null) ||(login.getMem_class().equals(member))) {
-			session.invalidate();
+		if(login == null) {
 			out.println("<script>");
-			out.println("alert('관리자로 다시 로그인 하세요.');");
+			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요!');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
@@ -130,7 +130,7 @@ public class AdminMemberController {
 	public ModelAndView admin_member_del(int page,String mem_id,HttpServletResponse response,HttpSession session) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		MemberVO login=(MemberVO)session.getAttribute("m");
+		String login=(String)session.getAttribute("id");
 		
 		if(login == null) {
 			out.println("<script>");
@@ -144,6 +144,7 @@ public class AdminMemberController {
 		}
 		return null;
 	}
+	
 	/*관리자 전환*/
 	/*일반사용자 전환*/
 }
