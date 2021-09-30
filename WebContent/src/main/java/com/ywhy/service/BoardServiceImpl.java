@@ -106,7 +106,6 @@ public class BoardServiceImpl implements BoardService {
 	public void delBoard(int b_no) {
 		this.boardDao.delBoard(b_no);
 	}//게시물 삭제
-
 	//추천반대
 	
 	@Override

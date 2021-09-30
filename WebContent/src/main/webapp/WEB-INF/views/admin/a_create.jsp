@@ -878,6 +878,10 @@ button.close {
 	max-width: 900px;
 	float:right;
 }
+
+.buttons{
+	margin:15px 0px 15px;
+}
    </style>
    <!-- 추가한 스타일 -->
    

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YWHY - community</title>
+<title>YWHY - 커뮤니티</title>
 
 <jsp:include page="../include/header.jsp"/>
 

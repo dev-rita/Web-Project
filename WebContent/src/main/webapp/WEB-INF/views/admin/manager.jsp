@@ -50,7 +50,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Q&amp;A</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">54</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${qnaListCount}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-table fa-2x text-gray-300"></i>
@@ -67,7 +67,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Community</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">60</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${boardListCount}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-table fa-2x text-gray-300"></i>
@@ -86,7 +86,7 @@
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Notice</div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${noticeListCount}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Member</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${listcount}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${memberListCount}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>

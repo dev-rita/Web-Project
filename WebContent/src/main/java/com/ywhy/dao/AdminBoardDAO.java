@@ -22,4 +22,6 @@ public interface AdminBoardDAO {
 	
 	void deleteAdminBoard(String no);
 
+	void pickAdminBoard(String no);
+
 }

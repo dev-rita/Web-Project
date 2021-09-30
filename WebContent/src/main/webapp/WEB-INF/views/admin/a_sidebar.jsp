@@ -29,6 +29,13 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link" href="a_notice">
+                    <i class="fas fa-exclamation" style="margin-left:5px;"></i>
+                    <span>&nbsp;&nbsp;Notice</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-table"></i>

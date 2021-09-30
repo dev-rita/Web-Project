@@ -8,7 +8,7 @@
     
     <!-- 커뮤니티 목록보기 -->
     <select id="board_list" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
-    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag,b_pick
        from (select * from board  
        <where>
            b_cate = '커뮤니티'
@@ -21,7 +21,7 @@
     
     <!-- 커뮤니티 추천순 목록 -->
     <select id="board_list_vote" resultType="com.ywhy.vo.BoardVO"> <!-- parameterType속성은 생략가능 -->
-    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag
+    select * from (select rowNum rNum,b_no,b_name,b_title,b_hit,b_date,b_replycnt,b_rec,b_ref,b_step,b_level,b_cate,b_tag,b_pick
        from (select * from board  
        <where>
           b_cate = '커뮤니티'
@@ -184,9 +184,9 @@
     <select id="bq_count" resultType="int">
        select count(*) from board
        <where>          
-          <if test="find_field=='' || find_field==null">b_cate like 'Q%'</if>
-          <if test="find_field=='b_title'">b_cate like 'Q%' and b_title like #{find_name}</if>
-          <if test="find_field=='b_cont'">b_cate like 'Q%' and b_cont like #{find_name}</if>
+           b_cate like 'Q%'
+          <if test="find_field=='b_title'">and b_title like #{find_name}</if>
+          <if test="find_field=='b_cont'">and b_cont like #{find_name}</if>
        </where>
       </select>
       

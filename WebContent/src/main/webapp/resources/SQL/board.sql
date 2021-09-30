@@ -14,10 +14,13 @@ create table board(
 	,b_step number(38) --원본글이면 0, 첫번째 답변글이면 1, 두번째 답변글이면 2... =>원본글과 답변글을 구분하는 값이면서 며번째 답변글인가 알려준다.
 	,b_level int --답변글 정렬순서
 	,b_date date --등록날짜
+	,b_pick number(1) default 0
 );
 
 drop table board cascade constraint;
 drop table board_reply cascade constraint;
+
+alter table board add b_pick number(1) default 0;--에디터픽 컬럼 추가
 
 select * from board;
 

@@ -53,4 +53,8 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		this.adminBoardDao.deleteAdminBoard(no);
 	}
 
+	@Override
+	public void pickAdminBoard(String no) {
+		this.adminBoardDao.pickAdminBoard(no);
+	}
 }

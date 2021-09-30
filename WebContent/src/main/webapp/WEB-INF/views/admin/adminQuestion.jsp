@@ -16,7 +16,7 @@
     <meta name="author" content="">
 
     <title>관리자페이지 - Q&amp;A</title>
-   	<link href="./resources/admin/img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
+      <link href="./resources/admin/img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
    
     <!-- Custom fonts for this template -->
     <link href="./resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -178,30 +178,41 @@
                             
                             
                             <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
-                            <button class="btn btn-primary" style="float:right; margin-left : 5px;">Editor Pick</button>                            
+                            <button class="btn btn-primary" onclick="pick();" style="float:right; margin-left : 5px;"><i class="fas fa-check-circle"></i>&nbsp;Editor Pick</button>                            
                             <a class="btn btn-info" style="float:right;" onclick="location='a_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
                             
                         </div>
                         <div class="card-body">
                            <div>
                               <form>
-                                 <span id="search-span">
-                                 <select name="find_field" class="form-control" id="find_field" >
-									<option value="b_title" <c:if test="${find_field == 'b_title'}" > ${'selected'} </c:if>> 제목 </option>
-									<option value="b_cont" <c:if test="${find_field == 'b_cont'}" > ${'selected'} </c:if>> 내용 </option>
-									<option value="b_cont" <c:if test="${find_field == 'b_name'}" > ${'selected'} </c:if>> 닉네임 </option>
-								</select>
-                                 <input type="search" name="query" id="search-field" placeholder="검색어" value="">                                 
-                                 <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                 
-                                 </span>
+                                 <span><b>게시물 수 : ${totalCount} 개</b></span>
+                                 <c:if test="${!empty find_name}"><a href="a_questions" class="btn btn-warning btn-sm" style="float:right; margin-left:5px;"><i class="fa fa-times-circle" aria-hidden="true"></i>clear</a></c:if>
+                                 <button type="submit" class="btn" style="float:right; margin-left: 5px; margin-bottom: 5px; border: solid 1px gray; height:30px; line-height: 0px;" value="검색" >검색</button>
+                           <input type="text" name="find_name" id="find_name" style="float:right; margin-left: 5px; margin-bottom: 5px;" size="14" value="${find_name}" />
+                           <select name="find_field" style="float:right; margin-left: 5px; margin-bottom: 5px; height:30px;">
+                              <option value="b_title"
+                                 <c:if test="${find_field=='b_title'}">
+                                       ${'selected'}
+                                    </c:if>
+                                 >제목</option>
+                                 <option value="b_cont"
+                                 <c:if test="${find_field=='b_cont'}">
+                                       ${'selected'}
+                                    </c:if>
+                                 >내용</option>
+                                 <option value="b_name"
+                                 <c:if test="${find_field=='b_name'}">
+                                       ${'selected'}
+                                    </c:if>
+                                 >작성자</option>                                 
+                           </select> 
                               </form>
                            </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                           <th><input type="checkbox" name="allCheck" id="allCheck"></th>                                       
+                                           <th><input type="checkbox" name="allCheck" id="allCheck">전체선택</th>                                       
                                             <th>No</th>
                                             <th>제목</th>
                                             <th>작성자</th>
@@ -217,7 +228,7 @@
                                         <tr>
                                            <td><input type="checkbox" name="RowCheck" value="${b.b_no}"></td>
                                             <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
-                                            <td><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
+                                            <td><c:if test="${b.b_pick==1}"><i class="fas fa-check-circle"></i>&nbsp;</c:if><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
                                             <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
                                             <td>${fn:substring(b.b_date,0,10)}</td>
                                             <td>${b.b_hit}</td>
@@ -227,6 +238,11 @@
                                         </tr>
                                         </c:forEach>
                                         </c:if>
+                                        <c:if test="${empty blist}">
+                              <tr>
+                                 <th colspan="7" style="text-align: center;">게시글 목록이 없습니다.</th>
+                              <tr>
+                           </c:if>
                                     </tbody>
                                 </table>
                             </div>
@@ -404,57 +420,90 @@
 
 <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 <script>
-	$(function(){
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt=chkObj.length;
-		
-		$("input[name='allCheck']").click(function(){
-			var chk_listArr=$("input[name='RowCheck']");
-			for (var i=0;i<chk_listArr.length; i++){
-				chk_listArr[i].checked=this.checked;
-			}
-		});
-		$("input[name='RowCheck']").click(function(){
-			if($("input[name='RowCheck']:checked").length == rowCnt){
-				$("input[name='allCheck']")[0].checked=true;
-			}else{
-				$("input[name='allCheck']")[0].checked=false;
-			}
-		});
-	});
-	function deleteValue(){
-		var url="delete";
-		var valueArr =new Array();
-		var list=$("input[name='RowCheck']");
-		for(var i=0;i<list.length;i++){
-			if(list[i].checked){
-				valueArr.push(list[i].value);
-			}
-			
-		}	
-		if(valueArr.length==0){
-			alert('선택된 글이 없습니다.');
-		}else{
-			var chk=confirm("정말 삭제하시겠습니까?");
-			$.ajax({
-				url:url,
-				type:'POST',
-				traditional:true,
-				data:{
-					valueArr:valueArr
-				},
-				success:function(jdata){
-					if(jdata=1){
-						alert('삭제 성공');
-						location.reload();
-					}else{
-						alert("삭제 실패");
-					}
-				}
-			
-			});
-		}
-	}
+   $(function(){
+      var chkObj = document.getElementsByName("RowCheck");
+      var rowCnt=chkObj.length;
+      
+      $("input[name='allCheck']").click(function(){
+         var chk_listArr=$("input[name='RowCheck']");
+         for (var i=0;i<chk_listArr.length; i++){
+            chk_listArr[i].checked=this.checked;
+         }
+      });
+      $("input[name='RowCheck']").click(function(){
+         if($("input[name='RowCheck']:checked").length == rowCnt){
+            $("input[name='allCheck']")[0].checked=true;
+         }else{
+            $("input[name='allCheck']")[0].checked=false;
+         }
+      });
+   });
+   function deleteValue(){
+      var url="delete";
+      var valueArr =new Array();
+      var list=$("input[name='RowCheck']");
+      for(var i=0;i<list.length;i++){
+         if(list[i].checked){
+            valueArr.push(list[i].value);
+         }
+         
+      }   
+      if(valueArr.length==0){
+         alert('선택된 글이 없습니다.');
+      }else{
+         var chk=confirm("정말 삭제하시겠습니까?");
+         $.ajax({
+            url:url,
+            type:'POST',
+            traditional:true,
+            data:{
+               valueArr:valueArr
+            },
+            success:function(jdata){
+               if(jdata=1){
+                  alert('삭제 성공');
+                  location.reload();
+               }else{
+                  alert("삭제 실패");
+               }
+            }
+         
+         });
+      }
+   }
+   function pick(){
+      var url="pick";
+      var valueArr =new Array();
+      var list=$("input[name='RowCheck']");
+      for(var i=0;i<list.length;i++){
+         if(list[i].checked){
+            valueArr.push(list[i].value);
+         }
+         
+      }   
+      if(valueArr.length==0){
+         alert('선택된 글이 없습니다.');
+      }else{
+         var chk=confirm("정말 추천하시겠습니까?");
+         $.ajax({
+            url:url,
+            type:'POST',
+            traditional:true,
+            data:{
+               valueArr:valueArr
+            },
+            success:function(jdata){
+               if(jdata=1){
+                  alert('추천 성공');
+                  location.reload();
+               }else{
+                  alert("추천 실패");
+               }
+            }
+         
+         });
+      }
+   }
 </script>
 </body>
 
