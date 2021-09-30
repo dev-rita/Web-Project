@@ -17,11 +17,15 @@
 							<%--<input type="hidden" name="user_id" value="${user_id}"> --%>
 							<fieldset>
 								<input type="text" id="id" name="mem_id" class="form-control input-sm" placeholder="아이디" value="">
+								<%-- 아이디 중복 확인의 value가 N이면 중복확인이 안되었다는 뜻으로 signup_check()함수로 인해 넘어가지 못한다. 
+									중복 확인 버튼 눌렀을 때 성공하면 value가 Y로 바뀌면서 다음 입력으로 넘어갈 수 있다. --%>
 								<button type="button" id="idchk" class="form-control input-sm" onclick="id_check();" value="N">아이디 중복 확인</button>
 								<span id="idcheck"></span>
 								<input type="password" id="pwd" name="mem_pwd" class="form-control input-sm" placeholder="비밀번호" value="">
 								<span id="pwdcheck"></span>
 								<input type="text" id="email" name="mem_mail" style="width: 100%" class="form-control input-sm" placeholder="이메일" value="">
+								<%-- 이메일 중복 확인의 value가 N이면 중복확인이 안되었다는 뜻으로 signup_check()함수로 인해 넘어가지 못한다.
+									 중복 확인 버튼 눌렀을 때 성공하면 value가 Y로 바뀌면서 다음 입력으로 넘어갈 수 있다. --%>
 								<button type="button" id="emailchk" class="form-control input-sm" onclick="email_check();" value="N">이메일 중복 확인</button> 
 								<span id="emailcheck"></span>
 								<input type="text" id="name" name="mem_name" class="form-control input-sm" placeholder="이름" value=""> 

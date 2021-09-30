@@ -1,5 +1,10 @@
-<jsp:include page="../include/header.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>YWHY - 회원 정보 수정</title>
+<jsp:include page="../include/header.jsp"/>
+
 
 			<div id="create-user" class="content clearfix" role="main">
 				<h3 class="content-header">회원 정보 수정</h3>
@@ -7,16 +12,19 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<div class="avatar clearfix avatar-medium ">
+								<%--
 								<a href="myinfo" class="avatar-photo">
 									<img src="https://lh3.googleusercontent.com/a/AATXAJxiZTIVGEtSRdK0v6bbvSqJ9bLdROm0uFX07oFh=s96-c">
 								</a>
+								 --%>
 								<div class="avatar-info">
-									<a class="nickname" href="myinfo" title="${m.mem_nick}" style="font-size:15px;">${m.mem_nick}</a>
+									<a class="nickname" href="myinfo" title="${m.mem_nick}" style="font-size:15px;"><b>${m.mem_nick}</b></a>
 									<div class="activity block">
 										<span class="fa fa-flash"></span> ${m.mem_point}
 									</div>
 								</div>
 							</div>
+							<%--
 							<a id="edit-picture-btn">변경</a>
 							<div class="profile-picture-list" style="display: none;">
 								<div class="profile-picture " data-id="0">
@@ -35,23 +43,31 @@
 								<input type="file" name="files" accept="image/gif, image/jpg, image/jpeg, image/png" style="display: none;" id="profileImage">
 								<button class="btn btn-success picture-confirm-btn">확인</button>
 							</div>
+							 --%>
 						</div>
-						<form action="/user/update?id=106195" method="POST" class="form-signup form-user panel-body" id="loginForm" autocomplete="off">
+						<form action="editinfo_ok" method="POST" class="form-signup form-user panel-body" id="loginForm" autocomplete="off">
+							<%--
 							<input type="hidden" name="_csrf" value="7e245c1e-0e11-4c47-a906-f2853d10e465">
 							<input type="hidden" name="_method" value="PUT" id="_method">
+							 --%>
 							<fieldset>
 								<div class="form-group">
 									<label class="control-label" for="fullName">이름</label> 
-									<input type="text" name="fullName" class="form-control input-sm" placeholder="이름" required="" value="${m.mem_name}" id="fullName">
+									<input type="text" name="mem_name" class="form-control input-sm" placeholder="이름" required="" value="${m.mem_name}" id="fullName">
 								</div>
 								<div class="form-group">
 									<label class="control-label" for="nickname">닉네임</label>
-									<input type="text" name="nickname" class="form-control input-sm" placeholder="닉네임" required="" value="${m.mem_nick}" id="nickname">
+									<input type="text" name="mem_nick" class="form-control input-sm" placeholder="닉네임" required="" value="${m.mem_nick}" id="nickname">
+								</div>
+								<div class="form-group"><%-- 아이디는 수정 안되게끔 한다. --%>
+									<p class="control-label" for="nickname"><b>아이디</b></p>
+									<span class="form-control input-sm" style="width: 100%;">${m.mem_id}</span>
 								</div>
 								<div class="form-group"><%-- 이메일은 수정 안되게끔 한다. --%>
 									<p class="control-label"><b>이메일</b></p>
 									<span class="form-control input-sm" style="width: 100%">${m.mem_mail}</span>
 								</div>
+								<%--
 								<div class="form-group">
 									<label class="control-label" for="nickname">관심있는 기술 태그 입력</label>
 									<div class="field-subtitle">사용 중인 기술이나 관심있는 기술 태그를 선택해주세요.</div>
@@ -68,8 +84,9 @@
 										</span>
 									</div>
 								</div>
+								 --%>
 							</fieldset>
-							<button class="btn btn-primary btn-block" type="submit">정보 수정</button>
+							<button class="btn btn-primary btn-block" style="color:#773209" type="submit">정보 수정</button>
 						</form>
 					</div>
 				</div>
@@ -107,49 +124,26 @@
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-body panel-margin">
-							<a href="../user/find/passwordchange.jsp" class="btn btn-info btn-block">비밀번호 변경</a> 
-							<a href="../signup/sithdrawall.jsp" class="btn btn-default btn-block">회원 탈퇴</a>
+							<a href="passwordChange" class="btn btn-info btn-block">비밀번호 변경</a> 
+							<a href="withdrawal" class="btn btn-default btn-block">회원 탈퇴</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			
-			<div class="right-banner-wrapper"></div>
-			
-			<footer class="index_footer">
-				<div class="footer_box">
-					<div class="footer_logo">
-						<img src="../images/logo_gray.png"
-							style="width: 55px; height: 55px;">
-					</div>
-					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | <strong>대표명</strong>: 김태완 | <strong>팀원명</strong>:
-						이의수 이승연 정희선 | <strong>사업자번호</strong>: 404-99-12536 <br> <strong>주소</strong>:
-						서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) | <strong>문의</strong>:
-						info@ywhy.kr
-						<hr
-							style="margin: 8px 0px; border: 0px; border-top: 1px solid #eee;">
-						<a href="../intro/loginafter_manager_about.jsp">About YWHY</a> | <a
-							href="../user/privacy.jsp" data-toggle="modal"
-							data-target="#userPrivacy">개인 정보 보호</a> <a
-							href="https://github.com/dev-rita/Web-Project.git" target=_blank;
-							class="content_github"><i class="fab fa-github fa-3x"></i></a>
-					</div>
-				</div>
-			</footer>
-			<script src="https://kit.fontawesome.com/4f7c74d082.js"
-				crossorigin="anonymous"></script>
-		</div>
-	</div>
+			<jsp:include page="../include/footer.jsp"/>
+
 	<script>
 		var contextPath = "";
 		var encodedURL = "%2Fuser%2Fedit";
 	</script>
 
+	<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 	<script src="./resources/js/application.js" type="text/javascript"></script>
 	<%--<script src="./resources/js/apps/search.js" type="text/javascript"></script> --%>
 	<script src="./resources/js/apps/notification.js" type="text/javascript"></script>
 	<script src="./resources/js/libs/typeahead.bundle.js"></script>
+	<%--
 	<script type="text/javascript">
 		var tagTokenizers = new Bloodhound({
 			datumTokenizer : Bloodhound.tokenizers.obj.whitespace('tagName'),
@@ -453,6 +447,7 @@
 			});
 		});
 	</script>
+	 --%>
 
 	<div id="userPrivacy" class="modal" tabindex="-1" role="dialog"
 		aria-labelledby="myLargeModalLabel" aria-hidden="true">

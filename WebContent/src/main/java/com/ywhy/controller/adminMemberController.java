@@ -29,7 +29,7 @@ public class adminMemberController {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		
-		MemberVO login=(MemberVO)session.getAttribute("m");
+		String login=(String)session.getAttribute("id");
 		
 		if(login == null) {
 			out.println("<script>");
@@ -55,7 +55,7 @@ public class adminMemberController {
 	public ModelAndView admin_usermanagement(HttpServletResponse response,HttpServletRequest request,HttpSession session,@ModelAttribute MemberVO m) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		MemberVO login=(MemberVO)session.getAttribute("m");
+		String login=(String)session.getAttribute("id");
 		
 		if(login == null) {
 			out.println("<script>");
@@ -110,7 +110,7 @@ public class adminMemberController {
 	public ModelAndView admin_member_del(int page,String mem_id,HttpServletResponse response,HttpSession session) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		MemberVO login=(MemberVO)session.getAttribute("m");
+		String login=(String)session.getAttribute("id");
 		
 		if(login == null) {
 			out.println("<script>");
@@ -124,6 +124,7 @@ public class adminMemberController {
 		}
 		return null;
 	}
+	
 	/*관리자 전환*/
 	/*일반사용자 전환*/
 }

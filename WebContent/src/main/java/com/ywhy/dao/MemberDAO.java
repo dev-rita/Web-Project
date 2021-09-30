@@ -21,11 +21,19 @@ public interface MemberDAO {
 	
 	MemberVO pwdFind(MemberVO m);
 	
-	MemberVO loginCheck(String login_id);
-
 	void updatePwd(MemberVO m);
+	
+	MemberVO loginCheck(String login_id);
+	
+	MemberVO getMember(String login);
 
-	void delMem(MemberVO login);
+	void editMember(MemberVO m);
+
+	void delMem(MemberVO dm);
+
+
+
+
 
 
 

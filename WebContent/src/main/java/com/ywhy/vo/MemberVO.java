@@ -13,7 +13,6 @@ public class MemberVO {
 	private String mem_pwd;
 	private String mem_name; //이름
 	private String mem_nick; //닉네임
-	private String mem_img; //프로필 사진
 	private String mem_mail;
 	private String mem_key; //메일 인증 키
 	private String mem_signupdate; //가입날짜

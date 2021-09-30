@@ -14,8 +14,8 @@
 		return false;
 	}
 	
-	$idChk=$("#idchk").val();
-	if($idChk == "N"){
+	$idchk=$("#idchk").val();
+	if($idchk == "N"){
 		$errortext='<font color="#773209" size="2"><b>중복 확인 버튼을 눌러주세요.</b></font>';
  		$("#idcheck").text("");
  		$("#idcheck").show();
@@ -44,8 +44,8 @@
 		return false;
 	}
  
- 	$emailChk=$("#emailchk").val();
-	if($emailChk == "N"){
+ 	$emailchk=$("#emailchk").val();
+	if($emailchk == "N"){
 		$errortext='<font color="#773209" size="2"><b>중복 확인 버튼을 눌러주세요.</b></font>';
  		$("#emailcheck").text("");
  		$("#emailcheck").show();
@@ -83,20 +83,20 @@
  	
  	//5글자 미만이면 
  	if($mem_id.length < 5){
- 		$newtext='<font color="#773209" size="2"><b>아이디는 5자 이상이어야 합니다.</b></font>';
- 		$("#idcheck").text(''); //idcheck 아이디 영역 문자열을 초기화
+ 		$errortext='<font color="#773209" size="2"><b>아이디는 5자 이상이어야 합니다.</b></font>';
+ 		$("#idcheck").text(""); //idcheck 아이디 영역 문자열을 초기화
 		$("#idcheck").show(); //idcheck 아이디 영역을 보이게 함.
-		$("#idcheck").append($newtext); //idcheck영역에 문자열을 추가
-		$("#id").val('').focus();
+		$("#idcheck").append($errortext); //idcheck영역에 문자열을 추가
+		$("#id").val("").focus();
 		return false;
  	};
  	
  	//입력 조합 확인
  	if(!(validate_userid($mem_id))){
- 		$newtext='<font color="#773209" size="2"><b>아이디는 영문소문자, 숫자, _ 조합만 가능합니다.</b></font>';
+ 		$errortext='<font color="#773209" size="2"><b>아이디는 영문소문자, 숫자, _ 조합만 가능합니다.</b></font>';
  		$("#idcheck").text("");
  		$("#idcheck").show();
- 		$("#idcheck").append($newtext);
+ 		$("#idcheck").append($errortext);
  		$("#id").val("").focus();
  		return false;
  	};
@@ -105,17 +105,17 @@
  	$.ajax({
  		type:"POST",				//데이터를 서버로 보내는 방법
  		url:"mem_idcheck", 			//서버 매핑주소
- 		data: {"id":$mem_id},
+ 		data: {"id":$mem_id},		//""안의 부분은 뷰페이지의 해당 부분 id와 같아야 한다.
  		datatype: "int", 			//서버의 실행된 결과 값을 사용자로 받아오는 자료형 타입
  		success: function (data) {	//success는 아작스로 받아오는 것이 성공했을 경우, 서버 데이터를 data변수에 저장
  			if(data == 1){			//중복 아이디가 있다면
- 				$newtext='<font color="#773209" size="2"><b>중복 아이디 입니다.</b></font>';
+ 				$errortext='<font color="#773209" size="2"><b>중복 아이디 입니다.</b></font>';
  				$("#idcheck").text("");
  				$("#idcheck").show();
- 				$("#idcheck").append($newtext);
+ 				$("#idcheck").append($errortext);
  				$("#id").val("").focus();
  			}else{					//중복 아이디가 아니면
- 				$("#idchk").val("Y");
+ 				$("#idchk").val("Y");//아이디 중복확인의 value값을 Y로 변경
  				$newtext='<font color="#773209" size="2"><b>사용 가능한 아이디입니다.</b></font>';
  				$("#idcheck").text("");
  				$("#idcheck").show();
@@ -130,33 +130,32 @@
  
  /*이메일 중복 확인*/
  function email_check(){
-	$emailcheck = $("#emailcheck");
+	$("#emailcheck").hide();
  	$mem_mail=$.trim($("#email").val());
- 	$emailcheck.hide();
  	
  	if(!(validate_email($mem_mail))){
  		$errortext='<font color="#773209" size="2"><b>이메일 형식에 맞지 않습니다.</b></font>';
- 		$emailcheck.text("");
- 		$emailcheck.show();
- 		$emailcheck.append($errortext);
+ 		$("#emailcheck").text("");
+ 		$("#emailcheck").show();
+ 		$("#emailcheck").append($errortext);
  		$("#email").val("").focus();
  		return false;
  	} 
  
  	$.ajax({
  		type:"POST",				//데이터를 서버로 보내는 방법
- 		url:"mem_mailcheck", 			//서버 매핑주소
- 		data: {"email":$mem_mail},
+ 		url:"mem_mailcheck", 		//서버 매핑주소
+ 		data: {"email":$mem_mail},	//""부분은 뷰페이지의 해당 부분 id와 같아야 한다.
  		datatype: "int", 			//서버의 실행된 결과 값을 사용자로 받아오는 자료형 타입
  		success: function (data) {	//success는 아작스로 받아오는 것이 성공했을 경우, 서버 데이터를 data변수에 저장
  			if(data == 1){			//중복 이메일이 있다면
- 				$newtext='<font color="#773209" size="2"><b>중복 이메일 입니다.</b></font>';
+ 				$errortext='<font color="#773209" size="2"><b>중복 이메일 입니다.</b></font>';
  				$("#emailcheck").text("");
  				$("#emailcheck").show();
- 				$("#emailcheck").append($newtext);
+ 				$("#emailcheck").append($errortext);
  				$("#email").val("").focus();
  			}else{					//중복 이메일이 아니면
- 				$("#emailchk").val("Y");
+ 				$("#emailchk").val("Y");//이메일 중복 확인의 value값을 Y로 변경
  				$newtext='<font color="#773209" size="2"><b>사용 가능한 이메일입니다.</b></font>';
  				$("#emailcheck").text("");
  				$("#emailcheck").show();
@@ -266,7 +265,7 @@
  }
 
  
- /*비밀번호 변경
+ /*비밀번호 변경 */
  function passwordChange(){
  	$("#newPassword_check").hide();
  	$("#newPasswordConfirm_check").hide();
@@ -287,7 +286,7 @@
 		return false;
 	}
  }
- */
+
  
  
  /*로그인*/

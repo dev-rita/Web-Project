@@ -59,11 +59,25 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO loginCheck(String login_id) {
 		return this.memberDao.loginCheck(login_id);
 	}
+	
+	@Override
+	public MemberVO getMember(String login) {
+		return this.memberDao.getMember(login);
+	}
+	
+	@Override
+	public void editMember(MemberVO m) {
+		this.memberDao.editMember(m);
+	}
 
 	@Override
-	public void delMem(MemberVO login) {
-		this.memberDao.delMem(login);
+	public void delMem(MemberVO dm) {
+		this.memberDao.delMem(dm);
 	}
+
+
+
+
 
 
 

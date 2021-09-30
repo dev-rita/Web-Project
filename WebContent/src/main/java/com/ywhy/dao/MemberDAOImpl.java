@@ -58,11 +58,25 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO loginCheck(String login_id) {
 		return this.sqlSession.selectOne("login_check", login_id);
 	}//로그인 인증
+	
+	@Override
+	public MemberVO getMember(String login) {
+		return this.sqlSession.selectOne("mem_get", login);
+	}//id세션에 해당하는 정보 불러오기
+	
+	@Override
+	public void editMember(MemberVO m) {
+		this.sqlSession.update("mem_edit", m);
+	}//아이디를 기준으로 이름,닉네임 정보 수정
 
 	@Override
-	public void delMem(MemberVO login) {
-		this.sqlSession.delete("mem_del", login);
+	public void delMem(MemberVO dm) {
+		this.sqlSession.delete("mem_del", dm);
 	}//회원 탈퇴
+
+
+
+
 
 
 

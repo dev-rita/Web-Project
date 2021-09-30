@@ -23,8 +23,16 @@ public interface MemberService {
 	void updatePwd(MemberVO m);
 	
 	MemberVO loginCheck(String login_id);
+	
+	MemberVO getMember(String login);
+	
+	void editMember(MemberVO m);
 
-	void delMem(MemberVO login);
+	void delMem(MemberVO dm);
+
+
+
+
 
 
 
