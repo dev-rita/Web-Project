@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.ywhy.service.BoardService;
+import com.ywhy.service.MemberService;
 import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.MemberVO;
 
@@ -36,10 +37,15 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	//자료실 목록
 		@RequestMapping("/b_community")//get or post로 접근하는 매핑주소를 처리
-		public String b_community(Model listM, HttpServletRequest request, BoardVO b ,String sort) {
+		public String b_community(Model listM, HttpServletRequest request, HttpSession session, BoardVO b ,String sort) {
 			
+			String login=(String)session.getAttribute("id");
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 			
 			/* 페이징 관련 소스 추가 */
 			int page=1;//현재 페이지 번호
@@ -97,15 +103,18 @@ public class BoardController {
 			listM.addAttribute("find_name",find_name);//검색어
 			listM.addAttribute("blank_find_name",blank_find_name);//공백 포함 검색어
 			listM.addAttribute("sort",sort);//정렬
-			
+			listM.addAttribute("m", m);
 			
 			return "board/b_community";
 		}//b_community
 		
 		
 	      @RequestMapping("/b_questions")//get or post로 접근하는 매핑주소를 처리
-	      public String b_questions(Model listM, HttpServletRequest request, BoardVO b ,String sort) {
+	      public String b_questions(Model listM, HttpServletRequest request, HttpSession session, BoardVO b ,String sort) {
 	         
+	    	 String login=(String)session.getAttribute("id");
+	    	 MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴 
+	    	  
 	         /* 페이징 관련 소스 추가 */
 	         int page=1;//현재 페이지 번호
 	         int limit=10;//한페이지에 보여지는 목록 개수
@@ -160,19 +169,24 @@ public class BoardController {
 	         listM.addAttribute("find_name",find_name);//검색어
 	         listM.addAttribute("blank_find_name",blank_find_name);//공백 포함 검색어
 	         listM.addAttribute("sort",sort);//정렬
+	         listM.addAttribute("m", m);
 	         
 	         return "board/b_questions";
 	      }//b_questions
 		
 		//글쓰기
 		@GetMapping("/b_create")//get으로 접근하는 매핑주소 처리 스프링 4.3에서 추가, bbs_write라는 매핑주소 등록
-		public ModelAndView b_create(HttpServletRequest request) {
+		public ModelAndView b_create(HttpServletRequest request, HttpSession session) {
+			String login=(String)session.getAttribute("id");
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
+			
 			int page=1;
 			if(request.getParameter("page")!=null) {
 				page=Integer.parseInt(request.getParameter("page"));//쪽번호를 정수 숫자로 변경해서 저장시킴.
 			}
 			ModelAndView bc=new ModelAndView();
 			bc.addObject("page",page);//page 속성 키이름에 페이지 번호 저장 ->페이징에서 책갈피 기능 구현 목적
+			bc.addObject("m", m);
 			bc.setViewName("board/b_create"); // 뷰 리졸브 경로 > /WEB-INF/views/bbs/bbs_write.jsp
 			
 			return bc;
@@ -185,7 +199,8 @@ public class BoardController {
 			
 			PrintWriter out=response.getWriter();
 			
-			MemberVO m=(MemberVO)session.getAttribute("m");
+			String login=(String)session.getAttribute("id");
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 			
 			String saveFolder=request.getRealPath("resources/upload");//톰캣에 인식하는 실제 이진 파일 업로드 서버 경로
 			int fileSize=5*1024*1024;//이진파일 최대크기
@@ -234,7 +249,7 @@ public class BoardController {
 			
 			b.setB_name(b_name); b.setB_title(b_title); b.setB_pwd(b_pwd); b.setB_cont(b_cont);b.setB_cate(b_cate);b.setB_tag(b_tag);
 			
-			if(m == null) {
+			if(login == null) {
 				out.println("<script>");
 				out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
 				out.println("location='login';");
@@ -263,14 +278,15 @@ public class BoardController {
 			
 			PrintWriter out=response.getWriter();
 			
-			MemberVO m=(MemberVO)session.getAttribute("m");
+			String login=(String)session.getAttribute("id");
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 			
 			int page=1;
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));			
 			}
 			
-			if(m == null) {
+			if(login == null) {
 				out.println("<script>");
 				out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
 				out.println("location='login';");
@@ -285,10 +301,12 @@ public class BoardController {
 		
 		@RequestMapping("/b_cont")//get or post로 접근하는 매핑주소를 처리
 		public ModelAndView b_cont(@RequestParam("b_no") int b_no,int page,String state,@ModelAttribute BoardVO b,
-				HttpServletResponse response) {
+				HttpServletResponse response,HttpSession session) {
 			//@RequestParam("bno")는 request.getParameter("bno")와 같다.즉 bno피라미터이름에 담겨져서 전달된 번호값을 구함. int page도 get으로 전달된 페이지번호를
 			//구함
 			response.setContentType("text/html;charset=UTF-8");
+			String login=(String)session.getAttribute("id");//세션 가져오기
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 			
 			if(state.equals("cont")) {//게시판 목록 제목에서 클릭한 내용보기일때만 조회수 증가
 			b=this.boardService.getBoardCont(b_no);//번호에 해당하는 레코드값을 가져오고,조회수 증가
@@ -299,6 +317,7 @@ public class BoardController {
 			ModelAndView cm=new ModelAndView();
 			cm.addObject("b",b);//b키이름에 b객체를 저장
 			cm.addObject("page",page);//책갈피 기능을 구현하기 위해서 쪽번호를 저장
+			cm.addObject("m", m);
 			
 			if(state.equals("cont")) {
 				cm.setViewName("board/b_cont");// /WEB-INF/views/board/b_cont.jsp
@@ -318,14 +337,16 @@ public class BoardController {
 			/* @ModelAttribute BoardVO rb라고 하면 네임피라미터 이름과
 			 * 빈클래스 변수명이 일치하면 rb객체에 값이 저장되어져 있다. 		
 			 */
-			MemberVO m=(MemberVO)session.getAttribute("m");
+			String login=(String)session.getAttribute("id");//세션 가져오기
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
+			
 			int page=1;
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));			
 			}
 			
 			
-			if(m == null) {
+			if(login == null) {
 				out.println("<script>");
 				out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
 				out.println("location='login';");
@@ -350,14 +371,15 @@ public class BoardController {
 			//웹브라우저로 출력되는 파일형태와 언어코딩 타입을 설정
 			PrintWriter out=response.getWriter();
 			
-			MemberVO m=(MemberVO)session.getAttribute("m");
+			String login=(String)session.getAttribute("id");//세션 가져오기
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 			
 			int page=1;
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));			
 			}
 			
-			if(m == null) {
+			if(login == null) {
 				out.println("<script>");
 				out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
 				out.println("location='login';");
@@ -371,8 +393,11 @@ public class BoardController {
 		}//b_del_ok
 		
 		@RequestMapping("/b_tag")//get or post로 접근하는 매핑주소를 처리
-        public String b_tag(Model listM, HttpServletRequest request, BoardVO b ,String sort,String tag) {
-                      
+        public String b_tag(Model listM, HttpServletRequest request, BoardVO b ,String sort,String tag,HttpSession session) {
+                     
+			String login=(String)session.getAttribute("id");//세션 가져오기
+			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
+			
            /* 페이징 관련 소스 추가 */
            int page=1;//현재 페이지 번호
            int limit=10;//한페이지에 보여지는 목록 개수
@@ -432,53 +457,10 @@ public class BoardController {
            listM.addAttribute("blank_find_name",blank_find_name);//공백 포함 검색어
            listM.addAttribute("sort",sort);//정렬
            listM.addAttribute("find_tag",find_tag);//정렬
+           listM.addAttribute("m", m);
            
            return "board/b_tag";
         }//b_tag
-		
-	      @RequestMapping("/b_my")//get or post로 접근하는 매핑주소를 처리
-	      public String b_my(Model listM, HttpServletRequest request, BoardVO b , String id,MemberVO m) {
-	         
-	         
-	         /* 페이징 관련 소스 추가 */
-	         int page=1;//현재 페이지 번호
-	         int limit=10;//한페이지에 보여지는 목록 개수
-	         
-	         if(request.getParameter("page") != null) {//get으로 전달된 쪽번호가 있는 경우 실행
-	            page=Integer.parseInt(request.getParameter("page"));//페이지 번호(쪽번호)를 정수 숫자로 변경해서 저장
-	         }
-	         b.setMem_id(id);
-	         
-	         b.setStartrow((page-1)*10+1);//시작행 번호 1, 11 ,21 
-	         b.setEndrow(b.getStartrow()+limit-1);//끝행 번호
-	         
-	         int totalBCount=this.boardService.getMyBCount(b);//총 레코드 개수
-	         int totalRCount=this.boardService.getMyRCount(b);//총 레코드 개수
-	         int totalCount=totalBCount+totalRCount;
-	         
-	         //총페이지
-	         int maxpage=(int)((double)totalCount/limit+0.95);
-	         //현재 페이지에 보여질 시작페이지
-	         int startpage=(((int)((double)page/10+0.9))-1)*10+1;
-	         //현재 페이지에 보여질 마지막 페이지
-	         int endpage=maxpage;
-	         if(endpage>startpage+10-1) endpage=startpage+10-1;
-	         
-	         List<BoardVO> blist=null;
-	         
-	         blist=this.boardService.getMyList(b);//목록보기
-	         
-	         
-	         listM.addAttribute("blist", blist);//blist속성 키이름에 목록을 저장
-	         listM.addAttribute("totalCount",totalCount);
-	         listM.addAttribute("startpage",startpage);
-	         listM.addAttribute("endpage",endpage);
-	         listM.addAttribute("maxpage",maxpage);
-	         listM.addAttribute("page",page);
-	         
-	         
-	         return null;
-	      }
 		
 		@RequestMapping(value="/recommend_plus/{b_no}",method=RequestMethod.POST)//게시물 추천 
 		public ResponseEntity<String> recommend_plus (@PathVariable("b_no") int b_no) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ywhy.service.MemberService;
 import com.ywhy.service.NoticeService;
+import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
 @Controller
@@ -26,10 +29,15 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	//공지 목록
 	@RequestMapping("/b_notice")//get or post로 접근하는 매핑주소를 처리
-	public String b_notice(Model listM, HttpServletRequest request, NoticeVO n ,String sort) {
+	public String b_notice(Model listM, HttpServletRequest request, HttpSession session, NoticeVO n ,String sort) {
 		
+		String login=(String)session.getAttribute("id");//세션 가져오기
+		MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 		
 		/* 페이징 관련 소스 추가 */
 		int page=1;//현재 페이지 번호
@@ -83,6 +91,7 @@ public class NoticeController {
 		listM.addAttribute("find_name",find_name);//검색어
 		listM.addAttribute("blank_find_name",blank_find_name);//공백 포함 검색어
 		listM.addAttribute("sort",sort);//정렬
+		listM.addAttribute("m", m);
 		
 		
 		return "board/b_notice";
@@ -90,16 +99,18 @@ public class NoticeController {
 	
 	@RequestMapping("/b_notice_cont")//get or post로 접근하는 매핑주소를 처리
 	public ModelAndView b_notice_cont(@RequestParam("n_no") int n_no,int page,@ModelAttribute NoticeVO n,
-			HttpServletResponse response) {
+			HttpServletResponse response,HttpSession session) {
 		
 		response.setContentType("text/html;charset=UTF-8");
-		
+		String login=(String)session.getAttribute("id");//세션 가져오기
+		MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 		
 		n=this.noticeService.getNoticeCont(n_no);//번호에 해당하는 레코드값을 가져오고,조회수 증가
 		
 		ModelAndView cm=new ModelAndView();
 		cm.addObject("n",n);//b키이름에 b객체를 저장
 		cm.addObject("page",page);//책갈피 기능을 구현하기 위해서 쪽번호를 저장
+		cm.addObject("m", m);
 		cm.setViewName("board/b_notice_cont");
 		
 		return cm;

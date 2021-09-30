@@ -17,12 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ywhy.service.AdminBoardService;
 import com.ywhy.service.AdminMemberService;
 import com.ywhy.service.AdminNoticeService;
+import com.ywhy.service.MemberService;
 import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
 @Controller
-public class adminMemberController {
+public class AdminMemberController {
 
 	@Autowired
 	private AdminMemberService adminMemberService;
@@ -30,20 +31,19 @@ public class adminMemberController {
 	private AdminBoardService adminBoardService;
 	@Autowired
 	private AdminNoticeService adminNoticeService;
+	@Autowired
+	private MemberService memberService;
 	
 	/*관리자 페이지 폼*/
 	@GetMapping("/admin")
 	public ModelAndView admin(HttpServletResponse response,HttpSession session,@ModelAttribute MemberVO m,
-			@ModelAttribute BoardVO b, @ModelAttribute NoticeVO n)throws Exception {
+			@ModelAttribute BoardVO b,@ModelAttribute NoticeVO n)throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
 		
-		String login=(String)session.getAttribute("id");
+		String login=(String)session.getAttribute("id");//세션 가져오기
 		
-		//String member="일반";
-		//||(login.getMem_class().equals(member))
-		if(login==null) {
-	
+		if(login == null) {
 			out.println("<script>");
 			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
 			out.println("location='login';");
@@ -61,7 +61,7 @@ public class adminMemberController {
 			listM.addObject("boardListCount",boardListCount);
 			listM.addObject("noticeListCount",noticeListCount);
 			listM.addObject("memberListCount",memberListCount);
-			
+			listM.addObject("m", m);
 			
 			listM.setViewName("admin/manager");
 			
@@ -75,11 +75,14 @@ public class adminMemberController {
 	public ModelAndView admin_usermanagement(HttpServletResponse response,HttpServletRequest request,HttpSession session,@ModelAttribute MemberVO m) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		String login=(String)session.getAttribute("id");
+		String login=(String)session.getAttribute("id");//세션 가져오기
+		MemberVO mem=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
+		String member="일반";
 		
-		if(login == null) {
+		if((login==null) ||(mem.getMem_class().equals(member))) {
+			session.invalidate();
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요!');");
+			out.println("alert('관리자로 다시 로그인 하세요.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
@@ -130,7 +133,7 @@ public class adminMemberController {
 	public ModelAndView admin_member_del(int page,String mem_id,HttpServletResponse response,HttpSession session) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		String login=(String)session.getAttribute("id");
+		String login=(String)session.getAttribute("id");//세션 가져오기
 		
 		if(login == null) {
 			out.println("<script>");
@@ -144,7 +147,6 @@ public class adminMemberController {
 		}
 		return null;
 	}
-	
 	/*관리자 전환*/
 	/*일반사용자 전환*/
 }
