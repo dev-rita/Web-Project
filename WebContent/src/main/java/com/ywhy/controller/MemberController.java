@@ -1,12 +1,11 @@
 package com.ywhy.controller;
 
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,11 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import com.ywhy.service.AdminMemberService;
 import com.ywhy.service.MailSendService;
 import com.ywhy.service.MemberService;
+import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.MemberVO;
+import com.ywhy.vo.NoticeVO;
 
 import pwdconv.PwdChange;
 
@@ -287,21 +286,32 @@ public class MemberController {
 	}
 	
 	/*시작페이지(로그인 전,후)*/
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView main(HttpServletResponse response,HttpSession session) throws Exception {
-		response.setContentType("text/html;charset=utf-8");
-		
-		String login=(String)session.getAttribute("id");
-		ModelAndView mav=new ModelAndView("index");
-		
-		if(login == null) {
-			
-		}else {
-			MemberVO m=this.memberService.getMember(login);
-			mav.addObject("m",m);
-		}
-		return mav; //뷰페이지 경로가 /WEB-INF/views/ywhy_loginbefore_index.jsp
-	}
+	   @RequestMapping("/")//get or post로 접근하는 매핑주소를 처리
+	   public ModelAndView index(Model listM, HttpServletRequest request, HttpSession session, BoardVO b, HttpServletResponse response, NoticeVO n) throws Exception{
+	      response.setContentType("text/html;charset=utf-8");
+	      
+	      List<BoardVO> blist=this.memberService.getBList(b);
+	      List<BoardVO> qlist=this.memberService.getQList(b);
+	      List<BoardVO> plist=this.memberService.getPList(b);
+	      List<NoticeVO> nlist=this.memberService.getNList(n);   
+
+	      listM.addAttribute("blist", blist);//blist속성 키이름에 목록을 저장
+	      listM.addAttribute("qlist", qlist);//blist속성 키이름에 목록을 저장
+	      listM.addAttribute("plist", plist);//blist속성 키이름에 목록을 저장
+	      listM.addAttribute("nlist", nlist);//blist속성 키이름에 목록을 저장
+	      
+	      String login=(String)session.getAttribute("id");
+	      ModelAndView mav=new ModelAndView("index");
+	      
+	      if(login == null) {
+	         
+	      }else {
+	         MemberVO m=this.memberService.getMember(login);
+	         mav.addObject("m",m);
+	      }
+	      
+	      return mav;
+	   }
 	
 	/*footer의 About*/
 	@GetMapping("/intro_about")
@@ -476,4 +486,5 @@ public class MemberController {
 		}
 		return null;
 	}
+
 }

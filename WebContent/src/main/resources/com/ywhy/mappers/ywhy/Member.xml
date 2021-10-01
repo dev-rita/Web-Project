@@ -67,6 +67,18 @@
 		delete from ywhyMember where mem_id=#{mem_id}
 	</delete>
 	
+	<select id="BList" resultType="b">
+      select * from board where b_cate='커뮤니티'
+    </select>
+    <select id="QList" resultType="b">
+      select * from board where b_cate like'Q%'
+    </select>
+    <select id="PList" resultType="b">
+      select * from board where b_pick=1
+    </select>
+    <select id="NList" resultType="n">
+      select * from notice 
+    </select>
 
  
  </mapper>

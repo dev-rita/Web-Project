@@ -1,12 +1,15 @@
 package com.ywhy.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ywhy.dao.MemberDAO;
+import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.MemberVO;
+import com.ywhy.vo.NoticeVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -74,6 +77,25 @@ public class MemberServiceImpl implements MemberService {
 	public void delMem(MemberVO dm) {
 		this.memberDao.delMem(dm);
 	}
+    @Override
+    public List<BoardVO> getBList(BoardVO b) {
+       return this.memberDao.getBList(b);
+    }
+
+    @Override
+    public List<BoardVO> getQList(BoardVO b) {
+       return this.memberDao.getQList(b);
+    }
+
+    @Override
+    public List<BoardVO> getPList(BoardVO b) {
+       return this.memberDao.getPList(b);
+    }
+
+    @Override
+    public List<NoticeVO> getNList(NoticeVO n) {
+       return this.memberDao.getNList(n);
+    }
 
 
 
