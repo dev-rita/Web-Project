@@ -147,20 +147,22 @@ public class BoardDAOImpl implements BoardDAO {
 	      return this.sqlSession.selectList("tag_list_view",b);
 	   }
 	
-	//마이페이지
-	   @Override
-	   public int getMyBCount(BoardVO b) {
-	      return this.sqlSession.selectOne("my_bcount",b);
-	   }
-	   @Override
-	   public int getMyRCount(BoardVO b) {
-	      return this.sqlSession.selectOne("my_rcount",b);
-	   }
+	   //마이페이지
+	      @Override
+	      public int getMyBCount(BoardVO b) {
+	         return this.sqlSession.selectOne("my_bcount",b);
+	      }
 
-	   @Override
-	   public List<BoardVO> getMyList(BoardVO b) {
-	      return this.sqlSession.selectList("my_list",b);
-	   } 
+	      @Override
+	      public List<BoardVO> getMyList(BoardVO b) {
+	         return this.sqlSession.selectList("my_list",b);
+	      } 
+	      
+	      @Override
+	      public int getMemPoint(String mem_id) {
+	         return this.sqlSession.selectOne("mem_point", mem_id);
+	      }
+	      
 	//댓글
 	@Override
 	public List<BoardVO> listReply(int b_no) {
@@ -206,5 +208,6 @@ public class BoardDAOImpl implements BoardDAO {
 	public void r_recommendm(int r_no) {
 		this.sqlSession.update("r_rec_m",r_no);
 	}//댓글 반대
+
 
 }

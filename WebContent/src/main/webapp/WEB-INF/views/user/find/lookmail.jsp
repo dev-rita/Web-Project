@@ -26,7 +26,7 @@
 			<div class="right-banner-wrapper"></div>
 			
 <jsp:include page="../../include/footer.jsp" />
-			
+	<script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>		
 	<script>
             var contextPath = "";
             var encodedURL = "%2Ffind%2Fuser%2Fcomplete";

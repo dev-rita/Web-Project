@@ -77,48 +77,26 @@ public class MemberServiceImpl implements MemberService {
 	public void delMem(MemberVO dm) {
 		this.memberDao.delMem(dm);
 	}
-    @Override
-    public List<BoardVO> getBList(BoardVO b) {
-       return this.memberDao.getBList(b);
-    }
 
-    @Override
-    public List<BoardVO> getQList(BoardVO b) {
-       return this.memberDao.getQList(b);
-    }
+	 @Override
+	   public List<BoardVO> getBList(BoardVO b) {
+	      return this.memberDao.getBList(b);
+	   }
 
-    @Override
-    public List<BoardVO> getPList(BoardVO b) {
-       return this.memberDao.getPList(b);
-    }
+	   @Override
+	   public List<BoardVO> getQList(BoardVO b) {
+	      return this.memberDao.getQList(b);
+	   }
 
-    @Override
-    public List<NoticeVO> getNList(NoticeVO n) {
-       return this.memberDao.getNList(n);
-    }
+	   @Override
+	   public List<BoardVO> getPList(BoardVO b) {
+	      return this.memberDao.getPList(b);
+	   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	   @Override
+	   public List<NoticeVO> getNList(NoticeVO n) {
+	      return this.memberDao.getNList(n);
+	   }	
 
 
 

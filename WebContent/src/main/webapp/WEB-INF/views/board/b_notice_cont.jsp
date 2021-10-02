@@ -29,7 +29,7 @@
 				<div class="avatar clearfix avatar-medium pull-left">
 					<a href="/user/info/124433" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 						<div class="avatar-info"><!-- 작성자 이름, 활동점수, 등록일 -->
-							<a class="nickname" href="/user/info/124433" title="${n.n_name}">${n.n_name}</a>
+							<a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name}">${n.n_name}</a>
 							<div class="activity"><span class="fa fa-flash"></span> 12</div>
 							<div class="date-created"><span class="timeago" title="${n.n_date}">${n.n_date}</span></div>
 						</div>
@@ -179,29 +179,8 @@
 		</div>
 	</div>
                 
-    	<footer class="index_footer">
-				<div class="footer_box">
-					<div class="footer_logo">
-						<img src="./resources/images/logo_gray.png" style="width:55px; height:55px;">
-					</div>
-					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | 
-						<strong>대표명</strong>: 김태완 | 
-						<strong>팀원명</strong>: 이의수 이승연 정희선 | 
-						<strong>사업자번호</strong>: 404-99-12536 
-						<br>
-						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
-						<strong>문의</strong>: info@ywhy.kr
-						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-						<a href="../intro/loginbefore_about.jsp">About YWHY</a> | <a href="../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
-						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
-						
-					</div>
-				</div>
-		</footer>
-         
-   </div>
- </div>
+    	<jsp:include page="../include/footer.jsp"/>
+    	
  <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
  <script>
  	var contextPath = "";

@@ -77,48 +77,26 @@ public class MemberDAOImpl implements MemberDAO {
 		this.sqlSession.delete("mem_del", dm);
 	}//회원 탈퇴
 
-	@Override
-	public List<BoardVO> getBList(BoardVO b) {
-	    return this.sqlSession.selectList("BList", b);
-	}
 
-    @Override
-    public List<BoardVO> getQList(BoardVO b) {
-       return this.sqlSession.selectList("QList", b);
-    }
+	   @Override
+	   public List<BoardVO> getBList(BoardVO b) {
+	      return this.sqlSession.selectList("BList", b);
+	   }
 
-    @Override
-    public List<BoardVO> getPList(BoardVO b) {
-       return this.sqlSession.selectList("PList", b);
-    }
+	   @Override
+	   public List<BoardVO> getQList(BoardVO b) {
+	      return this.sqlSession.selectList("QList", b);
+	   }
 
-    @Override
-    public List<NoticeVO> getNList(NoticeVO n) {
-       return this.sqlSession.selectList("NList", n);
-    }
+	   @Override
+	   public List<BoardVO> getPList(BoardVO b) {
+	      return this.sqlSession.selectList("PList", b);
+	   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	   @Override
+	   public List<NoticeVO> getNList(NoticeVO n) {
+	      return this.sqlSession.selectList("NList", n);
+	   }
 
 
 }

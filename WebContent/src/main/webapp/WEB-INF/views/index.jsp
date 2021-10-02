@@ -25,19 +25,16 @@
                         <li class="list-group-item list-group-item-small list-group-item-question list-group-has-note clearfix">
                            <div class="list-title-wrapper">
                               <h5 class="list-group-item-heading">
-                                 <a href="#">${p.b_title}</a>
+                                 <a href="b_cont?b_no=${p.b_no}&page=1&state=cont">${p.b_title}</a>
                                  <div class="list-group-item-author pull-right clearfix">
-                                    <div class="avatar clearfix avatar-x-small ">
-                                       <a href="/user/info/45597" class="avatar-photo">
-                                          <img src="//www.gravatar.com/avatar/b66da5ef6099211f5db8f5f7a3b4c36b?d=identicon&amp;s=10">
-                                       </a>
+                                    <div class="avatar clearfix avatar-x-small ">  
                                        <div class="avatar-info">
-                                          <a class="nickname" href="/user/info/45597" title="OKKY">${p.b_name}</a>
+                                          <a class="nickname" href="b_my?mem_id=${p.mem_id}" title="OKKY">${p.b_name}</a>
                                           <div class="activity">
                                              <i class="fas fa-bolt"></i> 2k
                                           </div>
                                           <div class="date-created">
-                                             <span class="timeago" title="2021-07-22 15:19:04">1일 전</span>
+                                             <span class="timeago" title="${p.b_date}">${p.b_date}</span>
                                           </div>
                                        </div>
                                     </div>
@@ -63,19 +60,16 @@
                         <li class="list-group-item list-group-item-small list-group-item-question list-group-has-note clearfix">
                            <div class="list-title-wrapper">
                               <h5 class="list-group-item-heading">
-                                 <a href="/article/1002318">${n.n_title}</a>
+                                 <a href="b_notice_cont?n_no=${n.n_no}&page=1&state=cont">${n.n_title}</a>
                                  <div class="list-group-item-author pull-right clearfix">
-                                    <div class="avatar clearfix avatar-x-small ">
-                                       <a href="/user/info/86071" class="avatar-photo">
-                                          <img src="//www.gravatar.com/avatar/a9c072e32cc89d6584f2cbeac20f3d5d?d=identicon&amp;s=10">
-                                       </a>
+                                    <div class="avatar clearfix avatar-x-small ">                       
                                        <div class="avatar-info">
-                                          <a class="nickname" href="/user/info/86071" title="팩트폭행범">팩트폭행범</a>
+                                          <a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name}">${n.n_name}</a>
                                           <div class="activity">
                                              <i class="fas fa-bolt"></i> 2k
                                           </div>
                                           <div class="date-created">
-                                             <span class="timeago" title="2021-07-19 00:13:31">5일 전</span>
+                                             <span class="timeago" title="${n.n_date}">${n.n_date}</span>
                                           </div>
                                        </div>
                                     </div>
@@ -94,7 +88,7 @@
                <div class="main-block">
                   <h4 class="main-header">
                      <i class="fas fa-laptop"></i> Q&amp;A 
-                     <a href="board/questions.jsp" class="main-more-btn pull-right">
+                     <a href="b_questions" class="main-more-btn pull-right">
                         <i class="fas fa-ellipsis-h"></i>
                      </a>
                   </h4>
@@ -105,19 +99,16 @@
                         <li class="list-group-item list-group-item-small list-group-item-question list-group-no-note clearfix">
                            <div class="list-title-wrapper">
                               <h5 class="list-group-item-heading">
-                                 <a href="/article/1007192">${q.b_title}</a>
+                                 <a href="b_cont?b_no=${q.b_no}&page=1&state=cont">${q.b_title}</a>
                                  <div class="list-group-item-author pull-right clearfix">
-                                    <div class="avatar clearfix avatar-x-small ">
-                                       <a href="/user/info/124563" class="avatar-photo">
-                                          <img src="//www.gravatar.com/avatar/7b34a9bb58a615dd73a7d5d0dc978efb?d=identicon&amp;s=10">
-                                       </a>
+                                    <div class="avatar clearfix avatar-x-small ">                                
                                        <div class="avatar-info">
-                                          <a class="nickname" href="/user/info/124563" title="꼽충">꼽충</a>
+                                          <a class="nickname" href="b_my?mem_id=${q.mem_id}" title="${q.b_name}">${q.b_name}</a>
                                           <div class="activity">
                                              <i class="fas fa-bolt"></i> 14
                                           </div>
                                           <div class="date-created">
-                                             <span class="timeago" title="2021-07-23 19:11:09">14분 전</span>
+                                             <span class="timeago" title="${q.b_date}">${q.b_date}</span>
                                           </div>
                                        </div>
                                     </div>
@@ -136,7 +127,7 @@
                <div class="main-block">
                   <h4 class="main-header">
                      <i class="fas fa-coins"></i> 커뮤니티 
-                     <a href="board/community.jsp" class="main-more-btn pull-right">
+                     <a href="b_community" class="main-more-btn pull-right">
                         <i class="fas fa-ellipsis-h"></i>
                      </a>
                   </h4>
@@ -147,19 +138,19 @@
                         <li class="list-group-item list-group-item-small list-group-item-question list-group-no-note clearfix">
                            <div class="list-title-wrapper">
                               <h5 class="list-group-item-heading">
-                                 <a href="/article/1007192">${b.b_title}</a>
+                                 <a href="b_cont?b_no=${b.b_no}&page=1&state=cont">${b.b_title}</a>
                                  <div class="list-group-item-author pull-right clearfix">
                                     <div class="avatar clearfix avatar-x-small ">
                                        <a href="/user/info/124563" class="avatar-photo">
                                           <img src="//www.gravatar.com/avatar/7b34a9bb58a615dd73a7d5d0dc978efb?d=identicon&amp;s=10">
                                        </a>
                                        <div class="avatar-info">
-                                          <a class="nickname" href="/user/info/124563" title="꼽충">꼽충</a>
+                                          <a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name}">${b.b_name}</a>
                                           <div class="activity">
                                              <i class="fas fa-bolt"></i> 14
                                           </div>
                                           <div class="date-created">
-                                             <span class="timeago" title="2021-07-23 19:11:09">14분 전</span>
+                                             <span class="timeago" title="${b.b_date}">${b.b_date}</span>
                                           </div>
                                        </div>
                                     </div>

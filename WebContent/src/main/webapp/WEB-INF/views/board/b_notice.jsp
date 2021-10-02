@@ -9,9 +9,9 @@
 
      <div id="list-article" class="content scaffold-list life-list" role="main">
      	<div class="nav" role="navigation">
-     		 <c:if test="${!empty m}">
+     		 
         	<a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
-            </c:if>
+          
             <h4>공지사항</h4>
             <form id="category-filter-form" name="category-filter-form" method="get" action="b_notice">
                <div class="category-filter-wrapper">
@@ -44,41 +44,54 @@
          <div class="why-choice">
             <div class="panel panel-default">
                <ul class="list-group">
-                  <li class="list-group-item list-group-item-question list-group-has-note clearfix">
-                     <div class="list-title-wrapper clearfix">
-                        <div class="list-tag clearfix">
-                           <span class="list-group-item-text article-id">#1005955</span>
-                           <a href="/articles/notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i> 공지사항</a>
-                           <a href="/articles/tagged/" class="list-group-item-text item-tag label label-gray">3차 업데이트 미리보기</a>
-                           <a href="/articles/tagged/" class="list-group-item-text item-tag label label-gray">2차</a>
-                           <a href="/articles/tagged/" class="list-group-item-text item-tag label label-gray">업데이트</a>
-                           <a href="/articles/tagged/okkyjobs" class="list-group-item-text item-tag label label-gray">YWHYjobs</a>
+                  <c:if test="${!empty nplist}">
+                  <c:forEach var="n" items="${nplist}">
+                     <li class="list-group-item list-group-item-question list-group-no-note clearfix" style="border-left:3px #3a93de solid !important;">
+                        <div class="list-title-wrapper clearrfix">
+                           <div class="list-tag clearfix">
+                                 <span class="list-group-item-text article-id">&num;${n.n_no}</span><!-- 번호 -->
+                               <a href="b_notice" class="list-group-item-text item-tag label label-info"><i class="fa fa-comments"></i>${n.n_cate}</a><!-- 태그 -->
+                               <c:forTokens var="tag" items="${n.n_tag}" delims=","> <!-- 태그 -->              
+                           <a href="b_tag?tag=${tag}" class="list-group-item-text item-tag label label-gray ">${tag}</a>
+                        </c:forTokens>
+                           </div>
+                           <h5 class="list-group-item-heading list-group-item-evaluate">       
+                                 <a href="b_notice_cont?n_no=${n.n_no}&page=${page}">${n.n_title}</a><!-- 제목 -->
+                            </h5>
                         </div>
-                        <h5 class="list-group-item-heading list-group-item-evaluate">
-                           <a href="/article/1005955">[YWHY JOBs] 2차, 3차 업데이트 안내</a>
-                        </h5>
-                     </div>
-                        <div class="list-summary-wrapper clearfix">
+                         <div class="list-summary-wrapper clearfix">
                            <div class="list-group-item-summary clearfix">
-                              <ul>
-                                 <li class=""><i class="item-icon fa fa-comment"></i>2</li>
-                                 <li class=""><i class="item-icon fa fa-thumbs-up"></i>8</li>
-                                 <li class=""><i class="item-icon fa fa-eye"></i>849</li>
-                              </ul>
+                                 <div class="item-evaluate-wrapper pull-right clearfix">
+                            <div class="item-evaluate">
+                                <div class="item-evaluate-icon">
+                                    <i class="
+                                    <c:if test="${n.n_rec>=0}">item-icon fa fa-thumbs-o-up</c:if>
+                                    <c:if test="${n.n_rec<0}">item-icon fa fa-thumbs-o-down</c:if>" aria-hidden="true"></i>
+                                </div>
+                                   <div class="item-evaluate-count">${n.n_rec}</div>
+                            </div>
+                            <div class="item-evaluate">
+                                <div class="item-evaluate-icon">
+                                     <i class="item-icon fa fa-eye" aria-hidden="true"></i>
+                                </div>
+                                <div class="item-evaluate-count">${n.n_hit}</div>
+                            </div>
+                           </div>
                            </div>
                         </div>
                         <div class="list-group-item-author clearfix">
-                           <div class="avatar clearfix avatar-list">
-                              <a href="/user/info/45597" class="avatar-photo"><img src="//www.gravatar.com/avatar/b66da5ef6099211f5db8f5f7a3b4c36b?d=identicon&amp;s=30"></a>
-                              <div class="avatar-info">
-                                 <a class="nickname" href="/user/infor/45597" title="OKKY">OKKY</a>
-                                 <div class="activity"><span class="fa fa-flash"></span>2k
-                                 </div>
-                                 <div class="date-created"><span class="timeago" title="2021-07-22T15:19:04">2021-07-22 15:19:04</span></div>
+                             <div class="avatar clearfix avtar-list">
+                                   <a href="/user/info/106884" class="avatar-photo"><img src="//www.gravatar.com/avatar/8b4ddad17ec0dd8ad9a309757d8f63ab?d=identicon&amp;s=30"></a>
+                                 <div class="avatar-info">
+                                    <a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name} ">${n.n_name}</a><!-- 작성자  -->
+                                    <div class="activity"><span class="fa fa-flash"></span>32</div><!-- 활동점수  -->
+                                       <div class="date-created"><span class="timeago" title="${n.n_date}">${n.n_date}</span></div><!-- 작성날짜 -->
                               </div>
-                           </div>
-                     </div>
+                          </div>
+                        </div>
                      </li>
+                      </c:forEach>
+                </c:if>
                </ul>
             </div>
          </div>
@@ -120,7 +133,7 @@
                              <div class="avatar clearfix avtar-list">
                                    <a href="/user/info/106884" class="avatar-photo"><img src="//www.gravatar.com/avatar/8b4ddad17ec0dd8ad9a309757d8f63ab?d=identicon&amp;s=30"></a>
                                  <div class="avatar-info">
-                                    <a class="nickname" href="/user/info/106884" title="${n.n_name} ">${n.n_name}</a><!-- 작성자  -->
+                                    <a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name} ">${n.n_name}</a><!-- 작성자  -->
                                     <div class="activity"><span class="fa fa-flash"></span>32</div><!-- 활동점수  -->
                                        <div class="date-created"><span class="timeago" title="${n.n_date}">${n.n_date}</span></div><!-- 작성날짜 -->
                               </div>
@@ -257,27 +270,9 @@
             </script>
          </div>
        </div>
-    		<footer class="index_footer">
-				<div class="footer_box">
-					<div class="footer_logo">
-						<img src="./resources/images/logo_gray.png" style="width:55px; height:55px;">
-					</div>
-					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | 
-						<strong>대표명</strong>: 김태완 | 
-						<strong>팀원명</strong>: 이의수 이승연 정희선 | 
-						<strong>사업자번호</strong>: 404-99-12536 
-						<br>
-						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
-						<strong>문의</strong>: info@ywhy.kr
-						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-						<a href="../intro/loginbefore_about.jsp">About YWHY</a> | <a href="../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
-						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
-					</div>
-				</div>
-			</footer>
-	</div>
-</div>
+    		
+    		<jsp:include page="../include/footer.jsp"/>
+    		
 <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
 <script src="./resources/js/application.js" type="text/javascript"></script>
 <script src="./resources/js/apps/search.js" type="text/javascript"></script>

@@ -145,20 +145,21 @@ public class BoardServiceImpl implements BoardService {
 	      return this.boardDao.getTagListView(b);
 	   }
 	
-	//마이페이지
-	   @Override
-	   public int getMyBCount(BoardVO b) {
-	      return this.boardDao.getMyBCount(b);
-	   }
-	   @Override
-	   public int getMyRCount(BoardVO b) {
-	      return this.boardDao.getMyRCount(b);
-	   }
+	   //마이페이지
+	      @Override
+	      public int getMyBCount(BoardVO b) {
+	         return this.boardDao.getMyBCount(b);
+	      }
 
-	   @Override
-	   public List<BoardVO> getMyList(BoardVO b) {
-	      return this.boardDao.getMyList(b);
-	   }
+	      @Override
+	      public List<BoardVO> getMyList(BoardVO b) {
+	         return this.boardDao.getMyList(b);
+	      }
+	      
+	      @Override
+	      public int getMemPoint(String mem_id) {
+	         return this.boardDao.getMemPoint(mem_id);
+	      }
 	   
 	   
 	//댓글
@@ -198,7 +199,6 @@ public class BoardServiceImpl implements BoardService {
 	public void r_recommendm(int r_no) {
 		this.boardDao.r_recommendm(r_no);
 	}//댓글반대
-
 
 	
 }

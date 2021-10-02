@@ -44,8 +44,8 @@ public interface BoardService {
 	
 	//마이페이지
 	int getMyBCount(BoardVO b);
-	int getMyRCount(BoardVO b);
 	List<BoardVO> getMyList(BoardVO b);
+	int getMemPoint(String mem_id);
 	
 	//댓글
 	List<BoardVO> listReply(int b_no);

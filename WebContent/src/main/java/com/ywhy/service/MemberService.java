@@ -33,13 +33,15 @@ public interface MemberService {
 
 	void delMem(MemberVO dm);
 
-    List<BoardVO> getBList(BoardVO b);
+	List<BoardVO> getBList(BoardVO b);
 
-    List<BoardVO> getQList(BoardVO b); 
+	List<BoardVO> getQList(BoardVO b);
 
-    List<BoardVO> getPList(BoardVO b);
+	List<BoardVO> getPList(BoardVO b);
 
-    List<NoticeVO> getNList(NoticeVO n);
+	List<NoticeVO> getNList(NoticeVO n);
+
+
 
 
 

@@ -6,9 +6,9 @@
 						<img src="./resources/images/logo_gray.png" style="width:55px; height:55px;">
 					</div>
 					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | 
+						<strong>상호명</strong>: 김이정 | 
 						<strong>대표명</strong>: 김태완 | 
-						<strong>팀원명</strong>: 이의수 이승연 정희선 | 
+						<strong>팀원명</strong>: 이승연 정희선 | 
 						<strong>사업자번호</strong>: 404-99-12536 
 						<br>
 						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |

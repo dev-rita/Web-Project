@@ -9,6 +9,8 @@ public interface NoticeService {
 	int getNoticeListCount(NoticeVO n);
 
 	List<NoticeVO> getNoticeList(NoticeVO n);
+	
+	List<NoticeVO> getNoticePickList(NoticeVO n);
 
 	List<NoticeVO> getNoticeListVote(NoticeVO n);
 
@@ -19,5 +21,6 @@ public interface NoticeService {
 	void n_recommendp(int n_no);
 
 	void n_recommendm(int n_no);
+
 
 }

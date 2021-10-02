@@ -10,6 +10,8 @@ public interface NoticeDAO {
 
 	List<NoticeVO> getNoticeList(NoticeVO n);
 
+	List<NoticeVO> getNoticePickList(NoticeVO n);
+	
 	List<NoticeVO> getNoticeListVote(NoticeVO n);
 
 	List<NoticeVO> getNoticeListView(NoticeVO n);
@@ -21,5 +23,6 @@ public interface NoticeDAO {
 	void n_recommendp(int n_no);
 
 	void n_recommendm(int n_no);
+
 	
 }

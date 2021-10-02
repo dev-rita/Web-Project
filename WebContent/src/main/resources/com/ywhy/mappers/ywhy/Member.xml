@@ -67,18 +67,26 @@
 		delete from ywhyMember where mem_id=#{mem_id}
 	</delete>
 	
-	<select id="BList" resultType="b">
-      select * from board where b_cate='커뮤니티'
+	<!-- 메인페이지 -->
+ 	 <select id="BList" resultType="b">
+   	  select * from (
+      select * from board where b_cate='커뮤니티' order by b_date desc)
+      where rownum &lt;= 15      
     </select>
     <select id="QList" resultType="b">
-      select * from board where b_cate like'Q%'
+    select * from (
+      select * from board where b_cate like'Q%' order by b_date desc)
+      where rownum &lt;= 15
     </select>
     <select id="PList" resultType="b">
-      select * from board where b_pick=1
+    select * from (
+      select * from board where b_pick=1 order by b_date desc)
+      where rownum &lt;= 5
     </select>
     <select id="NList" resultType="n">
-      select * from notice 
+    select * from (
+      select * from notice order by n_date desc)
+      where rownum &lt;= 5
     </select>
-
  
  </mapper>

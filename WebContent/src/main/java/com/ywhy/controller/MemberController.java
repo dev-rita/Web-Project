@@ -39,8 +39,20 @@ public class MemberController {
 
 	/*회원가입 폼*/
 	@GetMapping("/signup")
-	public String signup() {
-		return "signup/signup";
+	public String signup(HttpServletResponse response, HttpSession session) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String login=(String)session.getAttribute("id");
+		 
+		 if(login == null) {
+			 return "signup/signup";
+		 }
+		 else{
+			 out.println("<script>");
+             out.println("location='/controller';");
+             out.println("</script>");
+             return null;
+		 }
 	}
 	
 	/*회원가입 약관 폼*/
@@ -123,34 +135,85 @@ public class MemberController {
 	
 	/*회원가입 완료 후 메일 확인하라는 안내 페이지*/
 	@GetMapping("/signup_complete")
-	public String signup_complete(Model model,MemberVO m) {
-		model.addAttribute("signup", m);
-		return "signup/complete";
+	public String signup_complete(HttpServletResponse response,
+			HttpSession session, Model model,MemberVO m) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String login=(String)session.getAttribute("id");
+		 
+		 if(login == null) {
+			 model.addAttribute("signup", m);
+			return "signup/complete";
+		 }else{
+			 out.println("<script>");
+             out.println("location='/controller';");
+             out.println("</script>");
+             return null;
+		 }
 	}
 	
 	/*회원 이메일 인증 후 회원가입 최종 성공*/
 	@GetMapping("/signup_confirm")
-	public ModelAndView signup_confirm(@RequestParam Map<String,String> map,ModelAndView mav) {
-		System.out.println(map);
+	public ModelAndView signup_confirm(HttpServletResponse response, HttpSession session,
+			@RequestParam Map<String,String> map,ModelAndView mav) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String login=(String)session.getAttribute("id");
 		
-		//email,key가 일치할 경우 mem_key 업데이트
-		this.memberService.updatefinalKey(map);
+		if(login == null) {	
+			try {
+				System.out.println(map);
+				//email,key가 일치할 경우 mem_key 업데이트
+				this.memberService.updatefinalKey(map);
+				
+				mav.setViewName("signup/confirm");
+				return mav;
+			}catch(Exception e) {
+				out.println("<script>");
+		        out.println("location='/controller';");
+		        out.println("</script>");
+		        return null;
+			}
+		}else{
+			 out.println("<script>");
+             out.println("location='/controller';");
+             out.println("</script>");
+             return null;
+		 }
 		
-		mav.setViewName("signup/confirm");
-		
-		return mav;
 	}
 	
 	/*아이디 찾기*/
 	@GetMapping("/findId")
-	public String findId() {
-		return "user/find/findid";
+	public String findId(HttpServletResponse response, HttpSession session) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String login=(String)session.getAttribute("id");
+		
+		if(login==null) {
+			return "user/find/findid";
+		}else {
+			out.println("<script>");
+            out.println("location='/controller';");
+            out.println("</script>");
+			return null;
+		}
 	}
 	
 	/*아이디,비번 찾기 메일 작성 후 메일 확인하라는 안내 페이지*/
 	@GetMapping("/find_lookmail")
-	public String find_lookmail() {
-		return "user/find/lookmail";
+	public String find_lookmail(HttpServletResponse response, HttpSession session) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String login=(String)session.getAttribute("id");
+		if(login==null) {
+			return "user/find/lookmail";
+		}else {
+			out.println("<script>");
+            out.println("location='/controller';");
+            out.println("</script>");
+			return null;
+		}
 	}
 	
 	/*아이디 찾기 이메일 입력 후 메일보내기*/
@@ -174,8 +237,18 @@ public class MemberController {
 	
 	/*비번 찾기*/
 	@GetMapping("/findPwd")
-	public String findPwd() {
-		return "user/find/findpwd";
+	public String findPwd(HttpServletResponse response, HttpSession session) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String login=(String)session.getAttribute("id");
+		if(login==null) {
+			return "user/find/findpwd";
+		}else {
+			out.println("<script>");
+            out.println("location='/controller';");
+            out.println("</script>");
+			return null;
+		}
 	}
 	
 	/*비번 찾기 아이디,이메일 입력 후 메일 보내기*/
@@ -207,8 +280,19 @@ public class MemberController {
 	
 	/*로그인 폼 - 관리자,일반 사용자*/
 	@GetMapping("/login")
-	public String login(){
-		return "signup/login";
+	public String login(HttpServletResponse response, HttpSession session) throws Exception{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String login=(String)session.getAttribute("id");
+		if(login==null) {
+			return "signup/login";
+		}
+		else {
+			out.println("<script>");
+            out.println("location='/controller';");
+            out.println("</script>");
+			return null;
+		}
 	}
 	
 	/*관리자 생성 + 일반 사용자,관리자 로그인 인증*/
@@ -335,7 +419,7 @@ public class MemberController {
 		
 		if(login == null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("alert('로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
@@ -359,7 +443,7 @@ public class MemberController {
 		
 		if(login == null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("alert('로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
@@ -386,13 +470,13 @@ public class MemberController {
 		
 		if(login == null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("alert('로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
 			MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
 			
-			ModelAndView em=new ModelAndView("user/find/passwordChange");
+			ModelAndView em=new ModelAndView("user/find/passwordchange");
 			em.addObject("m",m);
 			
 			return em;
@@ -410,7 +494,7 @@ public class MemberController {
 		
 		if(login == null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("alert('로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
@@ -445,7 +529,7 @@ public class MemberController {
 		
 		if(login == null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("alert('로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
@@ -469,7 +553,7 @@ public class MemberController {
 		
 		if(login == null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("alert('로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {

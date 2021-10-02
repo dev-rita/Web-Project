@@ -23,7 +23,7 @@ drop table board_reply cascade constraint;
 alter table board add b_pick number(1) default 0;--에디터픽 컬럼 추가
 
 select * from board;
-
+select * from board where b_pick=1;
 truncate table board cascade delete;
 
  insert into board (b_no,mem_id,b_cate,b_name,b_title,

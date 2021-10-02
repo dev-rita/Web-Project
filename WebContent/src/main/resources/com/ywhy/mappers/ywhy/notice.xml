@@ -4,11 +4,11 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="Board"><!-- 매퍼 네임 스페이스 명을 Board로 설정 -->
+ <mapper namespace="NoticeBoard"><!-- 매퍼 네임 스페이스 명을 Board로 설정 -->
     
     <!-- 공지사항 목록보기 -->
     <select id="notice_list" resultType="com.ywhy.vo.NoticeVO"> <!-- parameterType속성은 생략가능 -->
-    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
+    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag,mem_id
        from (select * from notice
       <where>
           n_cate = '공지사항'
@@ -19,9 +19,14 @@
        where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
     </select>
     
+    <!--Pick 공지사항 목록보기 -->
+    <select id="notice_pick_list" resultType="com.ywhy.vo.NoticeVO"> <!-- parameterType속성은 생략가능 -->
+       select * from notice where n_pick = 1 order by n_no desc
+    </select>
+    
     <!-- 공지사항 추천순 목록 -->
     <select id="notice_list_vote" resultType="com.ywhy.vo.NoticeVO"> <!-- parameterType속성은 생략가능 -->
-    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
+    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag,mem_id
        from (select * from notice 
        <where>
           n_cate = '공지사항'
@@ -34,7 +39,7 @@
     
     <!-- 공지사항 조회순 목록 -->
     <select id="notice_list_view" resultType="com.ywhy.vo.NoticeVO"> <!-- parameterType속성은 생략가능 -->
-    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
+    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag,mem_id
        from (select * from notice  
        <where>
           n_cate = '공지사항'

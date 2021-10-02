@@ -45,8 +45,8 @@ public interface BoardDAO {
 	
 	//마이페이지
 	 int getMyBCount(BoardVO b);
-	 int getMyRCount(BoardVO b);
 	 List<BoardVO> getMyList(BoardVO b);
+	 int getMemPoint(String mem_id);
 	
 	//댓글
 	List<BoardVO> listReply(int b_no);
@@ -58,6 +58,4 @@ public interface BoardDAO {
 	void r_recommendp(int r_no);
 	void r_recommendm(int r_no);
 	
-	
-
 }

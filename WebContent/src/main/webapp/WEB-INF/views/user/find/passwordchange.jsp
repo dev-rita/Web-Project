@@ -1,10 +1,6 @@
+<jsp:include page="../../include/header.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>YWHY - 비밀번호 변경</title>
-<jsp:include page="../../include/header.jsp" />
 
 			<div id="create-user" class="content" role="main">
 				<h3 class="content-header">비밀번호 변경</h3>
@@ -15,11 +11,11 @@
 							<div class="panel-body panel-body-content text-center">
 								<p class="lead">변경하실 비밀번호를 입력해 주세요.</p>
 								<div class="form-group">
-									<input type="password" name="changepwd" id="newPassword" class="form-control form-control-inline text-center" placeholder="새 비밀번호">
+									<input type="password" name="newPassword" id="newPassword" class="form-control form-control-inline text-center" placeholder="새 비밀번호">
 									<span id="newPassword_check"></span>
 								</div>
 								<div class="form-group">
-									<input type="password" name="changepwdcheck" id="newPasswordConfirm" class="form-control form-control-inline text-center" placeholder="새 비밀번호 확인">
+									<input type="password" name="mem_pwd" id="newPasswordConfirm" class="form-control form-control-inline text-center" placeholder="새 비밀번호 확인">
 									<span id="newPasswordConfirm_check"></span>
 								</div>
 								<button type="submit" class="btn btn-primary" style="color:#773209">비밀번호 변경</button>
@@ -32,8 +28,7 @@
 
 			<div class="right-banner-wrapper"></div>
 			
-<jsp:include page="../../include/footer.jsp" />
-
+			<jsp:include page="../../include/footer.jsp"/>
 	<script>
 		var contextPath = "";
 		var encodedURL = "%2Fuser%2FpasswordChange";

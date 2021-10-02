@@ -261,7 +261,7 @@
                  </c:if>
                  <c:if test="${page > 1 }">
                  <li class="prev">
-            <a href="a_questions?page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
+            <a href="a_questions?page=${page-1}"> <span>«</span></a>&nbsp;
             </li>
             </c:if>
             
@@ -271,7 +271,7 @@
                   <li class="active"><span>${a}</span></li>
                </c:if>
                <c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
-                  <li><a href="a_questions?page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
+                  <li><a href="a_questions?page=${a}"><span>${a}</span></a>&nbsp;</li>
                </c:if>
             </c:forEach>
                
@@ -280,7 +280,7 @@
                   <span>...</span>
                </li>
                <li>
-                  <a href="a_questions?page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
+                  <a href="a_questions?page=${maxpage}">${maxpage}</a>   
                </li>
               
                   <c:if test="${page >= maxpage }">
@@ -290,7 +290,7 @@
                   </c:if>
             <c:if test="${page < maxpage }">
              <li class="next">
-               <a href="a_questions?page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
+               <a href="a_questions?page=${page+1}"><span>»</span></a>&nbsp;
              </li>
             </c:if>
               
@@ -311,7 +311,7 @@
                  </c:if>
                  <c:if test="${page > 1 }">
                  <li class="prev">
-            <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page-1}&sort=${sort}&order=desc"> <span>«</span></a>&nbsp;
+            <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page-1}"> <span>«</span></a>&nbsp;
             </li>
             </c:if>
 
@@ -321,7 +321,7 @@
                   <li class="active"><span>${a}</span></li>
                </c:if>
                <c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
-                  <li><a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${a}&sort=${sort}&order=desc"><span>${a}</span></a>&nbsp;</li>
+                  <li><a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${a}"><span>${a}</span></a>&nbsp;</li>
                </c:if>
             </c:forEach>
                
@@ -330,7 +330,7 @@
                   <span>...</span>
                </li>
                <li>
-                  <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${maxpage}&sort=${sort}&order=desc">${maxpage}</a>   
+                  <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${maxpage}">${maxpage}</a>   
                </li>
                
                   <c:if test="${page >= maxpage }">
@@ -340,7 +340,7 @@
                   </c:if>
             <c:if test="${page < maxpage }">
              <li class="next">
-               <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page+1}&sort=${sort}&order=desc"><span>»</span></a>&nbsp;
+               <a href="a_questions?find_field=${find_field}&find_name=${blank_find_name}&page=${page+1}"><span>»</span></a>&nbsp;
              </li>
             </c:if>
               

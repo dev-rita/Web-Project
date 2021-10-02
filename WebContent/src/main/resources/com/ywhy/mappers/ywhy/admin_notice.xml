@@ -5,25 +5,23 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="AdminNotice">
- 	<select id="an_count" resultType="int">
+    <select id="an_count" resultType="int">
        select count(*) from notice
-       <where>          
-          <if test="find_field=='' || find_field==null">n_cate like '공%'</if>
-          <if test="find_field=='b_title'">n_cate like '공%' and n_title like #{find_name}</if>
-          <if test="find_field=='b_cont'">n_cate like '공%' and n_cont like #{find_name}</if>
-          <if test="find_field=='b_name'">n_cate like '공%' and n_name like #{find_name}</if>
+       <where>
+            <if test="find_field=='n_title'">n_title like #{find_name}</if>
+          <if test="find_field=='n_cont'">n_cont like #{find_name}</if>
+          <if test="find_field=='n_name'">n_name like #{find_name}</if>
        </where>
-      </select>
+    </select>
       
-      <!-- Q&A 목록보기 -->
+      <!-- 공지사항 목록보기 -->
     <select id="an_list" resultType="n"> 
     select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
        from (select * from notice 
        <where>
-          n_cate like '공%'
-          <if test="find_field=='b_title'">and n_title like #{find_name}</if>
-          <if test="find_field=='b_cont'">and n_cont like #{find_name}</if>
-          <if test="find_field=='b_name'">and n_name like #{find_name}</if>
+          <if test="find_field=='n_title'">n_title like #{find_name}</if>
+          <if test="find_field=='n_cont'">n_cont like #{find_name}</if>
+          <if test="find_field=='n_name'">n_name like #{find_name}</if>
        </where>
        order by n_no desc))
        where rNum &gt;= ${startrow} and rNum &lt;= ${endrow}
@@ -31,11 +29,11 @@
     
     <insert id="n_insert" parameterType="n">
     <!-- parameterType은 전달인자 자료형  -->
-    insert into notice (n_no,n_name,n_cate,n_title,n_cont,n_date)
-    values(n_no_seq.nextval,#{n_name},'공지사항',#{n_title},#{n_cont},sysdate)
+    insert into notice (n_no,mem_id,n_name,n_cate,n_title,n_cont,n_date)
+    values(n_no_seq.nextval,#{mem_id},#{n_name},'공지사항',#{n_title},#{n_cont},sysdate)
     </insert>
-	
-	<!-- 내용보기 -->
+   
+   <!-- 내용보기 -->
     <select id="an_cont" resultType="n">
     select * from notice where n_no=#{n_no}
     </select>

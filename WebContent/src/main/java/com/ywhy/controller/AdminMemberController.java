@@ -40,32 +40,40 @@ public class AdminMemberController {
 			@ModelAttribute BoardVO b,@ModelAttribute NoticeVO n)throws Exception {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		
+		String member="관리자";
 		String login=(String)session.getAttribute("id");//세션 가져오기
 		
 		if(login == null) {
 			out.println("<script>");
-			out.println("alert('세션이 만료되었습니다. 다시 로그인 하세요.');");
+			out.println("alert('관리자 로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
-			int qnaListCount = this.adminBoardService.getQnaListCount(b);//qna리스트 수
-			int boardListCount = this.adminBoardService.getAdminBoardListCount(b);//커뮤니티 리스트 수
-			int noticeListCount = this.adminNoticeService.getNoticeListCount(n);//공지사항 리스트 수
-			int memberListCount=this.adminMemberService.getListCount(m);
-			//관리자 회원을 제외한 전체 회원 수
-			
-			
-			ModelAndView listM=new ModelAndView();
-			listM.addObject("qnaListCount",qnaListCount);
-			listM.addObject("boardListCount",boardListCount);
-			listM.addObject("noticeListCount",noticeListCount);
-			listM.addObject("memberListCount",memberListCount);
-			listM.addObject("m", m);
-			
-			listM.setViewName("admin/manager");
-			
-			return listM;
+			MemberVO id=this.memberService.getMember(login);
+			if(id.getMem_class().equals(member)) {
+				int qnaListCount = this.adminBoardService.getQnaListCount(b);//qna리스트 수
+				int boardListCount = this.adminBoardService.getAdminBoardListCount(b);//커뮤니티 리스트 수
+				int noticeListCount = this.adminNoticeService.getNoticeListCount(n);//공지사항 리스트 수
+				int memberListCount=this.adminMemberService.getListCount(m);
+				//관리자 회원을 제외한 전체 회원 수
+				
+				
+				ModelAndView listM=new ModelAndView();
+				listM.addObject("qnaListCount",qnaListCount);
+				listM.addObject("boardListCount",boardListCount);
+				listM.addObject("noticeListCount",noticeListCount);
+				listM.addObject("memberListCount",memberListCount);
+				listM.addObject("m", id);
+				
+				listM.setViewName("admin/manager");
+				
+				return listM;
+			}else {
+				out.println("<script>");
+				out.println("alert('접근 권한이 없습니다.');");
+				out.println("location='/controller';");
+				out.println("</script>");
+			}
 		}
 		return null;
 	}
@@ -75,55 +83,62 @@ public class AdminMemberController {
 	public ModelAndView admin_usermanagement(HttpServletResponse response,HttpServletRequest request,HttpSession session,@ModelAttribute MemberVO m) throws Exception{
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
+		String member="관리자";
 		String login=(String)session.getAttribute("id");//세션 가져오기
-		MemberVO mem=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
-		String member="일반";
 		
-		if((login==null) ||(mem.getMem_class().equals(member))) {
-			session.invalidate();
+		if(login == null) {
 			out.println("<script>");
-			out.println("alert('관리자로 다시 로그인 하세요.');");
+			out.println("alert('관리자 로그인이 필요합니다.');");
 			out.println("location='login';");
 			out.println("</script>");
 		}else {
-			int page=1;//쪽번호
-			int limit=10;//한 페이지에 보여지는 목록 개수
-			if(request.getParameter("page") != null) {
-				page=Integer.parseInt(request.getParameter("page"));
+			MemberVO id=this.memberService.getMember(login);
+			if(id.getMem_class().equals(member)) {
+				int page=1;//쪽번호
+				int limit=10;//한 페이지에 보여지는 목록 개수
+				if(request.getParameter("page") != null) {
+					page=Integer.parseInt(request.getParameter("page"));
+				}
+				
+				String find_name=request.getParameter("find_name");//검색어
+				String find_field=request.getParameter("find_field");//검색필드
+				
+				m.setFind_field(find_field);
+				m.setFind_name("%"+find_name+"%");
+				//%는 쿼리문 검색기능에서 하나이상의 임의의 모르는 문자와 매핑 대응한다.	
+				
+				int allListcount=this.adminMemberService.getAllListCount(m);//검색 전후 모든 회원 수
+				
+				m.setStartrow((page-1)*10+1);//시작 행 번호
+				m.setEndrow(m.getStartrow()+limit-1);//끝행번호
+				
+				List<MemberVO> blist=this.adminMemberService.getMemberList(m);//검색 전후 회원 목록
+				
+				int maxpage=(int)((double)allListcount/limit+0.95);//총페이지수
+				int startpage=(((int)((double)page/10+0.9))-1)*10+1;//현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
+				int endpage=maxpage;
+				if(endpage > startpage+10-1) endpage=startpage+10-1;
+				
+				ModelAndView listM=new ModelAndView();
+				
+				listM.addObject("blist", blist);
+				listM.addObject("page",page);
+				listM.addObject("startpage",startpage);
+				listM.addObject("endpage",endpage);
+				listM.addObject("maxpage",maxpage);
+				listM.addObject("allListcount",allListcount);   
+				listM.addObject("find_field",find_field);
+				listM.addObject("find_name", find_name);
+				listM.addObject("m", id);
+				
+				listM.setViewName("admin/usermanagement");
+				return listM;
+			}else {
+				out.println("<script>");
+				out.println("alert('접근 권한이 없습니다.');");
+				out.println("location='/controller';");
+				out.println("</script>");
 			}
-			
-			String find_name=request.getParameter("find_name");//검색어
-			String find_field=request.getParameter("find_field");//검색필드
-			
-			m.setFind_field(find_field);
-			m.setFind_name("%"+find_name+"%");
-			//%는 쿼리문 검색기능에서 하나이상의 임의의 모르는 문자와 매핑 대응한다.	
-			
-			int allListcount=this.adminMemberService.getAllListCount(m);//검색 전후 모든 회원 수
-			
-			m.setStartrow((page-1)*10+1);//시작 행 번호
-			m.setEndrow(m.getStartrow()+limit-1);//끝행번호
-			
-			List<MemberVO> blist=this.adminMemberService.getMemberList(m);//검색 전후 회원 목록
-			
-			int maxpage=(int)((double)allListcount/limit+0.95);//총페이지수
-			int startpage=(((int)((double)page/10+0.9))-1)*10+1;//현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
-			int endpage=maxpage;
-			if(endpage > startpage+10-1) endpage=startpage+10-1;
-			
-			ModelAndView listM=new ModelAndView();
-			
-			listM.addObject("blist", blist);
-			listM.addObject("page",page);
-			listM.addObject("startpage",startpage);
-			listM.addObject("endpage",endpage);
-			listM.addObject("maxpage",maxpage);
-			listM.addObject("allListcount",allListcount);   
-			listM.addObject("find_field",find_field);
-			listM.addObject("find_name", find_name);
-			
-			listM.setViewName("admin/usermanagement");
-			return listM;
 		}
 		return null;
 	}

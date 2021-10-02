@@ -15,7 +15,8 @@ public class NoticeVO {
 	private int n_hit;
 	private int n_rec;//추천
 	private String n_date;
-	
+	private String mem_id;
+	private int n_pick;
 	//관리자 회원목록 페이징 관련 변수
 	private int startrow;
 	private int endrow;

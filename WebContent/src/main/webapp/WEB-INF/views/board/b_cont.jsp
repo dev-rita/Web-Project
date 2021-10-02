@@ -16,9 +16,9 @@
 	
 
    		 <div class="nav" role="navigation">
-   		  <c:if test="${!empty m}">
+   		  	<a class="create btn btn-info btn-wide pull-right" style="margin-left:5px;"onclick="location='b_cont?b_no=${b.b_no}&page=${page}&state=reply';"><i class="fa fa-pencil"></i> 답변 글 쓰기</a>
        	    <a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
-          </c:if>	
+          
         	<h4>${b.b_cate == '커뮤니티' ? '커뮤니티' : 'Q&amp;A'}</h4>
     	 </div>
 
@@ -29,7 +29,7 @@
 				<div class="avatar clearfix avatar-medium pull-left">
 					<a href="/user/info/124433" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 						<div class="avatar-info"><!-- 작성자 이름, 활동점수, 등록일 -->
-							<a class="nickname" href="/user/info/124433" title="${b.b_name}">${b.b_name}</a>
+							<a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name}">${b.b_name}</a>
 							<div class="activity"><span class="fa fa-flash"></span> 12</div>
 							<div class="date-created"><span class="timeago" title="${b.b_date}">${b.b_date}</span></div>
 						</div>
@@ -73,8 +73,7 @@
 						<!-- 반대 -->
 						<a href="b_recommend?b_no=${b.b_no}&page=${page}&state=recm" role="button" data-type="dissent" data-eval="true"  id="recm">
 						<i class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i>
-						</a>
-					
+						</a>			
 					</div>
 					
                 </div>
@@ -93,7 +92,7 @@
                 	<form action="b_del_ok?b_no=${b.b_no}&page=${page}" method="post" name="article-delete-form" id="article-delete-form">
 							<input type="hidden" name="_csrf" value="f95d23e8-1c25-47c1-bc9d-1cf6568f3229">
                			<input type="hidden" name="_method" value="DELETE" id="_method">
-                        <c:if test="${!empty m.mem_id}">
+                        <c:if test="${m.mem_id.equals(b.mem_id)||(m.mem_class=='관리자')}">
                         <div class="dropdown">
                             <a href="javascript://" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog" data-toggle="tooltip" data-placement="left" title="" data-original-title="게시물 설정"></i></a>
                             <ul class="dropdown-menu" role="menu">
@@ -360,7 +359,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
             	<li id="replies" style="list-style-type: none;"><div id="replies"></div></li>
             	
             	               <!-- 답변 등록 시작-->
-            	 <c:if test="${empty m}">
+            	 <c:if test="${empty id}">
                  <li class="list-group-item note-form clearfix">
                     <div class="panel-body">
                        <h5 class="text-center" style="background-color:#FFEB3B;padding:0.5em;font-weight: bold;"><a href="login" class="link">로그인</a>을 하시면 댓글을 등록할 수 있습니다.</h5>
@@ -369,23 +368,23 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
                	</li>
                </c:if>
                              
-            	 <c:if test="${!empty m}">
+            	 <c:if test="${!empty id}">
                  <li class="list-group-item note-form clearfix">
                      
                         <input type="hidden" name="_csrf" value="2a6e37c5-aeda-4ae0-9dab-2a7651232fc1">
                            <input type="hidden" name="lastNoteId" value="2502162 " id="lastNoteId">   
                            <div class="content-body panel-body pull-left">
                                   <div style="margin-left: 5px;">
-                                     <div class="avatar clearfix avatar-medium ">
-                                 <a href="/user/info/123566" class="avatar-photo">
+                                   <div class="avatar clearfix avatar-medium ">
+                                 	<a href="/user/info/123566" class="avatar-photo">
                                     <img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
-                                 <div class="avatar-info">
-                                    <a class="nickname" href="/user/info/123566" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
-                                   <input type="hidden" name="replyer" id="replyWriter" value="${m.mem_nick}"/>                                  
-                                    <input type="hidden" name="mem_id" id="mem_id" value="${m.mem_id}"/>
-                                    <div class="activity block"><span class="fa fa-flash"></span> 0</div>
-                                 </div>
-                              </div>
+	                                 <div class="avatar-info">
+	                                   <a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
+	                                   <input type="hidden" name="replyer" id="replyWriter" value="${m.mem_nick}"/>                                  
+	                                   <input type="hidden" name="mem_id" id="mem_id" value="${m.mem_id}"/>
+	                                   <div class="activity block"><span class="fa fa-flash"></span> 0</div>
+	                                 </div>
+                            		</div>
                                   </div>
                                   <fieldset class="form">
                                       <input type="hidden" name="textType" value="HTML" id="note.textType">
@@ -478,29 +477,8 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 		</div>
 	</div>
                 
-    	<footer class="index_footer">
-				<div class="footer_box">
-					<div class="footer_logo">
-						<img src="./resources/images/logo_gray.png" style="width:55px; height:55px;">
-					</div>
-					<div class="footer_content">
-						<strong>상호명</strong>: 김이이정 | 
-						<strong>대표명</strong>: 김태완 | 
-						<strong>팀원명</strong>: 이의수 이승연 정희선 | 
-						<strong>사업자번호</strong>: 404-99-12536 
-						<br>
-						<strong>주소</strong>: 서울시 동작구 꿈의길로 82 가요빌딩 1004호 (20000) |
-						<strong>문의</strong>: info@ywhy.kr
-						<hr style="margin:8px 0px; border:0px; border-top:1px solid #eee;">
-						<a href="../intro/loginbefore_about.jsp">About YWHY</a> | <a href="../user/privacy.jsp" data-toggle="modal" data-target="#userPrivacy">개인 정보 보호</a>
-						<a href="https://github.com/dev-rita/Web-Project.git" target=_blank; class="content_github"><i class="fab fa-github fa-3x"></i></a>
-						
-					</div>
-				</div>
-		</footer>
-         
-   </div>
- </div>
+    	<jsp:include page="../include/footer.jsp"/>
+    	
  <script src="https://kit.fontawesome.com/4f7c74d082.js" crossorigin="anonymous"></script>
  <script>
  	var contextPath = "";
@@ -523,7 +501,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 	$('#recp').on("click",function(){
 
 		var b_no=$('#b_no').text();
-		var id = '<%=session.getAttribute("m")%>';
+		var id = '<%=session.getAttribute("id")%>';
 		
 		if(id=="null"){
 			alert("로그인이 필요합니다.");
@@ -551,7 +529,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 	$('#recm').on("click",function(){
 
 		var b_no=$('#b_no').text();
-		var id = '<%=session.getAttribute("m")%>';
+		var id = '<%=session.getAttribute("id")%>';
 		
 		if(id=="null"){
 			alert("로그인이 필요합니다.");
@@ -578,7 +556,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
 	//댓글 추천
 	
 	 function replyrecp(r_no){   	
-		 var id = '<%=session.getAttribute("m")%>';
+		 var id = '<%=session.getAttribute("id")%>';
 
 			if(id=="null"){
 				
@@ -606,7 +584,7 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
  	
  	//댓글 반대
 	function replyrecm(r_no){   	
-		var id = '<%=session.getAttribute("m")%>';
+		var id = '<%=session.getAttribute("id")%>';
 		
 		if(id=="null"){
 			alert("로그인이 필요합니다.");
@@ -659,7 +637,7 @@ function getAllList(){
 		    +"<a href='/user/info/97440' class='avatar-photo'>"
 		    +"<img src='//www.gravatar.com/avatar/11cea1d9b7f8916b454e3325e9ac3ad9?d=identicon&amp;s=40'></a>"
 		    +"<div class='avatar-info'>"
-		    +"<a class='nickname' href='/user/info/97440' title='"+this.replyer+"'>"+this.replyer+"</a>"
+		    +"<a class='nickname' href='b_my?mem_id="+this.mem_id+"' title='"+this.replyer+"'>"+this.replyer+"</a>"
 		    +"<div class='activity'><span class='fa fa-flash'></span> 352</div>"+"<div class='replyLi' data-r_no='"+this.r_no+"' style='display:none;'>"+this.r_no+"</div>"
 		    +"<div class='date-created'><span class='timeago' title='"+this.regdate+"'>"+this.regdate+"</span></div></div>"
 		    +"</div><fieldset class='form'><article id='note-text-"+this.r_no+"' class='list-group-item-text note-text'>"

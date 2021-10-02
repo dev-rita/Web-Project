@@ -160,7 +160,7 @@
 				<div class="nav-user nav-sidebar">
 					<div class="avatar clearfix avatar-medium "><%-- 이름,활동점수 --%>
 						<div class="avatar-info" style="margin-left: 15px;">
-							<a class="nickname" href="signup/myinfo.jsp"><b>${m.mem_nick}</b></a>
+							<a class="nickname" href="b_my?mem_id=${m.mem_id}"><b>${m.mem_nick}</b></a>
 							<div class="activity block">
 								<i class="fas fa-bolt"></i> ${m.mem_point}
 							</div>

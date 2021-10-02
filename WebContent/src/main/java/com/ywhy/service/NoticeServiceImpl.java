@@ -21,6 +21,11 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
+	   public List<NoticeVO> getNoticePickList(NoticeVO n) {
+	      return this.noticeDao.getNoticePickList(n);
+	   }
+	
+	@Override
 	public List<NoticeVO> getNoticeList(NoticeVO n) {
 		return this.noticeDao.getNoticeList(n);
 	}

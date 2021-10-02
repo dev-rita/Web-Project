@@ -17,7 +17,12 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public int getNoticeListCount(NoticeVO n) {
 		return this.sqlSession.selectOne("n_count",n);
 	}
-
+	
+	@Override
+	   public List<NoticeVO> getNoticePickList(NoticeVO n) {
+	      return this.sqlSession.selectList("notice_pick_list",n);
+	   }
+	
 	@Override
 	public List<NoticeVO> getNoticeList(NoticeVO n) {
 		return this.sqlSession.selectList("notice_list",n);

@@ -21,7 +21,18 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
+            <div style="text-align: center;">
+            <div class="nav-item">
+            <span class="nav-link" style="display:inline;line-height: 40px;">${m.mem_nick}</span>
+            
+	           	<form action="logout" method="post" style="float:right;">
+	           	<button type="submit"class="nav-link btn btn-info" style="text-align:center;width:70px; padding :0.3em; margin:0px 20px 0px 15px;">Logout</button>
+	           	</form>
+           	
+            </div>
+           	
+            </div>
+			<hr class="sidebar-divider">
             <!-- Heading -->
             <div class="sidebar-heading">
                 management
