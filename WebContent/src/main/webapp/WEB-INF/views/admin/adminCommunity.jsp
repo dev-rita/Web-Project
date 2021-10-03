@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -230,7 +230,7 @@
                                             <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
                                             <td><c:if test="${b.b_pick==1}"><i class="fas fa-check-circle"></i>&nbsp;</c:if><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
                                             <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
-                                            <td>${b.b_date}</td>
+                                            <td>${fn:substring(b.b_date,0,10)}</td>
                                             <td>${b.b_hit}</td>
                                             <td style="text-align:center;">
                                                <a class="btn btn-warning btn-sm" href="a_cont?b_no=${b.b_no}&page=${page}&state=edit">수정</a>                                              
@@ -503,7 +503,7 @@
 	      if(valueArr.length==0){
 	         alert('선택된 글이 없습니다.');
 	      }else{
-	         var chk=confirm("정말 추천하시겠습니까?");
+	        
 	         $.ajax({
 	            url:url,
 	            type:'POST',
@@ -512,11 +512,11 @@
 	               valueArr:valueArr
 	            },
 	            success:function(jdata){
-	               if(jdata=1){
-	                  alert('추천 성공');
-	                  location.reload();
-	               }else{
-	                  alert("추천 실패");
+	            	if(jdata=1){
+		                  alert("YWHY's Choice");
+		                  location.reload();
+		               }else{
+		                  alert("요청 실패");
 	               }
 	            }
 	         

@@ -81,7 +81,7 @@
                         </div>
                         <div class="list-group-item-author clearfix">
                              <div class="avatar clearfix avtar-list">
-                                   <a href="/user/info/106884" class="avatar-photo"><img src="//www.gravatar.com/avatar/8b4ddad17ec0dd8ad9a309757d8f63ab?d=identicon&amp;s=30"></a>
+                                   
                                  <div class="avatar-info">
                                     <a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name} ">${n.n_name}</a><!-- 작성자  -->
                                     <div class="activity"><span class="fa fa-flash"></span>32</div><!-- 활동점수  -->
@@ -118,20 +118,29 @@
                                  <a href="b_notice_cont?n_no=${n.n_no}&page=${page}">${n.n_title}</a><!-- 제목 -->
                             </h5>
                         </div>
-                         <div class="list-summary-wrapper clearfix">
+                           <div class="list-summary-wrapper clearfix">
                            <div class="list-group-item-summary clearfix">
-                                 <ul>
-                                    <li class="item-icon-disabled"><i class="item-icon fa fa-comment"></i>-</li><!-- 댓글 수 -->
-                                    <li class="<c:if test="${n.n_rec == 0}">item-icon-disabled</c:if>"><i class="<c:if test="${n.n_rec>=0}">item-icon fa fa-thumbs-up</c:if>
-                                    <c:if test="${n.n_rec<0}">item-icon fa fa-thumbs-down</c:if>"></i>${n.n_rec}</li><!-- 추천 수  -->                               
-                                    <li class="<c:if test="${n.n_hit == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-eye"></i>${n.n_hit}</li><!-- 조회 수  -->
-                                                                   
-                               </ul>
+                                 <div class="item-evaluate-wrapper pull-right clearfix">
+                            <div class="item-evaluate">
+                                <div class="item-evaluate-icon">
+                                    <i class="
+                                    <c:if test="${n.n_rec>=0}">item-icon fa fa-thumbs-o-up</c:if>
+                                    <c:if test="${n.n_rec<0}">item-icon fa fa-thumbs-o-down</c:if>" aria-hidden="true"></i>
+                                </div>
+                                   <div class="item-evaluate-count">${n.n_rec}</div>
+                            </div>
+                            <div class="item-evaluate">
+                                <div class="item-evaluate-icon">
+                                     <i class="item-icon fa fa-eye" aria-hidden="true"></i>
+                                </div>
+                                <div class="item-evaluate-count">${n.n_hit}</div>
+                            </div>                           
                            </div>
+                        </div>
                         </div>
                         <div class="list-group-item-author clearfix">
                              <div class="avatar clearfix avtar-list">
-                                   <a href="/user/info/106884" class="avatar-photo"><img src="//www.gravatar.com/avatar/8b4ddad17ec0dd8ad9a309757d8f63ab?d=identicon&amp;s=30"></a>
+                                   
                                  <div class="avatar-info">
                                     <a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name} ">${n.n_name}</a><!-- 작성자  -->
                                     <div class="activity"><span class="fa fa-flash"></span>32</div><!-- 활동점수  -->

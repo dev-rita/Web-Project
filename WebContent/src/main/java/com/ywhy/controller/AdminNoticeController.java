@@ -275,4 +275,16 @@ public class AdminNoticeController {
 	     return "redirect:/a_notice";
 	     
 	  }
+	   @RequestMapping(value="/pick_notice")
+		public String ajaxPick(HttpServletRequest request) throws Exception{
+		   
+		  String[] ajaxMsg=request.getParameterValues("valueArr");	 
+		  int size=ajaxMsg.length;
+		  for(int i=0; i<size ;i++) {
+			   	this.adminNoticeService.pickAdminNotice(ajaxMsg[i]);
+
+		  }
+		  return "redirect:/a_questions";
+		  
+	   }
 }

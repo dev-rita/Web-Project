@@ -141,9 +141,6 @@
                                  <a href="b_cont?b_no=${b.b_no}&page=1&state=cont">${b.b_title}</a>
                                  <div class="list-group-item-author pull-right clearfix">
                                     <div class="avatar clearfix avatar-x-small ">
-                                       <a href="/user/info/124563" class="avatar-photo">
-                                          <img src="//www.gravatar.com/avatar/7b34a9bb58a615dd73a7d5d0dc978efb?d=identicon&amp;s=10">
-                                       </a>
                                        <div class="avatar-info">
                                           <a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name}">${b.b_name}</a>
                                           <div class="activity">

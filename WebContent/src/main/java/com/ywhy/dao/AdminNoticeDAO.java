@@ -18,4 +18,6 @@ public interface AdminNoticeDAO {
 
 	void deleteAdminNotice(String no);
 
+	void pickAdminNotice(String no);
+
 }

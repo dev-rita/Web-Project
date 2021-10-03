@@ -16,6 +16,8 @@ public interface AdminNoticeService {
 
 	void editAdminNotice(NoticeVO eb);
 
-	void deleteAdminNotice(String string);
+	void deleteAdminNotice(String no);
+
+	void pickAdminNotice(String no);
 
 }

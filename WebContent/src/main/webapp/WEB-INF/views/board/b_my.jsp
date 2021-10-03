@@ -15,7 +15,7 @@
    
 
 <div class="avatar clearfix avatar-big col-sm-3 text-center">
-      <a href="/user/info/124651" class="avatar-photo"><img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&amp;s=150"></a>
+      <a href="#" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 </div>
           <div class="user-info col-sm-9">
               <div class="clearfix">

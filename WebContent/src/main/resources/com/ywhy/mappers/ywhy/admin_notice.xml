@@ -16,7 +16,7 @@
       
       <!-- 공지사항 목록보기 -->
     <select id="an_list" resultType="n"> 
-    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag
+    select * from (select rowNum rNum,n_no,n_name,n_title,n_hit,n_date,n_rec,n_cate,n_tag,n_pick
        from (select * from notice 
        <where>
           <if test="find_field=='n_title'">n_title like #{find_name}</if>
@@ -47,4 +47,12 @@
    <delete id="n_del">
        delete from notice where n_no=#{n_no} 
     </delete>
+    
+    <update id="n_pick">
+    	update notice set n_pick = 
+    	case
+    	when n_pick=0 then 1
+    	when n_pick=1 then 0 end
+    	where n_no=#{n_no}
+    </update>
  </mapper>

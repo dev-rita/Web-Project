@@ -27,7 +27,6 @@
         	<div class="panel-heading clearfix">
 
 				<div class="avatar clearfix avatar-medium pull-left">
-					<a href="/user/info/124433" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 						<div class="avatar-info"><!-- 작성자 이름, 활동점수, 등록일 -->
 							<a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name}">${b.b_name}</a>
 							<div class="activity"><span class="fa fa-flash"></span> 12</div>

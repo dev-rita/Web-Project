@@ -44,4 +44,9 @@ public class AdminNoticeDAOImpl implements AdminNoticeDAO {
 	public void deleteAdminNotice(String no) {
 	    this.sqlSession.delete("n_del", no);
 	}
+
+	@Override
+	public void pickAdminNotice(String no) {
+		this.sqlSession.update("n_pick", no);
+	}
 }

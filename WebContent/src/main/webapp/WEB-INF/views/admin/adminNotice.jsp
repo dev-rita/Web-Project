@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -174,7 +174,8 @@
                             <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                             
                             
-                            <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">                            
+                            <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
+                            <button class="btn btn-primary" onclick="pick();" style="float:right; margin-left : 5px;"><i class="fas fa-check-circle"></i>&nbsp;Editor Pick</button>                             
                              <a class="btn btn-info" style="float:right;" onclick="location='n_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
                             
                         </div>
@@ -227,9 +228,9 @@
                                         <tr>
                                            <td><input type="checkbox" name="RowCheck" value="${b.n_no}"></td>
                                            <td>${b.n_no}</td>
-                                           <td><a href="n_cont?n_no=${b.n_no}&page=${page}&state=cont">${b.n_title}</a></td>
+                                           <td><c:if test="${b.n_pick==1}"><i class="fas fa-check-circle"></i>&nbsp;</c:if><a href="n_cont?n_no=${b.n_no}&page=${page}&state=cont">${b.n_title}</a></td>
                                            <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.n_name}</a></td>
-                                           <td>${b.n_date}</td>
+                                           <td>${fn:substring(b.n_date,0,10)}</td>
                                            <td>${b.n_hit}</td>
                                            <td style="text-align:center;">
                                            	<a class="btn btn-warning btn-sm" href="n_cont?n_no=${b.n_no}&page=${page}&state=edit">수정</a>                                              
@@ -488,6 +489,39 @@
          });
       }
    }
+   function pick(){
+	      var url="pick_notice";
+	      var valueArr =new Array();
+	      var list=$("input[name='RowCheck']");
+	      for(var i=0;i<list.length;i++){
+	         if(list[i].checked){
+	            valueArr.push(list[i].value);
+	         }
+	         
+	      }   
+	      if(valueArr.length==0){
+	         alert('선택된 글이 없습니다.');
+	      }else{
+	         
+	         $.ajax({
+	            url:url,
+	            type:'POST',
+	            traditional:true,
+	            data:{
+	               valueArr:valueArr
+	            },
+	            success:function(jdata){
+	               if(jdata=1){
+	                  alert("YWHY's Choice");
+	                  location.reload();
+	               }else{
+	                  alert("요청 실패");
+	               }
+	            }
+	         
+	         });
+	      }
+	   }
 </script>
 </body>
 

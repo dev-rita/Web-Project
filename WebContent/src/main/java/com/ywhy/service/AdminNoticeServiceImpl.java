@@ -43,4 +43,9 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	  public void deleteAdminNotice(String no) {
 	    this.adminNoticeDao.deleteAdminNotice(no);
 	 }
+
+	@Override
+	public void pickAdminNotice(String no) {
+		this.adminNoticeDao.pickAdminNotice(no);
+	}
 }
