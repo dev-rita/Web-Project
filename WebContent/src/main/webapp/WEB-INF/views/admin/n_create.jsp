@@ -915,19 +915,15 @@ button.close {
             </div>
             <div class="panel panel-default clearfix">
                <div class="panel-heading clearfix">
-                  <div class="avatar clearfix avatar-medium pull-left">
-                     <a href="/user/info/124651" class='avatar-photo'>
-                        <img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40" /></a>
-                     <div class="avatar-info">
-                        <a class="nickname" href="/user/info/124651" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
-                        <div class="activity block">
-                           <span class="fa fa-flash"></span> 0
-                        </div>
+                  <div class="avatar clearfix avatar-medium pull-left">            
+                     <div class="avatar-info" style="float:left; margin:10px 10px 10px 30px;">
+                     	<img class='avatar-photo' src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" />
+                     	<span class="nickname"  title="${m.mem_nick}" id="nickname">${m.mem_nick}</span>
                      </div>
                   </div>
                </div>
                <div class="panel-body">
-                  <form action="n_create_ok" method="post" enctype="multipart/form-data"
+                  <form action="n_create_ok" method="post"
                   id="article-form" class="article-form" role="form" onsubmit="return postForm()">
                      <fieldset class="form">
                         <input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">

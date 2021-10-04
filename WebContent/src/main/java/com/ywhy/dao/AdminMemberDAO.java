@@ -14,4 +14,8 @@ public interface AdminMemberDAO {
 
 	void delMember(String mem_id);
 
+	void upgrade(String mem_id);
+
+	void downgrade(String mem_id);
+
 }

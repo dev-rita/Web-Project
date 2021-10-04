@@ -60,4 +60,14 @@
  	delete from ywhyMember where mem_id=#{mem_id}
  </delete>
  
+ <!-- 관리자로 전환 -->
+ <update id="upgrade">
+    update ywhyMember set mem_class='관리자' where mem_id=#{mem_id}
+ </update>
+ 
+ <!-- 일반회원으로 전환 -->
+ <update id="downgrade">
+    update ywhyMember set mem_class='일반' where mem_id=#{mem_id}
+ </update>
+ 
  </mapper>

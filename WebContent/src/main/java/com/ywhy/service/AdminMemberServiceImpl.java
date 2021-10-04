@@ -34,4 +34,15 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public void delMember(String mem_id) {
 		this.adminMemberDao.delMember(mem_id);
 	}
+	
+	@Override
+	public void upgrade(String mem_id) {
+	    this.adminMemberDao.upgrade(mem_id);
+	}
+
+	@Override
+	public void downgrade(String mem_id) {
+	    this.adminMemberDao.downgrade(mem_id);
+	      
+	}
 }

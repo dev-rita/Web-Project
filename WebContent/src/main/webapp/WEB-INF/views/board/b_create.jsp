@@ -14,10 +14,10 @@
 				<div class="panel panel-default clearfix">
 					<div class="panel-heading clearfix">
 						<div class="avatar clearfix avatar-medium pull-left">
-							<a href="/user/info/124651" class='avatar-photo'>
-								<img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" /></a>
+							<span class='avatar-photo'>
+								<img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" /></span>
 							<div class="avatar-info">
-								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
+								<span class="nickname" title="${m.mem_nick}" id="nickname">${m.mem_nick}</span>
 							</div>
 						</div>
 					</div>

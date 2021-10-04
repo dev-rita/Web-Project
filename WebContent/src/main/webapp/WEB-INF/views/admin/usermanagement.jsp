@@ -130,8 +130,8 @@
                   <div class="card-header py-3">
                      <h6 class="m-0 font-weight-bold text-primary" style="display: inline;">User Management</h6>
 
-                     <button class="btn btn-primary" style="float: right; margin-left: 5px; height:35px; line-height: 0px;">일반 전환</button>
-                     <button class="btn btn-primary" style="float: right; margin-left: 5px; height:35px; line-height: 0px;">관리자 전환</button>
+                     <button class="btn btn-primary" onclick="downgrade();" style="float: right; margin-left: 5px; height:35px; line-height: 0px;">일반 전환</button>
+                     <button class="btn btn-primary" onclick="upgrade();" style="float: right; margin-left: 5px; height:35px; line-height: 0px;">관리자 전환</button>
                   </div>
                   
                   <div class="card-body">
@@ -233,7 +233,7 @@
                                     </td>
                                     <td align="center" style="width: 5%;"><%-- 메일 인증 안된사람(=로그인인 안되는 사람)은 권한 변경을 할 수 없다. --%>
                                        <c:if test="${m.mem_key == 'Y'}">
-                                          <input type="checkbox">
+                                          <input type="checkbox" name="RowCheck" value="${m.mem_id}">
                                        </c:if>
                                     </td>
                                  </tr>
@@ -432,7 +432,54 @@
 
    <!-- Page level custom scripts -->
    <script src="./resources/admin/js/demo/datatables-demo.js"></script>
-
+<script>   
+     function upgrade(){
+         var url="upgrade";
+         var valueArr =new Array();
+         var list=$("input[name='RowCheck']");
+         for(var i=0;i<list.length;i++){
+            if(list[i].checked){
+               valueArr.push(list[i].value);
+            }
+            
+         }   
+         if(valueArr.length==0){
+            alert('선택된 글이 없습니다.');
+         }else{
+            $.ajax({
+               url:url,
+               type:'POST',
+               traditional:true,
+               data:{
+                  valueArr:valueArr
+               }
+            });
+         }
+      }
+     function downgrade(){
+         var url="downgrade";
+         var valueArr =new Array();
+         var list=$("input[name='RowCheck']");
+         for(var i=0;i<list.length;i++){
+            if(list[i].checked){
+               valueArr.push(list[i].value);
+            }
+            
+         }   
+         if(valueArr.length==0){
+            alert('선택된 글이 없습니다.');
+         }else{
+            $.ajax({
+               url:url,
+               type:'POST',
+               traditional:true,
+               data:{
+                  valueArr:valueArr
+               }  
+            });
+         }
+      }
+</script>
 </body>
 
 </html>

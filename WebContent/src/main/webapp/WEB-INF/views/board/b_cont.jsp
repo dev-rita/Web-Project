@@ -648,8 +648,7 @@ function getAllList(){
 			+"<a href='javascript://' class='note-vote-btn' role='button' data-type='dissent' data-eval='true' data-id='"+this.r_no+"' onclick='replyrecm("+this.r_no+")'>"
 			+"<i id='note-evaluate-dissent-"+this.r_no+"' class='fa fa-angle-down note-evaluate-dissent-dissent' data-placement='left' data-toggle='tooltip' title='' data-original-title='반대'></i>"
 			+"</a>"
-			
-			+"<c:if test='${!empty m}'>"
+			+"<c:if test='${m.mem_class.equals("관리자")}'>"
 			+"<div class='dropdown'><a href='javascript://' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-cog' data-toggle='tooltip' data-placement='left' title='' data-original-title='게시물 설정'></i></a>"
 			+"<ul class='dropdown-menu' role='menu'>"
             +"<li><a href='javascript://' class='note-edit-btn' onclick='replyupdateview("+this.r_no+")'><i class='fa fa-edit fa-fw'></i> 수정 </a></li>"
@@ -662,7 +661,6 @@ function getAllList(){
 		$('#replies').html(str);//해당영역에 태그와 문자를 함께 변경 적용
 	});//댓글목록
 }//getAllList()
-
 </script>
  <div id="userPrivacy" class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
  	<div class="modal-dialog">

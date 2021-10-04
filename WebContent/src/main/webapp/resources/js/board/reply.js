@@ -1,4 +1,4 @@
-
+	 
 //댓글 작성	
 	$('#btn-create-btn').on("click",function(){
 		var b_no=$('#b_no').text();

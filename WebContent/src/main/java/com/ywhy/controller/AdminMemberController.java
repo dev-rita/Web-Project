@@ -162,6 +162,26 @@ public class AdminMemberController {
 		}
 		return null;
 	}
-	/*관리자 전환*/
-	/*일반사용자 전환*/
+	   /*관리자 전환*/
+	   @RequestMapping(value="/upgrade")
+	   public String ajaxUpgrade(HttpServletRequest request) throws Exception{
+	      
+	     String[] ajaxMsg=request.getParameterValues("valueArr");    
+	     int size=ajaxMsg.length;
+	     for(int i=0; i<size ;i++) {
+	       this.adminMemberService.upgrade(ajaxMsg[i]);
+	     }
+	     return "redirect:/admin_usermanagement";     
+	   }
+	   /*일반사용자 전환*/
+	   @RequestMapping(value="/downgrade")
+	   public String ajaxDowngrade(HttpServletRequest request) throws Exception{
+	      
+	     String[] ajaxMsg=request.getParameterValues("valueArr");    
+	     int size=ajaxMsg.length;
+	     for(int i=0; i<size ;i++) {
+	            this.adminMemberService.downgrade(ajaxMsg[i]);
+	     }
+	     return "redirect:/admin_usermanagement";     
+	   }
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -134,14 +135,15 @@ public class AdminNoticeController {
 			return null;
 	}// bbs_write()
 
-	@PostMapping("/n_create_ok") // post로 접근하는 매핑주소 처리
-	public String n_create_ok(NoticeVO b, HttpServletRequest request, HttpServletResponse response, HttpSession session)
+	@RequestMapping(value="/n_create_ok",method=RequestMethod.POST) // post로 접근하는 매핑주소 처리
+	public String n_create_ok(@ModelAttribute NoticeVO b, HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws Exception {		
+		//@ModelAttribute NoticeVO b라고 하면 네임피라미터 이름과 빈클래스 변수명이 같으면 b객체에 값이 벌써 저장됨.
 		 response.setContentType("text/html;charset=UTF-8");
 		 PrintWriter out=response.getWriter();
 		 String member="관리자";
 		 String login=(String)session.getAttribute("id");//세션 가져오기
-			
+
 		 if(login == null) {
 		  	out.println("<script>");
 		  	out.println("alert('관리자 로그인이 필요합니다.');");

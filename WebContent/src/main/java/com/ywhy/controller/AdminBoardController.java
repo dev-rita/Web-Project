@@ -203,22 +203,6 @@ public class AdminBoardController {
 	   String member="관리자";
 	   String login=(String)session.getAttribute("id");//세션 가져오기
 		
-      
-      String saveFolder=request.getRealPath("resources/upload");//톰캣에 인식하는 실제 이진 파일 업로드 서버 경로
-      int fileSize=5*1024*1024;//이진파일 최대크기
-      MultipartRequest multi=null;//이진파일을 받을 변수 선언
-      
-      multi=new MultipartRequest(request, saveFolder,fileSize,"UTF-8");
-      
-      String b_name=multi.getParameter("b_name");
-      //String admin_id=(String)session.getAttribute("admin_id");로 아이디 받아서 저장시켜야 하는지 의문?
-      String b_title=multi.getParameter("b_title");
-      String b_cont=multi.getParameter("b_cont");
-      String b_cate=multi.getParameter("b_cate");
-      String b_tag=multi.getParameter("b_tag");
-      
-      b.setB_name(b_name); b.setB_title(b_title); b.setB_cont(b_cont);b.setB_cate(b_cate);b.setB_tag(b_tag);
-      
       if(login == null) {
   		out.println("<script>");
   		out.println("alert('관리자 로그인이 필요합니다.');");
@@ -230,7 +214,7 @@ public class AdminBoardController {
 	         b.setMem_id(login);
 	         this.adminBoardService.insertAdminBoard(b);//자료실 저장
 	          
-	           if(b_cate.equals("커뮤니티")) {
+	           if(b.getB_cate().equals("커뮤니티")) {
 	           return "redirect:/a_community";
 	           }else {
 	              return "redirect:/a_questions";

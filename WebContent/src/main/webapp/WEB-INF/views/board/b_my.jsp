@@ -56,7 +56,6 @@
                            <a href="b_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a>
                           <div class="list-group-item-author pull-right clearfix">
                      <div class="avatar clearfix avatar-x-small ">
-                        <a href="/user/info/124651" class="avatar-photo"><img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&amp;s=10"></a>
                            <div class="avatar-info">
                               <a class="nickname" href="#" title="rita_dev">${b.b_name}</a>
                            </div>
@@ -93,7 +92,7 @@
                  </c:if>
                  <c:if test="${page > 1 }">
                  <li class="prev">
-            <a href="b_my?page=${page-1}&mem_id=${mem_id}"> <span>«</span></a>&nbsp;
+            <a href="b_my?page=${page-1}&mem_id=${mlist.mem_id}"> <span>«</span></a>&nbsp;
             </li>
             </c:if>
             
@@ -103,7 +102,7 @@
                   <li class="active"><span>${a}</span></li>
                </c:if>
                <c:if test="${a != page}"><%--현재 쪽 번호가 선택 안된 경우 --%>
-                  <li><a href="b_my?page=${a}&mem_id=${mem_id}"><span>${a}</span></a>&nbsp;</li>
+                  <li><a href="b_my?page=${a}&mem_id=${mlist.mem_id}"><span>${a}</span></a>&nbsp;</li>
                </c:if>
             </c:forEach>
                
@@ -112,7 +111,7 @@
                   <span>...</span>
                </li>
                <li>
-                  <a href="b_my?page=${maxpage}&mem_id=${mem_id}">${maxpage}</a>   
+                  <a href="b_my?page=${maxpage}&mem_id=${mlist.mem_id}">${maxpage}</a>   
                </li>
               
                   <c:if test="${page >= maxpage }">
@@ -122,7 +121,7 @@
                   </c:if>
             <c:if test="${page < maxpage }">
              <li class="next">
-               <a href="b_my?page=${page+1}&mem_id=${mem_id}"><span>»</span></a>&nbsp;
+               <a href="b_my?page=${page+1}&mem_id=${mlist.mem_id}"><span>»</span></a>&nbsp;
              </li>
             </c:if>
               

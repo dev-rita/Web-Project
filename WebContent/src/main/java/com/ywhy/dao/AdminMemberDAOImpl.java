@@ -34,4 +34,15 @@ public class AdminMemberDAOImpl implements AdminMemberDAO {
 	public void delMember(String mem_id) {
 		this.sqlSession.delete("m_del", mem_id);
 	}//관리자가 회원 탈퇴시키기
+	
+	@Override
+	public void upgrade(String mem_id) {
+	    this.sqlSession.update("upgrade",mem_id);
+	}//관리자로 전환
+
+	@Override
+	public void downgrade(String mem_id) {
+	    this.sqlSession.update("downgrade",mem_id);
+	}//일반회원으로 전환
+	
 }
