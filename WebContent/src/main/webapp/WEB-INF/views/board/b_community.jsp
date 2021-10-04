@@ -82,10 +82,9 @@
                            </div>
                         </div>
                         <div class="list-group-item-author clearfix">
-                             <div class="avatar clearfix avtar-list">                                  
+                             <div class="avatar clearfix avtar-list">                          
                                  <div class="avatar-info">
                                     <a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name} ">${n.n_name}</a><!-- 작성자  -->
-                                    <div class="activity"><span class="fa fa-flash"></span>32</div><!-- 활동점수  -->
                                        <div class="date-created"><span class="timeago" title="${n.n_date}">${n.n_date}</span></div><!-- 작성날짜 -->
                               </div>
                           </div>
@@ -138,10 +137,9 @@
                            </div>
                         </div>
                         <div class="list-group-item-author clearfix">
-                             <div class="avatar clearfix avtar-list">                                   
+                             <div class="avatar clearfix avtar-list">
                                  <div class="avatar-info">
                                    <a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name} ">${b.b_name}</a><!-- 작성자  -->
-                                    <div class="activity"><span class="fa fa-flash"></span>32</div><!-- 활동점수  -->
                                        <div class="date-created"><span class="timeago" title="${b.b_date}">${b.b_date}</span></div><!-- 작성날짜 -->
                               </div>
                           </div>

@@ -15,12 +15,9 @@
 					<div class="panel-heading clearfix">
 						<div class="avatar clearfix avatar-medium pull-left">
 							<a href="/user/info/124651" class='avatar-photo'>
-								<img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40" /></a>
+								<img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" /></a>
 							<div class="avatar-info">
-								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
-								<div class="activity block">
-									<span class="fa fa-flash"></span> 0
-								</div>
+								<a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
 							</div>
 						</div>
 					</div>

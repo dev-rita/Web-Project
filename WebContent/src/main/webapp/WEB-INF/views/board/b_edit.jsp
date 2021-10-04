@@ -10,11 +10,10 @@
 	    		<div class="panel panel-default clearfix">
         			<div class="panel-heading clearfix">
 						<div class="avatar clearfix avatar-medium pull-left">
+							<a href="/user/info/124651" class='avatar-photo'>
+								<img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40"/></a>
 							<div class="avatar-info">
-								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}">${m.mem_nick}</a>
-								<div class="activity">
-									<span class="fa fa-flash"></span> 10
-								</div>
+								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}">${m.mem_nick}</a>							
 								<div class="date-created">
 									<span class="timeago" title="${b.b_date}">${b.b_date}</span>
 								</div>

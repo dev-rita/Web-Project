@@ -116,10 +116,9 @@
                         </div>
                         <div class="list-group-item-author clearfix">
                              <div class="avatar clearfix avtar-list">
-                                   <a href="/user/info/106884" class="avatar-photo"><img src="//www.gravatar.com/avatar/8b4ddad17ec0dd8ad9a309757d8f63ab?d=identicon&amp;s=30"></a>
+                                   <a href="b_my?mem_id=${b.mem_id}" class="avatar-photo"><img src="//www.gravatar.com/avatar/8b4ddad17ec0dd8ad9a309757d8f63ab?d=identicon&amp;s=30"></a>
                                  <div class="avatar-info">
                                     <a class="nickname" href="/user/info/106884" title="${b.b_name} ">${b.b_name}</a><!-- 작성자  -->
-                                    <div class="activity"><span class="fa fa-flash"></span>32</div><!-- 활동점수  -->
                                        <div class="date-created"><span class="timeago" title="${b.b_date}">${b.b_date}</span></div><!-- 작성날짜 -->
                               </div>
                           </div>

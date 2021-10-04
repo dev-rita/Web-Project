@@ -1,5 +1,6 @@
 package com.ywhy.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -97,6 +98,15 @@ public class MemberDAOImpl implements MemberDAO {
 	   public List<NoticeVO> getNList(NoticeVO n) {
 	      return this.sqlSession.selectList("NList", n);
 	   }
+
+	@Override
+	public void updatePoint(String mem_id, int point) {
+		Map<String,Object> pm=new HashMap<>();
+		pm.put("mem_id", mem_id);//왼쪽에 있는 키이름을 point.xml 매퍼태그에서 참조해서 보낸사람을 가져옴.
+		pm.put("point",point);//포인트 점수
+		
+		this.sqlSession.update("pointUp",pm);//pointUp은 point.xml에서 설정할 유일한 update 아이디명이다.
+	}//활동점수
 
 
 }

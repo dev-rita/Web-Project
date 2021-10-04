@@ -136,8 +136,7 @@ public class AdminNoticeController {
 
 	@PostMapping("/n_create_ok") // post로 접근하는 매핑주소 처리
 	public String n_create_ok(NoticeVO b, HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws Exception {
-		
+			throws Exception {		
 		 response.setContentType("text/html;charset=UTF-8");
 		 PrintWriter out=response.getWriter();
 		 String member="관리자";
@@ -151,28 +150,7 @@ public class AdminNoticeController {
 		  }else {
 		  		 MemberVO id=this.memberService.getMember(login);
 		  		 if(id.getMem_class().equals(member)) {		
-
-					String saveFolder = request.getRealPath("resources/upload");// 톰캣에 인식하는 실제 이진 파일 업로드 서버 경로
-					int fileSize = 5 * 1024 * 1024;// 이진파일 최대크기
-					MultipartRequest multi = null;// 이진파일을 받을 변수 선언
-			
-					multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8");
-			
-					String n_name = multi.getParameter("n_name");
-					// String admin_id=(String)session.getAttribute("admin_id");로 아이디 받아서 저장시켜야 하는지
-					// 의문?
-					String n_title = multi.getParameter("n_title");
-					String n_cont = multi.getParameter("n_cont");
-					String n_cate = multi.getParameter("n_cate");
-					String n_tag = multi.getParameter("n_tag");
-			
-					b.setN_name(n_name);
-					b.setN_title(n_title);
-					b.setN_cont(n_cont);
-					b.setN_cate(n_cate);
-					b.setN_tag(n_tag);
-					b.setMem_id(login);
-					
+		  			 b.setMem_id(login);
 					this.adminNoticeService.insertNotice(b);// 자료실 저장
 			
 					return "redirect:/a_notice";
@@ -184,7 +162,7 @@ public class AdminNoticeController {
 				  }
 		  		}
 			return null;
-	}
+	}//n_create_ok
 
 	 @RequestMapping("/n_cont")//get or post로 접근하는 매핑주소를 처리
 		public ModelAndView a_cont(int n_no, int page, String state, HttpServletResponse response, 
@@ -275,6 +253,7 @@ public class AdminNoticeController {
 	     return "redirect:/a_notice";
 	     
 	  }
+	   
 	   @RequestMapping(value="/pick_notice")
 		public String ajaxPick(HttpServletRequest request) throws Exception{
 		   

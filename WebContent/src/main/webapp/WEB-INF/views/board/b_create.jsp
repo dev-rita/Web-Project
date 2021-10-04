@@ -13,17 +13,16 @@
 				</div>
 				<div class="panel panel-default clearfix">
 					<div class="panel-heading clearfix">
-						<div class="avatar clearfix avatar-medium pull-left">						
+						<div class="avatar clearfix avatar-medium pull-left">
+							<a href="/user/info/124651" class='avatar-photo'>
+								<img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" /></a>
 							<div class="avatar-info">
 								<a class="nickname" href="/user/info/124651" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
-								<div class="activity block">
-									<span class="fa fa-flash"></span> 0
-								</div>
 							</div>
 						</div>
 					</div>
 					<div class="panel-body">
-						<form action="b_create_ok" method="post" enctype="multipart/form-data"
+						<form action="b_create_ok" method="post" 
 						id="article-form" class="article-form" role="form" onsubmit="return postForm()">
 							<fieldset class="form">
 								<input type="hidden" name="_csrf" value="d63a7b3b-13a3-49d5-9a01-a116f355ec55">

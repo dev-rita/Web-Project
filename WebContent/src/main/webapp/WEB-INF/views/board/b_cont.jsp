@@ -27,9 +27,9 @@
         	<div class="panel-heading clearfix">
 
 				<div class="avatar clearfix avatar-medium pull-left">
+					<a href="b_my?mem_id=${b.mem_id}" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 						<div class="avatar-info"><!-- 작성자 이름, 활동점수, 등록일 -->
 							<a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name}">${b.b_name}</a>
-							<div class="activity"><span class="fa fa-flash"></span> 12</div>
 							<div class="date-created"><span class="timeago" title="${b.b_date}">${b.b_date}</span></div>
 						</div>
 				</div>
@@ -375,13 +375,12 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
                            <div class="content-body panel-body pull-left">
                                   <div style="margin-left: 5px;">
                                    <div class="avatar clearfix avatar-medium ">
-                                 	<a href="/user/info/123566" class="avatar-photo">
+                                 	<a href="b_my?mem_id=${b.mem_id}" class="avatar-photo">
                                     <img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 	                                 <div class="avatar-info">
 	                                   <a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${m.mem_nick}" id="nickname">${m.mem_nick}</a>
 	                                   <input type="hidden" name="replyer" id="replyWriter" value="${m.mem_nick}"/>                                  
 	                                   <input type="hidden" name="mem_id" id="mem_id" value="${m.mem_id}"/>
-	                                   <div class="activity block"><span class="fa fa-flash"></span> 0</div>
 	                                 </div>
                             		</div>
                                   </div>
@@ -634,10 +633,10 @@ function getAllList(){
 		    +"<i class='fa fa-comment'></i></div>"
 		    +"<div class='avatar clearfix avatar-medium '>"
 		    +"<a href='/user/info/97440' class='avatar-photo'>"
-		    +"<img src='//www.gravatar.com/avatar/11cea1d9b7f8916b454e3325e9ac3ad9?d=identicon&amp;s=40'></a>"
+		    +"<img src='https://ssl.pstatic.net/static/pwe/address/img_profile.png'/></a>"
 		    +"<div class='avatar-info'>"
 		    +"<a class='nickname' href='b_my?mem_id="+this.mem_id+"' title='"+this.replyer+"'>"+this.replyer+"</a>"
-		    +"<div class='activity'><span class='fa fa-flash'></span> 352</div>"+"<div class='replyLi' data-r_no='"+this.r_no+"' style='display:none;'>"+this.r_no+"</div>"
+		    +"<div class='replyLi' data-r_no='"+this.r_no+"' style='display:none;'>"+this.r_no+"</div>"
 		    +"<div class='date-created'><span class='timeago' title='"+this.regdate+"'>"+this.regdate+"</span></div></div>"
 		    +"</div><fieldset class='form'><article id='note-text-"+this.r_no+"' class='list-group-item-text note-text'>"
 			+this.replytext+"</article></fieldset></div>"

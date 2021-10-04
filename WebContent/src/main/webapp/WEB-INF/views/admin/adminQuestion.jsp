@@ -484,7 +484,7 @@
       if(valueArr.length==0){
          alert('선택된 글이 없습니다.');
       }else{
-        
+         var chk=confirm("정말 추천하시겠습니까?");
          $.ajax({
             url:url,
             type:'POST',
@@ -493,11 +493,11 @@
                valueArr:valueArr
             },
             success:function(jdata){
-            	if(jdata=1){
-	                  alert("YWHY's Choice");
-	                  location.reload();
-	               }else{
-	                  alert("요청 실패");
+               if(jdata=1){
+                  alert('추천 성공');
+                  location.reload();
+               }else{
+                  alert("추천 실패");
                }
             }
          

@@ -42,5 +42,7 @@ public interface MemberDAO {
 
 	List<NoticeVO> getNList(NoticeVO n);
 
+	void updatePoint(String mem_id, int point);
+
 
 }

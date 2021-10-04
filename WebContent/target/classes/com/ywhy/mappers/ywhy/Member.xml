@@ -89,4 +89,9 @@
       where rownum &lt;= 5
     </select>
  
+ 	<!-- 포인트업 -->
+ 	<update id="pointUp" parameterType="java.util.Map">
+ 	update ywhyMember set mem_point = mem_point + #{point} where mem_id=#{mem_id}
+ 	</update>
+ 
  </mapper>

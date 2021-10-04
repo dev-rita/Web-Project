@@ -29,10 +29,7 @@
                                  <div class="list-group-item-author pull-right clearfix">
                                     <div class="avatar clearfix avatar-x-small ">  
                                        <div class="avatar-info">
-                                          <a class="nickname" href="b_my?mem_id=${p.mem_id}" title="OKKY">${p.b_name}</a>
-                                          <div class="activity">
-                                             <i class="fas fa-bolt"></i> 2k
-                                          </div>
+                                          <a class="nickname" href="b_my?mem_id=${p.mem_id}" title="OKKY">${p.b_name}</a>                                        
                                           <div class="date-created">
                                              <span class="timeago" title="${p.b_date}">${p.b_date}</span>
                                           </div>
@@ -65,9 +62,6 @@
                                     <div class="avatar clearfix avatar-x-small ">                       
                                        <div class="avatar-info">
                                           <a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name}">${n.n_name}</a>
-                                          <div class="activity">
-                                             <i class="fas fa-bolt"></i> 2k
-                                          </div>
                                           <div class="date-created">
                                              <span class="timeago" title="${n.n_date}">${n.n_date}</span>
                                           </div>
@@ -104,9 +98,6 @@
                                     <div class="avatar clearfix avatar-x-small ">                                
                                        <div class="avatar-info">
                                           <a class="nickname" href="b_my?mem_id=${q.mem_id}" title="${q.b_name}">${q.b_name}</a>
-                                          <div class="activity">
-                                             <i class="fas fa-bolt"></i> 14
-                                          </div>
                                           <div class="date-created">
                                              <span class="timeago" title="${q.b_date}">${q.b_date}</span>
                                           </div>
@@ -140,12 +131,9 @@
                               <h5 class="list-group-item-heading">
                                  <a href="b_cont?b_no=${b.b_no}&page=1&state=cont">${b.b_title}</a>
                                  <div class="list-group-item-author pull-right clearfix">
-                                    <div class="avatar clearfix avatar-x-small ">
+                                    <div class="avatar clearfix avatar-x-small ">                                    
                                        <div class="avatar-info">
                                           <a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name}">${b.b_name}</a>
-                                          <div class="activity">
-                                             <i class="fas fa-bolt"></i> 14
-                                          </div>
                                           <div class="date-created">
                                              <span class="timeago" title="${b.b_date}">${b.b_date}</span>
                                           </div>

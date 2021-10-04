@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ywhy.dao.BoardDAO;
+import com.ywhy.dao.MemberDAO;
 import com.ywhy.vo.BoardVO;
 
 @Service
@@ -14,6 +15,9 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	private BoardDAO boardDao;
+	
+	@Autowired
+	private MemberDAO memberDao;
 
 	@Override
 	public int getListCount(BoardVO b) {
@@ -73,9 +77,12 @@ public class BoardServiceImpl implements BoardService {
 	   }
 	
 	//조회, 추가, 수정, 삭제   
+	
+	@Transactional
 	@Override
 	public void insertBoard(BoardVO b) {
 		this.boardDao.insertBoard(b);
+		this.memberDao.updatePoint(b.getMem_id(),10);
 	}
 	
 	@Transactional

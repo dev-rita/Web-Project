@@ -218,61 +218,14 @@ public class BoardController {
          return null;
       }//bbs_write()
       
-      //자료실 저장
-      @PostMapping("/b_create_ok")//post로 접근하는 매핑주소 처리
+      //게시판 저장
+      @RequestMapping(value="/b_create_ok",method=RequestMethod.POST)
       public String b_create_ok(BoardVO b,HttpServletRequest request, HttpServletResponse response, 
             HttpSession session)throws Exception{
     	 response.setContentType("text/html;charset=UTF-8");
          PrintWriter out=response.getWriter();
          
          String login=(String)session.getAttribute("id");
-         
-         String saveFolder=request.getRealPath("resources/upload");//톰캣에 인식하는 실제 이진 파일 업로드 서버 경로
-         int fileSize=5*1024*1024;//이진파일 최대크기
-         MultipartRequest multi=null;//이진파일을 받을 변수 선언
-         
-         multi=new MultipartRequest(request, saveFolder,fileSize,"UTF-8");
-         
-         String b_name=multi.getParameter("b_name");
-         //String admin_id=(String)session.getAttribute("admin_id");로 아이디 받아서 저장시켜야 하는지 의문?
-         String b_title=multi.getParameter("b_title");
-         String b_pwd=multi.getParameter("b_pwd");
-         String b_cont=multi.getParameter("b_cont");
-         String b_cate=multi.getParameter("b_cate");
-         String b_tag=multi.getParameter("b_tag");
-         
-         
-         File upFile=multi.getFile("b_file");//첨부한 이진파일을 가져옴.
-         
-         if(upFile != null) {//첨부한 이진파일이 있는 경우
-            String fileName=upFile.getName();//첨부한 파일명을 구함.
-            Calendar c=Calendar.getInstance();//추상클래스로 new로 객체생성 못함.
-            int year=c.get(Calendar.YEAR);//년도값
-            int month=c.get(Calendar.MONTH)+1;//월값, +1을 한 이유는 1월이 0으로 반환되기 때문
-            int date=c.get(Calendar.DATE);
-            
-            String homedir=saveFolder+"/"+year+"-"+month+"-"+date;//오늘날짜 폴더경로를 저장
-            File path01=new File(homedir);
-            
-            if(!(path01.exists())) {//폴더경로가 존재하지 않는다면
-               path01.mkdir();//폴더 생성
-            }
-            Random r=new Random();
-            int random=r.nextInt(100000000);//0이상 1억 미만 사이의 정수숫자 난수 발생
-            
-            /*첨부파일 확장자*/
-            int index=fileName.lastIndexOf(".");//.의 위치 번호를 구함
-            String fileExtendsion=fileName.substring(index+1);//.이후 부터 마지막 문자 까지 구함. 즉 첨부파일 확장자를 구함.
-            String refileName="b"+year+month+date+random+"."+fileExtendsion;//새로운 이진파일명
-            String fileDBName="/"+year+"-"+month+"-"+date+"/"+refileName;//오라클에 저장할 레코드값
-            upFile.renameTo(new File(homedir+"/"+refileName));//실제 업로드
-            b.setB_file(fileDBName);
-         }else {
-            String fileDBName="";
-            b.setB_file(fileDBName);
-         }
-         
-         b.setB_name(b_name); b.setB_title(b_title); b.setB_pwd(b_pwd); b.setB_cont(b_cont);b.setB_cate(b_cate);b.setB_tag(b_tag);
          
          if(login == null) {
             out.println("<script>");
@@ -282,16 +235,14 @@ public class BoardController {
          }else {
         	
             b.setMem_id(login);
-            this.boardService.insertBoard(b);//자료실 저장
+            this.boardService.insertBoard(b);//게시판 저장
              
-               if(b_cate.equals("커뮤니티")) {
+               if(b.getB_cate().equals("커뮤니티")) {
                return    "redirect:/b_community";
                }else {
                   return "redirect:/b_questions";
                }
-
-         }
-         
+         }        
          return null;
       }//b_create_ok
       
@@ -514,16 +465,17 @@ public class BoardController {
          List<BoardVO> blist=null;
 
          blist=this.boardService.getMyList(b);//목록보기
-         int mem_point=this.boardService.getMemPoint(mem_id);//mem_id를 통해서 mem_point를 불러옴
+         //int mem_point=this.boardService.getMemPoint(mem_id);//mem_id를 통해서 mem_point를 불러옴
+         MemberVO mlist=this.memberService.getMember(mem_id);
          
          listM.addAttribute("blist", blist);//blist속성 키이름에 목록을 저장
+         listM.addAttribute("mlist",mlist);
          listM.addAttribute("totalCount",totalCount);
          listM.addAttribute("startpage",startpage);
          listM.addAttribute("endpage",endpage);
          listM.addAttribute("maxpage",maxpage);
          listM.addAttribute("page",page);
-         listM.addAttribute("mem_id",mem_id);
-         listM.addAttribute("mem_point",mem_point);
+         
          if(login!=null) {
           MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
           listM.addAttribute("m", m);

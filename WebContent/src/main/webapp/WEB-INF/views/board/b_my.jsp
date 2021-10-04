@@ -19,12 +19,12 @@
 </div>
           <div class="user-info col-sm-9">
               <div class="clearfix">
-                  <h2 class="pull-left">${m.mem_nick}</h2>
+                  <h4 class="pull-left">아이디 : ${mlist.mem_id} &nbsp;&nbsp;&nbsp;닉네임: ${mlist.mem_nick}</h4>
               </div>
               <div class="user-points">
                   <div class="user-point">
                       <div class="user-point-label"><i class="fa fa-flash"></i> 활동점수</div>
-                      <div class="user-point-num"><a href="#">${mem_point}</a></div>
+                      <div class="user-point-num"><a href="#">${mlist.mem_point}</a></div>
                   </div>
               </div>
           </div>

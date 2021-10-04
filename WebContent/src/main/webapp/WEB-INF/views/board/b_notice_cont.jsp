@@ -27,10 +27,9 @@
         	<div class="panel-heading clearfix">
 
 				<div class="avatar clearfix avatar-medium pull-left">
-					<a href="/user/info/124433" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
+					<a href="b_my?mem_id=${n.mem_id}" class="avatar-photo"><img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png"></a>
 						<div class="avatar-info"><!-- 작성자 이름, 활동점수, 등록일 -->
 							<a class="nickname" href="b_my?mem_id=${n.mem_id}" title="${n.n_name}">${n.n_name}</a>
-							<div class="activity"><span class="fa fa-flash"></span> 12</div>
 							<div class="date-created"><span class="timeago" title="${n.n_date}">${n.n_date}</span></div>
 						</div>
 				</div>
@@ -203,7 +202,7 @@
 	$('#recp').on("click",function(){
 
 		var n_no=$('#n_no').text();
-		var id = '<%=session.getAttribute("m")%>';
+		var id = '<%=session.getAttribute("id")%>';
 		
 		if(id=="null"){
 			alert("로그인이 필요합니다.");
@@ -231,7 +230,7 @@
 	$('#recm').on("click",function(){
 
 		var n_no=$('#n_no').text();
-		var id = '<%=session.getAttribute("m")%>';
+		var id = '<%=session.getAttribute("id")%>';
 		
 		if(id=="null"){
 			alert("로그인이 필요합니다.");

@@ -48,4 +48,6 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	public void pickAdminNotice(String no) {
 		this.adminNoticeDao.pickAdminNotice(no);
 	}
+	
+	
 }
