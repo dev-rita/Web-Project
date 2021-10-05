@@ -16,6 +16,11 @@
  		select * from ywhyMember where mem_mail=#{email}
  	</select>
  	
+ 	<!-- 닉네임 중복 확인 -->
+    <select id="m_check3" resultType="m">
+       select * from ywhyMember where mem_nick=#{nick}
+    </select>
+ 	
  	<!-- 회원 저장 -->
  	<insert id="mem_insert">
  		insert into ywhyMember (mem_id,mem_pwd,mem_name,mem_nick,mem_mail,mem_signupdate)

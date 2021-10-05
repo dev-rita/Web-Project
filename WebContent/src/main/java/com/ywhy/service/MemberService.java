@@ -13,6 +13,8 @@ public interface MemberService {
 	
 	MemberVO emailCheck(String email);
 	
+	MemberVO nickCheck(String nick);
+	
 	void insertMember(MemberVO m);
 	
 	void updateAuthKey(Map<String, String> map);
@@ -40,6 +42,8 @@ public interface MemberService {
 	List<BoardVO> getPList(BoardVO b);
 
 	List<NoticeVO> getNList(NoticeVO n);
+
+
 
 
 

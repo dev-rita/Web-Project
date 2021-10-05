@@ -27,6 +27,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO emailCheck(String email) {
 		return this.memberDao.emailCheck(email);
 	}
+	
+	@Override
+	public MemberVO nickCheck(String nick) {
+	   return this.memberDao.nickCheck(nick);
+	}
 
 	@Override
 	public void insertMember(MemberVO m) {
@@ -96,7 +101,9 @@ public class MemberServiceImpl implements MemberService {
 	   @Override
 	   public List<NoticeVO> getNList(NoticeVO n) {
 	      return this.memberDao.getNList(n);
-	   }	
+	   }
+
+
 
 
 

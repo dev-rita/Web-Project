@@ -14,6 +14,8 @@ public interface MemberDAO {
 	
 	MemberVO emailCheck(String email);
 	
+	MemberVO nickCheck(String nick);
+	
 	void insertMember(MemberVO m);
 	
 	void updateAuthKey(Map<String, String> map);
@@ -43,6 +45,8 @@ public interface MemberDAO {
 	List<NoticeVO> getNList(NoticeVO n);
 
 	void updatePoint(String mem_id, int point);
+
+	
 
 
 }

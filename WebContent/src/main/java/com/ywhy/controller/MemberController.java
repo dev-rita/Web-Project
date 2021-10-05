@@ -98,6 +98,24 @@ public class MemberController {
 		
 		return null;
 	}
+	/*회원가입 닉네임 유효성 검증*/
+	   @PostMapping("/mem_nickcheck")
+	   public String mem_nickcheck(String nick,HttpServletResponse response) throws Exception {
+	      response.setContentType("text/html;charset=utf-8");
+	      PrintWriter out=response.getWriter();
+	      
+	      MemberVO db_id=this.memberService.nickCheck(nick);
+	      
+	      int re=-1;
+	      
+	      if(db_id != null) {//중복 닉네임이 있는 경우
+	         re=1;
+	      }
+	      
+	      out.println(re);
+	      
+	      return null;
+	   }
 	
 	/*일반 사용자 회원 저장*/
 	@PostMapping("/signup_ok")

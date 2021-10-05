@@ -31,7 +31,10 @@
 								<input type="text" id="name" name="mem_name" class="form-control input-sm" placeholder="이름" value=""> 
 								<span id="namecheck"></span>
 								<input type="text" id="nick" name="mem_nick" class="form-control input-sm" placeholder="닉네임" value="">
-								<span id="nickcheck"></span>
+		                        <%-- 닉네임 중복 확인의 value가 N이면 중복확인이 안되었다는 뜻으로 signup_check()함수로 인해 넘어가지 못한다.
+		                            	중복 확인 버튼 눌렀을 때 성공하면 value가 Y로 바뀌면서 다음 입력으로 넘어갈 수 있다. --%>
+		                        <button type="button" id="nickchk" class="form-control input-sm" onclick="nick_check();" value="N">닉네임 중복 확인</button>
+		                        <span id="nickcheck"></span>
 								<br>
 								<%--
 								<div class="checkbox">

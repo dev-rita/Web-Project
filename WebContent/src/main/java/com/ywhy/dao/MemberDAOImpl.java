@@ -29,6 +29,11 @@ public class MemberDAOImpl implements MemberDAO {
 	}//이메일 중복확인
 	
 	@Override
+    public MemberVO nickCheck(String nick) {
+       return this.sqlSession.selectOne("m_check3", nick);
+    }//닉네임 중복확인
+	
+	@Override
 	public void insertMember(MemberVO m) {
 		this.sqlSession.insert("mem_insert", m);
 	}//회원가입
