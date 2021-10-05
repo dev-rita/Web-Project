@@ -484,17 +484,25 @@ public class BoardController {
          return "board/b_my";
       }
       
-      @RequestMapping(value="/recommend_plus/{b_no}",method=RequestMethod.POST)//게시물 추천 
-      public ResponseEntity<String> recommend_plus (@PathVariable("b_no") int b_no) {
+      @RequestMapping(value="/recommend_plus/{b_no}",method=RequestMethod.POST)//게시물 추천  좋아요!
+      public ResponseEntity<String> recommend_plus (@PathVariable("b_no")int b_no,HttpSession session){         
 
+         String login=(String)session.getAttribute("id");//세션으로부터 로그인 된 아이디 가져옴
+         BoardVO rcm = new BoardVO(); //보드보 타입의 rcm객체 생성
+         rcm.setB_no(b_no); //rcm객체에 b_no를 현재 게시글로 지정
+         rcm.setMem_id(login);//rcm객체에 mem_id를 로그인된 아이디로 지정
+         
          ResponseEntity<String> entity=null;
          try {
+           List<String> mem_id=this.boardService.getMemId(b_no);//b_no에 추천을 누른 아이디 값들을 불러옴
+           if(!mem_id.contains(login)) {//아이디 값 리스트 중에서 로그인 된 아이디가 포함되어 있나 확인함.
+            this.boardService.b_recommendp(rcm);//추천 테이블에 아이디와 게시글번호 등록
+            this.boardService.setRecCount(rcm);//추천수 업데이트
             
-            this.boardService.b_recommendp(b_no);
             
             entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
-            // 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
-            
+
+           }
          }catch(Exception e) {
             e.printStackTrace();
             entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
@@ -504,24 +512,24 @@ public class BoardController {
          return entity;
       }
       
-      @RequestMapping(value="/recommend_minus/{b_no}",method=RequestMethod.POST)//게시물 반대
-      public ResponseEntity<String> recommend_minus (@PathVariable("b_no") int b_no) {
-      
-         ResponseEntity<String> entity=null;
-         try {
-            
-            this.boardService.b_recommendm(b_no);
-            
-            entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
-            // 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
-         }catch(Exception e) {
-            e.printStackTrace();
-            entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
-            //예외 에러가 발생하면 예외 에러 메시지와 나쁜 상태 코드가 반환
-         }
-         
-         return entity;
-      }
+//      @RequestMapping(value="/recommend_minus/{b_no}",method=RequestMethod.POST)//게시물 반대
+//      public ResponseEntity<String> recommend_minus (@PathVariable("b_no") int b_no) {
+//      
+//         ResponseEntity<String> entity=null;
+//         try {
+//            
+//            this.boardService.b_recommendm(b_no);
+//            
+//            entity=new ResponseEntity<>("SUCCESS",HttpStatus.OK);
+//            // 저장 성공시 SUCCESS문자가 반환되고 200정상상태 코드가 반환
+//         }catch(Exception e) {
+//            e.printStackTrace();
+//            entity=new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+//            //예외 에러가 발생하면 예외 에러 메시지와 나쁜 상태 코드가 반환
+//         }
+//         
+//         return entity;
+//      }
       
       //댓글 
       

@@ -61,19 +61,19 @@
             <div id="content-function" class="content-function pull-right text-center">
                 <div class="content-function-group">
 					
-					<div class="note-evaluate-wrapper">
-						<!-- 추천 -->
-						<a href="javascript://" role="button" data-type="dissent" data-eval="true" id="recp">
-						<i class="fa fa-angle-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
-						</a>
-						<!-- 추천수 -->
-						<div id="content-vote-count-2440348" class="content-eval-count">${b.b_rec}</div>
-						
-						<!-- 반대 -->
-						<a href="b_recommend?b_no=${b.b_no}&page=${page}&state=recm" role="button" data-type="dissent" data-eval="true"  id="recm">
-						<i class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i>
-						</a>			
-					</div>
+					 <div class="note-evaluate-wrapper">
+                  <!-- 추천 -->
+                  <a href="javascript://" role="button" data-type="dissent" data-eval="true" id="recp">
+                  <i class="fa fa-thumbs-o-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
+                  </a>
+                  <!-- 추천수 -->
+                  <div id="content-vote-count-2440348" class="content-eval-count">${b.b_rec}</div>
+                  
+                  <!-- 반대 -->
+                  <!-- <a href="javascript://" role="button" data-type="dissent" data-eval="true"  id="recm">
+                  <i class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i>
+                  </a>    -->      
+               </div>
 					
                 </div>
                 <div class="content-function-group article-scrap-wrapper"><!-- 스크랩 -->
@@ -495,33 +495,35 @@ Lotto<span class="token punctuation">[</span>X<span class="token punctuation">]<
  <script src="./resources/js/board/reply.js" type="text/javascript"></script>
  
  <script>
- 	//게시글 추천
-	$('#recp').on("click",function(){
+ //게시글 추천
+ $('#recp').on("click",function(){
 
-		var b_no=$('#b_no').text();
-		var id = '<%=session.getAttribute("id")%>';
-		
-		if(id=="null"){
-			alert("로그인이 필요합니다.");
-			location.replace("login");
-		}else{
-        $.ajax({
-           type:'post',
-           url:'/controller/recommend_plus/'+b_no,
-           headers:{
-              "Content-Type" : "application/json",
-              "X-HTTP-Method-Override" : "POST"
-           },
-           dataType:'text',
-           success:function(result){//받아오는 것이 성공시 호출됨
-              if(result == 'SUCCESS'){
-                 alert('추천 되었습니다!');
-                 location.reload();//새로 고침->단축키는 f5               
-              }
-           }
-        });
-       }
+    var b_no=$('#b_no').text();
+    var id = '<%=session.getAttribute("id")%>';
+    
+    if(id=="null"){
+       alert("로그인이 필요합니다.");
+       location.replace("login");
+    }else{
+      $.ajax({
+         type:'post',
+         url:'/controller/recommend_plus/'+b_no,
+         headers:{
+            "Content-Type" : "application/json",
+            "X-HTTP-Method-Override" : "POST"
+         },
+         dataType:'text',
+         success:function(result){//받아오는 것이 성공시 호출됨
+            if(result == 'SUCCESS'){
+               alert('추천 되었습니다!');
+               location.reload();//새로 고침->단축키는 f5               
+            }else{
+               alert('이미 추천하셨습니다!');
+            }
+         }
       });
+     }
+    });
  	
  	//게시물 반대
 	$('#recm').on("click",function(){

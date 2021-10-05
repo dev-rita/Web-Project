@@ -128,15 +128,15 @@
      delete from board where b_no=#{b_no}
     </update>
     
-    <!-- 게시글 추천 -->
+    <!-- 게시글 추천 
     <update id="b_rec_p">
     update board set b_rec = b_rec+1 where b_no=#{b_no}
     </update>
     
-    <!-- 게시글 반대 -->
+          게시글 반대
     <update id="b_rec_m">
     update board set b_rec = b_rec-1 where b_no=#{b_no}
-    </update>
+    </update>-->
     
     <!-- 댓글 목록 -->
     <select id="r_list" parameterType="int" resultType="com.ywhy.vo.BoardVO">
@@ -401,4 +401,19 @@
        select mem_point from ywhyMember where mem_id=#{mem_id}
     </select>
     
+    <!-- 게시글 추천 -->
+    <insert id="b_rec_p" parameterType="b">
+    insert into board_rec (mem_id, b_no)
+    select #{mem_id},#{b_no} from dual
+    WHERE NOT EXISTS 
+   (SELECT mem_id,b_no FROM board_rec WHERE b_no = #{b_no} and mem_id = #{mem_id})
+    </insert>
+    
+    <update id="rec_count">
+       update board set b_rec=(select count(*) from (select distinct b_no,mem_id from board_rec) where b_no=#{b_no} ) where b_no=#{b_no}
+    </update>
+    
+    <select id="getMemId" resultType="string">
+       select mem_id from board_rec where b_no=#{b_no}
+    </select>
  </mapper>

@@ -115,15 +115,15 @@ public class BoardServiceImpl implements BoardService {
 	}//게시물 삭제
 	//추천반대
 	
-	@Override
-	public void b_recommendp(int b_no) {
-		this.boardDao.b_recommendp(b_no);
-	}//게시물 추천
-	
-	@Override
-	public void b_recommendm(int b_no) {
-		this.boardDao.b_recommendm(b_no);
-	}//게시물 반대
+//	@Override
+//	public void b_recommendp(int b_no) {
+//		this.boardDao.b_recommendp(b_no);
+//	}//게시물 추천
+//	
+//	@Override
+//	public void b_recommendm(int b_no) {
+//		this.boardDao.b_recommendm(b_no);
+//	}//게시물 반대
 	
 	
 	//태그
@@ -207,5 +207,25 @@ public class BoardServiceImpl implements BoardService {
 		this.boardDao.r_recommendm(r_no);
 	}//댓글반대
 
+	   //게시물 좋아요
+	   @Override
+	   public void b_recommendp(BoardVO rcm) {
+	      this.boardDao.b_recommendp(rcm);
+	   }
+
+	   @Override
+	   public void setRecCount(BoardVO rcm) {
+	       this.boardDao.setRecCount(rcm);
+	   }
+
+	   @Override
+	   public List<String> getMemId(int b_no) {
+	      return this.boardDao.getMemId(b_no);
+	   }
+	   
+	//   @Override
+	//   public void b_recommendm(BoardVO rcm) {
+//	      this.boardDao.b_recommendm(rcm);
+	//   }//게시물 반대
 	
 }

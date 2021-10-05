@@ -31,8 +31,8 @@ public interface BoardService {
 	void delBoard(int b_no);
 	
 	//추천반대
-	void b_recommendp(int b_no);
-	void b_recommendm(int b_no);
+//	void b_recommendp(int b_no);
+//	void b_recommendm(int b_no);
 	
 	//태그
 	int getTagListCount(BoardVO b);
@@ -54,6 +54,14 @@ public interface BoardService {
 	void remove(int r_no);
 	void r_recommendp(int r_no);
 	void r_recommendm(int r_no);
+	
+	//게시글 추천
+	List<String> getMemId(int b_no);
+	void b_recommendp(BoardVO rcm);
+	void setRecCount(BoardVO rcm);
+	
+	//추천반대(미구현)
+//  void b_recommendm(BoardVO rcm);
 	
 
 }

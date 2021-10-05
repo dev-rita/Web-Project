@@ -32,8 +32,8 @@ public interface BoardDAO {
 	void delBoard(int b_no);
 	
 	//추천반대
-	void b_recommendp(int b_no);
-	void b_recommendm(int b_no);
+//	void b_recommendp(int b_no);
+//	void b_recommendm(int b_no);
 	
 	//태그
 	int getTagListCount(BoardVO b);
@@ -58,4 +58,11 @@ public interface BoardDAO {
 	void r_recommendp(int r_no);
 	void r_recommendm(int r_no);
 	
+	 //게시글 좋아요
+	   void b_recommendp(BoardVO rcm);   
+	   void setRecCount(BoardVO rcm);
+	   List<String> getMemId(int b_no);
+	   
+	   //게시글 싫어요
+	//   void b_recommendm(BoardVO rcm);
 }

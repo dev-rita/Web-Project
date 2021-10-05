@@ -27,6 +27,9 @@
                       <div class="user-point-num"><a href="#">${mlist.mem_point}</a></div>
                   </div>
               </div>
+              <c:if test="${m.mem_id==mlist.mem_id}">
+              <div><a href="editinfo" class="btn btn-info btn-sm" style="margin-top: 45px;">정보수정</a></div>
+          	  </c:if>
           </div>
       </div>
   </div>

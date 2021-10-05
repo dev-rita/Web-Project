@@ -111,15 +111,15 @@ public class BoardDAOImpl implements BoardDAO {
 	}//게시물 삭제
 	
 	//추천반대
-	@Override
-	public void b_recommendp(int b_no) {
-		this.sqlSession.update("b_rec_p",b_no);
-	}//게시물 추천
-	
-	@Override
-	public void b_recommendm(int b_no) {
-		this.sqlSession.update("b_rec_m",b_no);
-	}//게시물 반대
+//	@Override
+//	public void b_recommendp(int b_no) {
+//		this.sqlSession.update("b_rec_p",b_no);
+//	}//게시물 추천
+//	
+//	@Override
+//	public void b_recommendm(int b_no) {
+//		this.sqlSession.update("b_rec_m",b_no);
+//	}//게시물 반대
 	
 	//태그
 	   @Override
@@ -209,5 +209,24 @@ public class BoardDAOImpl implements BoardDAO {
 		this.sqlSession.update("r_rec_m",r_no);
 	}//댓글 반대
 
+	   //게시글 좋아요
+	   @Override
+	   public void b_recommendp(BoardVO rcm) {
+	      this.sqlSession.insert("b_rec_p", rcm);
+	   }
+	   @Override
+	   public void setRecCount(BoardVO rcm) {
+	       this.sqlSession.update("rec_count",rcm);
+	   }
 
+	   @Override
+	   public List<String> getMemId(int b_no) {
+	      return this.sqlSession.selectList("getMemId", b_no);
+	   }
+	   
+	//   @Override
+	//   public void b_recommendm(BoardVO rcm) {
+//	      this.sqlSession.insert("b_rec_m",rcm);
+	//   }//게시물 반대
+	
 }

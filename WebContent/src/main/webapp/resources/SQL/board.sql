@@ -17,6 +17,11 @@ create table board(
 	,b_pick number(1) default 0
 );
 
+create table board_rec(
+   mem_id varchar2(100) 
+   ,b_no int 
+);
+
 drop table board cascade constraint;
 drop table board_reply cascade constraint;
 
