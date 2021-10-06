@@ -118,13 +118,22 @@
                         </div>
                          <div class="list-summary-wrapper clearfix">
                            <div class="list-group-item-summary clearfix">
-                                 <ul>
-                                    <li class="item-icon-disabled"><i class="item-icon fa fa-comment"></i>-</li><!-- 댓글 수 -->
-                                    <li class="<c:if test="${n.n_rec == 0}">item-icon-disabled</c:if>"><i class="<c:if test="${n.n_rec>=0}">item-icon fa fa-thumbs-up</c:if>
-                                    <c:if test="${n.n_rec<0}">item-icon fa fa-thumbs-down</c:if>"></i>${n.n_rec}</li><!-- 추천 수  -->                               
-                                    <li class="<c:if test="${n.n_hit == 0}">item-icon-disabled</c:if>"><i class="item-icon fa fa-eye"></i>${n.n_hit}</li><!-- 조회 수  -->
-                                                                   
-                               </ul>
+                                 <div class="item-evaluate-wrapper pull-right clearfix">
+                            <div class="item-evaluate">
+                                <div class="item-evaluate-icon">
+                                    <i class="
+                                    <c:if test="${n.n_rec>=0}">item-icon fa fa-thumbs-o-up</c:if>
+                                    <c:if test="${n.n_rec<0}">item-icon fa fa-thumbs-o-down</c:if>" aria-hidden="true"></i>
+                                </div>
+                                   <div class="item-evaluate-count">${n.n_rec}</div>
+                            </div>
+                            <div class="item-evaluate">
+                                <div class="item-evaluate-icon">
+                                     <i class="item-icon fa fa-eye" aria-hidden="true"></i>
+                                </div>
+                                <div class="item-evaluate-count">${n.n_hit}</div>
+                            </div>
+                           </div>
                            </div>
                         </div>
                         <div class="list-group-item-author clearfix">
@@ -296,5 +305,6 @@
       });
    });
 </script>
+
 </body>
 </html>

@@ -33,7 +33,6 @@
                      <li><a href="#" data-sort="id" data-order="desc" class="category-sort-link <c:if test="${(sort==null) || sort.equals('id')}">active</c:if>">최신순</a></li>
                      <li><a href="#" data-sort="voteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('voteCount')}">active</c:if>">추천순</a></li>
                      <li><a href="#" data-sort="noteCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('noteCount')}">active</c:if>">댓글순</a></li>
-                     <li><a href="#" data-sort="scrapCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('scrapCount')}">active</c:if>">스크랩순</a></li>
                      <li><a href="#" data-sort="viewCount" data-order="desc" class="category-sort-link <c:if test="${sort.equals('viewCount')}">active</c:if>">조회순</a></li>                     
                   </ul>
                   

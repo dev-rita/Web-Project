@@ -98,5 +98,10 @@
  	<update id="pointUp" parameterType="java.util.Map">
  	update ywhyMember set mem_point = mem_point + #{point} where mem_id=#{mem_id}
  	</update>
+ 	
+ 	<!-- history -->
+ 	<select id="history" resultType="h">
+ 	select * from history order by h_date desc
+ 	</select>
  
  </mapper>

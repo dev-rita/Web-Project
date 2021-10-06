@@ -19,7 +19,7 @@ create table board(
 
 create table board_rec(
    mem_id varchar2(100) 
-   ,b_no int 
+   ,b_no int constraint board_rec_fk references board(b_no) on delete cascade
 );
 
 drop table board cascade constraint;

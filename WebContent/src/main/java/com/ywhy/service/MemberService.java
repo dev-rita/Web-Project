@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ywhy.vo.BoardVO;
+import com.ywhy.vo.HistoryVO;
 import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
@@ -42,6 +43,8 @@ public interface MemberService {
 	List<BoardVO> getPList(BoardVO b);
 
 	List<NoticeVO> getNList(NoticeVO n);
+
+	List<HistoryVO> getHistory();
 
 
 

@@ -2,6 +2,7 @@ package com.ywhy.dao;
 
 import java.util.List;
 
+import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.NoticeVO;
 
 public interface NoticeDAO {
@@ -20,7 +21,10 @@ public interface NoticeDAO {
 	
 	NoticeVO getNoticeCont(int n_no);
 
-	void n_recommendp(int n_no);
+	//게시글 좋아요
+    void n_recommendp(NoticeVO rcm);   
+    void setRecCount(NoticeVO rcm);
+    List<String> getMemId(int n_no);
 
 	void n_recommendm(int n_no);
 

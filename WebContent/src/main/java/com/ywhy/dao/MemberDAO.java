@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ywhy.vo.BoardVO;
+import com.ywhy.vo.HistoryVO;
 import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
@@ -45,6 +46,8 @@ public interface MemberDAO {
 	List<NoticeVO> getNList(NoticeVO n);
 
 	void updatePoint(String mem_id, int point);
+
+	List<HistoryVO> getHistory();
 
 	
 

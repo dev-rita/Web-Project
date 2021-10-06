@@ -72,9 +72,20 @@
     </select>
     
     <!-- 게시글 추천 -->
-    <update id="n_rec_p">
-    update notice set n_rec = n_rec+1 where n_no=#{n_no}
+    <insert id="n_rec_p" parameterType="n">
+    insert into notice_rec (mem_id, n_no)
+    select #{mem_id},#{n_no} from dual
+    WHERE NOT EXISTS 
+   (SELECT mem_id,n_no FROM notice_rec WHERE n_no = #{n_no} and mem_id = #{mem_id})
+    </insert>
+    
+    <update id="n_rec_count">
+       update notice set n_rec=(select count(*) from (select distinct n_no,mem_id from notice_rec) where n_no=#{n_no} ) where n_no=#{n_no}
     </update>
+    
+    <select id="n_getMemId" resultType="string">
+       select mem_id from notice_rec where n_no=#{n_no}
+    </select>
     
     <!-- 게시글 반대 -->
     <update id="n_rec_m">

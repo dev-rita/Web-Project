@@ -121,7 +121,7 @@
             <div class="container-fluid">
 
                <!-- Page Heading -->
-               <h1 class="h3 mb-2 text-gray-800">User Management</h1>
+               <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
                <p class="mb-4"></p>
 
                <!-- DataTales Example -->
@@ -233,7 +233,7 @@
                                     </td>
                                     <td align="center" style="width: 5%;"><%-- 메일 인증 안된사람(=로그인인 안되는 사람)은 권한 변경을 할 수 없다. --%>
                                        <c:if test="${m.mem_key == 'Y'}">
-                                          <input type="checkbox" name="RowCheck" value="${m.mem_id}">
+                                          <input style='zoom:1.5;' type="checkbox" name="RowCheck" value="${m.mem_id}">
                                        </c:if>
                                     </td>
                                  </tr>

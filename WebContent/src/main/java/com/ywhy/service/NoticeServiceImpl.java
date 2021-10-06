@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ywhy.dao.NoticeDAO;
+import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.NoticeVO;
 
 @Service
@@ -48,12 +49,23 @@ public class NoticeServiceImpl implements NoticeService {
 		
 	}
 
-	@Override
-	public void n_recommendp(int n_no) {
-		this.noticeDao.n_recommendp(n_no);
-	}
+	//게시물 좋아요
+    @Override
+    public void n_recommendp(NoticeVO rcm) {
+       this.noticeDao.n_recommendp(rcm);
+    } 
 
-	@Override
+    @Override
+    public void setRecCount(NoticeVO rcm) {
+        this.noticeDao.setRecCount(rcm);
+    }
+ 
+    @Override
+    public List<String> getMemId(int n_no) {
+       return this.noticeDao.getMemId(n_no);
+    }  
+  
+ 	@Override 
 	public void n_recommendm(int n_no) {
 		this.noticeDao.n_recommendm(n_no);
 	}

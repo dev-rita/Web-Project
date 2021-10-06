@@ -3,6 +3,7 @@
 <html>
 <head>
 <title>YWHY - 로그인</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <jsp:include page="../include/header.jsp"/>
 
 			<div id="edit-user" class="content" role="main">
@@ -22,9 +23,9 @@
 							<input type="password" name="login_pwd" id="login_pwd" class="password form-control input-sm" placeholder="비밀번호">
 							<span id="pwd_check"></span>
 							<div class="checkbox" style="display:block;">
-								<label> 
+								<!-- <label> 
 									<input type="checkbox" name="remember_me" id="remember_me"> 로그인 유지
-								</label>
+								</label> -->
 							</div>
 							<div id="divUserLogin">
                     			<button class="btn btn-primary btn-block" style="color:#773209" type="button" id="btnUserLogin" onclick="login_check();">로그인</button>
@@ -45,12 +46,13 @@
 							<h5 class="panel-header">SNS 로그인</h5>
 						</div>
 						<div class="panel-body panel-margin sns-buttons">
-							<a href="/oauth2/authorization/kakao" id="kakao-connect-link" class="btn btn-kakao btn-block"> 
-								<span class="icon-social icon-kakao"></span>Login with Kakao
+							<a href="#" id="kakao-connect-link" class="btn btn-kakao btn-block"> 
+								<span class="icon-social icon-kakao" ></span>Login with Kakao
 							</a> 
-							<a href="/oauth2/authorization/naver" id="naver-connect-link" class="btn btn-naver btn-block"> 
+							<a href="#" id="naver-connect-link" class="btn btn-naver btn-block"> 
 								<span class="icon-social icon-naver"></span>Login with NAVER
 							</a>
+
 						</div>
 					</div>
 				</div>
@@ -83,5 +85,44 @@
 			<div class="modal-content"></div>
 		</div>
 	</div>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('46af8e39f14bf7cfe2a58d4cadc1b540'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
 </body>
 </html>

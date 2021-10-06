@@ -11,6 +11,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    
    <typeAlias type="com.ywhy.vo.BoardVO" alias="b"/>
    	
-   	<typeAlias type="com.ywhy.vo.NoticeVO" alias="n"/>
+   <typeAlias type="com.ywhy.vo.NoticeVO" alias="n"/>
+   
+   <typeAlias type="com.ywhy.vo.HistoryVO" alias="h"/>
    </typeAliases>
 </configuration>   

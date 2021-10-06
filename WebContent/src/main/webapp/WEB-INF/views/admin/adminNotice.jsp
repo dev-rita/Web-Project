@@ -164,14 +164,11 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800" >공지사항 관리</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
+                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">Notice</h6>
                             
                             
                             <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
@@ -212,7 +209,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th><input type="checkbox" name="allCheck" id="allCheck">전체선택   </th>                             
+                                            <th><input  style='zoom:1.5;' type="checkbox" name="allCheck" id="allCheck"> &nbsp;전체선택   </th>                             
                                             <th>No</th>
                                             <th>제목</th>
                                             <th>작성자</th>
@@ -226,7 +223,7 @@
                                     <c:if test="${!empty blist}">
                                     <c:forEach var="b" items="${blist}">
                                         <tr>
-                                           <td><input type="checkbox" name="RowCheck" value="${b.n_no}"></td>
+                                           <td><input style='zoom:1.5;' type="checkbox" name="RowCheck" value="${b.n_no}"></td>
                                            <td>${b.n_no}</td>
                                            <td><c:if test="${b.n_pick==1}"><i class="fas fa-check-circle"></i>&nbsp;</c:if><a href="n_cont?n_no=${b.n_no}&page=${page}&state=cont">${b.n_title}</a></td>
                                            <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.n_name}</a></td>

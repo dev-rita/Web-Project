@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ywhy.dao.MemberDAO;
 import com.ywhy.vo.BoardVO;
+import com.ywhy.vo.HistoryVO;
 import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
@@ -102,6 +103,11 @@ public class MemberServiceImpl implements MemberService {
 	   public List<NoticeVO> getNList(NoticeVO n) {
 	      return this.memberDao.getNList(n);
 	   }
+
+	@Override
+	public List<HistoryVO> getHistory() {
+		return this.memberDao.getHistory();
+	}
 
 
 

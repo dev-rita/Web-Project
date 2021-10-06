@@ -75,18 +75,11 @@
                   </a>    -->      
                </div>
 					
-                </div>
-                <div class="content-function-group article-scrap-wrapper"><!-- 스크랩 -->
-                    <a href="javascript://" id="article-scrap-btn" data-type="scrap"><i class="fa fa-bookmark " data-toggle="tooltip" data-placement="left" title="" data-original-title="스크랩"></i></a>
-                    <div id="article-scrap-count" class="content-count">0</div>
-                </div>
+                </div>             
             </div>
         
             <div class="content-function-cog share-btn-wrapper">
-                <div class="dropdown"><!-- 페이스북 공유 -->
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fokky.kr%2Farticle%2F1007659" class="btn-facebook-share"><i class="fa fa-facebook-square fa-fw" data-toggle="tooltip" data-placement="left" title="" data-original-title="페이스북 공유"></i></a>
-                </div>
-
+                
                 <div class="dropdown">
                 	<form action="b_del_ok?b_no=${b.b_no}&page=${page}" method="post" name="article-delete-form" id="article-delete-form">
 							<input type="hidden" name="_csrf" value="f95d23e8-1c25-47c1-bc9d-1cf6568f3229">
@@ -634,8 +627,7 @@ function getAllList(){
 		    +"<div class='note-select-indicator note-deselected'>"
 		    +"<i class='fa fa-comment'></i></div>"
 		    +"<div class='avatar clearfix avatar-medium '>"
-		    +"<a href='/user/info/97440' class='avatar-photo'>"
-		    +"<img src='https://ssl.pstatic.net/static/pwe/address/img_profile.png'/></a>"
+		    
 		    +"<div class='avatar-info'>"
 		    +"<a class='nickname' href='b_my?mem_id="+this.mem_id+"' title='"+this.replyer+"'>"+this.replyer+"</a>"
 		    +"<div class='replyLi' data-r_no='"+this.r_no+"' style='display:none;'>"+this.r_no+"</div>"

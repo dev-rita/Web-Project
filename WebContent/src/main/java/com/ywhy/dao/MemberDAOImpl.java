@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ywhy.vo.BoardVO;
+import com.ywhy.vo.HistoryVO;
 import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
@@ -112,6 +113,11 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		this.sqlSession.update("pointUp",pm);//pointUp은 point.xml에서 설정할 유일한 update 아이디명이다.
 	}//활동점수
+
+	@Override
+	public List<HistoryVO> getHistory() {
+		return sqlSession.selectList("history");
+	}//연혁 불러오기
 
 
 }

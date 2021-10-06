@@ -2,6 +2,7 @@ package com.ywhy.service;
 
 import java.util.List;
 
+import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.NoticeVO;
 
 public interface NoticeService {
@@ -18,8 +19,11 @@ public interface NoticeService {
 
 	NoticeVO getNoticeCont(int n_no);
 
-	void n_recommendp(int n_no);
-
+	//게시글 추천
+	List<String> getMemId(int n_no);
+	void n_recommendp(NoticeVO rcm);
+	void setRecCount(NoticeVO rcm);
+	
 	void n_recommendm(int n_no);
 
 

@@ -467,9 +467,9 @@ public class BoardController {
          blist=this.boardService.getMyList(b);//목록보기
          //int mem_point=this.boardService.getMemPoint(mem_id);//mem_id를 통해서 mem_point를 불러옴
          MemberVO mlist=this.memberService.getMember(mem_id);
+         listM.addAttribute("mlist",mlist);
          
          listM.addAttribute("blist", blist);//blist속성 키이름에 목록을 저장
-         listM.addAttribute("mlist",mlist);
          listM.addAttribute("totalCount",totalCount);
          listM.addAttribute("startpage",startpage);
          listM.addAttribute("endpage",endpage);

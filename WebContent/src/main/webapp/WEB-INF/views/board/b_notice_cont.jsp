@@ -64,15 +64,15 @@
 					<div class="note-evaluate-wrapper">
 						<!-- 추천 -->
 						<a href="javascript://" role="button" data-type="dissent" data-eval="true" id="recp">
-						<i class="fa fa-angle-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
+						<i class="fa fa-thumbs-o-up note-evaluate-assent-assent" data-placement="left" data-toggle="tooltip" title="" data-original-title="추천"></i>
 						</a>
 						<!-- 추천수 -->
 						<div id="content-vote-count-2440348" class="content-eval-count">${n.n_rec}</div>
 						
-						<!-- 반대 -->
+						<!-- 반대 
 						<a href="javascript://" role="button" data-type="dissent" data-eval="true"  id="recm">
 						<i class="fa fa-angle-down note-evaluate-dissent-dissent" data-placement="left" data-toggle="tooltip" title="" data-original-title="반대"></i>
-						</a>
+						</a> -->
 					
 					</div>
 					
@@ -198,62 +198,35 @@
  <script src="./resources/js/board/reply.js" type="text/javascript"></script>
  
  <script>
- 	//게시글 추천
-	$('#recp').on("click",function(){
+//공지사항 좋아요
+$('#recp').on("click",function(){
 
-		var n_no=$('#n_no').text();
-		var id = '<%=session.getAttribute("id")%>';
-		
-		if(id=="null"){
-			alert("로그인이 필요합니다.");
-			location.replace("login");
-		}else{
-        $.ajax({
-           type:'post',
-           url:'/controller/n_recommend_plus/'+n_no,
-           headers:{
-              "Content-Type" : "application/json",
-              "X-HTTP-Method-Override" : "POST"
-           },
-           dataType:'text',
-           success:function(result){//받아오는 것이 성공시 호출됨
-              if(result == 'SUCCESS'){
-                 alert('추천 되었습니다!');
-                 location.reload();//새로 고침->단축키는 f5               
-              }
+   var n_no=$('#n_no').text();
+   var id = '<%=session.getAttribute("id")%>';
+   
+   if(id=="null"){
+      alert("로그인이 필요합니다.");
+      location.replace("login");
+   }else{
+     $.ajax({
+        type:'post',
+        url:'/controller/notice_rcm/'+n_no,
+        headers:{
+           "Content-Type" : "application/json",
+           "X-HTTP-Method-Override" : "POST"
+        },
+        dataType:'text',
+        success:function(result){//받아오는 것이 성공시 호출됨
+           if(result == 'SUCCESS'){
+              alert('추천 되었습니다!');
+              location.reload();//새로 고침->단축키는 f5               
+           }else{
+              alert('이미 추천하셨습니다!');
            }
-        });
-       }
-      });
- 	
- 	//게시물 반대
-	$('#recm').on("click",function(){
-
-		var n_no=$('#n_no').text();
-		var id = '<%=session.getAttribute("id")%>';
-		
-		if(id=="null"){
-			alert("로그인이 필요합니다.");
-			location.replace("login");
-		}else{
-        $.ajax({
-           type:'post',
-           url:'/controller/n_recommend_minus/'+n_no,
-           headers:{
-              "Content-Type" : "application/json",
-              "X-HTTP-Method-Override" : "POST"
-           },
-           dataType:'text',
-           success:function(result){//받아오는 것이 성공시 호출됨
-              if(result == 'SUCCESS'){
-                 alert('반대 되었습니다!');
-                 location.reload();//새로 고침->단축키는 f5               
-              }
-           }
-        });
-		}
-      });
- 	
+        }
+     });
+    }
+   });	
 </script>
 
  <script>

@@ -1,5 +1,6 @@
 package com.ywhy.controller;
 
+
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -16,13 +17,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ywhy.service.MailSendService;
 import com.ywhy.service.MemberService;
 import com.ywhy.vo.BoardVO;
+import com.ywhy.vo.HistoryVO;
 import com.ywhy.vo.MemberVO;
 import com.ywhy.vo.NoticeVO;
 
@@ -415,11 +416,22 @@ public class MemberController {
 	      return mav;
 	   }
 	
-	/*footer의 About*/
-	@GetMapping("/intro_about")
-	public String about() {
-		return "intro/about"; //뷰페이지 경로가 /WEB-INF/views/intro/loginbefore_about.jsp
-	}
+    /*footer의 About*/
+    @GetMapping("/intro_about")
+    public String about(Model model,HttpServletResponse response,HttpSession session) throws Exception {
+       response.setContentType("text/html;charset=utf-8");
+       
+       String login=(String)session.getAttribute("id");
+       if(login!=null) {
+          MemberVO m=this.memberService.getMember(login);//아이디에 해당하는 회원정보 가져옴
+          
+          model.addAttribute("m",m);
+       }
+          List<HistoryVO> hlist=this.memberService.getHistory();
+          model.addAttribute("hlist", hlist);
+          return "intro/about";
+     }
+    
 	
 	/*footer의 개인정보보호*/
 	@GetMapping("/user_privacy")
@@ -587,6 +599,13 @@ public class MemberController {
 			out.println("</script>");
 		}
 		return null;
+	}
+	
+	@RequestMapping(value="/login.do")
+	public String loginview(Model model, HttpSession session) {
+		String kakaoUrl = "";
+				
+		return "login";		
 	}
 
 }

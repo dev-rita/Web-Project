@@ -116,9 +116,9 @@
                         </div>
                         <div class="list-group-item-author clearfix">
                              <div class="avatar clearfix avtar-list">
-                                   <a href="b_my?mem_id=${b.mem_id}" class="avatar-photo"><img src="//www.gravatar.com/avatar/8b4ddad17ec0dd8ad9a309757d8f63ab?d=identicon&amp;s=30"></a>
+                                   <a href="b_my?mem_id=${b.mem_id}" class="avatar-photo">
                                  <div class="avatar-info">
-                                    <a class="nickname" href="/user/info/106884" title="${b.b_name} ">${b.b_name}</a><!-- 작성자  -->
+                                    <a class="nickname" href="b_my?mem_id=${b.mem_id}" title="${b.b_name} ">${b.b_name}</a><!-- 작성자  -->
                                        <div class="date-created"><span class="timeago" title="${b.b_date}">${b.b_date}</span></div><!-- 작성날짜 -->
                               </div>
                           </div>
@@ -271,8 +271,8 @@
         var encodedURL = "%2Farticles%2Ftagged%2Fredis";
     </script> 
 	<script src="./resources/js/application.js" type="text/javascript"></script>
-	<script src="./resources/js/search.js" type="text/javascript"></script>
-	<script src="./resources/js/notification.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/search.js" type="text/javascript"></script>
+	<script src="./resources/js/apps/notification.js" type="text/javascript"></script>
 	<script src="./resources/js/questions.js" type="text/javascript"></script> 
 	<script>
 		$(function() {

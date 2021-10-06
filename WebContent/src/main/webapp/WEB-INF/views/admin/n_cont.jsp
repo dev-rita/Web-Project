@@ -212,12 +212,9 @@
             <div class="panel panel-default clearfix">
                <div class="panel-heading clearfix">
                   <div class="avatar">
-                     <a href="/user/info/124651" class='avatar-photo'>
-                        <img src="//www.gravatar.com/avatar/8a9fd42ec1c99aeb1b1ba542521de04e?d=identicon&s=40" /></a>
+                     
                     
-                        <a class="nickname" href="/user/info/124651" title="${b.n_name}" id="nickname">${b.n_name}</a>
-                        
-                           <span class="fa fa-flash"></span> 0
+                        <a class="nickname" href="#" title="${b.n_name}" id="nickname">${b.n_name}</a>
                        <div><span title="${b.n_date}">${b.n_date}</span></div>
                     
                   </div>

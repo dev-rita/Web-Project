@@ -14,7 +14,7 @@
     <meta name="author" content="">
 
     <title>관리자페이지 - 커뮤니티</title>
-   <link href="./resources/admin/img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
+    <link href="./resources/admin/img/logo_manager.png" rel="icon"><!-- title 옆에 아이콘 -->
    
     <!-- Custom fonts for this template -->
     <link href="./resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -165,14 +165,11 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800" >커뮤니티 관리</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 style="display:inline;" class="m-0 font-weight-bold text-primary">Community</h6>
                             
                             
                             <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();" style="float:right; margin-left : 5px;">
@@ -213,7 +210,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                         	<th><input type="checkbox" name="allCheck" id="allCheck">전체선택   </th>                             
+                                         	<th><input style='zoom:1.5;' type="checkbox" name="allCheck" id="allCheck"> &nbsp;전체선택   </th>                             
                                             <th>No</th>
                                             <th>제목</th>
                                             <th>작성자</th>
@@ -227,7 +224,7 @@
                                     <c:if test="${!empty blist}">
                                     <c:forEach var="b" items="${blist}">
                                         <tr>
-                                           <td><input type="checkbox" name="RowCheck" value="${b.b_no}"></td>
+                                           <td><input style='zoom:1.5;' type="checkbox" name="RowCheck" value="${b.b_no}"></td>
                                             <td>${b.b_ref}<c:if test="${b.b_step != 0}">.Re</c:if></td>
                                             <td><c:if test="${b.b_pick==1}"><i class="fas fa-check-circle"></i>&nbsp;</c:if><a href="a_cont?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a></td>
                                             <td><a href="user_privacy" data-toggle="modal" data-target="#userPrivacy">${b.b_name}</a></td>
@@ -504,7 +501,6 @@
 	      if(valueArr.length==0){
 	         alert('선택된 글이 없습니다.');
 	      }else{
-	         var chk=confirm("정말 추천하시겠습니까?");
 	         $.ajax({
 	            url:url,
 	            type:'POST',
@@ -514,10 +510,10 @@
 	            },
 	            success:function(jdata){
 	               if(jdata=1){
-	                  alert('추천 성공');
+	                  alert("YWHY's Choice");
 	                  location.reload();
 	               }else{
-	                  alert("추천 실패");
+	                  alert("요청 실패");
 	               }
 	            }
 	         

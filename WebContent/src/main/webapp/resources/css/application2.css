@@ -10445,9 +10445,8 @@ span.filter-count {
 }
 .about-hlist-head-y {
     position: absolute;
-    top: -7px;
-    font-size: 24px;
-    font-weight: bold;
+    top:33px;
+    font-size: 15px;
 }
 .about-hlist:last-child .about-hlist-head {
     border-right: none;
@@ -10469,7 +10468,7 @@ span.filter-count {
     margin-left: 100px;
     padding: 20px 0 10px 20px;
     border-top: 1px solid #595959;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
     letter-spacing: -1px;
 }
@@ -10484,7 +10483,7 @@ span.filter-count {
     content: "";
     width: 6px;
     height: 6px;
-    background-color: #FDD835;
+    background-color: #773209;
     border-radius: 6px;
 }
 .about-wrapper .content-header {

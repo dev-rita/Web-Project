@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ywhy.vo.BoardVO;
 import com.ywhy.vo.NoticeVO;
 
 @Repository
@@ -48,10 +49,20 @@ public class NoticeDAOImpl implements NoticeDAO {
 		return this.sqlSession.selectOne("n_cont",n_no);
 	}
 
-	@Override
-	public void n_recommendp(int n_no) {
-		this.sqlSession.update("n_rec_p",n_no);
-	}
+	//게시글 좋아요
+    @Override
+    public void n_recommendp(NoticeVO rcm) {
+       this.sqlSession.insert("n_rec_p", rcm);
+    }
+    @Override
+    public void setRecCount(NoticeVO rcm) {
+        this.sqlSession.update("n_rec_count",rcm);
+    } 
+
+    @Override
+    public List<String> getMemId(int n_no) {
+       return this.sqlSession.selectList("n_getMemId", n_no);
+    }
 
 	@Override
 	public void n_recommendm(int n_no) {

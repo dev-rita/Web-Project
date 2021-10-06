@@ -1,3 +1,8 @@
+create table notice_rec(
+   mem_id varchar2(100) 
+   ,n_no int 
+);
+select * from notice_rec;
 create table notice(
  	n_no number(38) primary key --번호
  	,mem_id varchar2(100) constraint board_mem_id_fk references ywhyMember(mem_id) on delete cascade
