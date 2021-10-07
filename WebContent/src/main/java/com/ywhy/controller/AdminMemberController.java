@@ -130,8 +130,8 @@ public class AdminMemberController {
 				listM.addObject("find_field",find_field);
 				listM.addObject("find_name", find_name);
 				listM.addObject("m", id);
-				
 				listM.setViewName("admin/usermanagement");
+				
 				return listM;
 			}else {
 				out.println("<script>");

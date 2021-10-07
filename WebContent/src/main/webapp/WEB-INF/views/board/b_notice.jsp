@@ -10,7 +10,7 @@
      <div id="list-article" class="content scaffold-list life-list" role="main">
      	<div class="nav" role="navigation">
      		 
-        	<a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
+
           
             <h4>공지사항</h4>
             <form id="category-filter-form" name="category-filter-form" method="get" action="b_notice">

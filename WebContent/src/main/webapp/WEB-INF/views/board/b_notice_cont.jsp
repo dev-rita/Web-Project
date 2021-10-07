@@ -81,9 +81,7 @@
             </div>
         
             <div class="content-function-cog share-btn-wrapper">
-                <div class="dropdown"><!-- 페이스북 공유 -->
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fokky.kr%2Farticle%2F1007659" class="btn-facebook-share"><i class="fa fa-facebook-square fa-fw" data-toggle="tooltip" data-placement="left" title="" data-original-title="페이스북 공유"></i></a>
-                </div>
+                
 
             </div>
            

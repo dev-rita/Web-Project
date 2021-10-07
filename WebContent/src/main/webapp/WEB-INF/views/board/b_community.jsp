@@ -9,9 +9,9 @@
 
      <div id="list-article" class="content scaffold-list life-list" role="main">
      	<div class="nav" role="navigation">
-     		 
+     		 <c:if test="${!empty m.mem_id }">
         	<a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';" ><i class="fa fa-pencil"></i> 새 글 쓰기</a>
-           
+           </c:if>
             <h4>커뮤니티</h4>
             <form id="category-filter-form" name="category-filter-form" method="get" action="b_community">
                <div class="category-filter-wrapper">

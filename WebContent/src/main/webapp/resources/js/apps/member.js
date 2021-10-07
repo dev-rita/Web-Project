@@ -309,6 +309,18 @@
     });
  }
 
+ /*정보수정 유효성*/
+ function editinfo_check(){
+   $nickchk=$("#nickchk").val();
+   if($nickchk == "N"){
+      $errortext='<font color="#773209" size="2"><b>중복 확인 버튼을 눌러주세요.</b></font>';
+       $("#nickcheck").text("");
+       $("#nickcheck").show();
+       $("#nickcheck").append($errortext);
+       $("#nick").focus();
+       return false;
+   }
+ }
  
  /*비밀번호 변경 */
  function passwordChange(){

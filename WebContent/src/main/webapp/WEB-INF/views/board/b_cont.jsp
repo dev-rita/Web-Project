@@ -16,8 +16,10 @@
 	
 
    		 <div class="nav" role="navigation">
-   		  	<a class="create btn btn-info btn-wide pull-right" style="margin-left:5px;"onclick="location='b_cont?b_no=${b.b_no}&page=${page}&state=reply';"><i class="fa fa-pencil"></i> 답변 글 쓰기</a>
-       	    <a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
+			<c:if test="${!empty m.mem_id}">
+              <a class="create btn btn-info btn-wide pull-right" style="margin-left:5px;"onclick="location='b_cont?b_no=${b.b_no}&page=${page}&state=reply';"><i class="fa fa-pencil"></i> 답변 글 쓰기</a>
+              <a class="create btn btn-success btn-wide pull-right" onclick="location='b_create?page=${page}';"><i class="fa fa-pencil"></i> 새 글 쓰기</a>
+             </c:if>
           
         	<h4>${b.b_cate == '커뮤니티' ? '커뮤니티' : 'Q&amp;A'}</h4>
     	 </div>

@@ -11,7 +11,7 @@
    content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>괸리자페이지-회원관리</title>
+<title>관리자페이지-회원관리</title>
 
 <!-- Custom fonts for this template-->
 <link href="./resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -201,7 +201,7 @@
                               </tr>
                             --%>
                            </thead>
-                           <c:if test="${!empty blist}">
+                           <c:if test="${(!empty blist)&&(m.mem_id=='ywhyadmin')}">
                               <c:forEach var="m" items="${blist}">
                                  <tr>
                                     <td align="center">
@@ -235,6 +235,38 @@
                                        <c:if test="${m.mem_key == 'Y'}">
                                           <input style='zoom:1.5;' type="checkbox" name="RowCheck" value="${m.mem_id}">
                                        </c:if>
+                                    </td>
+                                 </tr>
+                              </c:forEach>
+                           </c:if>
+                           <c:if test="${(!empty blist)&&(m.mem_id!='ywhyadmin')}">
+                              <c:forEach var="m" items="${blist}">
+                                 <tr>
+                                    <td align="center">
+                                       <a href="#">
+                                          ${m.mem_id}
+                                       </a>
+                                    </td>
+                                    <td align="center">
+                                       ${m.mem_name}
+                                    </td>
+                                    <td align="center">
+                                       ${m.mem_nick}
+                                    </td>
+                                    <td align="center">
+                                       ${fn:substring(m.mem_signupdate,0,10)}
+                                    </td>
+                                    <td align="center">
+                                       <c:if test="${m.mem_key == 'Y'}">인증확인</c:if>
+                                       <c:if test="${m.mem_key != 'Y'}">X</c:if>
+                                    </td>
+                                    <td align="center">
+                                       <c:if test="${m.mem_class == '일반'}">일반</c:if>
+                                       <c:if test="${m.mem_class == '관리자'}">관리자</c:if>
+                                    </td>
+                                    <td align="center" style="width: 13%;">
+                                    </td>
+                                    <td align="center" style="width: 5%;"><%-- 메일 인증 안된사람(=로그인인 안되는 사람)은 권한 변경을 할 수 없다. --%>
                                     </td>
                                  </tr>
                               </c:forEach>
@@ -444,7 +476,7 @@
             
          }   
          if(valueArr.length==0){
-            alert('선택된 글이 없습니다.');
+            alert('선택된 회원이 없습니다.');
          }else{
             $.ajax({
                url:url,
@@ -467,7 +499,7 @@
             
          }   
          if(valueArr.length==0){
-            alert('선택된 글이 없습니다.');
+            alert('선택된 회원이 없습니다.');
          }else{
             $.ajax({
                url:url,

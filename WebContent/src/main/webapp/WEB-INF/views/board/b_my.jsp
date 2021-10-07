@@ -19,17 +19,24 @@
 </div>
           <div class="user-info col-sm-9">
               <div class="clearfix">
+              <c:if test="${empty mlist.mem_id}">
+              	<h4 class="pull-left">탈퇴한 아이디입니다.</h4>
+              </c:if>
+              <c:if test="${!empty mlist.mem_id}">
                   <h4 class="pull-left">아이디 : ${mlist.mem_id} &nbsp;&nbsp;&nbsp;닉네임: ${mlist.mem_nick}</h4>
+              </c:if>
               </div>
+              
               <div class="user-points">
                   <div class="user-point">
                       <div class="user-point-label"><i class="fa fa-flash"></i> 활동점수</div>
                       <div class="user-point-num"><a href="#">${mlist.mem_point}</a></div>
                   </div>
               </div>
-              <c:if test="${m.mem_id==mlist.mem_id}">
+              <c:if test="${(!empty mlist.mem_id)&&(m.mem_id==mlist.mem_id)}">
               <div><a href="editinfo" class="btn btn-info btn-sm" style="margin-top: 45px;">정보수정</a></div>
           	  </c:if>
+          	  
           </div>
       </div>
   </div>
